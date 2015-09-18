@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SuperID" "${PODS_ROOT}/Headers/Public/UMengAnalytics"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/SuperID/SuperID-SDK-iOS" "$(PODS_ROOT)/UMengAnalytics/**" "$(PODS_ROOT)/SuperID/SuperID-SDK-iOS" "$(PODS_ROOT)/SuperID/SuperID-SDK-iOS" "$(PODS_ROOT)/UMengAnalytics/**"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SuperID" -isystem "${PODS_ROOT}/Headers/Public/UMengAnalytics"
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -l"MobClickLibrary" -l"SuperIDSDK" -l"c++" -l"z" -framework "AVFoundation" -framework "CoreMedia" -framework "CoreTelephony" -framework "Foundation"
+PODS_ROOT = ${SRCROOT}/Pods

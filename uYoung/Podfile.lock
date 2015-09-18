@@ -1,0 +1,13 @@
+PODS:
+  - SuperID (1.4.2.1)
+  - UMengAnalytics (3.5.16)
+
+DEPENDENCIES:
+  - SuperID
+  - UMengAnalytics
+
+SPEC CHECKSUMS:
+  SuperID: bda7c956db2829b0181522e1476c2e20aba91d50
+  UMengAnalytics: fdf0c0a8c07d8bffc012ffa3c68e5d490af42098
+
+COCOAPODS: 0.38.2
