@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8F3E094E334AA1B811DE /* libPods.a */; };
+		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
 		483E17DF1BAC548E00CDDBD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DE1BAC548E00CDDBD3 /* ViewController.m */; };
@@ -29,6 +32,11 @@
 
 /* Begin PBXFileReference section */
 		3A896116CED627EBB572AEEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
+		4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
+		4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
+		4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
+		4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		483E17D31BAC548E00CDDBD3 /* uYoung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uYoung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		483E17D71BAC548E00CDDBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		483E17D81BAC548E00CDDBD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,6 +96,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4820A4BA1BB00567006AEC13 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = networking;
+			sourceTree = "<group>";
+		};
+		4820A4BB1BB00577006AEC13 /* file */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = file;
+			sourceTree = "<group>";
+		};
+		4820A4BC1BB00583006AEC13 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = modal;
+			sourceTree = "<group>";
+		};
+		4820A4BD1BB0058C006AEC13 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */,
+				4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */,
+				4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		4820A4BE1BB00592006AEC13 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */,
+				4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +159,11 @@
 		483E17D51BAC548E00CDDBD3 /* uYoung */ = {
 			isa = PBXGroup;
 			children = (
+				4820A4BE1BB00592006AEC13 /* controller */,
+				4820A4BD1BB0058C006AEC13 /* view */,
+				4820A4BC1BB00583006AEC13 /* modal */,
+				4820A4BB1BB00577006AEC13 /* file */,
+				4820A4BA1BB00567006AEC13 /* networking */,
 				483E17DA1BAC548E00CDDBD3 /* AppDelegate.h */,
 				483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */,
 				483E17DD1BAC548E00CDDBD3 /* ViewController.h */,
@@ -233,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
+				4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
 			);
@@ -285,9 +339,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
 				483E17DF1BAC548E00CDDBD3 /* ViewController.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
+				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
