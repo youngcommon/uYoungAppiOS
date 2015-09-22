@@ -7,6 +7,7 @@
 //
 
 #import "ActivityTableViewController.h"
+#import "ActivityTableViewCell.h"
 
 @interface ActivityTableViewController ()
 
@@ -34,8 +35,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"activityTableViewCell" forIndexPath:indexPath];
     
+    static NSString *CellIdentifier = @"avtivityCell";
+    
+    ActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"ActivityTableViewCell" owner:self options:nil] objectAtIndex:0];
+        UINib *nib = [UINib nibWithNibName:@"ActivityTableViewCell" bundle:[NSBundle mainBundle]];
+        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];//注册cell复用
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+//    [cell initWithGameResult:r Index:indexPath.row];
     
     return cell;
 }

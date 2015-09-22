@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8F3E094E334AA1B811DE /* libPods.a */; };
-		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
-		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; };
+		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; };
+		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; };
+		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
 		483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E01BAC548E00CDDBD3 /* Main.storyboard */; };
 		483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E31BAC548E00CDDBD3 /* Images.xcassets */; };
 		483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E51BAC548E00CDDBD3 /* LaunchScreen.xib */; };
 		483E17F31BAC548E00CDDBD3 /* uYoungTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17F21BAC548E00CDDBD3 /* uYoungTests.m */; };
+		841D31191BB1A3D4005BDEF0 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841D31181BB1A3D4005BDEF0 /* uyoung.bundle */; };
+		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 		4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
 		4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
-		4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		4820A4C91BB1417D006AEC13 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4820A4CA1BB1417D006AEC13 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4820A4CB1BB1417D006AEC13 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -56,6 +56,8 @@
 		48E737C71BAFFB8300C35871 /* libDTCoreText.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTCoreText.a; path = "Pods/../build/Debug-iphoneos/libDTCoreText.a"; sourceTree = "<group>"; };
 		48E737C81BAFFB8300C35871 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Pods/../build/Debug-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		841D31181BB1A3D4005BDEF0 /* uyoung.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = uyoung.bundle; sourceTree = "<group>"; };
+		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +126,7 @@
 			children = (
 				4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */,
 				4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */,
-				4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */,
+				841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -144,6 +146,7 @@
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
+				841D31181BB1A3D4005BDEF0 /* uyoung.bundle */,
 				483E17D51BAC548E00CDDBD3 /* uYoung */,
 				483E17EF1BAC548E00CDDBD3 /* uYoungTests */,
 				483E17D41BAC548E00CDDBD3 /* Products */,
@@ -288,10 +291,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841D31191BB1A3D4005BDEF0 /* uyoung.bundle in Resources */,
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
-				4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
+				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
