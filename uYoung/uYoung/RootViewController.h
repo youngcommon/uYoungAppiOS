@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface RootViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISegmentedControl *toggle;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UIView *activityTableView;
 
 @end
