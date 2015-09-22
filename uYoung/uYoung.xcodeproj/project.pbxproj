@@ -11,9 +11,10 @@
 		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
-		483E17DF1BAC548E00CDDBD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DE1BAC548E00CDDBD3 /* ViewController.m */; };
 		483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E01BAC548E00CDDBD3 /* Main.storyboard */; };
 		483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E31BAC548E00CDDBD3 /* Images.xcassets */; };
 		483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E51BAC548E00CDDBD3 /* LaunchScreen.xib */; };
@@ -37,13 +38,14 @@
 		4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
 		4820A4C61BB0069F006AEC13 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		4820A4C91BB1417D006AEC13 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4820A4CA1BB1417D006AEC13 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		4820A4CB1BB1417D006AEC13 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		483E17D31BAC548E00CDDBD3 /* uYoung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uYoung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		483E17D71BAC548E00CDDBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		483E17D81BAC548E00CDDBD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		483E17DA1BAC548E00CDDBD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		483E17DD1BAC548E00CDDBD3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		483E17DE1BAC548E00CDDBD3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		483E17E11BAC548E00CDDBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		483E17E31BAC548E00CDDBD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		483E17E61BAC548E00CDDBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -132,6 +134,9 @@
 			children = (
 				4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */,
 				4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */,
+				4820A4C91BB1417D006AEC13 /* RootViewController.h */,
+				4820A4CA1BB1417D006AEC13 /* RootViewController.m */,
+				4820A4CB1BB1417D006AEC13 /* RootViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -166,8 +171,6 @@
 				4820A4BA1BB00567006AEC13 /* networking */,
 				483E17DA1BAC548E00CDDBD3 /* AppDelegate.h */,
 				483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */,
-				483E17DD1BAC548E00CDDBD3 /* ViewController.h */,
-				483E17DE1BAC548E00CDDBD3 /* ViewController.m */,
 				483E17E01BAC548E00CDDBD3 /* Main.storyboard */,
 				483E17E31BAC548E00CDDBD3 /* Images.xcassets */,
 				483E17E51BAC548E00CDDBD3 /* LaunchScreen.xib */,
@@ -287,6 +290,7 @@
 			files = (
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4C81BB0069F006AEC13 /* ActivityTableViewCell.xib in Resources */,
+				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
 			);
@@ -340,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
-				483E17DF1BAC548E00CDDBD3 /* ViewController.m in Sources */,
+				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
