@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+//    [self.contentView setBackgroundColor:[UIColor clearColor]];
+//    [self.backgroud setHidden:YES];
+    [self setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

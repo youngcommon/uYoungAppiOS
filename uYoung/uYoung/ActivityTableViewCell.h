@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *backgroud;
 
 @end

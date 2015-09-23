@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self.view setBackgroundColor:[UIColor blackColor]];
+//    [self.tableView setBackgroundColor:[UIColor blackColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +50,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+    return 75;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 /*
