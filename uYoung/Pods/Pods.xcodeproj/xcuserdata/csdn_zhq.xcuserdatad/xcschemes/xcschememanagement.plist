@@ -8,21 +8,54 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>DTCoreText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>DTFoundation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-DTCoreText.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-DTFoundation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Pods-SuperID.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Pods-UMengAnalytics.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -32,12 +65,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>31D0CBB62EA1F1B8D757FCF1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>324E4555494C4165BD91A100664CA0FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>63664E40715F451B1331AED2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>68127D6C8D02E5AFC4FB3C6F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6A9095A2DE50E6A2E7F321DECED8C4E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BECF297F0A3C39A38CBC756</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FAC5CF65F65B83DC85313F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACB93E30B03496B45F8EA469</key>
 		<dict>
 			<key>primary</key>
 			<true/>

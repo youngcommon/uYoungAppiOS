@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ActivityTableViewCell.h"
+
 @interface ActivityTableViewController : UITableViewController
 
 @end

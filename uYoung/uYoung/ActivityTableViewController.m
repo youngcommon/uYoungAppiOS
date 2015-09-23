@@ -7,7 +7,6 @@
 //
 
 #import "ActivityTableViewController.h"
-#import "ActivityTableViewCell.h"
 
 @interface ActivityTableViewController ()
 
@@ -31,12 +30,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"avtivityCell";
+    static NSString *CellIdentifier = @"ActivityTableViewCell";
     
     ActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -46,9 +45,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-//    [cell initWithGameResult:r Index:indexPath.row];
-    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
 }
 
 /*

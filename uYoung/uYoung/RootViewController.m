@@ -18,9 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ActivityTableViewController *activityTabViewController = [[[NSBundle mainBundle] loadNibNamed:@"" owner:self options:nil] firstObject];
+    CGFloat y = 20;
+    
+    y += self.header.frame.size.height;
+    
+    ActivityTableViewController *activityTabViewController = [[ActivityTableViewController alloc]init];
+    NSLog(@"%f", kMAIN_SCREEN_HEIGHT);
+    activityTabViewController.view.frame = CGRectMake(0, y, kMAIN_SCREEN_WIDTH, kMAIN_SCREEN_HEIGHT);
+    
     [self addChildViewController:activityTabViewController];
-    [self.activityTableView addSubview:activityTabViewController.view];
+    [self.view addSubview:activityTabViewController.view];
+    
 }
 
 - (void)didReceiveMemoryWarning {

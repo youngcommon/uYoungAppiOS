@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalConfig.h"
 
 @interface RootViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggle;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
-@property (weak, nonatomic) IBOutlet UIView *activityTableView;
+@property (weak, nonatomic) IBOutlet UIView *header;
 
 @end
