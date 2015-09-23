@@ -31,6 +31,20 @@
     [self addChildViewController:activityTabViewController];
     [self.view addSubview:activityTabViewController.view];
     
+    [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+    
+//    [self initActivityList];
+}
+
+- (void)initActivityList: (NSInteger)type{
+    NSInteger selected = self.toggle.selectedSegmentIndex;
+    NSLog(@"select--->%d", selected);
+}
+
+- (void)segmentAction:(UISegmentedControl*)seg{
+    NSInteger index = seg.selectedSegmentIndex;
+    [self initActivityList:index];
+    
 }
 
 - (void)didReceiveMemoryWarning {
