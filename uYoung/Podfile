@@ -1,5 +1,6 @@
 platform :ios, '7.0'
-pod "SuperID"
-pod "UMengAnalytics"
-pod "AFNetworking"
+pod 'SuperID'
+pod 'UMengAnalytics'
+pod 'AFNetworking'
+pod 'Mantle'
 pod 'DTCoreText', git: 'https://github.com/QuanGe/DTCoreText'

@@ -1,2 +1,0 @@
-PODS_SUPERID_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/SuperID/SuperID-SDK-iOS" "$(PODS_ROOT)/SuperID/SuperID-SDK-iOS"
-PODS_SUPERID_OTHER_LDFLAGS = $(inherited) -ObjC -all_load -l"SuperIDSDK" -l"c++" -framework "AVFoundation" -framework "CoreMedia" -framework "CoreTelephony" -framework "Foundation"

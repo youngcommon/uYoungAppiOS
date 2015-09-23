@@ -40,6 +40,14 @@
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIL-pG-QOs">
+                            <rect key="frame" x="280" y="11" width="20" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="1nc-Dr-ADa"/>
+                                <constraint firstAttribute="width" constant="20" id="Q14-gp-Ghx"/>
+                            </constraints>
+                            <state key="normal" image="uyoung.bundle/selector.png"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -47,8 +55,10 @@
                         <constraint firstAttribute="bottom" secondItem="WPd-9N-UUr" secondAttribute="bottom" constant="8" id="8Fp-Dg-1tI"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="centerX" secondItem="jdQ-d4-3D9" secondAttribute="centerX" id="ACN-bN-1vx"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="CdR-qq-v6l"/>
+                        <constraint firstAttribute="trailing" secondItem="dIL-pG-QOs" secondAttribute="trailing" constant="20" id="LQr-Ss-sQa"/>
                         <constraint firstItem="9Cy-Gz-Sp3" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="bk2-4Y-wvl"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="top" secondItem="jdQ-d4-3D9" secondAttribute="top" constant="8" id="fGj-SL-t3G"/>
+                        <constraint firstItem="dIL-pG-QOs" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="kZx-5a-qXT"/>
                     </constraints>
                 </view>
             </subviews>
@@ -69,5 +79,6 @@
     </objects>
     <resources>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/selector.png" width="320" height="568"/>
     </resources>
 </document>

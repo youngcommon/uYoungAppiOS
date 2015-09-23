@@ -24,7 +24,7 @@
     
     ActivityTableViewController *activityTabViewController = [[ActivityTableViewController alloc]init];
     NSLog(@"%f", kMAIN_SCREEN_HEIGHT);
-    activityTabViewController.view.frame = CGRectMake(0, y, kMAIN_SCREEN_WIDTH, kMAIN_SCREEN_HEIGHT);
+    activityTabViewController.view.frame = CGRectMake(0, y, kMAIN_SCREEN_WIDTH, kMAIN_SCREEN_HEIGHT - y);
     [activityTabViewController.tableView setBackgroundColor:[UIColor clearColor]];
     activityTabViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
