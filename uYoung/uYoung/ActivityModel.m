@@ -14,17 +14,18 @@
     return @{
              @"activityId": @"id",
              @"title":@"title",
-             @"actType":@"nickname",
-             @"personNum":@"answer_count",
-             @"day":@"c_coin",
-             @"month":@"created_at",
-             @"week":@"votes_count",
-             @"fromTime":@"all_answers",
-             @"toTime":@"best_answer",
-             @"addr":@"question_status",
-             @"headerUrl":@"best_answer",
-             @"addr":@"question_status",
-             @"status":@"tag_list"
+             @"actType":@"acttype",
+             @"personNum":@"pnum",
+             @"day":@"day",
+             @"month":@"mon",
+             @"week":@"week",
+             @"fromTime":@"from",
+             @"toTime":@"to",
+             @"addr":@"addr",
+             @"headerUrl":@"header",
+             @"local":@"local",
+             @"price":@"p",
+             @"status":@"status"
              };
 }
 //- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {

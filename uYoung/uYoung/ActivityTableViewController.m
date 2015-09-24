@@ -18,6 +18,7 @@
     [super viewDidLoad];
 //    [self.view setBackgroundColor:[UIColor blackColor]];
 //    [self.tableView setBackgroundColor:[UIColor blackColor]];
+    [self initPullAndPushView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,7 +32,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return [self.activityListData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,7 +47,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.dict = self.activityListData[[indexPath row]];
+    [cell initWithActivityModel:self.activityListData[[indexPath row]]];
     
     return cell;
 }
@@ -57,6 +58,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (void)initPullAndPushView{
+    //注册下拉刷新功能
+    __weak ActivityTableViewController *weakself = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+//        [weakself insertrowattop];
+//        [NSThread sleepForTimeInterval:3];
+        [weakself.tableView.pullToRefreshView stopAnimating];
+    }];
+    
+    //注册上拉刷新功能
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        [weakself insertrowatbottom];
+//        [NSThread sleepForTimeInterval:3];
+        [weakself.tableView.infiniteScrollingView stopAnimating];
+    }];
+    
+    [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
+    [self.tableView.pullToRefreshView setTitle:@"释放更新" forState:SVPullToRefreshStateTriggered];
+    [self.tableView.pullToRefreshView setTitle:@"卖力加载中..." forState:SVPullToRefreshStateLoading];
+//    self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
+//    [self.tableView triggerPullToRefresh];
 }
 
 

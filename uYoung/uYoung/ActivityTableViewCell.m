@@ -36,6 +36,21 @@
 }
 
 - (void) initWithActivityModel: (ActivityModel*)model{
+    self.actTypeLable.text = model.actType;
+    self.dayLabel.text = model.day;
+    self.monthLabel.text = [NSString stringWithFormat:@"%@，",model.month];
+    self.weekLabel.text = model.week;
+    self.titleLabel.text = model.title;
+    self.fromTimeLabel.text = model.fromTime;
+    self.toTimeLabel.text = model.toTime;
+    self.personNumLabel.text = [NSString stringWithFormat:@"%d", model.personNum.intValue];
+    self.addrLabel.text = model.addr;
+    self.headerImg.image = [UIImage imageNamed:model.headerUrl];
+    if(model.price==0){
+        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundel/aa"];
+    }else{
+        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundel/free"];
+    }
     
 }
 

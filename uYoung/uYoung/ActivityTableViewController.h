@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "ActivityTableViewCell.h"
+#import "SVPullToRefresh.h"
+#import "GlobalConfig.h"
 
 @interface ActivityTableViewController : UITableViewController
 

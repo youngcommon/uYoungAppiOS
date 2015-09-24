@@ -25,4 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *addrLabel;
 @property (strong, nonatomic) ActivityModel *model;
 
+- (void) initWithActivityModel: (ActivityModel*)model;
+
 @end
