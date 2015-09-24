@@ -38,7 +38,7 @@
     if ( viewController ==  self.root) {
         [navigationController setNavigationBarHidden:YES animated:animated];
     } else if ( [navigationController isNavigationBarHidden] ) {
-        [navigationController setNavigationBarHidden:NO animated:animated];
+        [navigationController setNavigationBarHidden:YES animated:animated];
     } 
 }
 

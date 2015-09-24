@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self initPullAndPushView];
-//    self.activityListData = [NSMutableArray arrayWithCapacity:1];
 }
 
 
@@ -62,6 +61,7 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     ActivityDetailViewController *detailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
+    [detailController setModel:(ActivityModel*)[self.activityListData objectAtIndex:[indexPath row]]];
     [self.navigationController pushViewController:detailController animated:YES];
 
 }

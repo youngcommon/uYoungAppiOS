@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityDetailViewController">
             <connections>
+                <outlet property="backBtn" destination="bsl-37-SZC" id="6s4-u3-GER"/>
+                <outlet property="headerImg" destination="iRO-fJ-f1K" id="QS3-ms-28e"/>
+                <outlet property="titleLable" destination="189-CY-PXp" id="UV4-WV-ahD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,15 +18,53 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA5-vd-qJI">
-                    <rect key="frame" x="115" y="180" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/background.png" translatesAutoresizingMaskIntoConstraints="NO" id="iRO-fJ-f1K">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCS-Zr-NV7">
+                    <rect key="frame" x="271" y="25" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="6cn-td-VbA"/>
+                        <constraint firstAttribute="width" constant="34" id="S21-mw-O0k"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="189-CY-PXp">
+                    <rect key="frame" x="45" y="31" width="230" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsl-37-SZC">
+                    <rect key="frame" x="15" y="30" width="20" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Dqe-Ze-NLZ"/>
+                        <constraint firstAttribute="height" constant="22" id="gMf-1F-lxa"/>
+                    </constraints>
+                    <state key="normal" image="uyoung.bundle/back_btn.png"/>
+                    <connections>
+                        <action selector="backView:" destination="-1" eventType="touchUpInside" id="NWm-yF-ZtQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="iRO-fJ-f1K" secondAttribute="bottom" id="E0x-PA-K3Y"/>
+                <constraint firstItem="189-CY-PXp" firstAttribute="leading" secondItem="bsl-37-SZC" secondAttribute="trailing" constant="10" id="HPJ-rz-axy"/>
+                <constraint firstItem="189-CY-PXp" firstAttribute="centerY" secondItem="bsl-37-SZC" secondAttribute="centerY" id="MOy-0c-Sj7"/>
+                <constraint firstAttribute="trailing" secondItem="iRO-fJ-f1K" secondAttribute="trailing" id="Nk4-Sn-rwk"/>
+                <constraint firstItem="HCS-Zr-NV7" firstAttribute="centerY" secondItem="189-CY-PXp" secondAttribute="centerY" id="XHL-qi-81G"/>
+                <constraint firstAttribute="trailing" secondItem="HCS-Zr-NV7" secondAttribute="trailing" constant="15" id="jlQ-sz-91y"/>
+                <constraint firstItem="bsl-37-SZC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="m66-mR-G9y"/>
+                <constraint firstItem="iRO-fJ-f1K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="miW-eR-j2R"/>
+                <constraint firstItem="189-CY-PXp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oaS-gr-fwl"/>
+                <constraint firstItem="iRO-fJ-f1K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tpa-zx-kK3"/>
+                <constraint firstItem="bsl-37-SZC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="xO8-7u-GSy"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
+        <image name="uyoung.bundle/background.png" width="320" height="568"/>
+    </resources>
 </document>
