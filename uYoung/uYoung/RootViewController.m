@@ -33,7 +33,7 @@
     
     [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
-//    [self initActivityList];
+    [self initActivityList:1];
 }
 
 - (void)initActivityList: (NSInteger)type{

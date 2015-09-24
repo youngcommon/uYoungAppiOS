@@ -14,6 +14,8 @@
 		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; };
 		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; settings = {ASSET_TAGS = (); }; };
 		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4E31BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4E01BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4E41BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4E21BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.m */; settings = {ASSET_TAGS = (); }; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
 		483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E01BAC548E00CDDBD3 /* Main.storyboard */; };
@@ -46,6 +48,11 @@
 		4820A4D41BB280DD006AEC13 /* uyoung.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = uyoung.bundle; sourceTree = "<group>"; };
 		4820A4D91BB2D352006AEC13 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		4820A4DA1BB2D352006AEC13 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
+		4820A4DE1BB3D139006AEC13 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		4820A4DF1BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		4820A4E01BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		4820A4E11BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		4820A4E21BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		483E17D31BAC548E00CDDBD3 /* uYoung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uYoung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		483E17D71BAC548E00CDDBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		483E17D81BAC548E00CDDBD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,9 +164,30 @@
 			name = config;
 			sourceTree = "<group>";
 		};
+		4820A4DC1BB3D10F006AEC13 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4820A4DD1BB3D139006AEC13 /* SVPullToRefresh */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		4820A4DD1BB3D139006AEC13 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				4820A4DE1BB3D139006AEC13 /* SVPullToRefresh.h */,
+				4820A4DF1BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.h */,
+				4820A4E01BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.m */,
+				4820A4E11BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.h */,
+				4820A4E21BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
+				4820A4DC1BB3D10F006AEC13 /* libs */,
 				4820A4D41BB280DD006AEC13 /* uyoung.bundle */,
 				483E17D51BAC548E00CDDBD3 /* uYoung */,
 				483E17EF1BAC548E00CDDBD3 /* uYoungTests */,
@@ -366,7 +394,9 @@
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
+				4820A4E41BB3D139006AEC13 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
+				4820A4E31BB3D139006AEC13 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

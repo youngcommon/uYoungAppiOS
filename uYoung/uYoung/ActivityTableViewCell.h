@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConfig.h"
+#import "ActivityModel.h"
 
 @interface ActivityTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *backgroud;
@@ -22,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *toTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *personNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addrLabel;
+@property (strong, nonatomic) ActivityModel *model;
 
 @end

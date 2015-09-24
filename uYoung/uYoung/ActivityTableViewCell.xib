@@ -230,7 +230,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ScreenImage" width="375" height="667"/>
+        <image name="ScreenImage" width="320" height="480"/>
         <image name="uyoung.bundle/aa.png" width="320" height="568"/>
         <image name="uyoung.bundle/activity_cell.png" width="320" height="568"/>
         <image name="uyoung.bundle/location.png" width="320" height="568"/>

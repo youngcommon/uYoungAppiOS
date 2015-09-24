@@ -26,10 +26,17 @@
     self.headerImg.layer.cornerRadius = 10;
     self.headerImg.layer.masksToBounds = YES;
     
+    //init Cell
+    [self initWithActivityModel:self.model];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+
+- (void) initWithActivityModel: (ActivityModel*)model{
+    
 }
 
 @end

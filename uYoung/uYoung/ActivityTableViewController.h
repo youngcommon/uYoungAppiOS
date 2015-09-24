@@ -12,4 +12,6 @@
 
 @interface ActivityTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *activityListData;
+
 @end
