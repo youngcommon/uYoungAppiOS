@@ -26,12 +26,6 @@
     self.headerImg.layer.cornerRadius = 10;
     self.headerImg.layer.masksToBounds = YES;
     
-//    if(mScreenWidth==414){//6p
-//        self.backgroud.image = [UIImage imageNamed:@"uyoung.bundle/activity_cell_6p"];
-//    }else if(mScreenWidth==375){
-//        self.backgroud.image = [UIImage imageNamed:@"uyoung.bundle/activity_cell_6"];
-//    }
-    
     
 }
 

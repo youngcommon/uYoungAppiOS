@@ -22,7 +22,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.root = [[RootViewController alloc]initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-    self.root.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
+//    self.root.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
+    
+    NSLog(@"width:%f, height:%f", self.root.view.frame.size.width, self.root.view.frame.size.height);
     
     self.window.rootViewController = self.root;
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.root];

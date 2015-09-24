@@ -15,14 +15,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="10" id="AGl-hY-3Vb"/>
                         <constraint firstAttribute="height" constant="76" id="Ttx-8b-Lso"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="AGl-hY-3Vb"/>
-                        </mask>
-                    </variation>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="WLk-gL-F4F">
                     <rect key="frame" x="252" y="1" width="68" height="68"/>
@@ -154,14 +148,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
             <constraints>
-                <constraint firstItem="eQa-JS-8la" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="3Wc-A7-6SE"/>
                 <constraint firstItem="JZd-uO-ZpK" firstAttribute="centerY" secondItem="tzG-n4-wEZ" secondAttribute="centerY" id="6Om-Zo-P3R"/>
-                <constraint firstAttribute="bottom" secondItem="eQa-JS-8la" secondAttribute="bottom" constant="33" id="6ek-VI-Auh"/>
                 <constraint firstItem="tzG-n4-wEZ" firstAttribute="leading" secondItem="avO-S9-dlB" secondAttribute="trailing" constant="6" id="7zB-7E-lZj"/>
                 <constraint firstItem="9Am-o4-Okd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="68" id="8lO-Q0-oYl"/>
                 <constraint firstItem="avO-S9-dlB" firstAttribute="top" secondItem="fzZ-HN-r7g" secondAttribute="bottom" constant="5" id="BMB-wy-GgU"/>
                 <constraint firstAttribute="trailing" secondItem="WLk-gL-F4F" secondAttribute="trailing" id="D7A-95-JV7"/>
-                <constraint firstItem="A3h-XI-UdL" firstAttribute="top" secondItem="r4l-4c-8oW" secondAttribute="bottom" constant="48" id="Dlf-b7-GQ5"/>
                 <constraint firstItem="A3h-XI-UdL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="11" id="Dws-8h-hEF"/>
                 <constraint firstItem="44F-Us-3O3" firstAttribute="centerY" secondItem="GqV-94-bz3" secondAttribute="centerY" id="FPV-af-G3T"/>
                 <constraint firstItem="8K4-DD-dYy" firstAttribute="top" secondItem="avO-S9-dlB" secondAttribute="bottom" constant="5" id="Fls-4L-fVz"/>
@@ -176,14 +167,11 @@
                 <constraint firstItem="8K4-DD-dYy" firstAttribute="centerX" secondItem="avO-S9-dlB" secondAttribute="centerX" id="Sqi-Of-HRO"/>
                 <constraint firstItem="JZd-uO-ZpK" firstAttribute="leading" secondItem="tzG-n4-wEZ" secondAttribute="trailing" constant="3" id="TfD-1q-hVN"/>
                 <constraint firstItem="GqV-94-bz3" firstAttribute="centerY" secondItem="tzG-n4-wEZ" secondAttribute="centerY" id="Ut5-OT-doF"/>
-                <constraint firstAttribute="trailing" secondItem="eQa-JS-8la" secondAttribute="trailing" id="WHx-Va-gxC"/>
                 <constraint firstItem="GqV-94-bz3" firstAttribute="top" secondItem="fzZ-HN-r7g" secondAttribute="bottom" constant="4" id="Yrt-gz-zaV"/>
                 <constraint firstItem="Vss-fy-Ymi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="Z0H-pe-Uae"/>
                 <constraint firstItem="jxK-jc-yMA" firstAttribute="leading" secondItem="44F-Us-3O3" secondAttribute="trailing" constant="3" id="afk-Jv-uhh"/>
-                <constraint firstItem="eQa-JS-8la" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dj0-sP-Dsl"/>
                 <constraint firstItem="A3h-XI-UdL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="dw3-7t-Vaw"/>
                 <constraint firstItem="r4l-4c-8oW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ehq-sE-GXY"/>
-                <constraint firstItem="eQa-JS-8la" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fva-g8-YKI"/>
                 <constraint firstItem="WLk-gL-F4F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="g8z-y5-Cmf"/>
                 <constraint firstItem="eQa-JS-8la" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="g96-JU-Ofm"/>
                 <constraint firstItem="rMf-78-r5Q" firstAttribute="top" secondItem="44F-Us-3O3" secondAttribute="bottom" constant="5" id="hn2-3T-iEr"/>
@@ -193,7 +181,6 @@
                 <constraint firstItem="w5V-RP-FQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="loc-fY-kjs"/>
                 <constraint firstItem="Vss-fy-Ymi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="mTk-oH-6yn"/>
                 <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rMf-78-r5Q" secondAttribute="trailing" constant="6" id="phX-To-t3C"/>
-                <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" secondItem="eQa-JS-8la" secondAttribute="trailing" id="v0A-4O-wUY"/>
                 <constraint firstItem="eQa-JS-8la" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vVD-tB-mrB"/>
                 <constraint firstItem="fzZ-HN-r7g" firstAttribute="leading" secondItem="9Am-o4-Okd" secondAttribute="trailing" constant="6" id="wbZ-vQ-amt"/>
                 <constraint firstItem="jxK-jc-yMA" firstAttribute="centerY" secondItem="44F-Us-3O3" secondAttribute="centerY" id="xQD-MU-bwJ"/>
@@ -201,17 +188,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="3Wc-A7-6SE"/>
-                    <exclude reference="6ek-VI-Auh"/>
-                    <exclude reference="WHx-Va-gxC"/>
-                    <exclude reference="dj0-sP-Dsl"/>
-                    <exclude reference="fva-g8-YKI"/>
-                    <exclude reference="Dlf-b7-GQ5"/>
-                    <exclude reference="v0A-4O-wUY"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="actTypeLable" destination="GCb-E3-JJA" id="omo-ZY-T9w"/>
                 <outlet property="addrLabel" destination="rMf-78-r5Q" id="n8O-5q-mEV"/>
