@@ -23,25 +23,34 @@
     y += self.header.frame.size.height;
     
     self.activityTabViewController = [[ActivityTableViewController alloc]init];
-    self.activityTabViewController.view.frame = CGRectMake(0, y, mScreenWidth, mScreenHeight - y);
+    self.activityTabViewController.tableView.frame = CGRectMake(0, y, mScreenWidth, mScreenHeight - y);
     [self.activityTabViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.activityTabViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self initActivityList:0];
     
     [self addChildViewController:self.activityTabViewController];
     [self.view addSubview:self.activityTabViewController.view];
     
     [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
-    [self initActivityList:1];
 }
 
 - (void)initActivityList: (NSInteger)type{
     
-    NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:[self getTestListData] error:nil];
+    //根据参数请求网络，获得数据
+    NSArray *list;
+    if(type==0){
+        list = [self getTestListData];
+    }else{
+        list = [self getTestListData2];
+    }
+    NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:list error:nil];
     
     [self.activityTabViewController.activityListData removeAllObjects];
-    [self.activityTabViewController.activityListData addObject:data];
+    self.activityTabViewController.activityListData = [[NSMutableArray alloc] initWithArray:data];
     [self.activityTabViewController.tableView reloadData];
+    [self.activityTabViewController.tableView reloadInputViews];
     
 }
 
@@ -58,15 +67,58 @@
 - (NSArray*)getTestListData{
     
     NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:2];
-    NSString *template = @"{'id':%d,'title':'%@','acttype':'%@','pnum':%d,'day':'%@','mon':'%@','week':'%@','from':'%@','to':'%@','addr':'%@','header':'%@','local':'%@','p':%d,'status':'%@'}";
     for (int i=0; i<20; i++) {
-        [arr addObject:
-         [NSString stringWithFormat:template,i,@"hanasfbawie",(i%2==0?@"人像":@"风景"),i+1,[NSString stringWithFormat:@"%d月",i],@"15",@"周一",@"17:00", @"18:00",@"回龙观二街三号",@"",@"北京-昌平",i%2, @"进行中"]
-         ];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+         [NSNumber numberWithInt:i],@"id",
+         @"asdfnaonfoanfraef",@"title",
+         (i%2==0?@"人像":@"风景"),@"acttype",
+         [NSString stringWithFormat:@"%d人", i+1],@"pnum",
+         @"22",@"day",
+         [NSString stringWithFormat:@"%d月",i],@"mon",
+         @"周一",@"week",
+         @"16:00",@"from",
+         @"18:00",@"to",
+         @"回龙观二街三号",@"addr",
+         @"",@"header",
+         @"北京-昌平",@"local",
+         [NSNumber numberWithInt:i%2],@"p",
+         [NSNumber numberWithInt:0],@"status"
+         , nil];
+        [arr addObject:dict];
     }
+    
     return arr;
 }
 
+- (NSArray*)getTestListData2{
+    
+    NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:2];
+    for (int i=12; i>0; i--) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithInt:i],@"id",
+                              @"asdfnaonfoanfraef",@"title",
+                              (i%2==0?@"人像":@"风景"),@"acttype",
+                              [NSString stringWithFormat:@"%d人", i+1],@"pnum",
+                              @"5",@"day",
+                              [NSString stringWithFormat:@"%d月",i],@"mon",
+                              @"周一",@"week",
+                              @"16:00",@"from",
+                              @"18:00",@"to",
+                              @"beadf二街三号",@"addr",
+                              @"",@"header",
+                              @"北京-昌平",@"local",
+                              [NSNumber numberWithInt:i%2],@"p",
+                              [NSNumber numberWithInt:0],@"status"
+                              , nil];
+        [arr addObject:dict];
+    }
+    
+    return arr;
+}
+
+- (void) navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    
+}
 
 @end
 

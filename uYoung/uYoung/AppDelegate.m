@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,22 +16,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSThread sleepForTimeInterval:3];
+//    [NSThread sleepForTimeInterval:3];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    RootViewController *root = [[RootViewController alloc]initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-    root.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
+    self.root = [[RootViewController alloc]initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+    self.root.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
     
-    [self.window setRootViewController:root];
-    [self.window addSubview:root.view];
+    self.window.rootViewController = self.root;
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.root];
+    self.navController.delegate = self;
     
-//    self.navController = [[UINavigationController alloc] initWithRootViewController:root];
-//    [self.window addSubview:self.navController.view];
+    [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ( viewController ==  self.root) {
+        [navigationController setNavigationBarHidden:YES animated:animated];
+    } else if ( [navigationController isNavigationBarHidden] ) {
+        [navigationController setNavigationBarHidden:NO animated:animated];
+    } 
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

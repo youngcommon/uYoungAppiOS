@@ -58,13 +58,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8月," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-XI-UdL">
                     <rect key="frame" x="11" y="48" width="21.5" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vss-fy-Ymi">
                     <rect key="frame" x="38" y="48" width="22" height="13.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回龙观外拍活动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-HN-r7g">
@@ -160,10 +160,9 @@
                 <constraint firstItem="tzG-n4-wEZ" firstAttribute="leading" secondItem="avO-S9-dlB" secondAttribute="trailing" constant="6" id="7zB-7E-lZj"/>
                 <constraint firstItem="9Am-o4-Okd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="68" id="8lO-Q0-oYl"/>
                 <constraint firstItem="avO-S9-dlB" firstAttribute="top" secondItem="fzZ-HN-r7g" secondAttribute="bottom" constant="5" id="BMB-wy-GgU"/>
-                <constraint firstAttribute="trailing" secondItem="WLk-gL-F4F" secondAttribute="trailing" id="CRB-NI-Uk4"/>
+                <constraint firstAttribute="trailing" secondItem="WLk-gL-F4F" secondAttribute="trailing" id="D7A-95-JV7"/>
                 <constraint firstItem="A3h-XI-UdL" firstAttribute="top" secondItem="r4l-4c-8oW" secondAttribute="bottom" constant="48" id="Dlf-b7-GQ5"/>
                 <constraint firstItem="A3h-XI-UdL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="11" id="Dws-8h-hEF"/>
-                <constraint firstItem="GCb-E3-JJA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fzZ-HN-r7g" secondAttribute="trailing" constant="48" id="En8-gP-Ajf"/>
                 <constraint firstItem="44F-Us-3O3" firstAttribute="centerY" secondItem="GqV-94-bz3" secondAttribute="centerY" id="FPV-af-G3T"/>
                 <constraint firstItem="8K4-DD-dYy" firstAttribute="top" secondItem="avO-S9-dlB" secondAttribute="bottom" constant="5" id="Fls-4L-fVz"/>
                 <constraint firstItem="rMf-78-r5Q" firstAttribute="leading" secondItem="tzG-n4-wEZ" secondAttribute="leading" id="FpQ-zO-NWe"/>
@@ -193,7 +192,7 @@
                 <constraint firstItem="GqV-94-bz3" firstAttribute="leading" secondItem="JZd-uO-ZpK" secondAttribute="trailing" constant="3" id="jyn-D3-SwA"/>
                 <constraint firstItem="w5V-RP-FQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="loc-fY-kjs"/>
                 <constraint firstItem="Vss-fy-Ymi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="mTk-oH-6yn"/>
-                <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" secondItem="rMf-78-r5Q" secondAttribute="trailing" constant="6" id="phX-To-t3C"/>
+                <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rMf-78-r5Q" secondAttribute="trailing" constant="6" id="phX-To-t3C"/>
                 <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" secondItem="eQa-JS-8la" secondAttribute="trailing" id="v0A-4O-wUY"/>
                 <constraint firstItem="eQa-JS-8la" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vVD-tB-mrB"/>
                 <constraint firstItem="fzZ-HN-r7g" firstAttribute="leading" secondItem="9Am-o4-Okd" secondAttribute="trailing" constant="6" id="wbZ-vQ-amt"/>

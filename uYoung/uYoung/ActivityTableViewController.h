@@ -12,6 +12,7 @@
 #import "SVPullToRefresh.h"
 #import "GlobalConfig.h"
 
+
 @interface ActivityTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *activityListData;

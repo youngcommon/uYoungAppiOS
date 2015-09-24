@@ -7,6 +7,7 @@
 //
 
 #import "ActivityTableViewController.h"
+#import "ActivityDetailViewController.h"
 
 @interface ActivityTableViewController ()
 
@@ -16,10 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.view setBackgroundColor:[UIColor blackColor]];
-//    [self.tableView setBackgroundColor:[UIColor blackColor]];
-    [self initPullAndPushView];
+//    [self initPullAndPushView];
+//    self.activityListData = [NSMutableArray arrayWithCapacity:1];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -33,6 +34,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.activityListData count];
+//    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,7 +59,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ActivityDetailViewController *detailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:detailController animated:YES];
+
 }
 
 - (void)initPullAndPushView{

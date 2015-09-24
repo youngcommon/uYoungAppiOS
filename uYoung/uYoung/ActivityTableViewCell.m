@@ -26,8 +26,12 @@
     self.headerImg.layer.cornerRadius = 10;
     self.headerImg.layer.masksToBounds = YES;
     
-    //init Cell
-    [self initWithActivityModel:self.model];
+//    if(mScreenWidth==414){//6p
+//        self.backgroud.image = [UIImage imageNamed:@"uyoung.bundle/activity_cell_6p"];
+//    }else if(mScreenWidth==375){
+//        self.backgroud.image = [UIImage imageNamed:@"uyoung.bundle/activity_cell_6"];
+//    }
+    
     
 }
 
@@ -43,13 +47,13 @@
     self.titleLabel.text = model.title;
     self.fromTimeLabel.text = model.fromTime;
     self.toTimeLabel.text = model.toTime;
-    self.personNumLabel.text = [NSString stringWithFormat:@"%d", model.personNum.intValue];
+    self.personNumLabel.text = model.personNum;
     self.addrLabel.text = model.addr;
-    self.headerImg.image = [UIImage imageNamed:model.headerUrl];
+//    self.headerImg.image = [UIImage imageNamed:model.headerUrl];
     if(model.price==0){
-        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundel/aa"];
+        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{
-        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundel/free"];
+        self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/free"];
     }
     
 }

@@ -13,7 +13,7 @@
 @property (nonatomic,assign) NSInteger activityId;
 @property (nonatomic,strong) NSString *title;       //标题
 @property (nonatomic,strong) NSString *actType;     //活动类型
-@property (nonatomic,strong) NSNumber *personNum;   //活动人数
+@property (nonatomic,strong) NSString *personNum;   //活动人数
 @property (nonatomic,strong) NSString *day;         //日期
 @property (nonatomic,strong) NSString *month;       //月份
 @property (nonatomic,strong) NSString *week;        //星期

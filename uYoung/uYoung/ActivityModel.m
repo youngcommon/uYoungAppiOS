@@ -13,21 +13,22 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"activityId": @"id",
-             @"title":@"title",
-             @"actType":@"acttype",
-             @"personNum":@"pnum",
-             @"day":@"day",
-             @"month":@"mon",
-             @"week":@"week",
-             @"fromTime":@"from",
-             @"toTime":@"to",
-             @"addr":@"addr",
-             @"headerUrl":@"header",
-             @"local":@"local",
-             @"price":@"p",
-             @"status":@"status"
+             @"title": @"title",
+             @"actType": @"acttype",
+             @"personNum": @"pnum",
+             @"day": @"day",
+             @"month": @"mon",
+             @"week": @"week",
+             @"fromTime": @"from",
+             @"toTime": @"to",
+             @"addr": @"addr",
+             @"headerUrl": @"header",
+             @"local": @"local",
+             @"price": @"p",
+             @"status": @"status"
              };
 }
+
 //- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
 //    self = [super initWithDictionary:dictionaryValue error:error];
 //    if (self == nil) return nil;
