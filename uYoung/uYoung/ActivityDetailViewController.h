@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityModel.h"
+#import "GlobalConfig.h"
 
 @interface ActivityDetailViewController : UIViewController
 

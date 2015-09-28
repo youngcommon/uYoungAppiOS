@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -67,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人像" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-E3-JJA">
-                    <rect key="frame" x="222" y="11" width="24" height="14"/>
+                    <rect key="frame" x="179" y="11" width="24" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="T5S-Y3-FuT"/>
                         <constraint firstAttribute="height" constant="14" id="xLm-gi-Axe"/>
@@ -159,7 +159,6 @@
                 <constraint firstItem="rMf-78-r5Q" firstAttribute="leading" secondItem="tzG-n4-wEZ" secondAttribute="leading" id="FpQ-zO-NWe"/>
                 <constraint firstAttribute="trailing" secondItem="eQa-JS-8la" secondAttribute="trailing" id="IR5-LR-DuC"/>
                 <constraint firstItem="w5V-RP-FQW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Jr3-xP-VW2"/>
-                <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" secondItem="GCb-E3-JJA" secondAttribute="trailing" constant="6" id="K2i-wT-K1j"/>
                 <constraint firstItem="fzZ-HN-r7g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="L5j-Gb-kBn"/>
                 <constraint firstItem="GCb-E3-JJA" firstAttribute="centerY" secondItem="fzZ-HN-r7g" secondAttribute="centerY" id="MEO-W4-SaW"/>
                 <constraint firstItem="44F-Us-3O3" firstAttribute="leading" secondItem="GqV-94-bz3" secondAttribute="trailing" constant="15" id="Q25-lj-eD8"/>
@@ -180,9 +179,11 @@
                 <constraint firstItem="GqV-94-bz3" firstAttribute="leading" secondItem="JZd-uO-ZpK" secondAttribute="trailing" constant="3" id="jyn-D3-SwA"/>
                 <constraint firstItem="w5V-RP-FQW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="loc-fY-kjs"/>
                 <constraint firstItem="Vss-fy-Ymi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="mTk-oH-6yn"/>
+                <constraint firstItem="GCb-E3-JJA" firstAttribute="leading" secondItem="fzZ-HN-r7g" secondAttribute="trailing" constant="5" id="npD-cP-2iw"/>
                 <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rMf-78-r5Q" secondAttribute="trailing" constant="6" id="phX-To-t3C"/>
                 <constraint firstItem="eQa-JS-8la" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vVD-tB-mrB"/>
                 <constraint firstItem="fzZ-HN-r7g" firstAttribute="leading" secondItem="9Am-o4-Okd" secondAttribute="trailing" constant="6" id="wbZ-vQ-amt"/>
+                <constraint firstItem="WLk-gL-F4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GCb-E3-JJA" secondAttribute="trailing" constant="6" id="x9d-LV-MwL"/>
                 <constraint firstItem="jxK-jc-yMA" firstAttribute="centerY" secondItem="44F-Us-3O3" secondAttribute="centerY" id="xQD-MU-bwJ"/>
                 <constraint firstItem="tzG-n4-wEZ" firstAttribute="top" secondItem="fzZ-HN-r7g" secondAttribute="bottom" constant="4" id="zip-ML-qXD"/>
             </constraints>
@@ -202,6 +203,7 @@
                 <outlet property="toTimeLabel" destination="GqV-94-bz3" id="yeO-Ic-q9H"/>
                 <outlet property="weekLabel" destination="Vss-fy-Ymi" id="XqC-vz-Awh"/>
             </connections>
+            <point key="canvasLocation" x="286" y="43"/>
         </view>
     </objects>
     <resources>

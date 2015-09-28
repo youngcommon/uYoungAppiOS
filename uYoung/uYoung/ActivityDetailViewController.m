@@ -17,8 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLable.text = self.model.title;
     
+    self.headerImg.layer.cornerRadius = self.headerImg.frame.size.height/2;
+    self.headerImg.layer.masksToBounds = YES;
+    
+    self.titleLable.text = self.model.title;
 }
 
 - (void)didReceiveMemoryWarning {

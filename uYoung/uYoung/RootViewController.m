@@ -15,6 +15,10 @@
 
 @implementation RootViewController
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -23,14 +27,15 @@
     y += self.header.frame.size.height;
     
     self.activityTabViewController = [[ActivityTableViewController alloc]init];
-    self.activityTabViewController.tableView.frame = CGRectMake(0, y, mScreenWidth, mScreenHeight - y);
-    [self.activityTabViewController.tableView setBackgroundColor:[UIColor clearColor]];
-    self.activityTabViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self initActivityList:0];
     
     [self addChildViewController:self.activityTabViewController];
     [self.view addSubview:self.activityTabViewController.view];
+    
+    self.activityTabViewController.tableView.frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y);
+    [self.activityTabViewController.tableView setBackgroundColor:[UIColor clearColor]];
+    self.activityTabViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
@@ -70,7 +75,7 @@
     for (int i=0; i<20; i++) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
          [NSNumber numberWithInt:i],@"id",
-         @"asdfnaonfoanfraef",@"title",
+         (i%2==0?@"这是蓝色的vouadfjnaf奥斯豪富":@"asdfnaonfoanfraef"),@"title",
          (i%2==0?@"人像":@"风景"),@"acttype",
          [NSString stringWithFormat:@"%d人", i+1],@"pnum",
          @"22",@"day",
@@ -96,7 +101,7 @@
     for (int i=12; i>0; i--) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSNumber numberWithInt:i],@"id",
-                              @"asdfnaonfoanfraef",@"title",
+                              @"asdfnaonfoanfraeaavqervevwaf",@"title",
                               (i%2==0?@"人像":@"风景"),@"acttype",
                               [NSString stringWithFormat:@"%d人", i+1],@"pnum",
                               @"5",@"day",
