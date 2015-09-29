@@ -37,12 +37,12 @@
 - (void) initWithActivityModel: (ActivityModel*)model{
     self.actTypeLable.text = model.actType;
     self.dayLabel.text = model.day;
-    self.monthLabel.text = [NSString stringWithFormat:@"%@，",model.month];
+    self.monthLabel.text = [NSString stringWithFormat:@"%@月，",model.month];
     self.weekLabel.text = model.week;
     self.titleLabel.text = model.title;
     self.fromTimeLabel.text = model.fromTime;
     self.toTimeLabel.text = model.toTime;
-    self.personNumLabel.text = model.personNum;
+    self.personNumLabel.text = [NSString stringWithFormat:@"%@人", model.personNum];
     self.addrLabel.text = model.addr;
 //    self.headerImg.image = [UIImage imageNamed:model.headerUrl];
     if(model.price==0){

@@ -17,5 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 - (IBAction)backView:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *actDate;
+@property (weak, nonatomic) IBOutlet UILabel *actTime;
+@property (weak, nonatomic) IBOutlet UILabel *actType;
+@property (weak, nonatomic) IBOutlet UILabel *enrollPersons;
+@property (weak, nonatomic) IBOutlet UILabel *organizer;
+@property (weak, nonatomic) IBOutlet UILabel *addr;
+@property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
 
 @end
