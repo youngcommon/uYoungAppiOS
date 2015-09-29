@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.headerBackground.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:26];
     
     self.headerImg.layer.cornerRadius = self.headerImg.frame.size.height/2;
     self.headerImg.layer.masksToBounds = YES;
@@ -40,5 +42,13 @@
 
 - (IBAction)backView:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
+    UIImage *bubble = [UIImage imageNamed:name];
+    CGPoint center = CGPointMake(bubble.size.width / 2.0f, height);
+    UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, center.x, center.y/2.0f, center.x/2.0f);
+    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+    
 }
 @end

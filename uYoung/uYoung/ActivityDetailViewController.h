@@ -12,6 +12,7 @@
 
 @interface ActivityDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerBackground;
 @property (strong, nonatomic) ActivityModel *model;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImg;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
@@ -24,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *organizer;
 @property (weak, nonatomic) IBOutlet UILabel *addr;
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
+
 
 @end

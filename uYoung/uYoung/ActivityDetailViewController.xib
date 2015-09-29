@@ -14,6 +14,7 @@
                 <outlet property="backBtn" destination="bsl-37-SZC" id="6s4-u3-GER"/>
                 <outlet property="enrollPersons" destination="rZf-Pf-FGy" id="6qv-wz-xZg"/>
                 <outlet property="freeSignetImg" destination="05b-Gf-d3f" id="3XW-PF-YM8"/>
+                <outlet property="headerBackground" destination="nbO-EU-H4f" id="bFm-O1-c83"/>
                 <outlet property="headerImg" destination="HCS-Zr-NV7" id="ayI-U6-Tfk"/>
                 <outlet property="organizer" destination="VP0-4l-45q" id="9wp-7T-CLc"/>
                 <outlet property="titleLable" destination="189-CY-PXp" id="UV4-WV-ahD"/>
@@ -56,13 +57,13 @@
                     <rect key="frame" x="22" y="66" width="276" height="174"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/free_signet.png" translatesAutoresizingMaskIntoConstraints="NO" id="05b-Gf-d3f">
-                            <rect key="frame" x="56" y="24.5" width="164" height="125"/>
+                            <rect key="frame" x="56" y="24" width="164" height="125"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="164" id="6t7-IE-f59"/>
                                 <constraint firstAttribute="height" constant="125" id="NRw-2C-ybO"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EU-H4f">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/backcover.png" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EU-H4f">
                             <rect key="frame" x="0.0" y="0.0" width="276" height="174"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动日期:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51W-10-YE9">
@@ -191,7 +192,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="nbO-EU-H4f" secondAttribute="bottom" id="0xo-dp-MQ1"/>
                         <constraint firstItem="51W-10-YE9" firstAttribute="top" secondItem="lHj-4h-9Qk" secondAttribute="top" constant="24" id="2xE-0D-I4b"/>
@@ -254,6 +255,7 @@
     <resources>
         <image name="ScreenImage" width="320" height="480"/>
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
+        <image name="uyoung.bundle/backcover.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
         <image name="uyoung.bundle/free_signet.png" width="320" height="568"/>
     </resources>
