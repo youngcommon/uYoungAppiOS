@@ -58,15 +58,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHj-4h-9Qk">
                     <rect key="frame" x="22" y="66" width="276" height="389"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EU-H4f">
+                            <rect key="frame" x="0.0" y="0.0" width="276" height="389"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/free_signet.png" translatesAutoresizingMaskIntoConstraints="NO" id="05b-Gf-d3f">
                             <rect key="frame" x="56" y="24" width="164" height="125"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="164" id="6t7-IE-f59"/>
                                 <constraint firstAttribute="height" constant="125" id="NRw-2C-ybO"/>
                             </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EU-H4f">
-                            <rect key="frame" x="0.0" y="0.0" width="276" height="389"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动日期:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51W-10-YE9">
                             <rect key="frame" x="17" y="24" width="52" height="20"/>
