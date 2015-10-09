@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *organizer;
 @property (weak, nonatomic) IBOutlet UILabel *addr;
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
+@property (weak, nonatomic) IBOutlet UIScrollView *contentView;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 
 @end
