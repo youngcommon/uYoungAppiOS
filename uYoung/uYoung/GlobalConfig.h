@@ -18,4 +18,6 @@
 
 #define contentTextColor ([UIColorFromRGB(0x85B200) CGColor])
 
+#define uyoung_host @"http://182.92.237.31/"
+
 #endif /* GlobalConfig_h */

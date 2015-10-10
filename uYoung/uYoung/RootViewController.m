@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "ActivityModel.h"
+#import "ActivityList.h"
 
 @interface RootViewController ()
 
@@ -28,7 +29,7 @@
     
     self.activityTabViewController = [[ActivityTableViewController alloc]init];
     
-    [self initActivityList:0];
+    [self initActivityList:1];
     
     [self addChildViewController:self.activityTabViewController];
     [self.view addSubview:self.activityTabViewController.view];
@@ -45,11 +46,13 @@
     
     //根据参数请求网络，获得数据
     NSArray *list;
-    if(type==0){
-        list = [self getTestListData];
-    }else{
-        list = [self getTestListData2];
-    }
+//    if(type==0){
+//        list = [self getTestListData];
+//    }else{
+//        list = [self getTestListData2];
+//    }
+    list = [ActivityList getActivityListWithPageNum:1 status:type];
+    
     NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:list error:nil];
     
     [self.activityTabViewController.activityListData removeAllObjects];

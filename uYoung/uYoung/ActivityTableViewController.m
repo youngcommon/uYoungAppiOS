@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self initPullAndPushView];
+    [self initPullAndPushView];
 }
 
 
@@ -85,8 +85,8 @@
     [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
     [self.tableView.pullToRefreshView setTitle:@"释放更新" forState:SVPullToRefreshStateTriggered];
     [self.tableView.pullToRefreshView setTitle:@"卖力加载中..." forState:SVPullToRefreshStateLoading];
-//    self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
-//    [self.tableView triggerPullToRefresh];
+    self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
+    [self.tableView triggerPullToRefresh];
 }
 
 
