@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "ActivityModel.h"
-#import "ActivityList.h"
 
 @interface RootViewController ()
 
@@ -29,8 +28,6 @@
     
     self.activityTabViewController = [[ActivityTableViewController alloc]init];
     
-    [self initActivityList:1];
-    
     [self addChildViewController:self.activityTabViewController];
     [self.view addSubview:self.activityTabViewController.view];
     
@@ -42,86 +39,13 @@
     
 }
 
-- (void)initActivityList: (NSInteger)type{
-    
-    //根据参数请求网络，获得数据
-    NSArray *list;
-//    if(type==0){
-//        list = [self getTestListData];
-//    }else{
-//        list = [self getTestListData2];
-//    }
-    list = [ActivityList getActivityListWithPageNum:1 status:type];
-    
-    NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:list error:nil];
-    
-    [self.activityTabViewController.activityListData removeAllObjects];
-    self.activityTabViewController.activityListData = [[NSMutableArray alloc] initWithArray:data];
-    [self.activityTabViewController.tableView reloadData];
-    [self.activityTabViewController.tableView reloadInputViews];
-    
-}
-
 - (void)segmentAction:(UISegmentedControl*)seg{
     NSInteger index = seg.selectedSegmentIndex;
-    [self initActivityList:index];
-    
+    [self.activityTabViewController initActivityList:(index+1)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (NSArray*)getTestListData{
-    
-    NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:2];
-    for (int i=0; i<20; i++) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-         [NSNumber numberWithInt:i],@"id",
-         (i%2==0?@"这是蓝色的vouadfjnaf奥斯豪富":@"asdfnaonfoanfraef"),@"title",
-         (i%2==0?@"人像":@"风景"),@"acttype",
-         [NSString stringWithFormat:@"%d", i+1],@"pnum",
-         @"22",@"day",
-         [NSString stringWithFormat:@"%d",i],@"mon",
-         @"周一",@"week",
-         @"16:00",@"from",
-         @"18:00",@"to",
-         @"回龙观二街三号",@"addr",
-         @"",@"header",
-         @"北京-昌平",@"local",
-         [NSNumber numberWithInt:i%2],@"p",
-         [NSNumber numberWithInt:0],@"status"
-         , nil];
-        [arr addObject:dict];
-    }
-    
-    return arr;
-}
-
-- (NSArray*)getTestListData2{
-    
-    NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:2];
-    for (int i=12; i>0; i--) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithInt:i],@"id",
-                              @"asdfnaonfoanfraeaavqervevwaf",@"title",
-                              (i%2==0?@"人像":@"风景"),@"acttype",
-                              [NSString stringWithFormat:@"%d", i+1],@"pnum",
-                              @"5",@"day",
-                              [NSString stringWithFormat:@"%d",i],@"mon",
-                              @"周一",@"week",
-                              @"16:00",@"from",
-                              @"18:00",@"to",
-                              @"beadf二街三号",@"addr",
-                              @"",@"header",
-                              @"北京-昌平",@"local",
-                              [NSNumber numberWithInt:i%2],@"p",
-                              [NSNumber numberWithInt:0],@"status"
-                              , nil];
-        [arr addObject:dict];
-    }
-    
-    return arr;
 }
 
 @end

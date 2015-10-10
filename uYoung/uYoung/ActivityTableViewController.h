@@ -16,5 +16,9 @@
 @interface ActivityTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *activityListData;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger status;
+
+- (void)initActivityList: (NSInteger)type;
 
 @end
