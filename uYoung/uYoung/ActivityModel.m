@@ -21,7 +21,7 @@
              @"week": @"week",
              @"fromTime": @"from",
              @"toTime": @"to",
-             @"addr": @"addr",
+             @"addr": @"address",
              @"headerUrl": @"header",
              @"local": @"local",
              @"price": @"p",

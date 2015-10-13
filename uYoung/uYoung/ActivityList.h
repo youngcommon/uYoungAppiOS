@@ -12,6 +12,6 @@
 
 @interface ActivityList : NSObject
 
-+ (NSMutableArray*) getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status;
++ (void) getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status;
 
 @end

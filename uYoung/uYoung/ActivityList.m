@@ -10,17 +10,16 @@
 
 @implementation ActivityList
 
-+ (NSMutableArray*)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status{
++ (void)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status{
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:15];
     
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getPageByStatus"];
-//    url = @"http://ms.csdn.net/proxy/all_questions";
     
     NSDictionary *parameters = @{@"pageNum": [NSString stringWithFormat:@"%ld", pageNum],
                                  @"pageSize": @"15",
                                  @"status": [NSString stringWithFormat:@"%ld", status]};
     
-//    parameters = @{@"page":@"1"};
+    __weak NSMutableArray *weakarr = arr;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -28,17 +27,23 @@
     
     [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-        
-        NSString *str = [responseObject objectForKey:@"KEY 1"];
-        NSArray *arr = [responseObject objectForKey:@"KEY 2"];
-        NSDictionary *dic = [responseObject objectForKey:@"KEY 3"];
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if(result==100){//说明获得正确结果
+            NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
+            if(resultData){
+                NSArray *a = (NSArray*)[resultData objectForKey:@"dataList"];
+                for (NSInteger i=0; i<[a count]; i++) {
+                    [weakarr addObject:a[i]];
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"loadedData" object:a];
+            }
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
     
-    return arr;
+    
 }
-
 
 @end
