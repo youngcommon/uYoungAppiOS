@@ -9,15 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "ActivityModel.h"
 #import "GlobalConfig.h"
+#import "UserCenterController.h"
 
 @interface ActivityDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerBackground;
 @property (strong, nonatomic) ActivityModel *model;
-@property (weak, nonatomic) IBOutlet UIImageView *headerImg;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIButton *userHeader;
 - (IBAction)backView:(UIButton *)sender;
+- (IBAction)toUserCenter:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *actDate;
 @property (weak, nonatomic) IBOutlet UILabel *actTime;
 @property (weak, nonatomic) IBOutlet UILabel *actType;

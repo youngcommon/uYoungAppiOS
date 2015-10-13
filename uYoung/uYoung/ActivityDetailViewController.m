@@ -20,8 +20,8 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.headerBackground.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    self.headerImg.layer.cornerRadius = self.headerImg.frame.size.height/2;
-    self.headerImg.layer.masksToBounds = YES;
+    self.userHeader.layer.cornerRadius = self.userHeader.frame.size.height/2;
+    self.userHeader.layer.masksToBounds = YES;
     
     self.titleLable.text = self.model.title;
     self.actType.text = [NSString stringWithFormat:@"%@摄影", self.model.actType];
@@ -42,6 +42,11 @@
 
 - (IBAction)backView:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)toUserCenter:(UIButton *)sender {
+    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:userCenter animated:YES];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{

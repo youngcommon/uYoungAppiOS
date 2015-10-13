@@ -17,9 +17,9 @@
                 <outlet property="enrollPersons" destination="rZf-Pf-FGy" id="6qv-wz-xZg"/>
                 <outlet property="freeSignetImg" destination="05b-Gf-d3f" id="3XW-PF-YM8"/>
                 <outlet property="headerBackground" destination="nbO-EU-H4f" id="bFm-O1-c83"/>
-                <outlet property="headerImg" destination="HCS-Zr-NV7" id="ayI-U6-Tfk"/>
                 <outlet property="organizer" destination="VP0-4l-45q" id="9wp-7T-CLc"/>
                 <outlet property="titleLable" destination="189-CY-PXp" id="UV4-WV-ahD"/>
+                <outlet property="userHeader" destination="Jv7-WZ-1Gn" id="PaR-FF-ZPC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,13 +31,17 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/background.png" translatesAutoresizingMaskIntoConstraints="NO" id="iRO-fJ-f1K">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="HCS-Zr-NV7">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-WZ-1Gn">
                     <rect key="frame" x="271" y="24" width="34" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="34" id="0OD-8A-HFo"/>
-                        <constraint firstAttribute="height" constant="34" id="QPr-Uz-sVc"/>
+                        <constraint firstAttribute="width" constant="34" id="9Qs-lW-CtF"/>
+                        <constraint firstAttribute="height" constant="34" id="uoT-FC-aP1"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" image="ScreenImage"/>
+                    <connections>
+                        <action selector="toUserCenter:" destination="-1" eventType="touchUpInside" id="4L6-Fl-Bpb"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="189-CY-PXp">
                     <rect key="frame" x="138" y="30" width="44" height="21.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -268,20 +272,20 @@
             <constraints>
                 <constraint firstItem="lHj-4h-9Qk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="22" id="1pA-P4-aBj"/>
                 <constraint firstAttribute="bottom" secondItem="lHj-4h-9Qk" secondAttribute="bottom" constant="25" id="3yI-un-0Th"/>
+                <constraint firstAttribute="trailing" secondItem="Jv7-WZ-1Gn" secondAttribute="trailing" constant="15" id="D29-fO-CW6"/>
                 <constraint firstAttribute="bottom" secondItem="iRO-fJ-f1K" secondAttribute="bottom" id="E0x-PA-K3Y"/>
-                <constraint firstAttribute="trailing" secondItem="HCS-Zr-NV7" secondAttribute="trailing" constant="15" id="IUG-Iw-cPo"/>
+                <constraint firstItem="Jv7-WZ-1Gn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="189-CY-PXp" secondAttribute="trailing" constant="10" id="K0E-bC-LVJ"/>
                 <constraint firstItem="189-CY-PXp" firstAttribute="centerY" secondItem="bsl-37-SZC" secondAttribute="centerY" id="MOy-0c-Sj7"/>
                 <constraint firstAttribute="trailing" secondItem="iRO-fJ-f1K" secondAttribute="trailing" id="Nk4-Sn-rwk"/>
                 <constraint firstItem="189-CY-PXp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bsl-37-SZC" secondAttribute="trailing" constant="10" id="UOV-dS-hub"/>
-                <constraint firstItem="HCS-Zr-NV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="189-CY-PXp" secondAttribute="trailing" constant="10" id="ZKc-TE-Dy3"/>
                 <constraint firstAttribute="trailing" secondItem="lHj-4h-9Qk" secondAttribute="trailing" constant="22" id="Zw2-17-my9"/>
+                <constraint firstItem="Jv7-WZ-1Gn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="hSa-rv-Sm3"/>
                 <constraint firstItem="iRO-fJ-f1K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="miW-eR-j2R"/>
-                <constraint firstItem="lHj-4h-9Qk" firstAttribute="top" secondItem="HCS-Zr-NV7" secondAttribute="bottom" constant="8" id="ntH-RA-heY"/>
                 <constraint firstItem="189-CY-PXp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o0t-mf-zC2"/>
                 <constraint firstItem="bsl-37-SZC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="qCI-9c-BhK"/>
-                <constraint firstItem="HCS-Zr-NV7" firstAttribute="centerY" secondItem="189-CY-PXp" secondAttribute="centerY" id="rcb-Pa-Hcx"/>
+                <constraint firstItem="Jv7-WZ-1Gn" firstAttribute="centerY" secondItem="189-CY-PXp" secondAttribute="centerY" id="qPl-TY-Sh5"/>
                 <constraint firstItem="iRO-fJ-f1K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tpa-zx-kK3"/>
-                <constraint firstItem="HCS-Zr-NV7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="xD8-J1-KWV"/>
+                <constraint firstItem="lHj-4h-9Qk" firstAttribute="top" secondItem="Jv7-WZ-1Gn" secondAttribute="bottom" constant="8" id="zng-ZJ-uZP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
