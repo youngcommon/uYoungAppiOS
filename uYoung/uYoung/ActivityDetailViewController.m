@@ -1,4 +1,4 @@
-//
+        //
 //  ActivityDetailViewController.m
 //  uYoung
 //
@@ -26,14 +26,13 @@
     self.titleLable.text = self.model.title;
     self.actType.text = [NSString stringWithFormat:@"%@摄影", self.model.actType];
     
-    self.enrollPersons.text = [NSString stringWithFormat:@"%@ / %@", self.model.personNum, @"10"];
-    self.actDate.text = [NSString stringWithFormat:@"%@月%@日", self.model.month, self.model.day];
+    self.enrollPersons.text = [NSString stringWithFormat:@"%ld / %@", self.model.personNum, @"10"];
+    self.actDate.text = [NSString stringWithFormat:@"%ld月%ld日", self.model.month, self.model.day];
     self.actTime.text = [NSString stringWithFormat:@"%@-%@", self.model.fromTime, self.model.toTime];
     self.addr.text = self.model.addr;
     if(self.model.price==0){
         [self.freeSignetImg setHidden:YES];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {

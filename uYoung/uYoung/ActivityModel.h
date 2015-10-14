@@ -13,9 +13,9 @@
 @property (nonatomic,assign) NSInteger activityId;
 @property (nonatomic,strong) NSString *title;       //标题
 @property (nonatomic,strong) NSString *actType;     //活动类型
-@property (nonatomic,strong) NSString *personNum;   //活动人数
-@property (nonatomic,strong) NSString *day;         //日期
-@property (nonatomic,strong) NSString *month;       //月份
+@property (nonatomic,assign) NSInteger personNum;   //活动人数
+@property (nonatomic,assign) NSInteger day;         //日期
+@property (nonatomic,assign) NSInteger month;       //月份
 @property (nonatomic,strong) NSString *week;        //星期
 @property (nonatomic,strong) NSString *fromTime;    //开始时间
 @property (nonatomic,strong) NSString *toTime;      //结束时间
@@ -23,7 +23,7 @@
 @property (nonatomic,strong) NSString *local;       //活动区域
 @property (nonatomic,strong) NSString *headerUrl;   //头像
 @property (nonatomic,assign) NSInteger price;
-@property (nonatomic,assign) NSInteger status;   //status
+@property (nonatomic,assign) NSString *status;   //status
 
 
 @end
