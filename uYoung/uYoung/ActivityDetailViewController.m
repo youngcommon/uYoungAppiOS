@@ -51,7 +51,7 @@
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
     UIImage *bubble = [UIImage imageNamed:name];
-    NSLog(@"width:%f, height:%f", bubble.size.width, bubble.size.height);
+//    NSLog(@"width:%f, height:%f", bubble.size.width, bubble.size.height);
 
     CGPoint center = CGPointMake(bubble.size.width / 2.0f, height);
     UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, 0, center.y+1, 2);

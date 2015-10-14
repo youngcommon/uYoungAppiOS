@@ -89,6 +89,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京-朝阳" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq2-Uj-yAn">
                     <rect key="frame" x="68" y="84" width="54" height="12"/>
@@ -99,6 +101,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="-1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所在公司:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWJ-xZ-sYk">
                     <rect key="frame" x="15" y="122" width="52" height="12"/>
@@ -109,9 +113,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百度科技" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwb-kb-R2d">
-                    <rect key="frame" x="68" y="122" width="48" height="12"/>
+                    <rect key="frame" x="68" y="122" width="49" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="LnP-XI-tmT"/>
                         <constraint firstAttribute="width" constant="52" id="xYS-YE-JXn"/>
@@ -119,6 +125,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="xYS-YE-JXn"/>
@@ -134,6 +142,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EOS 5D Mark II" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-1K-cVz">
                     <rect key="frame" x="208" y="122" width="98" height="12"/>
@@ -144,6 +154,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前职位:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-hn-xSR">
                     <rect key="frame" x="15" y="160" width="52" height="12"/>
@@ -154,6 +166,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软件工程师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-IS-y78">
                     <rect key="frame" x="68" y="160" width="51" height="12"/>
@@ -164,6 +178,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="Gr6-xN-SC0"/>
