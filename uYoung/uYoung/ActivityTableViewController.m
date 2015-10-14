@@ -69,14 +69,10 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     ActivityDetailViewController *detailController = [[ActivityDetailViewController alloc]initWithNibName:@"ActivityDetailViewController" bundle:[NSBundle mainBundle]];
-    NSLog(@"========1==========");
     [detailController setModel:(ActivityModel*)[self.activityListData objectAtIndex:[indexPath row]]];
-    NSLog(@"========2===========");
     //消除跳转残影
     detailController.view.backgroundColor = [UIColor whiteColor];
-    NSLog(@"========3===========");
     [self.navigationController pushViewController:detailController animated:YES];
-    NSLog(@"========4===========");
 
 }
 

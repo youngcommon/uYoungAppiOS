@@ -7,6 +7,7 @@
 //
 
 #import "ActivityTableViewCell.h"
+#import <UIImageView+AFNetworking.h>
 
 @implementation ActivityTableViewCell
 
@@ -44,7 +45,7 @@
     self.toTimeLabel.text = model.toTime;
     self.personNumLabel.text = [NSString stringWithFormat:@"%ld人", model.personNum];
     self.addrLabel.text = model.addr;
-    self.headerImg.image = [UIImage imageNamed:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"];
+    [self.headerImg setImageWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] placeholderImage:[UIImage imageNamed:@""]];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{
