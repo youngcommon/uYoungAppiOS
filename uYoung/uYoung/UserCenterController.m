@@ -46,19 +46,23 @@
     CGFloat x = 0;
     CGFloat y = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height - buttonHeight;
     //增加我的相册和我的活动按钮
-    UIButton *myAlbumButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, buttonWidth, buttonHeight)];
-    [myAlbumButton setTitle:@"我的相册(5)" forState:UIControlStateNormal];
-    [myAlbumButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [myAlbumButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
-    [myAlbumButton setAlpha:0.65];
-    [self.view addSubview:myAlbumButton];
+    _myAlbumButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, buttonWidth, buttonHeight)];
+    [_myAlbumButton setTitle:@"我的相册(5)" forState:UIControlStateNormal];
+    [_myAlbumButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_myAlbumButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
+    [_myAlbumButton setAlpha:0.65];
+    [_myAlbumButton setTag:0];
+    [_myAlbumButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_myAlbumButton];
     
-    UIButton *myActButton = [[UIButton alloc]initWithFrame:CGRectMake(x+buttonWidth, y, buttonWidth, buttonHeight)];
-    [myActButton setTitle:@"我的活动(10)" forState:UIControlStateNormal];
-    [myActButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [myActButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
-    [myActButton setAlpha:0.3];
-    [self.view addSubview:myActButton];
+    _myActButton = [[UIButton alloc]initWithFrame:CGRectMake(x+buttonWidth, y, buttonWidth, buttonHeight)];
+    [_myActButton setTitle:@"我的活动(10)" forState:UIControlStateNormal];
+    [_myActButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_myActButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
+    [_myActButton setAlpha:0.3];
+    [_myActButton setTag:1];
+    [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_myActButton];
     
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@""]     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
@@ -67,6 +71,31 @@
     
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
     
+    //默认加载我的相册Controller
+    self.albumTableViewController = [[AlbumTableViewController alloc]init];
+    
+    [self addChildViewController:self.albumTableViewController];
+    [self.view addSubview:self.albumTableViewController.view];
+    
+    CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
+    self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
+    self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+}
+
+- (void) buttonClick:(id)sender{
+    if(sender&&[sender isKindOfClass:[UIButton class]]){
+        UIButton *button = sender;
+        NSInteger tag = button.tag;
+        if (tag==0) {//点击的我的相册
+            [_myActButton setAlpha:0.3];
+            [_myAlbumButton setAlpha:0.65];
+        }else if(tag==1){//点击我的活动
+            [_myAlbumButton setAlpha:0.3];
+            [_myActButton setAlpha:0.65];
+        }
+    }
 }
 
 - (IBAction)getBack:(id)sender {
