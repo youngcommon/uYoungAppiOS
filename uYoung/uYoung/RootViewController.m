@@ -37,6 +37,7 @@
     
     [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
+    [self.activityTabViewController initActivityList:1];
 }
 
 - (void)segmentAction:(UISegmentedControl*)seg{

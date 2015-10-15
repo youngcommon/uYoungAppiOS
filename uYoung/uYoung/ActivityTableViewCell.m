@@ -28,7 +28,6 @@
     self.headerImg.layer.cornerRadius = 10;
     self.headerImg.layer.masksToBounds = YES;
     
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -36,7 +35,11 @@
 }
 
 - (void) initWithActivityModel: (ActivityModel*)model{
-    self.actTypeLable.text = model.actType;
+    if(model.actType){
+        self.actTypeLable.text = model.actType;
+    }else{
+        [self.actTypeLable setHighlighted:YES];
+    }
     self.dayLabel.text = [NSString stringWithFormat:@"%ld", model.day];
     self.monthLabel.text = [NSString stringWithFormat:@"%ld月，",model.month];
     self.weekLabel.text = model.week;
@@ -45,7 +48,7 @@
     self.toTimeLabel.text = model.toTime;
     self.personNumLabel.text = [NSString stringWithFormat:@"%ld人", model.personNum];
     self.addrLabel.text = model.addr;
-    [self.headerImg setImageWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@""]];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

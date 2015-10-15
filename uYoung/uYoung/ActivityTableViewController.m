@@ -22,10 +22,13 @@
     self.currentPage = 1;
     self.status = 1;
     
-    [self initActivityList:self.status];
     [self initPullAndPushView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadedData:) name:@"loadedData" object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -41,7 +44,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.activityListData count];
-//    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,16 +82,12 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-//        [weakself insertrowattop];
-//        [NSThread sleepForTimeInterval:3];
-        [weakself.tableView.pullToRefreshView stopAnimating];
+        [weakself insertRowAtTop];
     }];
     
     //注册上拉刷新功能
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-//        [weakself insertrowatbottom];
-//        [NSThread sleepForTimeInterval:3];
-        [weakself.tableView.infiniteScrollingView stopAnimating];
+        [weakself insertRowAtBottom];
     }];
     
     [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
@@ -101,21 +99,7 @@
 
 - (void)initActivityList: (NSInteger)type{
     //根据参数请求网络，获得数据
-    NSArray *list;
-    if(type==1){
-        list = [self getTestListData];
-        if(list!=nil&&[list count]>0){
-            NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:list error:nil];
-        
-            [self.activityListData removeAllObjects];
-            self.activityListData = [[NSMutableArray alloc] initWithArray:data];
-            [self.tableView reloadData];
-            [self.tableView reloadInputViews];
-        }
-    }else{
-        [ActivityList getActivityListWithPageNum:self.currentPage status:self.status];
-    }
-    
+    [ActivityList getActivityListWithPageNum:self.currentPage status:self.status];
 }
 
 - (void)loadedData:(NSNotification*)notification{
@@ -130,30 +114,45 @@
     }
 }
 
-- (NSArray*)getTestListData{
-    
-    NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:2];
-    for (int i=0; i<20; i++) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithInt:i],@"id",
-                              (i%2==0?@"这是蓝色的vouadfjnaf奥斯豪富":@"asdfnaonfoanfraef"),@"title",
-                              (i%2==0?@"人像":@"风景"),@"acttype",
-                              [NSString stringWithFormat:@"%d", i+1],@"pnum",
-                              @"22",@"day",
-                              [NSString stringWithFormat:@"%d",i],@"mon",
-                              @"周一",@"week",
-                              @"16:00",@"from",
-                              @"18:00",@"to",
-                              @"回龙观二街三号",@"addr",
-                              @"",@"header",
-                              @"北京-昌平",@"local",
-                              [NSNumber numberWithInt:i%2],@"p",
-                              [NSNumber numberWithInt:0],@"status"
-                              , nil];
-        [arr addObject:dict];
-    }
-    
-    return arr;
+- (void)insertRowAtTop
+{
+    int64_t delayinseconds = 2.0;
+    dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
+    dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
+        //开始更新
+        [self.tableView beginUpdates];
+
+        [ActivityList getActivityListWithPageNum:self.currentPage-1 status:self.status];
+
+        //结束更新
+        [self.tableView endUpdates];
+
+        //停止菊花
+        [self.tableView.pullToRefreshView stopAnimating];
+    });
+}
+
+- (void)insertRowAtBottom
+{
+    int64_t delayinseconds = 2.0;
+    dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
+    dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
+        //开始更新
+        [self.tableView beginUpdates];
+
+        //插入数据到数据源(数组的结尾)
+//        [self.tableView.dataSource addobject:[nsstring stringwithformat:@"%@", [nsdate date].description]];
+
+        //在tableview中插入一行(row结尾)
+//        [_tableview insertrowsatindexpaths:@[[nsindexpath indexpathforrow:_datasource.count - 1  insection:0]]withrowanimation:uitableviewrowanimationbottom];
+        [ActivityList getActivityListWithPageNum:self.currentPage+1 status:self.status];
+
+        //结束更新
+        [self.tableView endUpdates];
+
+        //停止菊花
+        [self.tableView.infiniteScrollingView stopAnimating];
+    });
 }
 
 @end

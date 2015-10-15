@@ -7,9 +7,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterController">
             <connections>
+                <outlet property="cameraLabel" destination="RZs-1K-cVz" id="JUS-eV-MFJ"/>
+                <outlet property="cameraTitleLabel" destination="gFR-i2-51S" id="kzU-uM-s07"/>
+                <outlet property="companyLabel" destination="iwb-kb-R2d" id="gwO-QW-En6"/>
+                <outlet property="companyTitleLabel" destination="XWJ-xZ-sYk" id="x5U-iJ-sio"/>
+                <outlet property="currentTitleLabel" destination="rHM-IS-y78" id="fBw-bi-IHf"/>
+                <outlet property="currentTitleTitleLabel" destination="QDI-hn-xSR" id="yof-GN-DOc"/>
                 <outlet property="headerBackBlurImg" destination="2Hp-gd-Iv6" id="0He-OX-sbI"/>
                 <outlet property="headerBackgroundLabel" destination="ehe-RY-YeI" id="q4n-dI-DHw"/>
                 <outlet property="headerImg" destination="Ru5-HC-2Uf" id="WQP-zF-iUJ"/>
+                <outlet property="positionLabel" destination="jq2-Uj-yAn" id="PQN-LJ-dgx"/>
+                <outlet property="positionTitleLabel" destination="k74-Sp-x4N" id="pmy-4h-1ig"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Exz-86-13T"/>
             </connections>
         </placeholder>
@@ -60,18 +68,18 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-RY-YeI">
-                    <rect key="frame" x="115" y="86" width="90" height="90"/>
+                    <rect key="frame" x="117" y="86" width="86" height="86"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="90" id="Blm-Ny-bow"/>
-                        <constraint firstAttribute="width" constant="90" id="hYj-6e-TRZ"/>
+                        <constraint firstAttribute="height" constant="86" id="Blm-Ny-bow"/>
+                        <constraint firstAttribute="width" constant="86" id="hYj-6e-TRZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-HC-2Uf">
-                    <rect key="frame" x="120" y="91" width="80" height="80"/>
+                    <rect key="frame" x="120" y="89" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="Ce8-tl-Wav"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="P49-Lz-B6x"/>
@@ -99,7 +107,7 @@
                         <constraint firstAttribute="height" constant="12" id="MHD-qz-LpW"/>
                         <constraint firstAttribute="width" constant="54" id="gwD-yu-tpI"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,7 +196,7 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是我的昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEV-aX-DwT">
-                    <rect key="frame" x="26" y="191" width="268" height="22"/>
+                    <rect key="frame" x="26" y="187" width="268" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="268" id="9hN-D5-kkJ"/>
                         <constraint firstAttribute="height" constant="22" id="yKX-eM-pcZ"/>
@@ -251,7 +259,7 @@
                 <constraint firstItem="1ZB-uu-RGv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mCM-92-zkM"/>
                 <constraint firstItem="RZs-1K-cVz" firstAttribute="centerY" secondItem="XWJ-xZ-sYk" secondAttribute="centerY" id="q5a-Xf-YRv"/>
                 <constraint firstItem="2Hp-gd-Iv6" firstAttribute="top" secondItem="si3-qE-7Qo" secondAttribute="bottom" constant="10" id="qJh-W6-W46"/>
-                <constraint firstItem="Ru5-HC-2Uf" firstAttribute="top" secondItem="si3-qE-7Qo" secondAttribute="bottom" constant="45" id="qwU-Mj-6H0"/>
+                <constraint firstItem="Ru5-HC-2Uf" firstAttribute="top" secondItem="si3-qE-7Qo" secondAttribute="bottom" constant="43" id="qwU-Mj-6H0"/>
                 <constraint firstItem="WEV-aX-DwT" firstAttribute="top" secondItem="ehe-RY-YeI" secondAttribute="bottom" constant="15" id="reX-18-6eL"/>
                 <constraint firstItem="jq2-Uj-yAn" firstAttribute="leading" secondItem="k74-Sp-x4N" secondAttribute="trailing" constant="1" id="rfd-r9-vcB"/>
                 <constraint firstItem="2m4-Fk-3vs" firstAttribute="centerY" secondItem="si3-qE-7Qo" secondAttribute="centerY" id="rh4-bk-i5R"/>

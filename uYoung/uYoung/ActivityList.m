@@ -11,6 +11,9 @@
 @implementation ActivityList
 
 + (void)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status{
+    if(pageNum<=0){
+        pageNum = 1;
+    }
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:15];
     
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getPageByStatus"];
