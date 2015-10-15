@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlbumTableViewCell.h"
+#import "AlbumCoverTableViewCell.h"
+#import "GlobalConfig.h"
 
 @interface AlbumTableViewController : UITableViewController
 

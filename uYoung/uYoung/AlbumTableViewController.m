@@ -35,14 +35,24 @@
 {
     static NSString *CellIdentifier = @"AlbumCell";
     
-    AlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    AlbumCoverTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"AlbumTableViewCell" owner:self options:nil] objectAtIndex:0];
-        UINib *nib = [UINib nibWithNibName:@"AlbumTableViewCell" bundle:[NSBundle mainBundle]];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"AlbumCoverTableViewCell" owner:self options:nil] objectAtIndex:0];
+        UINib *nib = [UINib nibWithNibName:@"AlbumCoverTableViewCell" bundle:[NSBundle mainBundle]];
         [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];//注册cell复用
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(mScreenWidth<375){
+        return 200;
+    }else if(mScreenWidth==375){
+        return 240;
+    }else{
+        return 280;
+    }
 }
 
 @end
