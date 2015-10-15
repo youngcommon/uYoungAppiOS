@@ -16,20 +16,21 @@
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
     UIFont *font;
-    if(mScreenWidth==375){//iPhone 6
-        font = [UIFont fontWithName:fontName size:14];
-    }else if(mScreenWidth>375){//iPhone 6+
-        font = [UIFont fontWithName:fontName size:16];
+    if(mScreenWidth>375){
+        if (mScreenWidth==375) {//iPhone 6
+            font = [UIFont fontWithName:fontName size:14];
+        }else{//iPhone 6+
+            font = [UIFont fontWithName:fontName size:16];
+        }
+        [self.positionTitleLabel setFont:font];
+        [self.positionLabel setFont:font];
+        [self.companyTitleLabel setFont:font];
+        [self.companyLabel setFont:font];
+        [self.currentTitleTitleLabel setFont:font];
+        [self.currentTitleLabel setFont:font];
+        [self.cameraTitleLabel setFont:font];
+        [self.cameraLabel setFont:font];
     }
-    [self.positionTitleLabel setFont:font];
-    [self.positionLabel setFont:font];
-    [self.companyTitleLabel setFont:font];
-    [self.companyLabel setFont:font];
-    [self.currentTitleTitleLabel setFont:font];
-    [self.currentTitleLabel setFont:font];
-    [self.cameraTitleLabel setFont:font];
-    [self.cameraLabel setFont:font];
-//    NSLog(@"%f+++++++++++++", mScreenWidth);
     //========================================
     
     self.headerBackgroundLabel.layer.cornerRadius = self.headerBackgroundLabel.frame.size.height/2;
