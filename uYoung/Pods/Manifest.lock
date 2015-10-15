@@ -31,6 +31,7 @@ PODS:
     - DTFoundation/Core
   - DTFoundation/UIKit (1.7.7):
     - DTFoundation/Core
+  - LBBlurredImage (0.2.2)
   - Mantle (2.0.5):
     - Mantle/extobjc (= 2.0.5)
   - Mantle/extobjc (2.0.5)
@@ -41,6 +42,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - DTCoreText (from `https://github.com/QuanGe/DTCoreText`)
+  - LBBlurredImage
   - Mantle
   - SuperID
   - SVPullToRefresh
@@ -59,6 +61,7 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   DTCoreText: 13ce06e63204a3b47c9db974e3d9be982bb0b1ed
   DTFoundation: c9b3362b83f0017389082ec067ede719826a579d
+  LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
   SuperID: bda7c956db2829b0181522e1476c2e20aba91d50
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c

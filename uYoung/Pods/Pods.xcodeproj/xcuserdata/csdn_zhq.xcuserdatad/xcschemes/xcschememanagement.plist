@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>185B0A04AB20A1744B3DD76271B63C97</key>
+		<key>450F720BA7C33980898151B128A78C15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D85C783B1058E34C0E22DECE5769DFD</key>
+		<key>497E5D5FE3D57A4B23039EC5DE0A84CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF2E16583AFEF222B82AC1EA95CC7C4E</key>
+		<key>96B385F8EE0CF21C530261B86FCF74BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1CF633AC22643AAF4581F1C2A8875ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C74056A5C73FE03B23D8F36999391F13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E8EDEBFB1C90D646C5F532E11439E96A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9E304FF59A0CDB6283C0D947A44B88C</key>
+		<key>D89A184C26C0918323EAAF74BED148F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
