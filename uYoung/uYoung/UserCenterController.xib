@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterController">
             <connections>
-                <outlet property="headerBackground" destination="ehe-RY-YeI" id="GdV-qi-H10"/>
+                <outlet property="headerBackBlurImg" destination="2Hp-gd-Iv6" id="0He-OX-sbI"/>
+                <outlet property="headerBackgroundLabel" destination="ehe-RY-YeI" id="q4n-dI-DHw"/>
                 <outlet property="headerImg" destination="Ru5-HC-2Uf" id="WQP-zF-iUJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Exz-86-13T"/>
             </connections>
@@ -53,9 +54,9 @@
                     </state>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Hp-gd-Iv6">
-                    <rect key="frame" x="0.0" y="56" width="320" height="250"/>
+                    <rect key="frame" x="0.0" y="56" width="320" height="220"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="AtO-gI-I0u"/>
+                        <constraint firstAttribute="height" constant="220" id="AtO-gI-I0u"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-RY-YeI">

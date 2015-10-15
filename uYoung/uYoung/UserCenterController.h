@@ -10,8 +10,9 @@
 
 @interface UserCenterController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *headerBackground;
+@property (weak, nonatomic) IBOutlet UILabel *headerBackgroundLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImg;
+@property (weak, nonatomic) IBOutlet UIImageView *headerBackBlurImg;
 
 
 - (IBAction)getBack:(id)sender;
