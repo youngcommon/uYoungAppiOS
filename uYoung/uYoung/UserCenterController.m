@@ -8,6 +8,7 @@
 
 #import "UserCenterController.h"
 #import <UIImageView+AFNetworking.h>
+#import <UIImageView+LBBlurredImage.h>
 
 @implementation UserCenterController
 
@@ -21,8 +22,11 @@
     self.headerImg.layer.borderWidth = 1.;
     self.headerImg.layer.borderColor = [[UIColor brownColor] CGColor];
     
-    [self.headerBackBlurImg setImageWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@""]     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
     
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
     
 }
 
