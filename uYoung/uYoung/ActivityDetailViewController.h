@@ -8,27 +8,35 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityModel.h"
+#import "ActivityDetailModel.h"
 #import "GlobalConfig.h"
 #import "UserCenterController.h"
+#import "ActivityDetail.h"
 
 @interface ActivityDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *headerBackground;
 @property (strong, nonatomic) ActivityModel *model;
+@property (strong, nonatomic) ActivityDetailModel *detailModel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *headerBackground;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton *userHeader;
-- (IBAction)backView:(UIButton *)sender;
-- (IBAction)toUserCenter:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *actDate;
 @property (weak, nonatomic) IBOutlet UILabel *actTime;
 @property (weak, nonatomic) IBOutlet UILabel *actType;
 @property (weak, nonatomic) IBOutlet UILabel *enrollPersons;
 @property (weak, nonatomic) IBOutlet UILabel *organizer;
 @property (weak, nonatomic) IBOutlet UILabel *addr;
+@property (weak, nonatomic) IBOutlet UILabel *addrTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addrHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addrTitleHeight;
+@property (weak, nonatomic) IBOutlet UITextView *descTextView;
 
+- (IBAction)backView:(UIButton *)sender;
+- (IBAction)toUserCenter:(UIButton *)sender;
 @end

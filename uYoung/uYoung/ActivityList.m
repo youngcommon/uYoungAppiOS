@@ -26,7 +26,6 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
     [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];

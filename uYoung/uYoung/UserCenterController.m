@@ -13,6 +13,9 @@
 @implementation UserCenterController
 
 - (void)viewDidLoad{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
+    [UserDetail getUserDetailWithId:1];
+    
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
     UIFont *font;
@@ -44,7 +47,7 @@
     CGFloat buttonWidth = mScreenWidth / 2;
     CGFloat buttonHeight = 46;
     CGFloat x = 0;
-    CGFloat y = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height - buttonHeight;
+    CGFloat y = self.headerBackBlurImg.frame.size.height - buttonHeight;
     //增加我的相册和我的活动按钮
     _myAlbumButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, buttonWidth, buttonHeight)];
     [_myAlbumButton setTitle:@"我的相册(5)" forState:UIControlStateNormal];
@@ -64,13 +67,6 @@
     [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myActButton];
     
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"AppIcon"]     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
-        [self.headerImg setImage:image];
-    
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
-    
     //默认加载我的相册Controller
     self.albumTableViewController = [[AlbumTableViewController alloc]init];
     
@@ -82,6 +78,31 @@
     [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+}
+
+- (void)fillUserDetail:(NSNotification*)notification
+{
+    NSDictionary *dic = (NSDictionary*)[notification object];
+    self.userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dic error:nil];
+    
+    NSString *avatarUrl = self.userDetailModel.avatarUrl;
+    avatarUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"AppIcon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
+        [self.headerImg setImage:image];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
+    
+    [self.nicknameLabel setText:self.userDetailModel.nickName];
+    [self.positionLabel setText:self.userDetailModel.position];
+    [self.companyLabel setText:self.userDetailModel.company];
+    [self.currentTitleLabel setText:self.userDetailModel.position];
+    [self.cameraLabel setText:self.userDetailModel.equipment];
+    [self.genderImageView setImage:(self.userDetailModel.gender?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) buttonClick:(id)sender{

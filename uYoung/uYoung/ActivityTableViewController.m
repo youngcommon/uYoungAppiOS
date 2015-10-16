@@ -29,6 +29,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //停止菊花
+    [self.tableView.pullToRefreshView stopAnimating];
+    //停止菊花
+    [self.tableView.infiniteScrollingView stopAnimating];
 }
 
 
@@ -155,8 +159,6 @@
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
         //开始更新
         [self.tableView beginUpdates];
-
-//        self.currentPage = self.currentPage + 1;
         
         NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
         for (id model in data) {//把数据向队尾插入
@@ -166,7 +168,6 @@
         if ([arr count]<pageSize) {//如果小于pageSize，说明是最后一页了
             self.noMorePage = YES;
         }
-
 
         //结束更新
         [self.tableView endUpdates];

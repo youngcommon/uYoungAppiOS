@@ -29,14 +29,4 @@
              };
 }
 
-//- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
-//    self = [super initWithDictionary:dictionaryValue error:error];
-//    if (self == nil) return nil;
-//    
-//    self =  [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:self.answers error:nil];
-//    
-//    
-//    return self;
-//}
-
 @end

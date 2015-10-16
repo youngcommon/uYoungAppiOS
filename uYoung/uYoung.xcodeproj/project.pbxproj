@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8F3E094E334AA1B811DE /* libPods.a */; };
+		48039FD01BD1457300CF147A /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FCF1BD1457300CF147A /* UserDetail.m */; settings = {ASSET_TAGS = (); }; };
+		48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FD21BD145EC00CF147A /* UserDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; };
 		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; };
 		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; };
@@ -26,6 +28,8 @@
 		48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E921BCFEB220093B702 /* AlbumTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9A1BCFFF930093B702 /* AlbumCoverTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48640E9C1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; settings = {ASSET_TAGS = (); }; };
 		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
@@ -43,6 +47,10 @@
 
 /* Begin PBXFileReference section */
 		3A896116CED627EBB572AEEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		48039FCE1BD1457300CF147A /* UserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetail.h; sourceTree = "<group>"; };
+		48039FCF1BD1457300CF147A /* UserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetail.m; sourceTree = "<group>"; };
+		48039FD11BD145EC00CF147A /* UserDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailModel.h; sourceTree = "<group>"; };
+		48039FD21BD145EC00CF147A /* UserDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailModel.m; sourceTree = "<group>"; };
 		4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
 		4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
 		4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
@@ -75,6 +83,10 @@
 		48640E991BCFFF930093B702 /* AlbumCoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCoverTableViewCell.h; sourceTree = "<group>"; };
 		48640E9A1BCFFF930093B702 /* AlbumCoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCoverTableViewCell.m; sourceTree = "<group>"; };
 		48640E9C1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCoverTableViewCell.xib; sourceTree = "<group>"; };
+		48640E9E1BD1339D0093B702 /* ActivityDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailModel.h; sourceTree = "<group>"; };
+		48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailModel.m; sourceTree = "<group>"; };
+		48640EA11BD1361E0093B702 /* ActivityDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetail.h; sourceTree = "<group>"; };
+		48640EA21BD1361E0093B702 /* ActivityDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetail.m; sourceTree = "<group>"; };
 		4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
@@ -130,6 +142,10 @@
 			children = (
 				483AFDBD1BC817DF0054985D /* ActivityList.h */,
 				483AFDBE1BC817DF0054985D /* ActivityList.m */,
+				48640EA11BD1361E0093B702 /* ActivityDetail.h */,
+				48640EA21BD1361E0093B702 /* ActivityDetail.m */,
+				48039FCE1BD1457300CF147A /* UserDetail.h */,
+				48039FCF1BD1457300CF147A /* UserDetail.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -146,6 +162,10 @@
 			children = (
 				4820A4D91BB2D352006AEC13 /* ActivityModel.h */,
 				4820A4DA1BB2D352006AEC13 /* ActivityModel.m */,
+				48640E9E1BD1339D0093B702 /* ActivityDetailModel.h */,
+				48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */,
+				48039FD11BD145EC00CF147A /* UserDetailModel.h */,
+				48039FD21BD145EC00CF147A /* UserDetailModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -408,14 +428,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
+				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
+				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
+				48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */,
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
+				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 			);
