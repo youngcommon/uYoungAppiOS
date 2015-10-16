@@ -160,8 +160,8 @@
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EOS 5D Mark II" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-1K-cVz">
-                    <rect key="frame" x="211" y="122" width="98" height="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EOS 5D Mark II" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-1K-cVz">
+                    <rect key="frame" x="211" y="122" width="98" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="98" id="AHj-ml-ak4"/>
                         <constraint firstAttribute="height" constant="12" id="ffv-LJ-fYU"/>

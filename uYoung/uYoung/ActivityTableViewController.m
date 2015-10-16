@@ -8,7 +8,6 @@
 
 #import "ActivityTableViewController.h"
 #import "ActivityDetailViewController.h"
-#import "ActivityList.h"
 
 @interface ActivityTableViewController ()
 
@@ -24,7 +23,8 @@
     
     [self initPullAndPushView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadedData:) name:@"loadedData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -82,12 +82,12 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakself insertRowAtTop];
+        [weakself getDataFromNet:YES];
     }];
     
     //注册上拉刷新功能
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakself insertRowAtBottom];
+        [weakself getDataFromNet:NO];
     }];
     
     [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
@@ -98,15 +98,15 @@
 }
 
 - (void)initActivityList: (NSInteger)type{
+    self.noMorePage = NO;
+    self.status = type;
     //根据参数请求网络，获得数据
-    [ActivityList getActivityListWithPageNum:self.currentPage status:self.status];
+    [ActivityList getActivityListWithPageNum:1 status:self.status isTop:YES];
 }
 
-- (void)loadedData:(NSNotification*)notification{
-    NSArray *arr = (NSArray*)[notification object];
+- (void)reloadDataWithArray:(NSArray*)arr{
     if(arr!=nil&&[arr count]>0){
         NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
-        
         [self.activityListData removeAllObjects];
         self.activityListData = [[NSMutableArray alloc] initWithArray:data];
         [self.tableView reloadData];
@@ -114,38 +114,59 @@
     }
 }
 
-- (void)insertRowAtTop
+- (void)getDataFromNet:(BOOL)isTop{
+    if (isTop) {
+        [ActivityList getActivityListWithPageNum:1 status:self.status isTop:isTop];
+    }else{
+        if (self.noMorePage){
+            //停止菊花
+            [self.tableView.infiniteScrollingView stopAnimating];
+        }else{
+            self.currentPage = self.currentPage + 1;
+            [ActivityList getActivityListWithPageNum:self.currentPage status:self.status isTop:isTop];
+        }
+    }
+}
+
+- (void)insertRowAtTop:(NSNotification*)notification
 {
+    NSArray *arr = (NSArray*)[notification object];
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
-        //开始更新
-        [self.tableView beginUpdates];
-
-        [ActivityList getActivityListWithPageNum:self.currentPage-1 status:self.status];
-
-        //结束更新
-        [self.tableView endUpdates];
+        
+        if (arr==nil||[arr count]<pageSize) {
+            self.noMorePage = YES;
+        }else{
+            self.noMorePage = NO;
+        }
+        [self reloadDataWithArray:arr];
 
         //停止菊花
         [self.tableView.pullToRefreshView stopAnimating];
     });
 }
 
-- (void)insertRowAtBottom
+- (void)insertRowAtBottom:(NSNotification*)notification
 {
+    NSArray *arr = (NSArray*)[notification object];
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
         //开始更新
         [self.tableView beginUpdates];
 
-        //插入数据到数据源(数组的结尾)
-//        [self.tableView.dataSource addobject:[nsstring stringwithformat:@"%@", [nsdate date].description]];
+//        self.currentPage = self.currentPage + 1;
+        
+        NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
+        for (id model in data) {//把数据向队尾插入
+            [self.activityListData addObject:model];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([self.activityListData count]-1) inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+        }
+        if ([arr count]<pageSize) {//如果小于pageSize，说明是最后一页了
+            self.noMorePage = YES;
+        }
 
-        //在tableview中插入一行(row结尾)
-//        [_tableview insertrowsatindexpaths:@[[nsindexpath indexpathforrow:_datasource.count - 1  insection:0]]withrowanimation:uitableviewrowanimationbottom];
-        [ActivityList getActivityListWithPageNum:self.currentPage+1 status:self.status];
 
         //结束更新
         [self.tableView endUpdates];

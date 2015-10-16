@@ -65,7 +65,7 @@
     [self.view addSubview:_myActButton];
     
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://img.61gequ.com/allimg/2011-4/201142614314278502.jpg"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@""]     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"AppIcon"]     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:image];
     

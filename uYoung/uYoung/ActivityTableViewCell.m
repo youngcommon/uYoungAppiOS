@@ -48,7 +48,7 @@
     self.toTimeLabel.text = model.toTime;
     self.personNumLabel.text = [NSString stringWithFormat:@"%ld人", model.personNum];
     self.addrLabel.text = model.addr;
-    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@""]];
+    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

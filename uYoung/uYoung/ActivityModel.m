@@ -14,7 +14,7 @@
     return @{
              @"activityId": @"id",
              @"title": @"title",
-             @"actType": @"activityType",
+             @"actType": @"activityTypeDesc",
              @"personNum": @"needNum",
              @"day": @"day",
              @"month": @"mon",
@@ -24,7 +24,7 @@
              @"addr": @"address",
              @"headerUrl": @"oriUserAvatarUrl",
              @"local": @"local",
-             @"price": @"p",
+             @"price": @"feeType",
              @"status": @"status"
              };
 }

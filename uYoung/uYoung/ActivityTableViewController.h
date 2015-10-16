@@ -11,6 +11,7 @@
 #import "ActivityTableViewCell.h"
 #import "SVPullToRefresh.h"
 #import "GlobalConfig.h"
+#import "ActivityList.h"
 
 
 @interface ActivityTableViewController : UITableViewController
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *activityListData;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) BOOL noMorePage;
 
 - (void)initActivityList: (NSInteger)type;
 

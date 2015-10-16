@@ -23,7 +23,7 @@
 @property (nonatomic,strong) NSString *local;       //活动区域
 @property (nonatomic,strong) NSString *headerUrl;   //头像
 @property (nonatomic,assign) NSInteger price;
-@property (nonatomic,assign) NSString *status;   //status
+@property (nonatomic,assign) NSInteger status;   //status
 
 
 @end

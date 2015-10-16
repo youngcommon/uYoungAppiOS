@@ -20,4 +20,6 @@
 
 #define uyoung_host @"http://182.92.237.31/"
 
+#define pageSize 15
+
 #endif /* GlobalConfig_h */
