@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConfig.h"
 #import "AlbumTableViewController.h"
+#import "ActivityTableViewController.h"
 #import "UserDetail.h"
 #import "UserDetailModel.h"
 
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 
 @property (strong, nonatomic) AlbumTableViewController *albumTableViewController;
+@property (strong, nonatomic) ActivityTableViewController *activityTableViewController;
 
 - (IBAction)getBack:(id)sender;
 

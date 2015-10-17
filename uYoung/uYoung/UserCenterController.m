@@ -69,7 +69,6 @@
     
     //默认加载我的相册Controller
     self.albumTableViewController = [[AlbumTableViewController alloc]init];
-    
     [self addChildViewController:self.albumTableViewController];
     [self.view addSubview:self.albumTableViewController.view];
     
@@ -78,6 +77,15 @@
     [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    //加载我的活动列表
+    self.activityTableViewController = [[ActivityTableViewController alloc]init];
+    [self addChildViewController:self.activityTableViewController];
+    [self.view addSubview:self.activityTableViewController.view];
+    
+    self.activityTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
+    self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.activityTableViewController.view setHidden:YES];
 }
 
 - (void)fillUserDetail:(NSNotification*)notification
@@ -112,9 +120,13 @@
         if (tag==0) {//点击的我的相册
             [_myActButton setAlpha:0.3];
             [_myAlbumButton setAlpha:0.65];
+            [self.activityTableViewController.view setHidden:YES];
+            [self.albumTableViewController.view setHidden:NO];
         }else if(tag==1){//点击我的活动
             [_myAlbumButton setAlpha:0.3];
             [_myActButton setAlpha:0.65];
+            [self.activityTableViewController.view setHidden:NO];
+            [self.albumTableViewController.view setHidden:YES];
         }
     }
 }
