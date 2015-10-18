@@ -56,10 +56,80 @@
     
     self.enrollPersons.text = [NSString stringWithFormat:@"%d / %d", self.detailModel.realNum, self.detailModel.needNum];
     self.organizer.text = self.detailModel.nickName;
-    [self.descTextView setText:self.detailModel.desc];
-    [self.descTextView setFont:[UIFont systemFontOfSize:18]];
-//    [self.descTextView updateConstraints];
+    NSString *desc = [self.detailModel.desc stringByAppendingString:self.detailModel.desc];
+    
+    CGRect frame = self.descScrollView.frame;
+    //设置活动描述
+    UITextView *descView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [descView setText:desc];
+    [descView setFont:[UIFont systemFontOfSize:18]];
+    descView.scrollEnabled = YES;
+    descView.editable = NO;
+    [self.descScrollView addSubview:descView];
+    //设置报名详情
+    UITextView *tempView = [[UITextView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height)];
+    [tempView setText:self.detailModel.desc];
+    [tempView setFont:[UIFont systemFontOfSize:18]];
+    tempView.editable = NO;
+    [self.descScrollView addSubview:tempView];
+    
+    [self.descScrollView setContentSize:CGSizeMake(self.descScrollView.frame.size.width*2, self.descScrollView.frame.size.height)];
+    
+    [self addPageControlNavigation];
+    [_pageControl setHidden:YES];
+}
 
+//添加分页导航,默认第一页被选中
+- (void)addPageControlNavigation{
+    CGFloat navWidth = 102.;
+    CGFloat navHeight = 22.;
+    CGFloat navLabelWidth = 48.;
+
+    CGFloat x = (_descScrollView.frame.size.width / 2) - (navWidth / 2);
+    CGFloat y = _descScrollView.frame.size.height - navHeight;
+    //添加第一页导航
+    //添加活动详情导航
+    UIImageView *descImageView = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, navHeight, navHeight)];
+    [descImageView setImage:[UIImage imageNamed:@"uyoung.bundle/act_desc_high"]];
+    [_descScrollView addSubview:descImageView];
+    x = x + navHeight + 5;
+    UILabel *descLabel = [[UILabel alloc]initWithFrame:CGRectMake(x, y , navLabelWidth, navHeight)];
+    [descLabel setText:@"活动详情"];
+    [descLabel setFont:[UIFont systemFontOfSize:12.]];
+    [descLabel setTextColor:UIColorFromRGB(0x027AFF)];
+    [_descScrollView addSubview:descLabel];
+    x = x + navLabelWidth + 5;
+    //添加报名详情导航
+    UIImageView *enrollImageView = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, navHeight, navHeight)];
+    [enrollImageView setImage:[UIImage imageNamed:@"uyoung.bundle/join"]];
+    [_descScrollView addSubview:enrollImageView];
+    
+    x = (_descScrollView.frame.size.width / 2) - (navWidth / 2) + _descScrollView.frame.size.width;
+    //添加第二页导航
+    //添加活动详情导航
+    UIImageView *descImageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, navHeight, navHeight)];
+    [descImageView2 setImage:[UIImage imageNamed:@"uyoung.bundle/act_desc"]];
+    [_descScrollView addSubview:descImageView2];
+    x = x + navHeight + 5;
+    //添加报名详情导航
+    UIImageView *enrollImageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, navHeight, navHeight)];
+    [enrollImageView2 setImage:[UIImage imageNamed:@"uyoung.bundle/join_high"]];
+    [_descScrollView addSubview:enrollImageView2];
+    x = x + navHeight + 5;
+    UILabel *enrollLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(x, y, navLabelWidth, navHeight)];
+    [enrollLabel2 setText:@"报名详情"];
+    [enrollLabel2 setFont:[UIFont systemFontOfSize:12.]];
+    [enrollLabel2 setTextColor:UIColorFromRGB(0x027AFF)];
+    [_descScrollView addSubview:enrollLabel2];
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //更新UIPageControl的当前页
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.frame;
+    [_pageControl setCurrentPage:offset.x / bounds.size.width];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

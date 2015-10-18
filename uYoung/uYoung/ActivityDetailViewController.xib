@@ -16,12 +16,12 @@
                 <outlet property="addrTitleHeight" destination="KAE-yA-1gd" id="x7K-bd-wbo"/>
                 <outlet property="backBtn" destination="bsl-37-SZC" id="6s4-u3-GER"/>
                 <outlet property="button" destination="Kxc-WU-kXp" id="s9u-c3-wYf"/>
-                <outlet property="contentView" destination="Z9b-gJ-GoM" id="Peh-od-cfH"/>
-                <outlet property="descTextView" destination="0DA-a3-xj5" id="pGV-A9-zAY"/>
+                <outlet property="descScrollView" destination="Z9b-gJ-GoM" id="GV8-QU-P5k"/>
                 <outlet property="enrollPersons" destination="rZf-Pf-FGy" id="6qv-wz-xZg"/>
                 <outlet property="freeSignetImg" destination="05b-Gf-d3f" id="3XW-PF-YM8"/>
                 <outlet property="headerBackground" destination="nbO-EU-H4f" id="bFm-O1-c83"/>
                 <outlet property="organizer" destination="VP0-4l-45q" id="9wp-7T-CLc"/>
+                <outlet property="pageControl" destination="h0f-mB-H7I" id="f2E-jI-5t7"/>
                 <outlet property="titleLable" destination="189-CY-PXp" id="UV4-WV-ahD"/>
                 <outlet property="userHeader" destination="Jv7-WZ-1Gn" id="PaR-FF-ZPC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -201,23 +201,11 @@
                                 <constraint firstAttribute="height" constant="6" id="pC4-5A-MBL"/>
                             </constraints>
                         </imageView>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9b-gJ-GoM">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9b-gJ-GoM">
                             <rect key="frame" x="17" y="176" width="244" height="144"/>
-                            <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DA-a3-xj5">
-                                    <rect key="frame" x="0.0" y="0.0" width="244" height="144"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="0DA-a3-xj5" firstAttribute="leading" secondItem="Z9b-gJ-GoM" secondAttribute="leading" id="LFX-Lb-YJe"/>
-                                <constraint firstItem="0DA-a3-xj5" firstAttribute="centerX" secondItem="Z9b-gJ-GoM" secondAttribute="centerX" id="azX-Oc-zx9"/>
-                                <constraint firstItem="0DA-a3-xj5" firstAttribute="top" secondItem="Z9b-gJ-GoM" secondAttribute="top" id="eIy-yk-Z7L"/>
-                                <constraint firstAttribute="bottom" secondItem="0DA-a3-xj5" secondAttribute="bottom" id="nx9-0q-XQy"/>
-                                <constraint firstItem="0DA-a3-xj5" firstAttribute="centerY" secondItem="Z9b-gJ-GoM" secondAttribute="centerY" id="uID-Wk-i2O"/>
-                                <constraint firstAttribute="trailing" secondItem="0DA-a3-xj5" secondAttribute="trailing" id="xAL-UA-ySg"/>
-                            </constraints>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="fiB-rC-WOR"/>
+                            </connections>
                         </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-WU-kXp">
                             <rect key="frame" x="106" y="348" width="64" height="16"/>
@@ -234,6 +222,9 @@
                                 <constraint firstAttribute="height" constant="6" id="w6x-xt-xUh"/>
                             </constraints>
                         </imageView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-mB-H7I">
+                            <rect key="frame" x="120" y="299" width="39" height="37"/>
+                        </pageControl>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>

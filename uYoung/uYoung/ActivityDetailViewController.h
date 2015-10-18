@@ -30,12 +30,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *addr;
 @property (weak, nonatomic) IBOutlet UILabel *addrTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
-@property (weak, nonatomic) IBOutlet UIScrollView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *descScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addrHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addrTitleHeight;
-@property (weak, nonatomic) IBOutlet UITextView *descTextView;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+//分页导航
+@property (strong, nonatomic) UIImageView *descImageView;
+@property (strong, nonatomic) UIImageView *enrollImageView;
+@property (strong, nonatomic) UILabel *descLabel;
+@property (strong, nonatomic) UILabel *enrollLabel;
 
 - (IBAction)backView:(UIButton *)sender;
 - (IBAction)toUserCenter:(UIButton *)sender;
