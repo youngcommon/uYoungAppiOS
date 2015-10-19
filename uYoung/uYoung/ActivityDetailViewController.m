@@ -15,6 +15,10 @@
 @implementation ActivityDetailViewController
 @synthesize model;
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
@@ -38,7 +42,7 @@
     CGSize addrTitleLabelSize = [self.addrTitle sizeThatFits:CGSizeMake(addrTitleWidth, MAXFLOAT)];
     [self.addrTitleHeight setConstant:addrTitleLabelSize.height];
 
-    CGFloat addrWidth = self.addr.frame.size.width;
+    CGFloat addrWidth = mScreenWidth - 22 * 2 - 15 * 2 - 5 - addrTitleWidth;
     CGSize addrLabelSize = [self.addr sizeThatFits:CGSizeMake(addrWidth, MAXFLOAT)];
     [self.addrHeight setConstant:addrLabelSize.height];
     //================================================

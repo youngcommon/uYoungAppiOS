@@ -187,7 +187,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京市昌平区回龙观龙跃苑四区39号楼5单元1002室" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njU-bS-vHm">
-                            <rect key="frame" x="74" y="114" width="187" height="36"/>
+                            <rect key="frame" x="74" y="114" width="183.5" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="Bm0-C0-9eo"/>
                             </constraints>
@@ -238,6 +238,7 @@
                         <constraint firstItem="Fup-lY-foo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h08-cT-oDl" secondAttribute="trailing" constant="10" id="A0W-Pl-rYu"/>
                         <constraint firstItem="1O9-B9-ZqD" firstAttribute="centerY" secondItem="t44-Mm-ONi" secondAttribute="centerY" id="ANZ-Qd-K1N"/>
                         <constraint firstItem="rZf-Pf-FGy" firstAttribute="leading" secondItem="Rci-lk-kXL" secondAttribute="leading" id="Afb-q7-Kiy"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="njU-bS-vHm" secondAttribute="trailing" constant="15" id="BCq-K2-tMZ"/>
                         <constraint firstItem="fp2-jm-7gV" firstAttribute="top" secondItem="Z9b-gJ-GoM" secondAttribute="bottom" constant="10" id="Bcw-CQ-dBo"/>
                         <constraint firstItem="hU9-mf-UmH" firstAttribute="leading" secondItem="lHj-4h-9Qk" secondAttribute="leading" constant="10" id="Bte-BI-gs2"/>
                         <constraint firstItem="1O9-B9-ZqD" firstAttribute="leading" secondItem="Fup-lY-foo" secondAttribute="leading" id="C3m-5y-OcR"/>
@@ -275,6 +276,11 @@
                         <constraint firstItem="Rci-lk-kXL" firstAttribute="centerY" secondItem="51W-10-YE9" secondAttribute="centerY" id="tGO-lG-lhk"/>
                         <constraint firstItem="VP0-4l-45q" firstAttribute="centerY" secondItem="JY5-Yw-zqb" secondAttribute="centerY" id="xgk-Ez-0Z2"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="nHl-Gb-mVO"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
