@@ -12,6 +12,7 @@
 #import "GlobalConfig.h"
 #import "UserCenterController.h"
 #import "ActivityDetail.h"
+#import "EnrollCollectionView.h"
 
 @interface ActivityDetailViewController : UIViewController
 

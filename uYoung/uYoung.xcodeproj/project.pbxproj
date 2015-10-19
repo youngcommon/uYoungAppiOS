@@ -10,6 +10,9 @@
 		18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8F3E094E334AA1B811DE /* libPods.a */; };
 		48039FD01BD1457300CF147A /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FCF1BD1457300CF147A /* UserDetail.m */; settings = {ASSET_TAGS = (); }; };
 		48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FD21BD145EC00CF147A /* UserDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FDB1BD3F3DA00CF147A /* EnrollCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FE21BD491F000CF147A /* EnrollCollectionView.m */; settings = {ASSET_TAGS = (); }; };
 		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; };
 		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; };
 		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; };
@@ -51,6 +54,11 @@
 		48039FCF1BD1457300CF147A /* UserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetail.m; sourceTree = "<group>"; };
 		48039FD11BD145EC00CF147A /* UserDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailModel.h; sourceTree = "<group>"; };
 		48039FD21BD145EC00CF147A /* UserDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailModel.m; sourceTree = "<group>"; };
+		48039FDA1BD3F3DA00CF147A /* EnrollCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollCollectionCell.h; sourceTree = "<group>"; };
+		48039FDB1BD3F3DA00CF147A /* EnrollCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollCollectionCell.m; sourceTree = "<group>"; };
+		48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnrollCollectionCell.xib; sourceTree = "<group>"; };
+		48039FE11BD491F000CF147A /* EnrollCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollCollectionView.h; sourceTree = "<group>"; };
+		48039FE21BD491F000CF147A /* EnrollCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollCollectionView.m; sourceTree = "<group>"; };
 		4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
 		4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
 		4820A4C41BB0069F006AEC13 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
@@ -179,6 +187,11 @@
 				48640E991BCFFF930093B702 /* AlbumCoverTableViewCell.h */,
 				48640E9A1BCFFF930093B702 /* AlbumCoverTableViewCell.m */,
 				48640E9C1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib */,
+				48039FDA1BD3F3DA00CF147A /* EnrollCollectionCell.h */,
+				48039FDB1BD3F3DA00CF147A /* EnrollCollectionCell.m */,
+				48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */,
+				48039FE11BD491F000CF147A /* EnrollCollectionView.h */,
+				48039FE21BD491F000CF147A /* EnrollCollectionView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -373,6 +386,7 @@
 				4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */,
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
+				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
@@ -427,12 +441,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */,
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
+				48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
 				48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */,
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,

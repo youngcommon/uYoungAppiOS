@@ -24,7 +24,8 @@
              @"address": @"address",
              @"nickName": @"nickName",
              @"feeType": @"feeType",
-             @"desc": @"description"
+             @"desc": @"description",
+             @"avatarUrl": @"avatarUrl"
              };
 }
 

@@ -22,6 +22,7 @@
 @property (nonatomic,strong) NSString *address;        //地址
 @property (nonatomic,strong) NSString *nickName;   //昵称
 @property (nonatomic,strong) NSString *desc;   //描述
+@property (nonatomic,strong) NSString *avatarUrl;
 @property (nonatomic,assign) NSInteger feeType;
 
 @end

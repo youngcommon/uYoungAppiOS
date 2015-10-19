@@ -67,11 +67,16 @@
     descView.editable = NO;
     [self.descScrollView addSubview:descView];
     //设置报名详情
-    UITextView *tempView = [[UITextView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height)];
-    [tempView setText:self.detailModel.desc];
-    [tempView setFont:[UIFont systemFontOfSize:18]];
-    tempView.editable = NO;
-    [self.descScrollView addSubview:tempView];
+    UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.itemSize = CGSizeMake(70, 88);
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    EnrollCollectionView *enrollView = [[EnrollCollectionView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height) collectionViewLayout:flowLayout];
+    enrollView.delegate = enrollView;
+    enrollView.dataSource = enrollView;
+    enrollView.enrolls = [NSMutableArray arrayWithObject:self.detailModel];
+    [enrollView setBackgroundColor:[UIColor clearColor]];
+    [enrollView registerClass:[EnrollCollectionCell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.descScrollView addSubview:enrollView];
     
     [self.descScrollView setContentSize:CGSizeMake(self.descScrollView.frame.size.width*2, self.descScrollView.frame.size.height)];
     
