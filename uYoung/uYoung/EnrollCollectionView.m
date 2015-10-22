@@ -17,26 +17,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return [_enrolls count];
-    return 15;
+    return [_enrolls count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    EnrollCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSArray *subs = [cell.contentView subviews];
-    if (subs==nil||[subs count]==0) {//说明第一次初始化
-        EnrollCollectionCell *enrollCell = [[[NSBundle mainBundle] loadNibNamed:@"EnrollCollectionCell" owner:self options:nil] lastObject];
-//        [enrollCell updateFrameWithModel:_enrolls[indexPath.row]];
-        [enrollCell updateFrameWithModel:_enrolls[0]];
-        [cell.contentView addSubview:enrollCell];
-    }else{
-        if ([subs[0] isKindOfClass:[EnrollCollectionCell class]]) {
-            EnrollCollectionCell *enrollCell = (EnrollCollectionCell*)subs[0];
-//            [enrollCell updateFrameWithModel:_enrolls[indexPath.row]];
-            [enrollCell updateFrameWithModel:_enrolls[0]];
-        }
-    }
+    [cell updateFrameWithModel:_enrolls[indexPath.row]];
     
     return cell;
 }
@@ -50,7 +37,30 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@"1"];
 }
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+/*-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    
+    NSLog(@"%@", self.delegate);
+    if ([self pointInside:point withEvent:event]) {
+    }
+    else {
+        return nil;
+    }
+    for (UIView *subView in self.subviews) {
+        if ([subView hitTest:point withEvent:event]!=nil) {
+            return subView;
+        }
+    }
+    
+    
+    return self;
+}*/
 
 @end

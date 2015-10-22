@@ -22,10 +22,11 @@
              @"fromTime": @"fromTime",
              @"toTime": @"toTime",
              @"address": @"address",
-             @"nickName": @"nickName",
+             @"nickName": @"oriUserNickName",
+             @"oriUserId": @"oriUserId",
              @"feeType": @"feeType",
              @"desc": @"description",
-             @"avatarUrl": @"avatarUrl"
+             @"avatarUrl": @"oriUserAvatarUrl"
              };
 }
 

@@ -27,8 +27,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
+-(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
     //停止菊花
     [self.tableView.pullToRefreshView stopAnimating];
     //停止菊花

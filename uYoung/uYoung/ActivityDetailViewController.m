@@ -13,6 +13,9 @@
 @end
 
 @implementation ActivityDetailViewController
+
+static NSString * const reuseIdentifier = @"Cell";
+
 @synthesize model;
 
 - (void)awakeFromNib{
@@ -49,6 +52,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillActivityDetail:) name:@"fillActivityDetail" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
+    
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
 }
@@ -60,7 +65,7 @@
     
     self.enrollPersons.text = [NSString stringWithFormat:@"%d / %d", self.detailModel.realNum, self.detailModel.needNum];
     self.organizer.text = self.detailModel.nickName;
-    NSString *desc = [self.detailModel.desc stringByAppendingString:self.detailModel.desc];
+    NSString *desc = self.detailModel.desc;
     
     CGRect frame = self.descScrollView.frame;
     //设置活动描述
@@ -70,22 +75,31 @@
     descView.scrollEnabled = YES;
     descView.editable = NO;
     [self.descScrollView addSubview:descView];
+    
     //设置报名详情
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    flowLayout.itemSize = CGSizeMake(70, 88);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     EnrollCollectionView *enrollView = [[EnrollCollectionView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height) collectionViewLayout:flowLayout];
+    
+    UINib * nib = [UINib nibWithNibName:@"EnrollCollectionCell" bundle:nil];
+    [enrollView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
     enrollView.delegate = enrollView;
     enrollView.dataSource = enrollView;
     enrollView.enrolls = [NSMutableArray arrayWithObject:self.detailModel];
     [enrollView setBackgroundColor:[UIColor clearColor]];
-    [enrollView registerClass:[EnrollCollectionCell class] forCellWithReuseIdentifier:@"Cell"];
     [self.descScrollView addSubview:enrollView];
     
     [self.descScrollView setContentSize:CGSizeMake(self.descScrollView.frame.size.width*2, self.descScrollView.frame.size.height)];
     
     [self addPageControlNavigation];
     [_pageControl setHidden:YES];
+}
+
+- (void)gotoEnrollDetail:(NSNotification*)notification{
+    NSString *userId = (NSString*)[notification object];
+    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    userCenter.userId = [userId integerValue];
+    [self.navigationController pushViewController:userCenter animated:YES];
 }
 
 //添加分页导航,默认第一页被选中
@@ -140,8 +154,7 @@
     CGRect bounds = scrollView.frame;
     [_pageControl setCurrentPage:offset.x / bounds.size.width];
 }
-
-- (void)viewDidDisappear:(BOOL)animated{
+-(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -155,6 +168,7 @@
 
 - (IBAction)toUserCenter:(UIButton *)sender {
     UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    userCenter.userId = 1;
     [self.navigationController pushViewController:userCenter animated:YES];
 }
 
@@ -166,4 +180,5 @@
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     
 }
+
 @end

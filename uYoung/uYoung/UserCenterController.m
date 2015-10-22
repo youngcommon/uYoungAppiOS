@@ -14,7 +14,7 @@
 
 - (void)viewDidLoad{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
-    [UserDetail getUserDetailWithId:1];
+    [UserDetail getUserDetailWithId:_userId];
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -109,8 +109,8 @@
     [self.genderImageView setImage:(self.userDetailModel.gender?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];  
 }
 
 - (void) buttonClick:(id)sender{

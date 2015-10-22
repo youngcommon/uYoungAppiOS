@@ -17,7 +17,7 @@
     self.layer.cornerRadius = 4;
     _enrollUserHeader.layer.cornerRadius = _enrollUserHeader.frame.size.width / 2;
     _enrollUserHeader.layer.masksToBounds = YES;
-    
+    _enrollUserHeader.userInteractionEnabled = YES;
 }
 
 - (void)updateFrameWithModel:(UserDetailModel*)model{
