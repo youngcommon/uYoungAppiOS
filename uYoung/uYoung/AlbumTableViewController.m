@@ -7,6 +7,7 @@
 //
 
 #import "AlbumTableViewController.h"
+#import "UserAlbumList.h"
 
 @interface AlbumTableViewController ()
 
@@ -16,6 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAlbumList:) name:@"userAlbumList" object:nil];
+    [UserAlbumList getUserAlbumListWithUid:_userId];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)userAlbumList:(NSNotification*)notification
+{
+    NSArray *arr = (NSArray*)[notification object];
+    NSArray *data = [MTLJSONAdapter modelsOfClass:[AlbumModel class] fromJSONArray:arr error:nil];
+    [_albumListData removeAllObjects];
+     _albumListData = [[NSMutableArray alloc] initWithArray:data];
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,8 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.albumListData count];
-    return 2;
+    return [self.albumListData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -42,6 +58,9 @@
         [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];//注册cell复用
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    [cell fillDataWithAlbumModel:_albumListData[indexPath.row]];
+    
     return cell;
 }
 

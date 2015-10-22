@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AlbumCoverTableViewCell.h"
 #import "GlobalConfig.h"
+#import "AlbumModel.h"
 
 @interface AlbumTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *albumListData;
+
+@property (assign, nonatomic) NSInteger userId;
 
 @end

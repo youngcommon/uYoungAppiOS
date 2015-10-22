@@ -90,6 +90,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="albumCoverImage" destination="Dru-M4-MeA" id="nia-cS-gka"/>
+                <outlet property="albumCreateLabel" destination="FHI-cX-qYL" id="zO8-kg-TBb"/>
+                <outlet property="albumNameLabel" destination="wR1-Mf-ofp" id="OtY-23-68O"/>
+                <outlet property="albumPhotoCountLabel" destination="Ncc-yO-oPO" id="ipO-vZ-v5M"/>
+                <outlet property="albumViewLabel" destination="HH7-Rg-knM" id="7tT-9B-6Mg"/>
             </connections>
             <point key="canvasLocation" x="138" y="176"/>
         </view>

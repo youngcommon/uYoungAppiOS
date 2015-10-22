@@ -13,7 +13,6 @@
 @implementation AlbumCoverTableViewCell
 
 - (void)awakeFromNib {
-    [self.albumCoverImage setImageWithURL:[NSURL URLWithString:@"http://pic.nipic.com/2008-03-11/200831115126384_2.jpg"] placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     CGFloat height = 200;
     if(mScreenWidth<375){
         height = 200;
@@ -24,6 +23,20 @@
     }
     
     [self.albumCoverImage setFrame:CGRectMake(self.albumCoverImage.frame.origin.x, self.albumCoverImage.frame.origin.y, self.albumCoverImage.frame.size.width, height)];
+}
+
+- (void)fillDataWithAlbumModel:(AlbumModel*)model{
+    [_albumNameLabel setText:model.albumName];
+    [_albumViewLabel setText:[NSString stringWithFormat:@"%i", model.totalLikeCount]];
+    [_albumPhotoCountLabel setText:[NSString stringWithFormat:@"%i", model.totalPhotoCount]];
+    [_albumCreateLabel setText:model.createTime];
+    
+    NSString *photoUrl = model.firstPhotoUrl;
+    photoUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:photoUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [_albumCoverImage setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"AppIcon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [_albumCoverImage setImage:image];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

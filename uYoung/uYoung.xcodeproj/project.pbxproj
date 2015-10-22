@@ -35,6 +35,8 @@
 		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; settings = {ASSET_TAGS = (); }; };
 		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; settings = {ASSET_TAGS = (); }; };
+		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; settings = {ASSET_TAGS = (); }; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,10 @@
 		48E737C61BAFFB8300C35871 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		48E737C71BAFFB8300C35871 /* libDTCoreText.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTCoreText.a; path = "Pods/../build/Debug-iphoneos/libDTCoreText.a"; sourceTree = "<group>"; };
 		48E737C81BAFFB8300C35871 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Pods/../build/Debug-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
+		48FC41791BD91040006E44B3 /* AlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumModel.h; sourceTree = "<group>"; };
+		48FC417A1BD91040006E44B3 /* AlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumModel.m; sourceTree = "<group>"; };
+		48FC417C1BD91157006E44B3 /* UserAlbumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumList.h; sourceTree = "<group>"; };
+		48FC417D1BD91157006E44B3 /* UserAlbumList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAlbumList.m; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				48640EA21BD1361E0093B702 /* ActivityDetail.m */,
 				48039FCE1BD1457300CF147A /* UserDetail.h */,
 				48039FCF1BD1457300CF147A /* UserDetail.m */,
+				48FC417C1BD91157006E44B3 /* UserAlbumList.h */,
+				48FC417D1BD91157006E44B3 /* UserAlbumList.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -174,6 +182,8 @@
 				48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */,
 				48039FD11BD145EC00CF147A /* UserDetailModel.h */,
 				48039FD21BD145EC00CF147A /* UserDetailModel.m */,
+				48FC41791BD91040006E44B3 /* AlbumModel.h */,
+				48FC417A1BD91040006E44B3 /* AlbumModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -446,7 +456,9 @@
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
+				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
+				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
