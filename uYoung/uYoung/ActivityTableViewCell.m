@@ -40,15 +40,15 @@
     }else{
         [self.actTypeLable setHighlighted:YES];
     }
-    self.dayLabel.text = [NSString stringWithFormat:@"%ld", model.day];
-    self.monthLabel.text = [NSString stringWithFormat:@"%ld月，",model.month];
+    self.dayLabel.text = [NSString stringWithFormat:@"%i", model.day];
+    self.monthLabel.text = [NSString stringWithFormat:@"%i月，",model.month];
     self.weekLabel.text = model.week;
     self.titleLabel.text = model.title;
     self.fromTimeLabel.text = model.fromTime;
     self.toTimeLabel.text = model.toTime;
-    self.personNumLabel.text = [NSString stringWithFormat:@"%ld人", model.personNum];
+    self.personNumLabel.text = [NSString stringWithFormat:@"%i人", model.personNum];
     self.addrLabel.text = model.addr;
-    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"AppIcon/icon-60"]];
+    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"uyoung.bundle/icon"]];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

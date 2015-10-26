@@ -95,12 +95,15 @@
     self.userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dic error:nil];
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
-    avatarUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"AppIcon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle/icon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        UIImage *img = [UIImage imageNamed:@"uyoung.bundle/icon"];
+        [self.headerBackBlurImg setImageToBlur:img blurRadius:80. completionBlock:nil];
+        [self.headerImg setImage:img];
+    }];
     
     [self.nicknameLabel setText:self.userDetailModel.nickName];
     [self.positionLabel setText:self.userDetailModel.position];

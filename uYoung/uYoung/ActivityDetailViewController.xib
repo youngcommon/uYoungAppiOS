@@ -41,7 +41,7 @@
                         <constraint firstAttribute="width" constant="34" id="9Qs-lW-CtF"/>
                         <constraint firstAttribute="height" constant="34" id="uoT-FC-aP1"/>
                     </constraints>
-                    <state key="normal" image="ScreenImage"/>
+                    <state key="normal" image="uyoung.bundle/icon.png"/>
                     <connections>
                         <action selector="toUserCenter:" destination="-1" eventType="touchUpInside" id="4L6-Fl-Bpb"/>
                     </connections>
@@ -306,10 +306,10 @@
         </view>
     </objects>
     <resources>
-        <image name="ScreenImage" width="320" height="480"/>
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
         <image name="uyoung.bundle/dividing_line.png" width="320" height="568"/>
         <image name="uyoung.bundle/free_signet.png" width="320" height="568"/>
+        <image name="uyoung.bundle/icon.png" width="320" height="568"/>
     </resources>
 </document>

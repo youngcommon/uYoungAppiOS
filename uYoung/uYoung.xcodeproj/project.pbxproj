@@ -37,6 +37,8 @@
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; settings = {ASSET_TAGS = (); }; };
 		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; settings = {ASSET_TAGS = (); }; };
+		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +109,9 @@
 		48FC417A1BD91040006E44B3 /* AlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumModel.m; sourceTree = "<group>"; };
 		48FC417C1BD91157006E44B3 /* UserAlbumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumList.h; sourceTree = "<group>"; };
 		48FC417D1BD91157006E44B3 /* UserAlbumList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAlbumList.m; sourceTree = "<group>"; };
+		48FC417F1BDA6962006E44B3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		48FC41801BDA6962006E44B3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		48FC41811BDA6962006E44B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +227,9 @@
 				4841A88E1BCD405600F1B4F8 /* UserCenterController.xib */,
 				48640E911BCFEB220093B702 /* AlbumTableViewController.h */,
 				48640E921BCFEB220093B702 /* AlbumTableViewController.m */,
+				48FC417F1BDA6962006E44B3 /* LoginViewController.h */,
+				48FC41801BDA6962006E44B3 /* LoginViewController.m */,
+				48FC41811BDA6962006E44B3 /* LoginViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -393,6 +401,7 @@
 			files = (
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
+				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
 				4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */,
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
@@ -455,6 +464,7 @@
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
+				48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
