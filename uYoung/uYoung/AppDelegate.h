@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
+#import <TencentOpenAPI/TencentApiInterface.h>
 
 #define kMAIN_SCREEN_WIDTH   ([[UIScreen mainScreen] bounds].size.width)
 #define kMAIN_SCREEN_HEIGHT  ([[UIScreen mainScreen] bounds].size.height)
 
+@class TencentOAuth;
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *root;
 @property (strong, nonatomic) UINavigationController *navController;
+
+@property (strong, nonatomic) TencentOAuth *tencentOAuth;
+@property (nonatomic, strong) NSDictionary *userLoginInfoDic;
 
 @end
 

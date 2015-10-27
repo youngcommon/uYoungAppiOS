@@ -22,4 +22,8 @@
 
 #define pageSize 15
 
+#define UMengAppKey @"562d94ad67e58ef66e000973"
+
+#define QQAppKey @"1104920700"
+
 #endif /* GlobalConfig_h */

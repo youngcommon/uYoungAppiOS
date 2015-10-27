@@ -13,6 +13,7 @@
 #import "UserCenterController.h"
 #import "ActivityDetail.h"
 #import "EnrollCollectionView.h"
+#import "LoginViewController.h"
 
 @interface ActivityDetailViewController : UIViewController
 

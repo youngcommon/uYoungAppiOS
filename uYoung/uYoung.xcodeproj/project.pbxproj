@@ -8,38 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8F3E094E334AA1B811DE /* libPods.a */; };
-		48039FD01BD1457300CF147A /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FCF1BD1457300CF147A /* UserDetail.m */; settings = {ASSET_TAGS = (); }; };
-		48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FD21BD145EC00CF147A /* UserDetailModel.m */; settings = {ASSET_TAGS = (); }; };
-		48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FDB1BD3F3DA00CF147A /* EnrollCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FE21BD491F000CF147A /* EnrollCollectionView.m */; settings = {ASSET_TAGS = (); }; };
+		48039FD01BD1457300CF147A /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FCF1BD1457300CF147A /* UserDetail.m */; };
+		48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FD21BD145EC00CF147A /* UserDetailModel.m */; };
+		48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FDB1BD3F3DA00CF147A /* EnrollCollectionCell.m */; };
+		48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */; };
+		48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48039FE21BD491F000CF147A /* EnrollCollectionView.m */; };
 		4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */; };
 		4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4C51BB0069F006AEC13 /* ActivityTableViewCell.m */; };
 		4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4CA1BB1417D006AEC13 /* RootViewController.m */; };
 		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; };
-		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; settings = {ASSET_TAGS = (); }; };
-		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; settings = {ASSET_TAGS = (); }; };
-		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; settings = {ASSET_TAGS = (); }; };
+		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; };
+		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; };
+		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
 		483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E01BAC548E00CDDBD3 /* Main.storyboard */; };
 		483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E31BAC548E00CDDBD3 /* Images.xcassets */; };
 		483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 483E17E51BAC548E00CDDBD3 /* LaunchScreen.xib */; };
 		483E17F31BAC548E00CDDBD3 /* uYoungTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17F21BAC548E00CDDBD3 /* uYoungTests.m */; };
-		4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4841A8881BCD33B400F1B4F8 /* UserCenterController.m */; settings = {ASSET_TAGS = (); }; };
-		4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4841A88E1BCD405600F1B4F8 /* UserCenterController.xib */; settings = {ASSET_TAGS = (); }; };
-		48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E921BCFEB220093B702 /* AlbumTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9A1BCFFF930093B702 /* AlbumCoverTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48640E9C1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */; settings = {ASSET_TAGS = (); }; };
-		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; settings = {ASSET_TAGS = (); }; };
-		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; settings = {ASSET_TAGS = (); }; };
-		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; settings = {ASSET_TAGS = (); }; };
-		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4841A8881BCD33B400F1B4F8 /* UserCenterController.m */; };
+		4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4841A88E1BCD405600F1B4F8 /* UserCenterController.xib */; };
+		48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E921BCFEB220093B702 /* AlbumTableViewController.m */; };
+		48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9A1BCFFF930093B702 /* AlbumCoverTableViewCell.m */; };
+		48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48640E9C1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib */; };
+		48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640E9F1BD1339D0093B702 /* ActivityDetailModel.m */; };
+		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; };
+		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; };
+		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; };
+		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; };
+		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; };
+		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; };
+		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
+		847E18371BDFB9AF00882D20 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */; };
+		847E18391BDFBABD00882D20 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18381BDFBABD00882D20 /* SystemConfiguration.framework */; };
+		847E183B1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		847E18411BDFCA4600882D20 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18401BDFCA4600882D20 /* Security.framework */; };
+		847E18431BDFCAAE00882D20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18421BDFCAAE00882D20 /* CoreGraphics.framework */; };
+		847E18451BDFCB4C00882D20 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18441BDFCB4C00882D20 /* libsqlite3.dylib */; };
+		847E18471BDFCB6F00882D20 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18461BDFCB6F00882D20 /* libiconv.dylib */; };
+		847E18491BDFCB7D00882D20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18481BDFCB7D00882D20 /* CoreTelephony.framework */; };
+		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
+		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +124,16 @@
 		48FC41811BDA6962006E44B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		847E18381BDFBABD00882D20 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		847E18401BDFCA4600882D20 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		847E18421BDFCAAE00882D20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		847E18441BDFCB4C00882D20 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libsqlite3.dylib"; sourceTree = "<group>"; };
+		847E18461BDFCB6F00882D20 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libiconv.dylib"; sourceTree = "<group>"; };
+		847E18481BDFCB7D00882D20 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		847E184A1BDFCB9E00882D20 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libstdc++.dylib"; sourceTree = "<group>"; };
+		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +142,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */,
+				847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */,
+				847E18491BDFCB7D00882D20 /* CoreTelephony.framework in Frameworks */,
+				847E18471BDFCB6F00882D20 /* libiconv.dylib in Frameworks */,
+				847E18451BDFCB4C00882D20 /* libsqlite3.dylib in Frameworks */,
+				847E18431BDFCAAE00882D20 /* CoreGraphics.framework in Frameworks */,
+				847E18411BDFCA4600882D20 /* Security.framework in Frameworks */,
+				847E18391BDFBABD00882D20 /* SystemConfiguration.framework in Frameworks */,
 				18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */,
+				847E18371BDFB9AF00882D20 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +168,15 @@
 		4277B826B647482D792A3320 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				847E184C1BDFCBB700882D20 /* libz.dylib */,
+				847E184A1BDFCB9E00882D20 /* libstdc++.dylib */,
+				847E18481BDFCB7D00882D20 /* CoreTelephony.framework */,
+				847E18461BDFCB6F00882D20 /* libiconv.dylib */,
+				847E18441BDFCB4C00882D20 /* libsqlite3.dylib */,
+				847E18421BDFCAAE00882D20 /* CoreGraphics.framework */,
+				847E18401BDFCA4600882D20 /* Security.framework */,
+				847E18381BDFBABD00882D20 /* SystemConfiguration.framework */,
+				847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */,
 				48E737C61BAFFB8300C35871 /* libAFNetworking.a */,
 				48E737C71BAFFB8300C35871 /* libDTCoreText.a */,
 				48E737C81BAFFB8300C35871 /* libDTFoundation.a */,
@@ -252,6 +290,7 @@
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
+				847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */,
 				4820A4DC1BB3D10F006AEC13 /* libs */,
 				4820A4D41BB280DD006AEC13 /* uyoung.bundle */,
 				483E17D51BAC548E00CDDBD3 /* uYoung */,
@@ -382,6 +421,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 483E17CA1BAC548E00CDDBD3;
 			productRefGroup = 483E17D41BAC548E00CDDBD3 /* Products */;
@@ -399,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847E183B1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
@@ -618,6 +659,54 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/UMSocial_Sdk_4.3",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+					"-l\"MobClickLibrary\"",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-DTCoreText\"",
+					"-l\"Pods-DTFoundation\"",
+					"-l\"Pods-LBBlurredImage\"",
+					"-l\"Pods-Mantle\"",
+					"-l\"Pods-SVPullToRefresh\"",
+					"-l\"Pods-SuperID\"",
+					"-l\"Pods-UMengAnalytics\"",
+					"-l\"SuperIDSDK\"",
+					"-l\"c++\"",
+					"-l\"xml2\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-fobjc-arc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -640,6 +729,54 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/UMSocial_Sdk_4.3",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+					"-l\"MobClickLibrary\"",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-DTCoreText\"",
+					"-l\"Pods-DTFoundation\"",
+					"-l\"Pods-LBBlurredImage\"",
+					"-l\"Pods-Mantle\"",
+					"-l\"Pods-SVPullToRefresh\"",
+					"-l\"Pods-SuperID\"",
+					"-l\"Pods-UMengAnalytics\"",
+					"-l\"SuperIDSDK\"",
+					"-l\"c++\"",
+					"-l\"xml2\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-fobjc-arc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

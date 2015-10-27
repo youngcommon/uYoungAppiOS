@@ -19,6 +19,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Mantle.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SVPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SuperID.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>31D0CBB62EA1F1B8D757FCF1</key>
+		<key>04A8A6F0320CB7C0FCC87646</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63664E40715F451B1331AED2</key>
+		<key>2EDE1164AD041F957C025434</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>68127D6C8D02E5AFC4FB3C6F</key>
+		<key>4D2670438FE87396A12D62C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BECF297F0A3C39A38CBC756</key>
+		<key>7AF98A16679B028BAC509B49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8FAC5CF65F65B83DC85313F3</key>
+		<key>8A49D676DC60B0309F7235CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACB93E30B03496B45F8EA469</key>
+		<key>BEB6B198ACD1E923D297FECD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCA2CB70149C4F09A1A82D0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E90F25050FB16E1D56BC9361</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD9842677E66F43912D55E74</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,7 +13,7 @@
 + (void)getUserDetailWithId:(NSInteger)userId{
     NSString *url = [uyoung_host stringByAppendingString:@"userInfo/getUserInfoById"];
     
-    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%d", userId]};
+    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%i", userId]};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

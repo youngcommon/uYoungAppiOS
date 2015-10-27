@@ -167,6 +167,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)toUserCenter:(UIButton *)sender {
+    LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:loginViewCtl animated:YES completion:nil];
+    
     UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
     userCenter.userId = 1;
     [self.navigationController pushViewController:userCenter animated:YES];

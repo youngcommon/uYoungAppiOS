@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import <TencentOpenAPI/TencentOAuth.h>
 
-@interface AppDelegate ()
+#if __QQAPI_ENABLE__
+#import "TencentOpenAPI/QQApiInterface.h"
+#import "QQAPIDemoEntry.h"
+#endif
+
+@interface AppDelegate () <TencentSessionDelegate>
 
 @end
 
@@ -30,6 +36,8 @@
     [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     
+    self.tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQAppKey andDelegate:self];
+
     return YES;
 }
 
@@ -54,6 +62,68 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+#if __QQAPI_ENABLE__
+    [QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQAPIDemoEntry class]];
+#endif
+    
+    if (YES == [TencentOAuth CanHandleOpenURL:url])
+    {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+#if __QQAPI_ENABLE__
+    [QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQAPIDemoEntry class]];
+#endif
+    
+    if (YES == [TencentOAuth CanHandleOpenURL:url])
+    {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return YES;
+}
+
+#pragma mark QQ登录回调
+- (void)tencentDidLogin
+{
+    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length]){
+        //  记录登录用户的OpenID、Token以及过期时间
+        [_tencentOAuth getUserInfo];
+    }else{
+        
+    }
+}
+
+-(void)tencentDidNotLogin:(BOOL)cancelled
+{
+    if (cancelled)
+        NSLog(@"用户取消登陆");
+    else
+        NSLog(@"登陆失败");
+}
+
+-(void)tencentDidNotNetWork
+{
+    NSLog(@"无网络连接，请设置网络");
+}
+
+- (void)getUserInfoResponse:(APIResponse*) response
+{
+    if (response.retCode== 0) {
+        NSMutableDictionary * dict=[response.jsonResponse mutableCopy];
+        [dict setValue:_tencentOAuth.openId forKey:@"uid"];
+        [dict setValue:_tencentOAuth.accessToken forKey:@"access_token"];
+        
+        self.userLoginInfoDic = [dict copy];
+    }
 }
 
 @end
