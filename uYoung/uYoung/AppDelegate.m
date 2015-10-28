@@ -36,7 +36,12 @@
     [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     
+    //注册QQ SSO
     self.tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQAppKey andDelegate:self];
+    
+    //注册新浪微博SSO
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:SinaWeiboAppKey];
 
     return YES;
 }
@@ -64,57 +69,29 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
-#if __QQAPI_ENABLE__
-    [QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQAPIDemoEntry class]];
-#endif
-    
-    if (YES == [TencentOAuth CanHandleOpenURL:url])
-    {
-        return [TencentOAuth HandleOpenURL:url];
-    }
-    return YES;
+    return [WeiboSDK handleOpenURL:url delegate:self]||[TencentOAuth HandleOpenURL:url];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-#if __QQAPI_ENABLE__
-    [QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQAPIDemoEntry class]];
-#endif
-    
-    if (YES == [TencentOAuth CanHandleOpenURL:url])
+    return [WeiboSDK handleOpenURL:url delegate:self] || [TencentOAuth HandleOpenURL:url];
+}
+
+#pragma mark 微博及微信
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response
+{
+    if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
-        return [TencentOAuth HandleOpenURL:url];
+        if(response.statusCode !=-1) {//-1的时候，表明用户取消了
+            self.sinaInfoDic = response.userInfo;
+        }
     }
-    return YES;
 }
 
 #pragma mark QQ登录回调
-- (void)tencentDidLogin
-{
-    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length]){
-        //  记录登录用户的OpenID、Token以及过期时间
-        [_tencentOAuth getUserInfo];
-    }else{
-        
-    }
-}
-
--(void)tencentDidNotLogin:(BOOL)cancelled
-{
-    if (cancelled)
-        NSLog(@"用户取消登陆");
-    else
-        NSLog(@"登陆失败");
-}
-
--(void)tencentDidNotNetWork
-{
-    NSLog(@"无网络连接，请设置网络");
-}
-
 - (void)getUserInfoResponse:(APIResponse*) response
 {
     if (response.retCode== 0) {

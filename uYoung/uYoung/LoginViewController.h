@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UIImageView *acctFrontImage;
+@property (strong, nonatomic) IBOutlet UIImageView *pwdFrontImage;
+@property (strong, nonatomic) IBOutlet UITextField *acctBackInput;
+@property (strong, nonatomic) IBOutlet UITextField *pwdBackInput;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+
+
 - (IBAction)doubanLogin:(UIButton *)sender;
+- (IBAction)qqLogin:(UIButton *)sender;
+- (IBAction)sinaWeiboLogin:(UIButton *)sender;
 
 @end

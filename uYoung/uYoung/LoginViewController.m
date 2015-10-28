@@ -18,6 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_acctFrontImage setImage:[self getScaleUIImage:@"uyoung.bundle/input_top.png" isFront:YES]];
+    [_pwdFrontImage setImage:[self getScaleUIImage:@"uyoung.bundle/input_bottom.png" isFront:YES]];
+    _acctBackInput.background = [self getScaleUIImage:@"uyoung.bundle/input_end_top.png" isFront:NO];
+    _pwdBackInput.background = [self getScaleUIImage:@"uyoung.bundle/input_end_bottom.png" isFront:NO];
+    
+    _loginButton.layer.cornerRadius = 6.f;
+    _loginButton.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +34,10 @@
 
 
 - (IBAction)doubanLogin:(UIButton *)sender {
+    
+}
+
+- (IBAction)qqLogin:(UIButton *)sender{
     NSArray* permissions = [NSArray arrayWithObjects:
                             kOPEN_PERMISSION_GET_USER_INFO,
                             kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
@@ -52,5 +64,26 @@
                             nil];
     
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]).tencentOAuth authorize:permissions inSafari:NO];
+}
+
+- (IBAction)sinaWeiboLogin:(UIButton *)sender {
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = SinaWeiboRedirectURI;
+    request.scope = @"all";
+    [WeiboSDK sendRequest:request];
+}
+
+- (UIImage *)getScaleUIImage:(NSString*)name isFront:(BOOL)isFront{
+    UIImage *bubble = [UIImage imageNamed:name];
+    
+    
+    UIEdgeInsets capInsets;
+    if (isFront) {
+        capInsets = UIEdgeInsetsMake(0, 10, 0, 8);
+    }else{
+        capInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    }
+    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+    
 }
 @end

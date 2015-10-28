@@ -26,4 +26,8 @@
 
 #define QQAppKey @"1104920700"
 
+#define SinaWeiboAppKey @"1375588776"
+
+#define SinaWeiboRedirectURI @"https://api.weibo.com/oauth2/default.html"
+
 #endif /* GlobalConfig_h */
