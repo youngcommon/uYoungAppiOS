@@ -96,11 +96,11 @@
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle/icon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        UIImage *img = [UIImage imageNamed:@"uyoung.bundle/icon"];
+        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
         [self.headerBackBlurImg setImageToBlur:img blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:img];
     }];

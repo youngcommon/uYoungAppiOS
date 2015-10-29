@@ -40,5 +40,5 @@
   "documentation_url": "http://docs.cocoanetics.com/DTCoreText",
   "social_media_url": "https://twitter.com/cocoanetics",
   "prefix_header_contents": "#import <CoreText/CoreText.h>",
-  "prepare_command": "     cd ./Core/Source\n     /usr/bin/xxd -i default.css default.css.c\n"
+  "prepare_command": "cd ./Core/Source\n/usr/bin/xxd -i default.css default.css.c"
 }

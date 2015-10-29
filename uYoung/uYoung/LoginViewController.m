@@ -26,6 +26,10 @@
     
     _loginButton.layer.cornerRadius = 6.f;
     _loginButton.layer.masksToBounds = YES;
+    
+    if (mScreenWidth<=375) {
+        [_coverMsgImage setHidden:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

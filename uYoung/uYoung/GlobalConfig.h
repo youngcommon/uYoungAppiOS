@@ -30,4 +30,6 @@
 
 #define SinaWeiboRedirectURI @"https://api.weibo.com/oauth2/default.html"
 
+#define UserDefaultHeader @"uyoung.bundle/logo_icon"
+
 #endif /* GlobalConfig_h */

@@ -25,10 +25,10 @@
     NSString *avatarUrl = _enrollUser.avatarUrl;
     avatarUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [_enrollUserHeader setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle/icon"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    [_enrollUserHeader setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [_enrollUserHeader setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        [_enrollUserHeader setImage:[UIImage imageNamed:@"uyoung.bundle/icon"]];
+        [_enrollUserHeader setImage:[UIImage imageNamed:UserDefaultHeader]];
     }];
     
     NSString *nickName = _enrollUser.nickName;
