@@ -55,8 +55,8 @@
 		847E18491BDFCB7D00882D20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18481BDFCB7D00882D20 /* CoreTelephony.framework */; };
 		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
-		84DAC36C1BE26B8C00F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */; };
-		84DAC36E1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
+		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,9 +119,6 @@
 		4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
-		48E737C61BAFFB8300C35871 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
-		48E737C71BAFFB8300C35871 /* libDTCoreText.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTCoreText.a; path = "Pods/../build/Debug-iphoneos/libDTCoreText.a"; sourceTree = "<group>"; };
-		48E737C81BAFFB8300C35871 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Pods/../build/Debug-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		48FC41791BD91040006E44B3 /* AlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumModel.h; sourceTree = "<group>"; };
 		48FC417A1BD91040006E44B3 /* AlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumModel.m; sourceTree = "<group>"; };
 		48FC417C1BD91157006E44B3 /* UserAlbumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumList.h; sourceTree = "<group>"; };
@@ -156,8 +153,8 @@
 		847E18481BDFCB7D00882D20 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		847E184A1BDFCB9E00882D20 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libstdc++.dylib"; sourceTree = "<group>"; };
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
-		84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846F17B81BE108E200EB2DB4 /* Foundation.framework in Frameworks */,
-				84DAC36C1BE26B8C00F17507 /* TencentOpenAPI.framework in Frameworks */,
+				84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */,
 				846F17B61BE108CD00EB2DB4 /* UIKit.framework in Frameworks */,
 				846F17B41BE108BD00EB2DB4 /* CoreText.framework in Frameworks */,
 				846F17B21BE1089900EB2DB4 /* ImageIO.framework in Frameworks */,
@@ -198,7 +195,7 @@
 		4277B826B647482D792A3320 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */,
+				84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */,
 				846F17B71BE108E200EB2DB4 /* Foundation.framework */,
 				846F17B51BE108CD00EB2DB4 /* UIKit.framework */,
 				846F17B31BE108BD00EB2DB4 /* CoreText.framework */,
@@ -212,9 +209,6 @@
 				847E18421BDFCAAE00882D20 /* CoreGraphics.framework */,
 				847E18401BDFCA4600882D20 /* Security.framework */,
 				847E18381BDFBABD00882D20 /* SystemConfiguration.framework */,
-				48E737C61BAFFB8300C35871 /* libAFNetworking.a */,
-				48E737C71BAFFB8300C35871 /* libDTCoreText.a */,
-				48E737C81BAFFB8300C35871 /* libDTFoundation.a */,
 				673C8F3E094E334AA1B811DE /* libPods.a */,
 			);
 			name = Frameworks;
@@ -318,7 +312,7 @@
 		4820A4DC1BB3D10F006AEC13 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */,
+				84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */,
 				846F17A01BE107D700EB2DB4 /* libWeiboSDK */,
 			);
 			name = libs;
@@ -503,7 +497,7 @@
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
-				84DAC36E1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
@@ -720,7 +714,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,10 +733,6 @@
 					"$(inherited)",
 					"-ObjC",
 					"-all_load",
-					"-l\"Pods-AFNetworking\"",
-					"-l\"Pods-LBBlurredImage\"",
-					"-l\"Pods-Mantle\"",
-					"-l\"Pods-SVPullToRefresh\"",
 					"-l\"c++\"",
 					"-l\"xml2\"",
 					"-l\"z\"",
@@ -777,6 +768,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "87f8e5ff-7468-4392-a0a2-070bc8056d58";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -787,7 +779,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -805,10 +798,6 @@
 					"$(inherited)",
 					"-ObjC",
 					"-all_load",
-					"-l\"Pods-AFNetworking\"",
-					"-l\"Pods-LBBlurredImage\"",
-					"-l\"Pods-Mantle\"",
-					"-l\"Pods-SVPullToRefresh\"",
 					"-l\"c++\"",
 					"-l\"xml2\"",
 					"-l\"z\"",
@@ -844,6 +833,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "87f8e5ff-7468-4392-a0a2-070bc8056d58";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;

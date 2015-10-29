@@ -110,7 +110,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/cover_msg.png" translatesAutoresizingMaskIntoConstraints="NO" id="aLV-14-cxZ">
-                    <rect key="frame" x="57" y="339" width="205" height="60"/>
+                    <rect key="frame" x="57" y="379" width="205" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="aKe-1b-QDg"/>
                         <constraint firstAttribute="width" constant="205" id="sT2-Nj-b2u"/>
@@ -146,7 +146,7 @@
                 <constraint firstItem="T79-W1-Aae" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="187" id="SSc-4A-N0F"/>
                 <constraint firstItem="saj-BK-fjd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="76" id="ThR-DQ-5NU"/>
                 <constraint firstItem="saj-BK-fjd" firstAttribute="centerY" secondItem="ONs-Jz-2tc" secondAttribute="centerY" id="X99-LA-MGm"/>
-                <constraint firstItem="aLV-14-cxZ" firstAttribute="top" secondItem="ssn-Jg-AoI" secondAttribute="bottom" constant="20" id="XzG-AR-Axx"/>
+                <constraint firstItem="aLV-14-cxZ" firstAttribute="top" secondItem="ssn-Jg-AoI" secondAttribute="bottom" constant="60" id="XzG-AR-Axx"/>
                 <constraint firstAttribute="bottom" secondItem="T5Y-BT-Wos" secondAttribute="bottom" constant="40" id="Zso-yt-bQK"/>
                 <constraint firstItem="xrD-y8-qFc" firstAttribute="centerY" secondItem="T79-W1-Aae" secondAttribute="centerY" id="jBX-2H-DWP"/>
                 <constraint firstItem="saj-BK-fjd" firstAttribute="leading" secondItem="xrD-y8-qFc" secondAttribute="leading" id="k7e-Or-yCL"/>

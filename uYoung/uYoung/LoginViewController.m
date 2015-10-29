@@ -27,7 +27,7 @@
     _loginButton.layer.cornerRadius = 6.f;
     _loginButton.layer.masksToBounds = YES;
     
-    if (mScreenWidth<=375) {
+    if (mScreenWidth<375) {
         [_coverMsgImage setHidden:YES];
     }
 }
@@ -83,7 +83,7 @@
     
     UIEdgeInsets capInsets;
     if (isFront) {
-        capInsets = UIEdgeInsetsMake(0, 10, 0, 8);
+        capInsets = UIEdgeInsetsMake(0, 10, 0, 6);
     }else{
         capInsets = UIEdgeInsetsMake(0, 0, 0, 10);
     }
