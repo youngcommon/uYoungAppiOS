@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
@@ -21,33 +21,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="oJx-Xv-qx3">
-                    <rect key="frame" x="110" y="55" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="rFG-rX-MPW"/>
-                        <constraint firstAttribute="height" constant="100" id="xTi-1i-kG9"/>
-                    </constraints>
-                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" minimumFontSize="17" background="uyoung.bundle/input_end_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="VoO-Yk-1Wr">
-                    <rect key="frame" x="132" y="187" width="150" height="30"/>
+                    <rect key="frame" x="132" y="187" width="150" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="M1f-a1-7I8"/>
-                        <constraint firstAttribute="height" constant="30" id="Tqh-tn-9dK"/>
+                        <constraint firstAttribute="height" constant="40" id="Tqh-tn-9dK"/>
                     </constraints>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" clearsOnBeginEditing="YES" minimumFontSize="17" background="uyoung.bundle/input_end_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="hp3-aU-Loy">
-                    <rect key="frame" x="132" y="219" width="150" height="30"/>
+                    <rect key="frame" x="132" y="229" width="150" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="BPp-Nm-0Cd"/>
+                        <constraint firstAttribute="height" constant="40" id="BPp-Nm-0Cd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssn-Jg-AoI">
-                    <rect key="frame" x="115" y="269" width="90" height="30"/>
+                    <rect key="frame" x="115" y="289" width="90" height="30"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="iOF-ha-id2"/>
@@ -81,27 +74,27 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/input_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="T79-W1-Aae">
-                    <rect key="frame" x="40" y="187" width="92" height="30"/>
+                    <rect key="frame" x="40" y="187" width="92" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="92" id="2Cs-4S-x1U"/>
-                        <constraint firstAttribute="height" constant="30" id="UHd-1S-NdV"/>
+                        <constraint firstAttribute="height" constant="40" id="UHd-1S-NdV"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/input_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="ONs-Jz-2tc">
-                    <rect key="frame" x="40" y="219" width="92" height="30"/>
+                    <rect key="frame" x="40" y="229" width="92" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="wgd-0W-Jde"/>
+                        <constraint firstAttribute="height" constant="40" id="wgd-0W-Jde"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="用户名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrD-y8-qFc">
-                    <rect key="frame" x="70" y="195" width="42" height="15"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrD-y8-qFc">
+                    <rect key="frame" x="66" y="199" width="46" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saj-BK-fjd">
-                    <rect key="frame" x="84" y="227" width="27.5" height="14.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saj-BK-fjd">
+                    <rect key="frame" x="80" y="241" width="32" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -117,10 +110,17 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/cover_msg.png" translatesAutoresizingMaskIntoConstraints="NO" id="aLV-14-cxZ">
-                    <rect key="frame" x="57" y="319" width="205" height="60"/>
+                    <rect key="frame" x="57" y="339" width="205" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="aKe-1b-QDg"/>
                         <constraint firstAttribute="width" constant="205" id="sT2-Nj-b2u"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="oJx-Xv-qx3">
+                    <rect key="frame" x="125" y="55" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="rFG-rX-MPW"/>
+                        <constraint firstAttribute="height" constant="70" id="xTi-1i-kG9"/>
                     </constraints>
                 </imageView>
             </subviews>

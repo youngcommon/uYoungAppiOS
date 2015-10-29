@@ -47,9 +47,7 @@
 		846F17B41BE108BD00EB2DB4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17B31BE108BD00EB2DB4 /* CoreText.framework */; };
 		846F17B61BE108CD00EB2DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17B51BE108CD00EB2DB4 /* UIKit.framework */; };
 		846F17B81BE108E200EB2DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17B71BE108E200EB2DB4 /* Foundation.framework */; };
-		847E18371BDFB9AF00882D20 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */; };
 		847E18391BDFBABD00882D20 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18381BDFBABD00882D20 /* SystemConfiguration.framework */; };
-		847E183B1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		847E18411BDFCA4600882D20 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18401BDFCA4600882D20 /* Security.framework */; };
 		847E18431BDFCAAE00882D20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18421BDFCAAE00882D20 /* CoreGraphics.framework */; };
 		847E18451BDFCB4C00882D20 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18441BDFCB4C00882D20 /* libsqlite3.dylib */; };
@@ -57,6 +55,8 @@
 		847E18491BDFCB7D00882D20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18481BDFCB7D00882D20 /* CoreTelephony.framework */; };
 		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
+		84DAC36C1BE26B8C00F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */; };
+		84DAC36E1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,9 +148,7 @@
 		846F17B31BE108BD00EB2DB4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		846F17B51BE108CD00EB2DB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		846F17B71BE108E200EB2DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		847E18381BDFBABD00882D20 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		847E18401BDFCA4600882D20 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		847E18421BDFCAAE00882D20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		847E18441BDFCB4C00882D20 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libsqlite3.dylib"; sourceTree = "<group>"; };
@@ -158,6 +156,8 @@
 		847E18481BDFCB7D00882D20 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		847E184A1BDFCB9E00882D20 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libstdc++.dylib"; sourceTree = "<group>"; };
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
+		84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846F17B81BE108E200EB2DB4 /* Foundation.framework in Frameworks */,
+				84DAC36C1BE26B8C00F17507 /* TencentOpenAPI.framework in Frameworks */,
 				846F17B61BE108CD00EB2DB4 /* UIKit.framework in Frameworks */,
 				846F17B41BE108BD00EB2DB4 /* CoreText.framework in Frameworks */,
 				846F17B21BE1089900EB2DB4 /* ImageIO.framework in Frameworks */,
@@ -181,7 +182,6 @@
 				847E18411BDFCA4600882D20 /* Security.framework in Frameworks */,
 				847E18391BDFBABD00882D20 /* SystemConfiguration.framework in Frameworks */,
 				18B9885DF05E86D6DAB4BA8F /* libPods.a in Frameworks */,
-				847E18371BDFB9AF00882D20 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +198,7 @@
 		4277B826B647482D792A3320 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84DAC36B1BE26B8C00F17507 /* TencentOpenAPI.framework */,
 				846F17B71BE108E200EB2DB4 /* Foundation.framework */,
 				846F17B51BE108CD00EB2DB4 /* UIKit.framework */,
 				846F17B31BE108BD00EB2DB4 /* CoreText.framework */,
@@ -211,7 +212,6 @@
 				847E18421BDFCAAE00882D20 /* CoreGraphics.framework */,
 				847E18401BDFCA4600882D20 /* Security.framework */,
 				847E18381BDFBABD00882D20 /* SystemConfiguration.framework */,
-				847E18361BDFB9AF00882D20 /* TencentOpenAPI.framework */,
 				48E737C61BAFFB8300C35871 /* libAFNetworking.a */,
 				48E737C71BAFFB8300C35871 /* libDTCoreText.a */,
 				48E737C81BAFFB8300C35871 /* libDTFoundation.a */,
@@ -318,8 +318,8 @@
 		4820A4DC1BB3D10F006AEC13 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				84DAC36D1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle */,
 				846F17A01BE107D700EB2DB4 /* libWeiboSDK */,
-				847E183A1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -422,6 +422,7 @@
 				483E17D01BAC548E00CDDBD3 /* Frameworks */,
 				483E17D11BAC548E00CDDBD3 /* Resources */,
 				8C033E6CAF683F8142F1067C /* Copy Pods Resources */,
+				B7E7ABD48060F0FAEFB585A5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -494,7 +495,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847E183B1BDFBB3B00882D20 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
@@ -503,6 +503,7 @@
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
+				84DAC36E1BE26B9C00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
@@ -548,6 +549,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7E7ABD48060F0FAEFB585A5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -702,7 +718,74 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = uYoung/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libWeiboSDK",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-LBBlurredImage\"",
+					"-l\"Pods-Mantle\"",
+					"-l\"Pods-SVPullToRefresh\"",
+					"-l\"c++\"",
+					"-l\"xml2\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-fobjc-arc",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		483E17F81BAC548E00CDDBD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A896116CED627EBB572AEEE /* Pods.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
 				ENABLE_BITCODE = NO;
@@ -722,16 +805,10 @@
 					"$(inherited)",
 					"-ObjC",
 					"-all_load",
-					"-l\"MobClickLibrary\"",
 					"-l\"Pods-AFNetworking\"",
-					"-l\"Pods-DTCoreText\"",
-					"-l\"Pods-DTFoundation\"",
 					"-l\"Pods-LBBlurredImage\"",
 					"-l\"Pods-Mantle\"",
 					"-l\"Pods-SVPullToRefresh\"",
-					"-l\"Pods-SuperID\"",
-					"-l\"Pods-UMengAnalytics\"",
-					"-l\"SuperIDSDK\"",
 					"-l\"c++\"",
 					"-l\"xml2\"",
 					"-l\"z\"",
@@ -767,79 +844,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
-			};
-			name = Debug;
-		};
-		483E17F81BAC548E00CDDBD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A896116CED627EBB572AEEE /* Pods.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = uYoung/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/libWeiboSDK",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-all_load",
-					"-l\"MobClickLibrary\"",
-					"-l\"Pods-AFNetworking\"",
-					"-l\"Pods-DTCoreText\"",
-					"-l\"Pods-DTFoundation\"",
-					"-l\"Pods-LBBlurredImage\"",
-					"-l\"Pods-Mantle\"",
-					"-l\"Pods-SVPullToRefresh\"",
-					"-l\"Pods-SuperID\"",
-					"-l\"Pods-UMengAnalytics\"",
-					"-l\"SuperIDSDK\"",
-					"-l\"c++\"",
-					"-l\"xml2\"",
-					"-l\"z\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"Accelerate\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreMedia\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"CoreText\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MediaPlayer\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-fobjc-arc",
-					"-lxml2",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

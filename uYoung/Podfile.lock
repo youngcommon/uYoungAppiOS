@@ -20,51 +20,22 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - DTCoreText (1.6.15):
-    - DTFoundation/Core (~> 1.7.5)
-    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
-    - DTFoundation/DTHTMLParser (~> 1.7.5)
-    - DTFoundation/UIKit (~> 1.7.5)
-  - DTFoundation/Core (1.7.8)
-  - DTFoundation/DTAnimatedGIF (1.7.8)
-  - DTFoundation/DTHTMLParser (1.7.8):
-    - DTFoundation/Core
-  - DTFoundation/UIKit (1.7.8):
-    - DTFoundation/Core
   - LBBlurredImage (0.2.2)
   - Mantle (2.0.5):
     - Mantle/extobjc (= 2.0.5)
   - Mantle/extobjc (2.0.5)
-  - SuperID (1.5.0)
   - SVPullToRefresh (0.4.1)
-  - UMengAnalytics (3.6.4)
 
 DEPENDENCIES:
   - AFNetworking
-  - DTCoreText (from `https://github.com/QuanGe/DTCoreText`)
   - LBBlurredImage
   - Mantle
-  - SuperID
   - SVPullToRefresh
-  - UMengAnalytics
-
-EXTERNAL SOURCES:
-  DTCoreText:
-    :git: https://github.com/QuanGe/DTCoreText
-
-CHECKOUT OPTIONS:
-  DTCoreText:
-    :commit: 86c5906d8d06ba24390db1d427d1f7cec0d1f26c
-    :git: https://github.com/QuanGe/DTCoreText
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  DTCoreText: bc1eca2be3c30a25e1040d5157a9c430651546ac
-  DTFoundation: 46e2b2fafe78d67febfd8d1f85fe9845a093f00e
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
-  SuperID: 4d2370fc2980e7fce79edbbd18e1140e50380714
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
-  UMengAnalytics: d24fb5200e13d2874f36b6337bc129b96511c54e
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
