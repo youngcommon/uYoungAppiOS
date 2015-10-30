@@ -187,21 +187,26 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)toUserCenter:(UIButton *)sender {
-
-    if (_loginUser&&_loginUser.id>0) {
-        UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-        userCenter.userId = _loginUser.id;
-        [self.navigationController pushViewController:userCenter animated:YES];
-    }else{
+    
+    if (_loginUser==nil||_loginUser.id==0) {
         LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
         [self presentViewController:loginViewCtl animated:YES completion:nil];
+    }else{
+        [self turnToUserCenter];
     }
     
 }
 
+- (void)turnToUserCenter{
+    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    userCenter.userId = _loginUser.id;
+    [self.navigationController pushViewController:userCenter animated:YES];
+}
+
 - (void)loginSuccess{
-    [self initLoginUser];
+//    [self initLoginUser];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self turnToUserCenter];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{

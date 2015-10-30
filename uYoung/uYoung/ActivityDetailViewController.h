@@ -26,13 +26,53 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton *userHeader;
+
 @property (weak, nonatomic) IBOutlet UILabel *actDate;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actDateConsHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actDateConsWidth;
+
+@property (weak, nonatomic) IBOutlet UILabel *actDateTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actDateTitleConsWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actDateTitleConsHeight;
+
 @property (weak, nonatomic) IBOutlet UILabel *actTime;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTimeConsHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTImeConsWidth;
+
+@property (weak, nonatomic) IBOutlet UILabel *actTimeTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTimeTitleConsWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTimeTitleConsHeight;
+
 @property (weak, nonatomic) IBOutlet UILabel *actType;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTypeConsWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTypeConsHeight;
+
+@property (weak, nonatomic) IBOutlet UILabel *actTypeTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTypeTitleConsWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *actTypeTitleConsHeight;
+
 @property (weak, nonatomic) IBOutlet UILabel *enrollPersons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *enrollPersonsConsWidht;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *enrollPersonsConsHeight;
+
+@property (weak, nonatomic) IBOutlet UILabel *enrollPersonsTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *enrollPersonsTitleConsHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *enrollPersonsTitleConsWidth;
+
 @property (weak, nonatomic) IBOutlet UILabel *organizer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orgConsHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orgConsWidth;
+
+@property (weak, nonatomic) IBOutlet UILabel *organizerTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orgConsTitleWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orgConsTitleHeight;
+
 @property (weak, nonatomic) IBOutlet UILabel *addr;
+
 @property (weak, nonatomic) IBOutlet UILabel *addrTitle;
+
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *descScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *button;

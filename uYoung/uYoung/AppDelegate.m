@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "UYoungUser.h"
 
 #if __QQAPI_ENABLE__
 #import "TencentOpenAPI/QQApiInterface.h"
@@ -106,6 +107,10 @@
 }
 
 - (void)loginSuccessWithDictionary:(NSDictionary*)dict{
+    //保存登陆成功数据
+    UYoungUser *user = [UYoungUser currentUser];
+    user.id = 1;
+    [user save];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
 }
 
