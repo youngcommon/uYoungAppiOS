@@ -31,19 +31,6 @@ static NSString * const reuseIdentifier = @"Cell";
     self.userHeader.layer.cornerRadius = self.userHeader.frame.size.height/2;
     self.userHeader.layer.masksToBounds = YES;
     
-    UYoungUser *loginUser = [UYoungUser currentUser];
-    self.loginUser = loginUser;
-    if (self.loginUser.id>0) {
-        NSString *avaterUrl = self.loginUser.avatarUrl;
-        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-        [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-            [self.userHeader.imageView setImage:image];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-            UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-            [self.userHeader.imageView setImage:img];
-        }];
-    }
-    
     self.titleLable.text = self.model.title;
     self.actType.text = [NSString stringWithFormat:@"%@摄影", self.model.actType];
     
@@ -68,8 +55,26 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
+    
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
+    [self initLoginUser];
+}
+
+- (void)initLoginUser{
+    UYoungUser *loginUser = [UYoungUser currentUser];
+    self.loginUser = loginUser;
+    if (self.loginUser.id>0) {
+        NSString *avaterUrl = self.loginUser.avatarUrl;
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+            [self.userHeader.imageView setImage:image];
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+            UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+            [self.userHeader.imageView setImage:img];
+        }];
+    }
 }
 
 - (void)fillActivityDetail:(NSNotification*)notification
@@ -192,6 +197,11 @@ static NSString * const reuseIdentifier = @"Cell";
         [self presentViewController:loginViewCtl animated:YES completion:nil];
     }
     
+}
+
+- (void)loginSuccess{
+    [self initLoginUser];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{

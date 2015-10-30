@@ -87,6 +87,7 @@
     {
         if(response.statusCode !=-1) {//-1的时候，表明用户取消了
             self.sinaInfoDic = response.userInfo;
+            [self loginSuccessWithDictionary:self.sinaInfoDic];
         }
     }
 }
@@ -100,10 +101,11 @@
         [dict setValue:_tencentOAuth.accessToken forKey:@"access_token"];
         
         self.userLoginInfoDic = [dict copy];
+        [self loginSuccessWithDictionary:self.userLoginInfoDic];
     }
 }
 
-- (void)loginSuccess{
+- (void)loginSuccessWithDictionary:(NSDictionary*)dict{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
 }
 
