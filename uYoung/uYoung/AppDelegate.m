@@ -103,4 +103,8 @@
     }
 }
 
+- (void)loginSuccess{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
+}
+
 @end

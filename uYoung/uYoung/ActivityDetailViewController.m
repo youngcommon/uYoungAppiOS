@@ -7,6 +7,7 @@
 //
 
 #import "ActivityDetailViewController.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface ActivityDetailViewController ()
 
@@ -29,6 +30,19 @@ static NSString * const reuseIdentifier = @"Cell";
     
     self.userHeader.layer.cornerRadius = self.userHeader.frame.size.height/2;
     self.userHeader.layer.masksToBounds = YES;
+    
+    UYoungUser *loginUser = [UYoungUser currentUser];
+    self.loginUser = loginUser;
+    if (self.loginUser.id>0) {
+        NSString *avaterUrl = self.loginUser.avatarUrl;
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+            [self.userHeader.imageView setImage:image];
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+            UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+            [self.userHeader.imageView setImage:img];
+        }];
+    }
     
     self.titleLable.text = self.model.title;
     self.actType.text = [NSString stringWithFormat:@"%@摄影", self.model.actType];
@@ -154,6 +168,7 @@ static NSString * const reuseIdentifier = @"Cell";
     CGRect bounds = scrollView.frame;
     [_pageControl setCurrentPage:offset.x / bounds.size.width];
 }
+
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -167,12 +182,16 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)toUserCenter:(UIButton *)sender {
-    LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:loginViewCtl animated:YES completion:nil];
+
+    if (_loginUser&&_loginUser.id>0) {
+        UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+        userCenter.userId = _loginUser.id;
+        [self.navigationController pushViewController:userCenter animated:YES];
+    }else{
+        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+        [self presentViewController:loginViewCtl animated:YES completion:nil];
+    }
     
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-    userCenter.userId = 1;
-    [self.navigationController pushViewController:userCenter animated:YES];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
