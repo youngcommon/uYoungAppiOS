@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import <TencentOpenAPI/TencentOAuth.h>
-#import "UYoungUser.h"
+#import "UserLogin.h"
+#import "UserDetailModel.h"
+#include "UserDetail.h"
 
 #if __QQAPI_ENABLE__
 #import "TencentOpenAPI/QQApiInterface.h"
@@ -43,6 +45,9 @@
     //注册新浪微博SSO
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SinaWeiboAppKey];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(postThirdData:) name:@"postThirdData" object:nil];
 
     return YES;
 }
@@ -68,6 +73,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 
@@ -88,7 +94,7 @@
     {
         if(response.statusCode !=-1) {//-1的时候，表明用户取消了
             self.sinaInfoDic = response.userInfo;
-            [self loginSuccessWithDictionary:self.sinaInfoDic];
+            [self loginSuccess];
         }
     }
 }
@@ -102,14 +108,58 @@
         [dict setValue:_tencentOAuth.accessToken forKey:@"access_token"];
         
         self.userLoginInfoDic = [dict copy];
-        [self loginSuccessWithDictionary:self.userLoginInfoDic];
+        [self loginSuccess];
     }
 }
 
-- (void)loginSuccessWithDictionary:(NSDictionary*)dict{
+- (void)loginSuccess{
+    NSString *thirdUid;
+    NSString *accessToken;
+    NSString *refreshToken;
+    NSString *nickName;
+    NSString *gender;
+    NSString *city;
+    NSInteger userType;
+    NSString *avaterUrl;
+    NSString *expireIn;
+    NSDictionary *dict;
+    if(self.userLoginInfoDic&&self.userLoginInfoDic[@"uid"]>0){
+        //说明是QQ登陆
+        thirdUid = self.userLoginInfoDic[@"uid"];
+        accessToken = self.userLoginInfoDic[@"access_token"];
+        nickName = self.userLoginInfoDic[@"nickname"];
+        gender = self.userLoginInfoDic[@"gender"];
+        city = self.userLoginInfoDic[@"city"];
+        userType = 1;
+        avaterUrl = self.userLoginInfoDic[@"figureurl_qq_2"];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", userType, @"userType", avaterUrl, @"avaterUrl", gender, @"gender", city, @"city", nil];
+    }else{
+        //说明是微博登陆
+        thirdUid = self.sinaInfoDic[@"uid"];
+        accessToken = self.sinaInfoDic[@"access_token"];
+        refreshToken = self.sinaInfoDic[@"refresh_token"];
+        nickName = self.sinaInfoDic[@"app"][@"name"];
+        userType = 2;
+        avaterUrl = self.sinaInfoDic[@"app"][@"logo"];
+        expireIn = self.sinaInfoDic[@"expires_in"];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avaterUrl", expireIn, @"expireIn", nil];
+    }
+    
     //保存登陆成功数据
-    UYoungUser *user = [UYoungUser currentUser];
-    user.id = 1;
+    [UserLogin postThirdTypeLoginData:dict];
+    
+}
+
+- (void)postThirdData:(NSNotification*)notification{
+    NSNumber *uid = (NSNumber*)[notification object];
+    [UserDetail getUserDetailWithId:[uid integerValue]];
+}
+
+- (void)fillUserDetail:(NSNotification*)notification{
+    NSDictionary *dic = (NSDictionary*)[notification object];
+    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dic error:nil];
+    UserDetailModel *user = [UserDetailModel currentUser];
+    user = userDetailModel;
     [user save];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
 }

@@ -21,4 +21,7 @@
 @property (nonatomic,strong) NSString *position;
 @property (nonatomic,strong) NSString *equipment;
 
++ (instancetype)currentUser;
+- (void)save;
+
 @end

@@ -14,13 +14,12 @@
 #import "ActivityDetail.h"
 #import "EnrollCollectionView.h"
 #import "LoginViewController.h"
-#import "UYoungUser.h"
 
 @interface ActivityDetailViewController : UIViewController
 
 @property (strong, nonatomic) ActivityModel *model;
 @property (strong, nonatomic) ActivityDetailModel *detailModel;
-@property (strong, nonatomic) UYoungUser *loginUser;
+@property (strong, nonatomic) UserDetailModel *loginUser;
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 

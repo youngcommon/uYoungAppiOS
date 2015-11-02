@@ -19,7 +19,6 @@
 		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; };
 		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; };
 		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; };
-		482C6EDF1BE3186100D7C188 /* UYoungUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 482C6EDE1BE3186100D7C188 /* UYoungUser.m */; settings = {ASSET_TAGS = (); }; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
@@ -58,6 +57,7 @@
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
 		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6216E1BE7A2C2004C3733 /* UserLogin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +92,6 @@
 		4820A4D41BB280DD006AEC13 /* uyoung.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = uyoung.bundle; sourceTree = "<group>"; };
 		4820A4D91BB2D352006AEC13 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		4820A4DA1BB2D352006AEC13 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
-		482C6EDD1BE3186100D7C188 /* UYoungUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UYoungUser.h; sourceTree = "<group>"; };
-		482C6EDE1BE3186100D7C188 /* UYoungUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UYoungUser.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
 		483AFDBE1BC817DF0054985D /* ActivityList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityList.m; sourceTree = "<group>"; };
 		483E17D31BAC548E00CDDBD3 /* uYoung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uYoung.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +156,8 @@
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
 		84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		84F6216D1BE7A2C2004C3733 /* UserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLogin.h; sourceTree = "<group>"; };
+		84F6216E1BE7A2C2004C3733 /* UserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLogin.m; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +237,8 @@
 				48039FCF1BD1457300CF147A /* UserDetail.m */,
 				48FC417C1BD91157006E44B3 /* UserAlbumList.h */,
 				48FC417D1BD91157006E44B3 /* UserAlbumList.m */,
+				84F6216D1BE7A2C2004C3733 /* UserLogin.h */,
+				84F6216E1BE7A2C2004C3733 /* UserLogin.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -259,8 +261,6 @@
 				48039FD21BD145EC00CF147A /* UserDetailModel.m */,
 				48FC41791BD91040006E44B3 /* AlbumModel.h */,
 				48FC417A1BD91040006E44B3 /* AlbumModel.m */,
-				482C6EDD1BE3186100D7C188 /* UYoungUser.h */,
-				482C6EDE1BE3186100D7C188 /* UYoungUser.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -574,12 +574,12 @@
 			files = (
 				48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */,
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
+				84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
-				482C6EDF1BE3186100D7C188 /* UYoungUser.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
@@ -720,8 +720,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,8 +785,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Quan Zhao (VEB7YKB5MX)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

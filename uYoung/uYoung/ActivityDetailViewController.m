@@ -184,8 +184,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)initLoginUser{
-    UYoungUser *loginUser = [UYoungUser currentUser];
-    self.loginUser = loginUser;
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    self.loginUser = [loginUser copy];
     if (self.loginUser.id>0) {
         NSString *avaterUrl = self.loginUser.avatarUrl;
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
@@ -325,7 +325,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)loginSuccess{
-//    [self initLoginUser];
+    [self initLoginUser];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self turnToUserCenter];
 }
