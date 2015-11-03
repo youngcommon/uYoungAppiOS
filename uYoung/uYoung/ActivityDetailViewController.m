@@ -191,9 +191,10 @@ static NSString * const reuseIdentifier = @"Cell";
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [self.userHeader.imageView setImage:image];
+            [_userHeader setBackgroundImage:image forState:UIControlStateNormal];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
             UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-            [self.userHeader.imageView setImage:img];
+            [_userHeader setBackgroundImage:img forState:UIControlStateNormal];
         }];
     }
 }

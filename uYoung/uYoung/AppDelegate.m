@@ -10,7 +10,6 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "UserLogin.h"
 #import "UserDetailModel.h"
-#include "UserDetail.h"
 
 #if __QQAPI_ENABLE__
 #import "TencentOpenAPI/QQApiInterface.h"
@@ -112,6 +111,14 @@
     }
 }
 
+- (void)tencentDidLogin
+{
+    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length]){
+        //  记录登录用户的OpenID、Token以及过期时间
+        [_tencentOAuth getUserInfo];
+    }
+}
+
 - (void)loginSuccess{
     NSString *thirdUid;
     NSString *accessToken;
@@ -129,10 +136,14 @@
         accessToken = self.userLoginInfoDic[@"access_token"];
         nickName = self.userLoginInfoDic[@"nickname"];
         gender = self.userLoginInfoDic[@"gender"];
+        NSInteger genderVal = 0;
+        if (gender&&[gender isKindOfClass:[NSString class]]&&gender.length>0&&[gender isEqualToString:@"男"]) {
+            genderVal = 1;
+        }
         city = self.userLoginInfoDic[@"city"];
         userType = 1;
         avaterUrl = self.userLoginInfoDic[@"figureurl_qq_2"];
-        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", userType, @"userType", avaterUrl, @"avaterUrl", gender, @"gender", city, @"city", nil];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", @(genderVal), @"gender", city, @"city", nil];
     }else{
         //说明是微博登陆
         thirdUid = self.sinaInfoDic[@"uid"];
@@ -142,7 +153,7 @@
         userType = 2;
         avaterUrl = self.sinaInfoDic[@"app"][@"logo"];
         expireIn = self.sinaInfoDic[@"expires_in"];
-        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avaterUrl", expireIn, @"expireIn", nil];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", expireIn, @"expireIn", nil];
     }
     
     //保存登陆成功数据
@@ -152,12 +163,11 @@
 
 - (void)postThirdData:(NSNotification*)notification{
     NSNumber *uid = (NSNumber*)[notification object];
-    [UserDetail getUserDetailWithId:[uid integerValue]];
+    [UserDetail getUserDetailWithId:[uid integerValue] delegate:self];
 }
 
-- (void)fillUserDetail:(NSNotification*)notification{
-    NSDictionary *dic = (NSDictionary*)[notification object];
-    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dic error:nil];
+- (void)fillUserDetail:(NSDictionary*)dict{
+    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
     UserDetailModel *user = [UserDetailModel currentUser];
     user = userDetailModel;
     [user save];

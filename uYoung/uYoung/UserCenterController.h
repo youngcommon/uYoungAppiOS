@@ -13,7 +13,7 @@
 #import "UserDetail.h"
 #import "UserDetailModel.h"
 
-@interface UserCenterController : UIViewController
+@interface UserCenterController : UIViewController<UserDetailDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyTitleLabel;

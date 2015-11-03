@@ -14,7 +14,7 @@
 
 - (void)viewDidLoad{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
-    [UserDetail getUserDetailWithId:_userId];
+    [UserDetail getUserDetailWithId:_userId delegate:self];
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -89,10 +89,9 @@
     [self.activityTableViewController.view setHidden:YES];
 }
 
-- (void)fillUserDetail:(NSNotification*)notification
+- (void)fillUserDetail:(NSDictionary*)dict
 {
-    NSDictionary *dic = (NSDictionary*)[notification object];
-    self.userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dic error:nil];
+    self.userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];

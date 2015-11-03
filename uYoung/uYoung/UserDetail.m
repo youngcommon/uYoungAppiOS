@@ -10,10 +10,12 @@
 
 @implementation UserDetail
 
-+ (void)getUserDetailWithId:(NSInteger)userId{
++ (void)getUserDetailWithId:(NSInteger)userId delegate:(id<UserDetailDelegate>)delegate{
+    
+//    __weak UserDetailDelegate *weakDelegate = delegate;
     NSString *url = [uyoung_host stringByAppendingString:@"userInfo/getUserInfoById"];
     
-    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%i", userId]};
+    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%d", (int)userId]};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -24,7 +26,8 @@
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"fillUserDetail" object:resultData];
+                [delegate fillUserDetail:resultData];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"fillUserDetail" object:resultData];
             }
         }
         
