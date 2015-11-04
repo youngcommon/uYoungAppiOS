@@ -12,6 +12,8 @@
 #import "ActivityTableViewController.h"
 #import "UserDetail.h"
 #import "UserDetailModel.h"
+#import "NSString+StringUtil.h"
+#import "EditUserViewController.h"
 
 @interface UserCenterController : UIViewController<UserDetailDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;

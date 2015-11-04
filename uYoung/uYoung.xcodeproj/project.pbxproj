@@ -40,6 +40,9 @@
 		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; };
 		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
+		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
+		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
+		8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */; };
 		846F17AD1BE107D700EB2DB4 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */; };
 		846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 846F17AA1BE107D700EB2DB4 /* WeiboSDK.bundle */; };
 		846F17B01BE1088A00EB2DB4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17AF1BE1088A00EB2DB4 /* QuartzCore.framework */; };
@@ -129,6 +132,11 @@
 		48FC41811BDA6962006E44B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		8457EE011BEA478200C00176 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
+		8457EE021BEA478200C00176 /* EditUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserViewController.m; sourceTree = "<group>"; };
+		8457EE041BEA47C600C00176 /* EditUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserViewController.xib; sourceTree = "<group>"; };
+		8457EE091BEA525000C00176 /* NSString+StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringUtil.h"; sourceTree = "<group>"; };
+		8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringUtil.m"; sourceTree = "<group>"; };
 		846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		846F17A21BE107D700EB2DB4 /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
 		846F17A31BE107D700EB2DB4 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
@@ -302,6 +310,9 @@
 				48FC417F1BDA6962006E44B3 /* LoginViewController.h */,
 				48FC41801BDA6962006E44B3 /* LoginViewController.m */,
 				48FC41811BDA6962006E44B3 /* LoginViewController.xib */,
+				8457EE011BEA478200C00176 /* EditUserViewController.h */,
+				8457EE021BEA478200C00176 /* EditUserViewController.m */,
+				8457EE041BEA47C600C00176 /* EditUserViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -348,6 +359,7 @@
 		483E17D51BAC548E00CDDBD3 /* uYoung */ = {
 			isa = PBXGroup;
 			children = (
+				8457EE061BEA518C00C00176 /* util */,
 				4820A4CE1BB25135006AEC13 /* config */,
 				4820A4BE1BB00592006AEC13 /* controller */,
 				4820A4BD1BB0058C006AEC13 /* view */,
@@ -388,6 +400,15 @@
 				483E17F11BAC548E00CDDBD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8457EE061BEA518C00C00176 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8457EE091BEA525000C00176 /* NSString+StringUtil.h */,
+				8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		846F17A01BE107D700EB2DB4 /* libWeiboSDK */ = {
@@ -501,6 +522,7 @@
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
+				8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
@@ -589,6 +611,8 @@
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
+				8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */,
+				8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,

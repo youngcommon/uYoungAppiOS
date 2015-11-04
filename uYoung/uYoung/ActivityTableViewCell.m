@@ -41,15 +41,21 @@
     }else{
         [self.actTypeLable setHighlighted:YES];
     }
-    self.dayLabel.text = [NSString stringWithFormat:@"%i", model.day];
-    self.monthLabel.text = [NSString stringWithFormat:@"%i月，",model.month];
+    self.dayLabel.text = [NSString stringWithFormat:@"%d", (int)model.day];
+    self.monthLabel.text = [NSString stringWithFormat:@"%d月，",(int)model.month];
     self.weekLabel.text = model.week;
     self.titleLabel.text = model.title;
     self.fromTimeLabel.text = model.fromTime;
     self.toTimeLabel.text = model.toTime;
-    self.personNumLabel.text = [NSString stringWithFormat:@"%i人", model.personNum];
+    self.personNumLabel.text = [NSString stringWithFormat:@"%d人", (int)model.personNum];
     self.addrLabel.text = model.addr;
-    [self.headerImg setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:UserDefaultHeader]];
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:model.headerUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:600.0];
+    [self.headerImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [_headerImg setImage:image];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+        [_headerImg setImage:img];
+    }];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{
