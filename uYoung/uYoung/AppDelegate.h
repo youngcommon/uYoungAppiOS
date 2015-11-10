@@ -11,12 +11,14 @@
 #import <TencentOpenAPI/TencentApiInterface.h>
 #import "WeiboSDK.h"
 #import "UserDetail.h"
+#import "UserLogin.h"
+#import "UserDetailModel.h"
 
 #define kMAIN_SCREEN_WIDTH   ([[UIScreen mainScreen] bounds].size.width)
 #define kMAIN_SCREEN_HEIGHT  ([[UIScreen mainScreen] bounds].size.height)
 
 @class TencentOAuth;
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserDetailDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserDetailDelegate, UserLoginDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *root;

@@ -23,5 +23,6 @@
 
 + (instancetype)currentUser;
 - (void)save;
+- (void)del;
 
 @end

@@ -13,7 +13,7 @@
 + (void)getUserDetailWithId:(NSInteger)userId delegate:(id<UserDetailDelegate>)delegate{
     
 //    __weak UserDetailDelegate *weakDelegate = delegate;
-    NSString *url = [uyoung_host stringByAppendingString:@"userInfo/getUserInfoById"];
+    NSString *url = [uyoung_host stringByAppendingString:@"userInfo/getByUid"];
     
     NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%d", (int)userId]};
     

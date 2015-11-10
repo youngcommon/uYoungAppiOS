@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIImageView *coverMsgImage;
 
+@property (strong, nonatomic) NSString *source;
+
 
 - (IBAction)doubanLogin:(UIButton *)sender;
 - (IBAction)qqLogin:(UIButton *)sender;

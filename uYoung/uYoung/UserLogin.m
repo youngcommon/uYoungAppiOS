@@ -10,7 +10,7 @@
 
 @implementation UserLogin
 
-+ (void)postThirdTypeLoginData:(NSDictionary*)dict{
++ (void)postThirdTypeLoginData:(NSDictionary*)dict delegate:(id<UserLoginDelegate>)delegate{
     
     NSString *url = [uyoung_host stringByAppendingString:@"/third/login"];
     
@@ -24,7 +24,7 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"postThirdData" object:@(uid)];
+            [delegate postThirdData:uid];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

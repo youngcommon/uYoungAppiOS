@@ -51,6 +51,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)del
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentUser"];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     

@@ -14,6 +14,7 @@
 #import "UserDetailModel.h"
 #import "NSString+StringUtil.h"
 #import "EditUserViewController.h"
+#import "LoginViewController.h"
 
 @interface UserCenterController : UIViewController<UserDetailDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) ActivityTableViewController *activityTableViewController;
 
 @property (assign, nonatomic) NSInteger userId;
+- (IBAction)editUser:(id)sender;
 
 - (IBAction)getBack:(id)sender;
 

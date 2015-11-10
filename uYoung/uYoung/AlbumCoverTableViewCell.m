@@ -32,7 +32,7 @@
     [_albumCreateLabel setText:model.createTime];
     
     NSString *photoUrl = model.firstPhotoUrl;
-    photoUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
+//    photoUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:photoUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [_albumCoverImage setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [_albumCoverImage setImage:image];

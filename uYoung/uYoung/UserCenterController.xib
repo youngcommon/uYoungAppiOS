@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterController">
@@ -80,7 +80,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-HC-2Uf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-HC-2Uf">
                     <rect key="frame" x="120" y="89" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="Ce8-tl-Wav"/>
@@ -109,7 +109,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="北京-朝阳" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq2-Uj-yAn">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq2-Uj-yAn">
                     <rect key="frame" x="68" y="84" width="54" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="MHD-qz-LpW"/>
@@ -133,7 +133,7 @@
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百度科技" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwb-kb-R2d">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwb-kb-R2d">
                     <rect key="frame" x="69" y="122" width="49" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="LnP-XI-tmT"/>
@@ -162,7 +162,7 @@
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EOS 5D Mark II" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-1K-cVz">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-1K-cVz">
                     <rect key="frame" x="211" y="122" width="98" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="98" id="AHj-ml-ak4"/>
@@ -174,7 +174,7 @@
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="目前职位:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-hn-xSR">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前职位:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-hn-xSR">
                     <rect key="frame" x="15" y="160" width="53" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="Pm4-25-SGU"/>
@@ -186,7 +186,7 @@
                     <color key="shadowColor" red="0.39449179292929293" green="0.39449179292929293" blue="0.39449179292929293" alpha="1" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="软件工程师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-IS-y78">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-IS-y78">
                     <rect key="frame" x="69" y="160" width="50" height="12"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="52" id="Gr6-xN-SC0"/>
@@ -203,7 +203,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是我的昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEV-aX-DwT">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEV-aX-DwT">
                     <rect key="frame" x="26" y="187" width="268" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="268" id="9hN-D5-kkJ"/>
@@ -227,6 +227,9 @@
                         <constraint firstAttribute="height" constant="26" id="nm7-nG-RT2"/>
                     </constraints>
                     <state key="normal" image="uyoung.bundle/settings.png"/>
+                    <connections>
+                        <action selector="editUser:" destination="-1" eventType="touchUpInside" id="GEI-U4-Q6X"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -287,9 +290,9 @@
         </view>
     </objects>
     <resources>
-        <image name="ScreenImage" width="320" height="480"/>
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
         <image name="uyoung.bundle/settings.png" width="320" height="568"/>
         <image name="uyoung.bundle/woman.png" width="320" height="568"/>
     </resources>

@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import <TencentOpenAPI/TencentOAuth.h>
-#import "UserLogin.h"
-#import "UserDetailModel.h"
 
 #if __QQAPI_ENABLE__
 #import "TencentOpenAPI/QQApiInterface.h"
@@ -46,7 +44,6 @@
     [WeiboSDK registerApp:SinaWeiboAppKey];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(postThirdData:) name:@"postThirdData" object:nil];
 
     return YES;
 }
@@ -157,20 +154,17 @@
     }
     
     //保存登陆成功数据
-    [UserLogin postThirdTypeLoginData:dict];
+    [UserLogin postThirdTypeLoginData:dict delegate:self];
     
 }
 
-- (void)postThirdData:(NSNotification*)notification{
-    NSNumber *uid = (NSNumber*)[notification object];
-    [UserDetail getUserDetailWithId:[uid integerValue] delegate:self];
+- (void)postThirdData:(NSInteger)uid{
+    [UserDetail getUserDetailWithId:uid delegate:self];
 }
 
 - (void)fillUserDetail:(NSDictionary*)dict{
     UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
-    UserDetailModel *user = [UserDetailModel currentUser];
-    user = userDetailModel;
-    [user save];
+    [userDetailModel save];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
 }
 

@@ -176,17 +176,17 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
     
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
-    [self initLoginUser];
+    [self initUserAvater];
 }
 
-- (void)initLoginUser{
+- (void)initUserAvater{
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     self.loginUser = [loginUser copy];
-    if (self.loginUser.id>0) {
+    if ([NSString isBlankString:self.loginUser.avatarUrl]==NO) {
         NSString *avaterUrl = self.loginUser.avatarUrl;
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
@@ -310,34 +310,21 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)toUserCenter:(UIButton *)sender {
     
-    if (_loginUser==nil||_loginUser.id==0) {
-        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-        [self presentViewController:loginViewCtl animated:YES completion:nil];
-    }else{
-        [self turnToUserCenter];
-    }
+    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:userCenter animated:YES];
     
 }
 
-- (void)turnToUserCenter{
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-    userCenter.userId = _loginUser.id;
-    [self.navigationController pushViewController:userCenter animated:YES];
-}
-
-- (void)loginSuccess{
-    [self initLoginUser];
+/*- (void)loginSuccess{
+    [self initUserAvater];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self turnToUserCenter];
-}
+}*/
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
     UIImage *bubble = [UIImage imageNamed:name];
-
     CGPoint center = CGPointMake(bubble.size.width / 2.0f, height);
     UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, 0, center.y+1, 2);
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
-    
 }
 
 @end

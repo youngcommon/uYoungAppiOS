@@ -30,6 +30,8 @@
     if (mScreenWidth<375) {
         [_coverMsgImage setHidden:YES];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,7 +82,6 @@
 - (UIImage *)getScaleUIImage:(NSString*)name isFront:(BOOL)isFront{
     UIImage *bubble = [UIImage imageNamed:name];
     
-    
     UIEdgeInsets capInsets;
     if (isFront) {
         capInsets = UIEdgeInsetsMake(0, 10, 0, 6);
@@ -90,4 +91,10 @@
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     
 }
+
+- (void)loginSuccess{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:_source object:nil];
+}
+
 @end

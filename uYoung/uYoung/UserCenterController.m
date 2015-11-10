@@ -9,12 +9,25 @@
 #import "UserCenterController.h"
 #import <UIImageView+AFNetworking.h>
 #import <UIImageView+LBBlurredImage.h>
+#import "EditUserViewController.h"
 
 @implementation UserCenterController
 
 - (void)viewDidLoad{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
-    [UserDetail getUserDetailWithId:_userId delegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews) name:@"usercenter" object:nil];
+    
+    _userDetailModel = [UserDetailModel currentUser];
+    
+    if (_userDetailModel==nil||_userDetailModel.id==0) {
+        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+//        [self.view.window.rootViewController presentViewController:loginViewCtl animated:YES completion:nil];
+        loginViewCtl.source = @"usercenter";
+        [self presentViewController:loginViewCtl animated:YES completion:nil];
+    }else{
+        [self refreshViews];
+    }
+    
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -67,12 +80,6 @@
     [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myActButton];
     
-    //默认加载我的相册Controller
-    self.albumTableViewController = [[AlbumTableViewController alloc]init];
-    self.albumTableViewController.userId = _userId;
-    [self addChildViewController:self.albumTableViewController];
-    [self.view addSubview:self.albumTableViewController.view];
-    
     CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
     self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
     [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
@@ -87,17 +94,28 @@
     [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.activityTableViewController.view setHidden:YES];
+    
 }
 
-- (void)fillUserDetail:(NSDictionary*)dict
-{
-    self.userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
+- (void)refreshViews{
+    _userDetailModel = [UserDetailModel currentUser];
+    
+    [self initViewWithUser];
+}
+
+- (void)initViewWithUser{
     
     //判断，如果用户资料未填写，则弹出完善资料页面
-    if ([NSString isBlankString:self.userDetailModel.nickName]||[NSString isBlankString:self.userDetailModel.avatarUrl]||[NSString isBlankString:self.userDetailModel.company]||[NSString isBlankString:self.userDetailModel.position]) {
-        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
-        [self.navigationController pushViewController:editUserViewCtl animated:YES];
-    }
+//    if ([NSString isBlankString:self.userDetailModel.nickName]||[NSString isBlankString:self.userDetailModel.avatarUrl]||[NSString isBlankString:self.userDetailModel.company]||[NSString isBlankString:self.userDetailModel.position]) {
+//        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+//        [self.navigationController pushViewController:editUserViewCtl animated:YES];
+//    }
+    
+    //默认加载我的相册Controller
+    self.albumTableViewController = [[AlbumTableViewController alloc]init];
+    self.albumTableViewController.userId = _userDetailModel.id;
+    [self addChildViewController:self.albumTableViewController];
+    [self.view addSubview:self.albumTableViewController.view];
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
@@ -116,10 +134,7 @@
     [self.currentTitleLabel setText:self.userDetailModel.position];
     [self.cameraLabel setText:self.userDetailModel.equipment];
     [self.genderImageView setImage:(self.userDetailModel.gender?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
-}
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];  
+    
 }
 
 - (void) buttonClick:(id)sender{
@@ -138,6 +153,11 @@
             [self.albumTableViewController.view setHidden:YES];
         }
     }
+}
+
+- (IBAction)editUser:(id)sender {
+    EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:editUserViewCtl animated:YES];
 }
 
 - (IBAction)getBack:(id)sender {

@@ -10,9 +10,14 @@
 #import <AFNetworking.h>
 #import "GlobalConfig.h"
 
+@protocol UserLoginDelegate <NSObject>
+@optional
+- (void)postThirdData:(NSInteger)uid;
+
+@end
 
 @interface UserLogin : NSObject
 
-+ (void)postThirdTypeLoginData:(NSDictionary*)dict;
++ (void)postThirdTypeLoginData:(NSDictionary*)dict delegate:(id<UserLoginDelegate>)delegate;
 
 @end
