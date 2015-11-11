@@ -14,7 +14,7 @@
     
     NSString *url = [uyoung_host stringByAppendingString:@"album/getByUid"];
     
-    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%i", userId]};
+    NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%d", (int)userId]};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -26,7 +26,7 @@
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
                 NSArray *arr = resultData[@"dataList"];
-                if (arr!=nil&&arr!=NULL&&[arr count]>0) {
+                if (arr!=nil&&![arr isEqual:[NSNull null]]&&arr!=NULL&&[arr count]>0) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:arr];
                 }
             }
