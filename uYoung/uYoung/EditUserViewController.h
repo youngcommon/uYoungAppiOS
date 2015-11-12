@@ -29,6 +29,33 @@
 @property (strong, nonatomic) IBOutlet UIImageView *equipmentImage;
 @property (strong, nonatomic) IBOutlet UITextField *equipmentInput;
 
+//constraints
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *userHeaderButtonH;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *userHeaderButtonW;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *nicknameImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *genderImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *locationImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *companyImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *positionImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *emailImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mobileImageW;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *equipmentImageW;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *firstDistanceCons;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *secondDistanceCons;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *thirdDistanceCons;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *fourthDistanceCons;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topCons;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *firstSepCons;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *secondSepCons;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *thirdSepCons;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerTopCons;
+
+
 - (IBAction)back:(id)sender;
 
 @end

@@ -59,8 +59,10 @@
 }
 
 - (void)gotoUserCenter{
+    
     UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:userCenter animated:YES];
+    
 }
 
 - (void)segmentAction:(UISegmentedControl*)seg{
