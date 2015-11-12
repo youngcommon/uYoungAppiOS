@@ -165,7 +165,7 @@
 - (void)fillUserDetail:(NSDictionary*)dict{
     UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
     [userDetailModel save];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:userDetailModel];
 }
 
 @end

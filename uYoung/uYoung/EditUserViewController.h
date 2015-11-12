@@ -29,5 +29,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *equipmentImage;
 @property (strong, nonatomic) IBOutlet UITextField *equipmentInput;
 
+- (IBAction)back:(id)sender;
 
 @end

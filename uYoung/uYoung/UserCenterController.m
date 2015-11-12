@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad{
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews) name:@"usercenter" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
     
     _userDetailModel = [UserDetailModel currentUser];
     
@@ -25,7 +25,7 @@
         loginViewCtl.source = @"usercenter";
         [self presentViewController:loginViewCtl animated:YES completion:nil];
     }else{
-        [self refreshViews];
+        [self initViewWithUser];
     }
     
     
@@ -80,6 +80,13 @@
     [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myActButton];
     
+    
+    //默认加载我的相册Controller
+    self.albumTableViewController = [[AlbumTableViewController alloc]init];
+    self.albumTableViewController.userId = _userDetailModel.id;
+    [self addChildViewController:self.albumTableViewController];
+    [self.view addSubview:self.albumTableViewController.view];
+    
     CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
     self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
     [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
@@ -97,10 +104,11 @@
     
 }
 
-- (void)refreshViews{
-    _userDetailModel = [UserDetailModel currentUser];
-    
-    [self initViewWithUser];
+- (void)refreshViews:(NSNotification*)no{
+    _userDetailModel = (UserDetailModel*)[no object];
+    if (_userDetailModel&&[_userDetailModel isEqual:[NSNull null]]==NO&&_userDetailModel.id>0) {
+        [self initViewWithUser];
+    }
 }
 
 - (void)initViewWithUser{
@@ -110,12 +118,6 @@
 //        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
 //        [self.navigationController pushViewController:editUserViewCtl animated:YES];
 //    }
-    
-    //默认加载我的相册Controller
-    self.albumTableViewController = [[AlbumTableViewController alloc]init];
-    self.albumTableViewController.userId = _userDetailModel.id;
-    [self addChildViewController:self.albumTableViewController];
-    [self.view addSubview:self.albumTableViewController.view];
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];

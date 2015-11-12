@@ -31,7 +31,7 @@
         [_coverMsgImage setHidden:YES];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,9 +92,10 @@
     
 }
 
-- (void)loginSuccess{
+- (void)loginSuccess:(NSNotification*)noti{
+    UserDetailModel *detail = (UserDetailModel*)[noti object];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter]postNotificationName:_source object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:_source object:detail];
 }
 
 @end
