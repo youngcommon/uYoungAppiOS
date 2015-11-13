@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConfig.h"
 
-@interface EditUserViewController : UIViewController
+@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
+@property (strong, nonatomic) UIPickerView *citySelector;
+@property (strong, nonatomic) NSArray *cityArr;
+@property (strong, nonatomic) NSArray *provinceArr;
+@property (strong, nonatomic) NSDictionary *citydict;
+@property (strong, nonatomic) UIButton *selectedButton;
+@property (strong, nonatomic) UIButton *cancelButton;
 
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
 @property (strong, nonatomic) IBOutlet UIButton *userHeaderButton;

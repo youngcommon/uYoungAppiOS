@@ -21,6 +21,7 @@
     [_locationSelButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [_locationSelButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     
+    [self initPicker];
     [self updateConstraints];
     
     [_nicknameImage setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_top" isFront:YES]];
@@ -130,6 +131,112 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)initPicker{
+    _citySelector = [[UIPickerView alloc] initWithFrame:CGRectMake(0, mScreenHeight/2, mScreenWidth, mScreenHeight/2-60)];
+    // 显示选中框
+    _citySelector.showsSelectionIndicator=YES;
+    _citySelector.dataSource = self;
+    _citySelector.delegate = self;
+    _citySelector.backgroundColor = UIColorFromRGB(0x85b200);
+    [self.view addSubview:_citySelector];
+    [_citySelector setHidden:YES];
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"provinces_cities" ofType:@"plist"];
+    _citydict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    _provinceArr = [_citydict allKeys];
+    
+    NSInteger selectedProvinceIndex = [_citySelector selectedRowInComponent:0];
+    NSString *seletedProvince = [_provinceArr objectAtIndex:selectedProvinceIndex];
+    _cityArr = [_citydict objectForKey:seletedProvince];
+    
+    //创建选择按钮
+    _selectedButton = [[UIButton alloc]initWithFrame:CGRectMake(0, mScreenHeight-60, mScreenWidth/2, 60)];
+    _selectedButton.backgroundColor = UIColorFromRGB(0x85b200);
+    [_selectedButton setTitle:@"确 定" forState:UIControlStateNormal];
+    [_selectedButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_selectedButton];
+    [_selectedButton setHidden:YES];
+    //创建取消按钮
+    _cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth/2, mScreenHeight-60, mScreenWidth/2, 60)];
+    _cancelButton.backgroundColor = UIColorFromRGB(0x85b200);
+    [_cancelButton setTitle:@"取 消" forState:UIControlStateNormal];
+    [_cancelButton addTarget:self action:@selector(cancelPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelButton];
+    [_cancelButton setHidden:YES];
+}
+
+-(void) buttonPressed:(id)sender{
+    NSInteger rowProvince = [_citySelector selectedRowInComponent:0];
+    NSString *province = [_provinceArr objectAtIndex:rowProvince];
+    
+    NSInteger rowCity = [_citySelector selectedRowInComponent:1];
+    NSString *city = [_cityArr objectAtIndex:rowCity];
+    
+    [_locationSelButton setTitle:[NSString stringWithFormat:@"%@ - %@", province, city] forState:UIControlStateNormal];
+    [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
+    [_selectedButton setHidden:YES];
+    [_cancelButton setHidden:YES];
+    [_citySelector setHidden:YES];
+}
+
+-(void) cancelPressed:(id)sender{
+    [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
+    [_selectedButton setHidden:YES];
+    [_cancelButton setHidden:YES];
+    [_citySelector setHidden:YES];
+}
+
+#pragma mark UIPickerView回调
+//确定picker的轮子个数
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+//确定picker的每个轮子的item数
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (component == 0) {//省份个数
+        return [_provinceArr count];
+    } else {//市的个数
+        return [_cityArr count];
+    }
+}
+//确定每个轮子的每一项显示什么内容
+#pragma mark 实现协议UIPickerViewDelegate方法
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (component == 0) {//选择省份名
+        return [_provinceArr objectAtIndex:row];
+    } else {//选择市名
+        return [_cityArr objectAtIndex:row];
+    }
+}
+
+//监听轮子的移动
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component == 0) {
+        NSString *seletedProvince = [_provinceArr objectAtIndex:row];
+        _cityArr = [_citydict objectForKey:seletedProvince];
+        
+        //重点！更新第二个轮子的数据
+        [_citySelector reloadComponent:1];
+        
+        NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:1];
+        NSString *seletedCity = [_cityArr objectAtIndex:selectedCityIndex];
+        
+        NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
+        NSLog(@"%@",msg);
+    } else {
+        NSInteger selectedProvinceIndex = [_citySelector selectedRowInComponent:0];
+        NSString *seletedProvince = [_provinceArr objectAtIndex:selectedProvinceIndex];
+        
+        NSString *seletedCity = [_cityArr objectAtIndex:row];
+        NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
+        NSLog(@"%@",msg);
+    }
+}
+
+
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
     UIImage *bubble = [UIImage imageNamed:name];
     
@@ -153,12 +260,10 @@
 }
 
 - (IBAction)locationSel:(UIButton *)sender {
-    _locationIsDown = _locationIsDown==NO?YES:NO;
-    if (_locationIsDown) {
-        [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/up_arrow"]];
-    }else{
-        [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
-    }
+    [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/up_arrow"]];
+    [_selectedButton setHidden:NO];
+    [_cancelButton setHidden:NO];
+    [_citySelector setHidden:NO];
 }
 
 - (IBAction)back:(id)sender {
