@@ -10,6 +10,9 @@
 #import "GlobalConfig.h"
 
 @interface EditUserViewController : UIViewController
+
+@property (assign, nonatomic) NSInteger gender;
+
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
 @property (strong, nonatomic) IBOutlet UIButton *userHeaderButton;
 @property (strong, nonatomic) IBOutlet UIImageView *nicknameImage;
@@ -28,6 +31,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *mobileInput;
 @property (strong, nonatomic) IBOutlet UIImageView *equipmentImage;
 @property (strong, nonatomic) IBOutlet UITextField *equipmentInput;
+
+- (IBAction)genderSel:(UIButton *)sender;
+
 
 //constraints
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *userHeaderButtonH;
@@ -54,6 +60,9 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *thirdSepCons;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerTopCons;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *genderSelCons;
+
 
 
 - (IBAction)back:(id)sender;

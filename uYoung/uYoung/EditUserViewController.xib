@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditUserViewController">
@@ -23,6 +23,7 @@
                 <outlet property="genderBackImage" destination="vrm-aZ-58H" id="ehu-bF-tD1"/>
                 <outlet property="genderImage" destination="qBT-bw-d8F" id="cL1-gk-CJZ"/>
                 <outlet property="genderImageW" destination="iyB-vm-geH" id="1HA-cf-mOh"/>
+                <outlet property="genderSelCons" destination="o6a-ii-gOg" id="8Cz-j4-303"/>
                 <outlet property="headerTopCons" destination="UMI-4U-4MK" id="AhC-c0-2ca"/>
                 <outlet property="locationBackImage" destination="UN8-o6-CEh" id="oSs-0K-JyV"/>
                 <outlet property="locationImage" destination="mui-ex-pSQ" id="BNZ-eh-Oe9"/>
@@ -243,7 +244,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dve-AS-qfm">
-                            <rect key="frame" x="62" y="292.5" width="24" height="14.5"/>
+                            <rect key="frame" x="62" y="292" width="24" height="14.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -266,13 +267,43 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLq-TX-Dnv">
+                            <rect key="frame" x="164" y="61" width="42" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="8UU-Ef-7yf"/>
+                                <constraint firstAttribute="width" constant="42" id="lj9-QR-Bgz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title=" 男" image="uyoung.bundle/selected.png">
+                                <color key="titleColor" red="0.52156862745098043" green="0.69803921568627447" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="genderSel:" destination="-1" eventType="touchUpInside" id="r2w-9h-ssV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GU9-gV-A7M">
+                            <rect key="frame" x="208" y="61" width="42" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="9C7-Lm-fVa"/>
+                                <constraint firstAttribute="width" constant="42" id="oHW-Sv-ctw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title=" 女" image="uyoung.bundle/unselected.png">
+                                <color key="titleColor" red="0.52156862745098043" green="0.69803921568627447" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="genderSel:" destination="-1" eventType="touchUpInside" id="zW9-nH-zEh"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Sa8-9K-ahd" firstAttribute="centerY" secondItem="yU9-1m-NVt" secondAttribute="centerY" id="178-id-pe4"/>
                         <constraint firstItem="UGL-4Z-c4r" firstAttribute="leading" secondItem="9nj-R5-gB7" secondAttribute="leading" id="1dr-rN-F1Y"/>
                         <constraint firstItem="HGj-ix-Ttr" firstAttribute="centerY" secondItem="tjd-sj-Pnk" secondAttribute="centerY" id="2kd-JG-76c"/>
+                        <constraint firstItem="GU9-gV-A7M" firstAttribute="centerY" secondItem="qBT-bw-d8F" secondAttribute="centerY" id="3k9-Dj-IB4"/>
                         <constraint firstItem="Sa8-9K-ahd" firstAttribute="centerY" secondItem="JqD-jN-0ZX" secondAttribute="centerY" id="3mq-k1-nMq"/>
+                        <constraint firstItem="YLq-TX-Dnv" firstAttribute="centerY" secondItem="qBT-bw-d8F" secondAttribute="centerY" id="48C-bL-GX8"/>
                         <constraint firstAttribute="trailing" secondItem="9se-Kr-0OR" secondAttribute="trailing" constant="20" id="4Gp-Fi-mhW"/>
                         <constraint firstItem="eLb-fh-ngr" firstAttribute="centerY" secondItem="Rnx-bi-Y2L" secondAttribute="centerY" id="4T4-Af-ohC"/>
                         <constraint firstAttribute="trailing" secondItem="eLb-fh-ngr" secondAttribute="trailing" constant="20" id="4TI-8y-rbQ"/>
@@ -307,6 +338,7 @@
                         <constraint firstItem="UN8-o6-CEh" firstAttribute="leading" secondItem="mui-ex-pSQ" secondAttribute="trailing" id="WYB-rj-d0u"/>
                         <constraint firstItem="qjP-tv-qJT" firstAttribute="leading" secondItem="9nj-R5-gB7" secondAttribute="leading" constant="20" id="Xx2-6X-48k"/>
                         <constraint firstItem="etB-pJ-cac" firstAttribute="leading" secondItem="qjP-tv-qJT" secondAttribute="trailing" id="abg-sd-5rr"/>
+                        <constraint firstItem="YLq-TX-Dnv" firstAttribute="leading" secondItem="qBT-bw-d8F" secondAttribute="trailing" constant="8" id="bDh-OQ-Nig"/>
                         <constraint firstItem="vrm-aZ-58H" firstAttribute="leading" secondItem="qBT-bw-d8F" secondAttribute="trailing" id="cKq-fJ-ahs"/>
                         <constraint firstAttribute="bottom" secondItem="UGL-4Z-c4r" secondAttribute="bottom" id="cas-tb-ydi"/>
                         <constraint firstItem="UN8-o6-CEh" firstAttribute="centerY" secondItem="mui-ex-pSQ" secondAttribute="centerY" id="dWj-NM-fHl"/>
@@ -325,6 +357,7 @@
                         <constraint firstItem="Rnx-bi-Y2L" firstAttribute="leading" secondItem="9nj-R5-gB7" secondAttribute="leading" constant="20" id="neT-BW-Vnl"/>
                         <constraint firstItem="UN8-o6-CEh" firstAttribute="top" secondItem="qBT-bw-d8F" secondAttribute="bottom" constant="8" id="ngx-pb-3io"/>
                         <constraint firstItem="dve-AS-qfm" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="nqP-i9-qai"/>
+                        <constraint firstItem="GU9-gV-A7M" firstAttribute="leading" secondItem="YLq-TX-Dnv" secondAttribute="trailing" constant="2" id="o6a-ii-gOg"/>
                         <constraint firstItem="F6h-Gf-iRW" firstAttribute="top" secondItem="t5t-HM-JOE" secondAttribute="bottom" id="oA8-Oe-2zx"/>
                         <constraint firstItem="09G-pE-4uO" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="pgh-MZ-r67"/>
                         <constraint firstItem="1CJ-8T-cPJ" firstAttribute="leading" secondItem="E1U-Bq-bhr" secondAttribute="trailing" id="uCq-k0-VXX"/>
@@ -376,5 +409,7 @@
         <image name="uyoung.bundle/input_mid.png" width="320" height="568"/>
         <image name="uyoung.bundle/input_top.png" width="320" height="568"/>
         <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
+        <image name="uyoung.bundle/selected.png" width="320" height="568"/>
+        <image name="uyoung.bundle/unselected.png" width="320" height="568"/>
     </resources>
 </document>

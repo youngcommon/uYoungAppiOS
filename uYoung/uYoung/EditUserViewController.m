@@ -47,6 +47,7 @@
     CGFloat top;
     CGFloat sep;
     CGFloat height;
+    CGFloat genderSel;
     if (mScreenWidth==375) {//iPhone 6
         headerSize = 74.f;
         distance = 30.f;
@@ -55,6 +56,7 @@
         top = 40.f;
         sep = 2.f;
         height = 40.f;
+        genderSel = 16.f;
     }else if(mScreenWidth>375){//iPhone 6+
         headerSize = 90.f;
         distance = 38.f;
@@ -63,6 +65,7 @@
         top = 50.f;
         sep = 4.f;
         height = 44.f;
+        genderSel = 10.f;
     }else if(mScreenWidth<375&&mScreenHeight>480){//iPhone 5
         headerSize = 60.f;
         distance = 18.f;
@@ -71,6 +74,7 @@
         top = 26.f;
         sep = 2.f;
         height = 40.f;
+        genderSel = 2.f;
     }else{
         return;
     }
@@ -115,6 +119,8 @@
     [_thirdSepCons setConstant:sep];
     
     [_headerTopCons setConstant:top];
+    
+    [_genderSelCons setConstant:genderSel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,5 +151,19 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)genderSel:(UIButton *)sender {
+    NSInteger tag = sender.tag;
+    if (tag==1) {//说明选择的是男
+        UIButton *f = (UIButton*)[self.view viewWithTag:2];
+        [f setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+    }else{//说明选择女
+        UIButton *m = (UIButton*)[self.view viewWithTag:1];
+        [m setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+    }
+    _gender = tag;
 }
 @end

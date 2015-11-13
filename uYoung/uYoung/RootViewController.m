@@ -60,8 +60,10 @@
 
 - (void)gotoUserCenter{
     
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:userCenter animated:YES];
+//    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+//    [self.navigationController pushViewController:userCenter animated:YES];
+    EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:editUserViewCtl animated:YES];
     
 }
 
