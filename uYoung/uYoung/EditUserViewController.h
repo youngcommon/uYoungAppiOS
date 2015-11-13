@@ -12,6 +12,7 @@
 @interface EditUserViewController : UIViewController
 
 @property (assign, nonatomic) NSInteger gender;
+@property (assign, nonatomic) BOOL locationIsDown;
 
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
 @property (strong, nonatomic) IBOutlet UIButton *userHeaderButton;
@@ -31,6 +32,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *mobileInput;
 @property (strong, nonatomic) IBOutlet UIImageView *equipmentImage;
 @property (strong, nonatomic) IBOutlet UITextField *equipmentInput;
+@property (weak, nonatomic) IBOutlet UIButton *locationSelButton;
+@property (weak, nonatomic) IBOutlet UIImageView *locationSelImage;
+
 
 - (IBAction)genderSel:(UIButton *)sender;
 
@@ -64,6 +68,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *genderSelCons;
 
 
+- (IBAction)locationSel:(UIButton *)sender;
 
 - (IBAction)back:(id)sender;
 

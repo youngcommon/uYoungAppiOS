@@ -28,6 +28,8 @@
                 <outlet property="locationBackImage" destination="UN8-o6-CEh" id="oSs-0K-JyV"/>
                 <outlet property="locationImage" destination="mui-ex-pSQ" id="BNZ-eh-Oe9"/>
                 <outlet property="locationImageW" destination="YlD-63-L5J" id="427-fA-5eU"/>
+                <outlet property="locationSelButton" destination="S2z-Pk-AEd" id="PvI-xu-cQb"/>
+                <outlet property="locationSelImage" destination="BZ2-LS-DaA" id="fU7-Lp-xGW"/>
                 <outlet property="mobileImage" destination="qjP-tv-qJT" id="7T3-dZ-omA"/>
                 <outlet property="mobileImageW" destination="MC6-Rj-nn9" id="SV8-Io-XRi"/>
                 <outlet property="mobileInput" destination="etB-pJ-cac" id="mH1-VI-FOo"/>
@@ -295,6 +297,27 @@
                                 <action selector="genderSel:" destination="-1" eventType="touchUpInside" id="zW9-nH-zEh"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2z-Pk-AEd">
+                            <rect key="frame" x="114" y="109" width="100" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="MDW-bW-Kuv"/>
+                                <constraint firstAttribute="width" constant="100" id="iOU-1C-zC7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="城市 - 区域">
+                                <color key="titleColor" red="0.52156862745098043" green="0.69803921568627447" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="locationSel:" destination="-1" eventType="touchUpInside" id="IHV-nu-DMT"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/down_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-LS-DaA">
+                            <rect key="frame" x="216" y="116" width="12" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="hVO-Ff-LvA"/>
+                                <constraint firstAttribute="width" constant="12" id="uIJ-Ul-vyW"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -314,6 +337,7 @@
                         <constraint firstItem="HGj-ix-Ttr" firstAttribute="leading" secondItem="XLm-xL-IG4" secondAttribute="trailing" id="9Ra-ZU-R5n"/>
                         <constraint firstAttribute="trailing" secondItem="HGj-ix-Ttr" secondAttribute="trailing" constant="20" id="9W8-UX-Y31"/>
                         <constraint firstAttribute="trailing" secondItem="Sa8-9K-ahd" secondAttribute="trailing" constant="20" id="9cy-Q7-Ydy"/>
+                        <constraint firstItem="BZ2-LS-DaA" firstAttribute="leading" secondItem="S2z-Pk-AEd" secondAttribute="trailing" constant="2" id="CZX-7S-QDI"/>
                         <constraint firstItem="yU9-1m-NVt" firstAttribute="top" secondItem="mui-ex-pSQ" secondAttribute="bottom" constant="8" id="Cee-uS-gQl"/>
                         <constraint firstItem="JqD-jN-0ZX" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="FEb-kO-Axo"/>
                         <constraint firstAttribute="trailing" secondItem="etB-pJ-cac" secondAttribute="trailing" constant="20" id="Gvq-Me-Z9b"/>
@@ -321,8 +345,10 @@
                         <constraint firstItem="XLm-xL-IG4" firstAttribute="top" secondItem="9nj-R5-gB7" secondAttribute="top" constant="10" id="In2-7K-qJj"/>
                         <constraint firstItem="qBT-bw-d8F" firstAttribute="trailing" secondItem="XLm-xL-IG4" secondAttribute="trailing" id="Jtq-bN-TxH"/>
                         <constraint firstItem="vrm-aZ-58H" firstAttribute="centerY" secondItem="D73-HR-qwV" secondAttribute="centerY" id="LeY-YS-AMO"/>
+                        <constraint firstItem="S2z-Pk-AEd" firstAttribute="centerY" secondItem="mui-ex-pSQ" secondAttribute="centerY" id="NGj-mD-Ep8"/>
                         <constraint firstItem="9se-Kr-0OR" firstAttribute="centerY" secondItem="sMt-GF-7Kl" secondAttribute="centerY" id="NQk-Dk-f5h"/>
                         <constraint firstItem="Sa8-9K-ahd" firstAttribute="leading" secondItem="yU9-1m-NVt" secondAttribute="trailing" id="NjZ-qB-H6I"/>
+                        <constraint firstItem="BZ2-LS-DaA" firstAttribute="centerY" secondItem="S2z-Pk-AEd" secondAttribute="centerY" id="O19-9T-fH7"/>
                         <constraint firstItem="XfU-m0-Df4" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="OOT-N3-DaV"/>
                         <constraint firstItem="UGL-4Z-c4r" firstAttribute="top" secondItem="9nj-R5-gB7" secondAttribute="top" id="QcL-UM-Bg5"/>
                         <constraint firstAttribute="trailing" secondItem="vrm-aZ-58H" secondAttribute="trailing" constant="20" id="RGJ-9f-RIn"/>
@@ -359,6 +385,7 @@
                         <constraint firstItem="dve-AS-qfm" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="nqP-i9-qai"/>
                         <constraint firstItem="GU9-gV-A7M" firstAttribute="leading" secondItem="YLq-TX-Dnv" secondAttribute="trailing" constant="2" id="o6a-ii-gOg"/>
                         <constraint firstItem="F6h-Gf-iRW" firstAttribute="top" secondItem="t5t-HM-JOE" secondAttribute="bottom" id="oA8-Oe-2zx"/>
+                        <constraint firstItem="S2z-Pk-AEd" firstAttribute="leading" secondItem="mui-ex-pSQ" secondAttribute="trailing" constant="14" id="owE-LJ-GTi"/>
                         <constraint firstItem="09G-pE-4uO" firstAttribute="trailing" secondItem="OIB-Pf-Kfw" secondAttribute="trailing" id="pgh-MZ-r67"/>
                         <constraint firstItem="1CJ-8T-cPJ" firstAttribute="leading" secondItem="E1U-Bq-bhr" secondAttribute="trailing" id="uCq-k0-VXX"/>
                         <constraint firstItem="9se-Kr-0OR" firstAttribute="leading" secondItem="sMt-GF-7Kl" secondAttribute="trailing" id="vHO-sM-M8C"/>
@@ -402,6 +429,7 @@
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/backcover.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/down_arrow.png" width="320" height="568"/>
         <image name="uyoung.bundle/input_bottom.png" width="320" height="568"/>
         <image name="uyoung.bundle/input_end_bottom.png" width="320" height="568"/>
         <image name="uyoung.bundle/input_end_mid.png" width="320" height="568"/>

@@ -18,6 +18,9 @@
     [super viewDidLoad];
     _backCoverImageView.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
+    [_locationSelButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [_locationSelButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     [self updateConstraints];
     
     [_nicknameImage setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_top" isFront:YES]];
@@ -147,6 +150,15 @@
     }
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     
+}
+
+- (IBAction)locationSel:(UIButton *)sender {
+    _locationIsDown = _locationIsDown==NO?YES:NO;
+    if (_locationIsDown) {
+        [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/up_arrow"]];
+    }else{
+        [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
+    }
 }
 
 - (IBAction)back:(id)sender {
