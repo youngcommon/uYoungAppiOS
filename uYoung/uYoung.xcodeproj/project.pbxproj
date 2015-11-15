@@ -40,6 +40,7 @@
 		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; };
 		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
+		84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */; };
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
 		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
 		8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */; };
@@ -133,6 +134,8 @@
 		48FC41811BDA6962006E44B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailEnrollsModel.h; sourceTree = "<group>"; };
+		84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailEnrollsModel.m; sourceTree = "<group>"; };
 		8457EE011BEA478200C00176 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
 		8457EE021BEA478200C00176 /* EditUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserViewController.m; sourceTree = "<group>"; };
 		8457EE041BEA47C600C00176 /* EditUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserViewController.xib; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				48039FD21BD145EC00CF147A /* UserDetailModel.m */,
 				48FC41791BD91040006E44B3 /* AlbumModel.h */,
 				48FC417A1BD91040006E44B3 /* AlbumModel.m */,
+				84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */,
+				84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -621,6 +626,7 @@
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
+				84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

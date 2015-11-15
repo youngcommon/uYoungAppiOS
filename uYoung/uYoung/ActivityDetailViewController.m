@@ -226,7 +226,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [enrollView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
     enrollView.delegate = enrollView;
     enrollView.dataSource = enrollView;
-    enrollView.enrolls = [NSMutableArray arrayWithObject:self.detailModel];
+    enrollView.enrolls = [self.detailModel.enrolls copy];
     [enrollView setBackgroundColor:[UIColor clearColor]];
     [self.descScrollView addSubview:enrollView];
     

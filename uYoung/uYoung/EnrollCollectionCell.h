@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserDetailModel.h"
+#import "ActivityDetailEnrollsModel.h"
 #import "GlobalConfig.h"
 
 @interface EnrollCollectionCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *enrollUserHeader;
 @property (weak, nonatomic) IBOutlet UILabel *enrollUserNick;
-@property (strong, nonatomic) UserDetailModel *enrollUser;
+@property (strong, nonatomic) ActivityDetailEnrollsModel *enrollUser;
 
-- (void)updateFrameWithModel:(UserDetailModel*)model;
+- (void)updateFrameWithModel:(ActivityDetailEnrollsModel*)model;
 
 @end

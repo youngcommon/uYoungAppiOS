@@ -20,10 +20,9 @@
     _enrollUserHeader.userInteractionEnabled = YES;
 }
 
-- (void)updateFrameWithModel:(UserDetailModel*)model{
+- (void)updateFrameWithModel:(ActivityDetailEnrollsModel*)model{
     _enrollUser = model;
-    NSString *avatarUrl = _enrollUser.avatarUrl;
-    avatarUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
+    NSString *avatarUrl = _enrollUser.avatar;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [_enrollUserHeader setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [_enrollUserHeader setImage:image];

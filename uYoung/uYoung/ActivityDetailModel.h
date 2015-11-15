@@ -25,5 +25,7 @@
 @property (nonatomic,strong) NSString *avatarUrl;
 @property (nonatomic, assign) NSInteger oriUserId;
 @property (nonatomic,assign) NSInteger feeType;
+@property (nonatomic, strong) NSArray *enrollDictArr;//参与人字典
+@property (nonatomic, strong) NSArray *enrolls;//参加人列表
 
 @end

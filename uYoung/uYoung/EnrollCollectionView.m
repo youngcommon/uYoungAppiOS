@@ -37,7 +37,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@"1"];
+    NSInteger selectedUser = [indexPath row];
+    NSInteger uid = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]).uid;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@(uid)];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
