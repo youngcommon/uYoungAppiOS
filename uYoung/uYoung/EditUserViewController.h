@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GlobalConfig.h"
+#import "UserDetailModel.h"
 
 @interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
@@ -22,6 +23,8 @@
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (nonatomic, strong) UIImagePickerController *camera;
 
+@property (weak, nonatomic) IBOutlet UIButton *maleButton;
+@property (weak, nonatomic) IBOutlet UIButton *femaleButton;
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
 @property (strong, nonatomic) IBOutlet UIButton *userHeaderButton;
 @property (strong, nonatomic) IBOutlet UIImageView *nicknameImage;

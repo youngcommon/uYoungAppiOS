@@ -17,6 +17,7 @@
                 <outlet property="equipmentImage" destination="sMt-GF-7Kl" id="oVx-2x-gxW"/>
                 <outlet property="equipmentImageW" destination="Nu9-q5-bd9" id="95e-oG-Rf3"/>
                 <outlet property="equipmentInput" destination="9se-Kr-0OR" id="yYT-Ma-Jri"/>
+                <outlet property="femaleButton" destination="GU9-gV-A7M" id="6hP-dK-Dpd"/>
                 <outlet property="firstDistanceCons" destination="ngx-pb-3io" id="OSu-vG-WEa"/>
                 <outlet property="firstSepCons" destination="8AK-Qq-cfW" id="7KV-LT-hSe"/>
                 <outlet property="fourthDistanceCons" destination="z0x-WR-3XH" id="nmu-H7-ocx"/>
@@ -30,6 +31,7 @@
                 <outlet property="locationImageW" destination="YlD-63-L5J" id="427-fA-5eU"/>
                 <outlet property="locationSelButton" destination="S2z-Pk-AEd" id="PvI-xu-cQb"/>
                 <outlet property="locationSelImage" destination="BZ2-LS-DaA" id="fU7-Lp-xGW"/>
+                <outlet property="maleButton" destination="YLq-TX-Dnv" id="YFC-kF-ohT"/>
                 <outlet property="mobileImage" destination="qjP-tv-qJT" id="7T3-dZ-omA"/>
                 <outlet property="mobileImageW" destination="MC6-Rj-nn9" id="SV8-Io-XRi"/>
                 <outlet property="mobileInput" destination="etB-pJ-cac" id="mH1-VI-FOo"/>

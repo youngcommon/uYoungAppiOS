@@ -7,6 +7,8 @@
 //
 
 #import "EditUserViewController.h"
+#import "NSString+StringUtil.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface EditUserViewController ()
 
@@ -18,9 +20,7 @@
     [super viewDidLoad];
     _backCoverImageView.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    [_locationSelButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [_locationSelButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
+    [self initUser];
     [self initPicker];
     [self updateConstraints];
     
@@ -41,6 +41,62 @@
     [_equipmentImage setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_mid" isFront:YES]];
     _equipmentInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     
+}
+
+- (void)initUser{
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser&&![loginUser isEqual:[NSNull null]]) {
+        //设置昵称
+        if ([NSString isBlankString:loginUser.nickName]==NO) {
+            [_nicknameInput setText:loginUser.nickName];
+        }
+        //设置头像
+        if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
+            __weak UIButton *weak = _userHeaderButton;
+            NSString *avatarUrl = loginUser.avatarUrl;
+            NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
+            [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+                [weak setBackgroundImage:image forState:UIControlStateNormal];
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+                [weak setBackgroundImage:img forState:UIControlStateNormal];
+            }];
+        }
+        //设置性别
+        if (loginUser.gender) {//男
+            [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+            [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+            _gender = 1;
+        }else{
+            [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+            [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+            _gender = 2;
+        }
+        //设置区域
+        
+        //设置公司
+        if ([NSString isBlankString:loginUser.company]==NO) {
+            [_companyInput setText:loginUser.company];
+        }
+        //设置职位
+        if ([NSString isBlankString:loginUser.position]==NO) {
+            [_positionInput setText:loginUser.position];
+        }
+        //设置邮箱
+        if ([NSString isBlankString:loginUser.email]==NO) {
+            [_emailInput setText:loginUser.email];
+        }
+        //设置手机
+        if ([NSString isBlankString:loginUser.phone]==NO) {
+            [_mobileInput setText:loginUser.phone];
+        }
+        //设置器材
+        if ([NSString isBlankString:loginUser.equipment]==NO) {
+            [_equipmentInput setText:loginUser.equipment];
+        }
+        
+    }
+
 }
 
 - (void)updateConstraints{
