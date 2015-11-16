@@ -133,7 +133,7 @@
         accessToken = self.userLoginInfoDic[@"access_token"];
         nickName = self.userLoginInfoDic[@"nickname"];
         gender = self.userLoginInfoDic[@"gender"];
-        NSInteger genderVal = 0;
+        NSInteger genderVal = 2;
         if (gender&&[gender isKindOfClass:[NSString class]]&&gender.length>0&&[gender isEqualToString:@"男"]) {
             genderVal = 1;
         }
