@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "GlobalConfig.h"
 
-@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSDictionary *citydict;
 @property (strong, nonatomic) UIButton *selectedButton;
 @property (strong, nonatomic) UIButton *cancelButton;
+@property (nonatomic, strong) UIImagePickerController *camera;
 
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
 @property (strong, nonatomic) IBOutlet UIButton *userHeaderButton;
@@ -77,5 +79,6 @@
 - (IBAction)locationSel:(UIButton *)sender;
 
 - (IBAction)back:(id)sender;
+- (IBAction)changeHeader:(UIButton *)sender;
 
 @end

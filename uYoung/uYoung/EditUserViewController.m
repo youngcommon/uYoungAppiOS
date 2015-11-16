@@ -270,6 +270,38 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)changeHeader:(UIButton *)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        _camera = [[UIImagePickerController alloc] init];
+        _camera.delegate = self;
+        _camera.allowsEditing = YES;
+        _camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //此处设置只能使用相机，禁止使用视频功能
+        _camera.mediaTypes = @[(NSString*)kUTTypeImage];
+
+        [self presentViewController:_camera animated:YES completion:nil];
+    }
+}
+
+//点击相册中的图片或照相机照完后点击use后触发的方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *img;
+    if ([info objectForKey:UIImagePickerControllerEditedImage]) {
+        img = [info objectForKey:UIImagePickerControllerEditedImage];
+    }else{
+        img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    
+    [_userHeaderButton setBackgroundImage:img forState:UIControlStateNormal];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//用户取消回调
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)genderSel:(UIButton *)sender {
     NSInteger tag = sender.tag;
     if (tag==1) {//说明选择的是男
