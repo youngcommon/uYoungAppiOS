@@ -9,6 +9,7 @@
 #import "EditUserViewController.h"
 #import "NSString+StringUtil.h"
 #import <UIImageView+AFNetworking.h>
+#import "UIWindow+YoungHUD.h"
 
 @interface EditUserViewController ()
 
@@ -44,16 +45,16 @@
 }
 
 - (void)initUser{
-    UserDetailModel *loginUser = [UserDetailModel currentUser];
-    if (loginUser&&![loginUser isEqual:[NSNull null]]) {
+    _loginUser = [UserDetailModel currentUser];
+    if (_loginUser&&![_loginUser isEqual:[NSNull null]]) {
         //设置昵称
-        if ([NSString isBlankString:loginUser.nickName]==NO) {
-            [_nicknameInput setText:loginUser.nickName];
+        if ([NSString isBlankString:_loginUser.nickName]==NO) {
+            [_nicknameInput setText:_loginUser.nickName];
         }
         //设置头像
-        if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
+        if ([NSString isBlankString:_loginUser.avatarUrl]==NO) {
             __weak UIButton *weak = _userHeaderButton;
-            NSString *avatarUrl = loginUser.avatarUrl;
+            NSString *avatarUrl = _loginUser.avatarUrl;
             NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
             [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
                 [weak setBackgroundImage:image forState:UIControlStateNormal];
@@ -63,7 +64,7 @@
             }];
         }
         //设置性别
-        if (loginUser.gender) {//男
+        if (_loginUser.gender) {//男
             [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
             [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
             _gender = 1;
@@ -75,24 +76,24 @@
         //设置区域
         
         //设置公司
-        if ([NSString isBlankString:loginUser.company]==NO) {
-            [_companyInput setText:loginUser.company];
+        if ([NSString isBlankString:_loginUser.company]==NO) {
+            [_companyInput setText:_loginUser.company];
         }
         //设置职位
-        if ([NSString isBlankString:loginUser.position]==NO) {
-            [_positionInput setText:loginUser.position];
+        if ([NSString isBlankString:_loginUser.position]==NO) {
+            [_positionInput setText:_loginUser.position];
         }
         //设置邮箱
-        if ([NSString isBlankString:loginUser.email]==NO) {
-            [_emailInput setText:loginUser.email];
+        if ([NSString isBlankString:_loginUser.email]==NO) {
+            [_emailInput setText:_loginUser.email];
         }
         //设置手机
-        if ([NSString isBlankString:loginUser.phone]==NO) {
-            [_mobileInput setText:loginUser.phone];
+        if ([NSString isBlankString:_loginUser.phone]==NO) {
+            [_mobileInput setText:_loginUser.phone];
         }
         //设置器材
-        if ([NSString isBlankString:loginUser.equipment]==NO) {
-            [_equipmentInput setText:loginUser.equipment];
+        if ([NSString isBlankString:_loginUser.equipment]==NO) {
+            [_equipmentInput setText:_loginUser.equipment];
         }
         
     }
@@ -469,4 +470,38 @@
 {
      [self moveView:textField leaveView:YES];
 }
+
+- (IBAction)updateUser:(UIButton *)sender {
+    NSDictionary *userData = [[NSMutableDictionary alloc]initWithCapacity:5];
+    NSString *nickName = _nicknameInput.text;
+    NSString *avater = _avater;
+    NSString *company = _companyInput.text;
+    NSString *position = _positionInput.text;
+    NSString *email = _emailInput.text;
+    NSString *cellphone = _mobileInput.text;
+    NSString *equips = _equipmentInput.text;
+    [userData setValue:nickName forKey:@"nickName"];
+    [userData setValue:@(_gender) forKey:@"gender"];
+    if ([NSString isBlankString:avater]==YES) {
+        avater = _loginUser.avatarUrl;
+    }
+    [userData setValue:avater forKey:@"avatarUrl"];
+    [userData setValue:email forKey:@"email"];
+    [userData setValue:cellphone forKey:@"phone"];
+    [userData setValue:_locationSelButton.titleLabel.text forKey:@"address"];
+    [userData setValue:company forKey:@"company"];
+    [userData setValue:position forKey:@"position"];
+    [userData setValue:equips forKey:@"equipment"];
+    [UpdateUser updateUserWithDictionary:userData delegate:self];
+    [self.view.window showHUDWithText:@"正在更新" Type:ShowLoading Enabled:YES];
+}
+
+- (void)didUpdateEnd:(BOOL)isSuccess{
+    if (isSuccess) {
+        [self.view.window showHUDWithText:@"更新成功" Type:ShowPhotoYes Enabled:YES];
+    } else{
+        [self.view.window showHUDWithText:@"更新失败" Type:ShowPhotoYes Enabled:YES];
+    }
+}
+
 @end

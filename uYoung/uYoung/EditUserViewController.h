@@ -10,8 +10,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GlobalConfig.h"
 #import "UserDetailModel.h"
+#import "UpdateUser.h"
 
-@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate>
 
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
@@ -22,7 +23,10 @@
 @property (strong, nonatomic) UIButton *selectedButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (nonatomic, strong) UIImagePickerController *camera;
+@property (strong, nonatomic) NSString *avater;
+@property (strong, nonatomic) UserDetailModel *loginUser;
 
+- (IBAction)updateUser:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *maleButton;
 @property (weak, nonatomic) IBOutlet UIButton *femaleButton;
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;
