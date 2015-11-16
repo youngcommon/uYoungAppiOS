@@ -207,7 +207,7 @@
                                 <outlet property="delegate" destination="-1" id="KZX-mu-4BC"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="您的邮箱" textAlignment="natural" minimumFontSize="17" background="uyoung.bundle/input_end_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="eLb-fh-ngr">
+                        <textField opaque="NO" clipsSubviews="YES" tag="1006" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="您的邮箱" textAlignment="natural" minimumFontSize="17" background="uyoung.bundle/input_end_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="eLb-fh-ngr">
                             <rect key="frame" x="100" y="238" width="156" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" identifier="h_email_input" id="sJP-no-dtX"/>

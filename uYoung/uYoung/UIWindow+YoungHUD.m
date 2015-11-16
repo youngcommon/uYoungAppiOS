@@ -101,7 +101,7 @@
     }
     
     [YoungHUDLabel shareHUDView].text = text;
-    [YoungHUDImageView shareHUDView].image = [UIImage imageNamed:@"SpyResource.bundle/HUD_YES"];
+    [YoungHUDImageView shareHUDView].image = [UIImage imageNamed:@"uyoung.bundle/HUD_YES"];
     [UIView animateWithDuration:comeTime animations:^{
         [self comeTimeBounds:bounds];
         [self comeTimeAlpha:backgroundAlpha withImage:YES];
@@ -134,7 +134,7 @@
     }
     
     [YoungHUDLabel shareHUDView].text = text;
-    [YoungHUDImageView shareHUDView].image = [UIImage imageNamed:@"SpyResource.bundle/HUD_NO"];
+    [YoungHUDImageView shareHUDView].image = [UIImage imageNamed:@"uyoung.bundle/HUD_NO"];
     [UIView animateWithDuration:comeTime animations:^{
         [self comeTimeBounds:bounds];
         [self comeTimeAlpha:backgroundAlpha withImage:YES];

@@ -344,6 +344,9 @@
 - (IBAction)textfieldEditingChanged:(UITextField *)sender {
     NSInteger tag = sender.tag;
     NSInteger textLength = 10;
+    if (tag==1006) {
+        return;
+    }
     if (tag==1002||tag==1005) {
         textLength = 20;
     } else if(tag==1004){
@@ -492,8 +495,8 @@
     [userData setValue:company forKey:@"company"];
     [userData setValue:position forKey:@"position"];
     [userData setValue:equips forKey:@"equipment"];
-    [UpdateUser updateUserWithDictionary:userData delegate:self];
     [self.view.window showHUDWithText:@"正在更新" Type:ShowLoading Enabled:YES];
+    [UpdateUser updateUserWithDictionary:userData delegate:self];
 }
 
 - (void)didUpdateEnd:(BOOL)isSuccess{

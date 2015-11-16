@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "uYoung/EnrollCollectionCell.m"
-            timestampString = "469289216.971838"
+            filePath = "uYoung/UpdateUser.m"
+            timestampString = "469379859.332357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "-updateFrameWithModel:"
+            landmarkName = "+updateUserWithDictionary:delegate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

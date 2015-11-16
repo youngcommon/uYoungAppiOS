@@ -8,7 +8,7 @@
 
 #import "YoungHUDImageView.h"
 
-static YzdHUDImageView *_shareHUDView = nil;
+static YoungHUDImageView *_shareHUDView = nil;
 @implementation YoungHUDImageView
 
 - (id)initWithFrame:(CGRect)frame
