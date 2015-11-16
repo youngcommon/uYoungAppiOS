@@ -80,5 +80,6 @@
 
 - (IBAction)back:(id)sender;
 - (IBAction)changeHeader:(UIButton *)sender;
+- (IBAction)textfieldEditingChanged:(UITextField *)sender;
 
 @end

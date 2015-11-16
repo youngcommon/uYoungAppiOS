@@ -284,6 +284,21 @@
     }
 }
 
+- (IBAction)textfieldEditingChanged:(UITextField *)sender {
+    NSInteger tag = sender.tag;
+    NSInteger textLength = 10;
+    if (tag==1002||tag==1005) {
+        textLength = 20;
+    } else if(tag==1004){
+        textLength = 11;
+    }
+
+    if (sender.text.length > textLength) {
+        sender.text = [sender.text substringToIndex:textLength];
+    }
+
+}
+
 //点击相册中的图片或照相机照完后点击use后触发的方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *img;
