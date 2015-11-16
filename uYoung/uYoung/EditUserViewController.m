@@ -270,6 +270,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark 选择头像
 - (IBAction)changeHeader:(UIButton *)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         _camera = [[UIImagePickerController alloc] init];
@@ -314,5 +315,87 @@
         [sender setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
     }
     _gender = tag;
+}
+
+#pragma mark 处理键盘遮挡
+- (void)moveView:(UITextField *)textField leaveView:(BOOL)leave
+{
+    UIView *accessoryView = textField.inputAccessoryView;
+    UIView *inputview     = textField.inputView;
+    
+    int textFieldY = 0;
+    int accessoryY = 0;
+    if (accessoryView && inputview)
+    {
+        CGRect accessoryRect = accessoryView.frame;
+        CGRect inputViewRect = inputview.frame;
+        accessoryY = 480 - (accessoryRect.size.height + inputViewRect.size.height);
+    }
+    else if (accessoryView)
+    {
+        CGRect accessoryRect = accessoryView.frame;
+        accessoryY = 480 - (accessoryRect.size.height + 216);
+    }
+    else if (inputview)
+    {
+        CGRect inputViewRect = inputview.frame;
+        accessoryY = 480 -inputViewRect.size.height;
+    }
+    else
+    {
+        accessoryY = 264; //480 - 216;
+    }
+    
+    
+    CGRect textFieldRect = textField.frame;
+    textFieldY = textFieldRect.origin.y + textFieldRect.size.height + 20;
+    
+    int offsetY = textFieldY - accessoryY;
+    if (!leave && offsetY > 0)
+    {
+        int y_offset = -5;
+        
+        y_offset += -offsetY;
+        
+        CGRect viewFrame = self.view.frame;
+        
+        viewFrame.origin.y += y_offset;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [self.view setFrame:viewFrame];
+        [UIView commitAnimations];
+    }
+    else
+    {
+        CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [self.view setFrame:viewFrame];
+        [UIView commitAnimations];
+    }
+
+}
+
+//开始编辑输入框的时候，软键盘出现，执行此事件
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self moveView:textField leaveView:NO];
+}
+
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+     [self moveView:textField leaveView:YES];
 }
 @end

@@ -10,7 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GlobalConfig.h"
 
-@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;

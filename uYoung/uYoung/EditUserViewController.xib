@@ -184,6 +184,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="RY1-LH-szX"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="uyoung.bundle/input_end_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1CJ-8T-cPJ">
                             <rect key="frame" x="100" y="190" width="156" height="40"/>
@@ -192,6 +195,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="KZX-mu-4BC"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="uyoung.bundle/input_end_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="eLb-fh-ngr">
                             <rect key="frame" x="100" y="238" width="156" height="40"/>
@@ -200,6 +206,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="npC-57-Tck"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="uyoung.bundle/input_end_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="etB-pJ-cac">
                             <rect key="frame" x="100" y="280" width="156" height="40"/>
@@ -208,6 +217,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="JIL-jt-YTk"/>
+                            </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/input_mid.png" translatesAutoresizingMaskIntoConstraints="NO" id="sMt-GF-7Kl">
                             <rect key="frame" x="20" y="328" width="80" height="40"/>
@@ -223,6 +235,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="kNx-ge-ko6"/>
+                            </connections>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjd-sj-Pnk">
                             <rect key="frame" x="118" y="23" width="24" height="14.5"/>
