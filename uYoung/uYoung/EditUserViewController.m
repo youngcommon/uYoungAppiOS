@@ -495,6 +495,7 @@
     [userData setValue:company forKey:@"company"];
     [userData setValue:position forKey:@"position"];
     [userData setValue:equips forKey:@"equipment"];
+    [userData setValue:@(_loginUser.id) forKey:@"id"];
     [self.view.window showHUDWithText:@"正在更新" Type:ShowLoading Enabled:YES];
     [UpdateUser updateUserWithDictionary:userData delegate:self];
 }
