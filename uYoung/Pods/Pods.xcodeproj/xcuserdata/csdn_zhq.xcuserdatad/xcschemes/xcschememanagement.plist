@@ -9,12 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DTCoreText.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>DTFoundation.xcscheme</key>
+		<key>HappyDNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Qiniu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,62 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11C525648AC966893DE98410819E9D8B</key>
+		<key>4EB92CB6ECA1CE95D3C7F23C15B7B6CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<key>5D1E6E622F2A6257040427A311E5442B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>426BC4549A625B5E1E4200D5261A98BF</key>
+		<key>8A0B70A3F1A049AA78659301D4F6CD5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4484C809EE5EE2F6A0B44371D7BFA9B4</key>
+		<key>ACC36B97B73B216EABEB5CF88B7E3E26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>497E5D5FE3D57A4B23039EC5DE0A84CE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>56FCB078C21A18A1FB1365AFDB0BBDCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6899E698601E8EDC33C772E5D60267E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6CEF82445A61FC864C0F1804C4C5544B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>785E456A4B5EC8A508CE868E04789C03</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9577583EDBEC1B2A1D1B675E246C86A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AFA268EE3B9EF445172B59B70ED78E59</key>
+		<key>CDE895EBB9417E5CFF4D644BC1C86586</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D10AFCBBC3949030D56276226438BB24</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2ED0E5603FAE214C029EBAFC4A10FE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

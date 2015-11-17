@@ -20,22 +20,29 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - HappyDNS (0.2.3)
   - LBBlurredImage (0.2.2)
   - Mantle (2.0.5):
     - Mantle/extobjc (= 2.0.5)
   - Mantle/extobjc (2.0.5)
+  - Qiniu (7.0.15):
+    - AFNetworking (~> 2.0)
+    - HappyDNS (~> 0.2)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - AFNetworking
   - LBBlurredImage
   - Mantle
+  - Qiniu (~> 7.0)
   - SVPullToRefresh
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
+  Qiniu: ade34d722c8ce0eed7080fd268249e8402a2f535
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.38.2
