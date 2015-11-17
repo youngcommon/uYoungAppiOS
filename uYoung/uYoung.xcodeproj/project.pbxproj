@@ -68,6 +68,7 @@
 		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
 		848946B61BF628B2008B46A4 /* provinces_cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 848946B51BF628B2008B46A4 /* provinces_cities.plist */; };
+		84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
 		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6216E1BE7A2C2004C3733 /* UserLogin.m */; };
@@ -191,6 +192,8 @@
 		847E184A1BDFCB9E00882D20 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libstdc++.dylib"; sourceTree = "<group>"; };
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
 		848946B51BF628B2008B46A4 /* provinces_cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = provinces_cities.plist; sourceTree = "<group>"; };
+		84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalNetwork.h; sourceTree = "<group>"; };
+		84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalNetwork.m; sourceTree = "<group>"; };
 		84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		84F6216D1BE7A2C2004C3733 /* UserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLogin.h; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				84F6216E1BE7A2C2004C3733 /* UserLogin.m */,
 				84763F6B1BFA1894002BC70B /* UpdateUser.h */,
 				84763F6C1BFA1894002BC70B /* UpdateUser.m */,
+				84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */,
+				84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				483E17D01BAC548E00CDDBD3 /* Frameworks */,
 				483E17D11BAC548E00CDDBD3 /* Resources */,
 				8C033E6CAF683F8142F1067C /* Copy Pods Resources */,
+				76E81E865C1AFB3996072F3D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -613,6 +619,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		76E81E865C1AFB3996072F3D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8C033E6CAF683F8142F1067C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -642,6 +663,7 @@
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
+				84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				84763F7E1BFA1FC7002BC70B /* YoungHUDBackgroundView.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,

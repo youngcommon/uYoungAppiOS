@@ -13,12 +13,13 @@
 #import "UserDetail.h"
 #import "UserLogin.h"
 #import "UserDetailModel.h"
+#import "GlobalNetwork.h"
 
 #define kMAIN_SCREEN_WIDTH   ([[UIScreen mainScreen] bounds].size.width)
 #define kMAIN_SCREEN_HEIGHT  ([[UIScreen mainScreen] bounds].size.height)
 
 @class TencentOAuth;
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserDetailDelegate, UserLoginDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserDetailDelegate, UserLoginDelegate, GlobalNetworkDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *root;

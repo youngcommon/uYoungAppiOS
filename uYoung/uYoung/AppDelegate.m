@@ -44,6 +44,9 @@
     [WeiboSDK registerApp:SinaWeiboAppKey];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
+    
+    //获取七牛云token
+    [GlobalNetwork getQNUploadToken:self];
 
     return YES;
 }
@@ -72,6 +75,9 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
+-(void)successGetQNToken:(NSString*)token{
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"qiniu_token"];
+}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {

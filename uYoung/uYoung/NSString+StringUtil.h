@@ -12,4 +12,6 @@
 
 + (BOOL) isBlankString:(NSString *)string;
 
+- (NSString*)stringToMD5;
+
 @end
