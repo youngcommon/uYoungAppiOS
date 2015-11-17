@@ -19,6 +19,7 @@
 		4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4CB1BB1417D006AEC13 /* RootViewController.xib */; };
 		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; };
 		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; };
+		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
 		483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17DB1BAC548E00CDDBD3 /* AppDelegate.m */; };
@@ -104,6 +105,8 @@
 		4820A4D41BB280DD006AEC13 /* uyoung.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = uyoung.bundle; sourceTree = "<group>"; };
 		4820A4D91BB2D352006AEC13 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		4820A4DA1BB2D352006AEC13 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
+		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
+		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
 		483AFDBE1BC817DF0054985D /* ActivityList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityList.m; sourceTree = "<group>"; };
 		483E17D31BAC548E00CDDBD3 /* uYoung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uYoung.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -441,6 +444,8 @@
 				8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */,
 				84763F6E1BFA1D33002BC70B /* UYoungAlertViewUtil.h */,
 				84763F6F1BFA1D33002BC70B /* UYoungAlertViewUtil.m */,
+				48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */,
+				48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 				48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */,
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
+				48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
 				8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */,
 				84763F6D1BFA1894002BC70B /* UpdateUser.m in Sources */,

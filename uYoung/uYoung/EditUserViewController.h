@@ -11,8 +11,10 @@
 #import "GlobalConfig.h"
 #import "UserDetailModel.h"
 #import "UpdateUser.h"
+#import "UserDetail.h"
+#import "UploadImageUtil.h"
 
-@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate>
+@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate, UserDetailDelegate, UploadImgDelegate>
 
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
@@ -25,6 +27,7 @@
 @property (nonatomic, strong) UIImagePickerController *camera;
 @property (strong, nonatomic) NSString *avater;
 @property (strong, nonatomic) UserDetailModel *loginUser;
+@property (strong, nonatomic) UserDetailModel *tempLoginUser;
 
 - (IBAction)updateUser:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *maleButton;
@@ -52,7 +55,6 @@
 
 
 - (IBAction)genderSel:(UIButton *)sender;
-
 
 //constraints
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *userHeaderButtonH;

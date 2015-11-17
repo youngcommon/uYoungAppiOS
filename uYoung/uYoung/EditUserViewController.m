@@ -367,8 +367,11 @@
     }else{
         img = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    
+    //更新图片
     [_userHeaderButton setBackgroundImage:img forState:UIControlStateNormal];
+    
+    //上传图片至七牛云
+    [UploadImageUtil uploadImage:img withKey:[NSString stringWithFormat:@"uyoung_header_%d", (int)_loginUser.id] delegate:self];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -474,6 +477,7 @@
      [self moveView:textField leaveView:YES];
 }
 
+//更新用户数据
 - (IBAction)updateUser:(UIButton *)sender {
     NSDictionary *userData = [[NSMutableDictionary alloc]initWithCapacity:5];
     NSString *nickName = _nicknameInput.text;
@@ -503,9 +507,23 @@
 - (void)didUpdateEnd:(BOOL)isSuccess{
     if (isSuccess) {
         [self.view.window showHUDWithText:@"更新成功" Type:ShowPhotoYes Enabled:YES];
+        //从新获取用户数据，进行保存
+        [UserDetail getUserDetailWithId:_loginUser.id delegate:self];
     } else{
         [self.view.window showHUDWithText:@"更新失败" Type:ShowPhotoYes Enabled:YES];
     }
+}
+
+//保存更新本地用户数据
+- (void)fillUserDetail:(NSDictionary*)dict{
+    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
+    [userDetailModel save];
+    _loginUser = [userDetailModel copy];
+}
+
+//获得七牛云存储的头像的url
+- (void)getImgUrl:(NSString*)url{
+    _avater = url;
 }
 
 @end
