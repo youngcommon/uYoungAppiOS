@@ -28,6 +28,9 @@
 @property (strong, nonatomic) NSString *avater;
 @property (strong, nonatomic) UserDetailModel *loginUser;
 @property (strong, nonatomic) UserDetailModel *tempLoginUser;
+@property (assign, nonatomic) CGFloat textFieldY;//点击输入的输入框
+@property (assign, nonatomic) BOOL isKeyboardHidden;
+@property (assign, nonatomic) CGFloat offset;//键盘偏移量
 
 - (IBAction)updateUser:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *maleButton;

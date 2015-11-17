@@ -76,7 +76,7 @@
 }
 
 -(void)successGetQNToken:(NSString*)token{
-    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"qiniu_token"];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:QINIU_TOKEN];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

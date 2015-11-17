@@ -17,9 +17,9 @@
     
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getPageByStatus"];
     
-    NSDictionary *parameters = @{@"pageNum": [NSString stringWithFormat:@"%i", pageNum],
-                                 @"pageSize":[NSString stringWithFormat:@"%i", pageSize],
-                                 @"status": [NSString stringWithFormat:@"%i", status]};
+    NSDictionary *parameters = @{@"pageNum": [NSString stringWithFormat:@"%d", (int)pageNum],
+                                 @"pageSize":[NSString stringWithFormat:@"%d", (int)pageSize],
+                                 @"status": [NSString stringWithFormat:@"%d", (int)status]};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

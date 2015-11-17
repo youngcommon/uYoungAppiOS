@@ -32,4 +32,6 @@
 
 #define UserDefaultHeader @"uyoung.bundle/logo_icon"
 
+#define QINIU_TOKEN @"qiniu_token"
+
 #endif /* GlobalConfig_h */
