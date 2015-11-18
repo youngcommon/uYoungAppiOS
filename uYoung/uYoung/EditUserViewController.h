@@ -55,6 +55,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *equipmentInput;
 @property (weak, nonatomic) IBOutlet UIButton *locationSelButton;
 @property (weak, nonatomic) IBOutlet UIImageView *locationSelImage;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 
 - (IBAction)genderSel:(UIButton *)sender;

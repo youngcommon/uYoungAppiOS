@@ -44,8 +44,8 @@
     _equipmentInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     
     //增加键盘事件监听
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)initUser{
@@ -409,15 +409,15 @@
     if (accessoryView && inputview){
         CGRect accessoryRect = accessoryView.frame;
         CGRect inputViewRect = inputview.frame;
-        accessoryY = self.view.frame.size.height - (accessoryRect.size.height + inputViewRect.size.height);
+        accessoryY = 480 - (accessoryRect.size.height + inputViewRect.size.height);
     } else if (accessoryView) {
         CGRect accessoryRect = accessoryView.frame;
-        accessoryY = self.view.frame.size.height - (accessoryRect.size.height + 216);
+        accessoryY = 480 - (accessoryRect.size.height + 216);
     } else if (inputview) {
         CGRect inputViewRect = inputview.frame;
-        accessoryY = self.view.frame.size.height -inputViewRect.size.height;
+        accessoryY = 480 -inputViewRect.size.height;
     } else {
-        accessoryY = self.view.frame.size.height - 216; //480 - 216;
+        accessoryY = 480 - 216; //480 - 216;
     }
     
     
@@ -453,14 +453,13 @@
 
 - (void)moveView:(UITextField *)textField{
     CGRect textFieldRect = textField.frame;
-    _textFieldY = textFieldRect.origin.y + textFieldRect.size.height;
+    _textFieldY = textFieldRect.origin.y + textFieldRect.size.height + 20;
 }
 
 //开始编辑输入框的时候，软键盘出现，执行此事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-//    [self moveView:textField leaveView:NO];
-    [self moveView:textField];
-    _isKeyboardHidden = NO;
+    [self moveView:textField leaveView:NO];
+//    [self moveView:textField];
 }
 
 //当用户按下return键或者按回车键，keyboard消失
@@ -471,8 +470,7 @@
 
 //输入框编辑完成以后，将视图恢复到原始状态
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-//     [self moveView:textField leaveView:YES];
-    _isKeyboardHidden = YES;
+     [self moveView:textField leaveView:YES];
 }
 
 //更新用户数据
@@ -534,22 +532,21 @@
 -(void)keyboardWillAppear:(NSNotification *)notification{
     CGRect currentFrame = self.view.frame;
     CGFloat change = [self keyboardEndingFrameHeight:[notification userInfo]];//键盘高度
-    CGFloat keyboardY = mScreenHeight - change;//获得键盘遮挡位置的Y值
+    CGFloat keyboardY = 480 - change;//获得键盘遮挡位置的Y值
     if (_isKeyboardHidden==NO) {//说明已经有位移
-        currentFrame.origin.y = currentFrame.origin.y + _offset;
+        currentFrame.origin.y = currentFrame.origin.y - _offset;
     }
-    if(keyboardY < (_textFieldY+20)){//说明被挡住
-        _offset = _textFieldY-20-keyboardY;
-        currentFrame.origin.y = currentFrame.origin.y - _offset ;//计算偏移量
+    if(keyboardY < _textFieldY){//说明被挡住
+        _offset = keyboardY - _textFieldY;
+        currentFrame.origin.y = _offset ;//计算偏移量
     }
     self.view.frame = currentFrame;
+    _isKeyboardHidden = NO;
 }
 
 -(void)keyboardWillDisappear:(NSNotification *)notification{
-    CGRect currentFrame = self.view.frame;
-    CGFloat change = [self keyboardEndingFrameHeight:[notification userInfo]];
-    currentFrame.origin.y = currentFrame.origin.y + _offset ;
     self.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
+    _isKeyboardHidden = YES;
 }
 
 @end
