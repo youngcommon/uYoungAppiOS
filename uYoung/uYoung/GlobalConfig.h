@@ -34,4 +34,6 @@
 
 #define QINIU_TOKEN @"qiniu_token"
 
+#define QINIU_HOST @"qiniu_host"
+
 #endif /* GlobalConfig_h */

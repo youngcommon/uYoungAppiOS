@@ -20,9 +20,9 @@
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     NSData *data = UIImageJPEGRepresentation(img, 1.0);
     [upManager putData:data key:key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSLog(@"%@", info);
-        NSLog(@"%@", resp);
-        [delegate getImgUrl:resp[@"url"]];
+        NSString *qiniuHost = [[NSUserDefaults standardUserDefaults] objectForKey:QINIU_HOST];
+        NSString *url = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:key];
+        [delegate getImgUrl:url];
     } option:nil];
 }
 

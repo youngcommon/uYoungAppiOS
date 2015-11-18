@@ -47,7 +47,9 @@
     
     //获取七牛云token
     [GlobalNetwork getQNUploadToken:self];
-
+    //获得城市
+    [GlobalNetwork getAllCityies:self];
+    
     return YES;
 }
 
@@ -75,8 +77,15 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
--(void)successGetQNToken:(NSString*)token{
+-(void)successGetQNToken:(NSDictionary*)data{
+    NSString *token = data[@"upToken"];
+    NSString *qiniuHost = data[@"url"];
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:QINIU_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:qiniuHost forKey:QINIU_HOST];
+}
+
+-(void)successGetCities:(NSDictionary*)dict{
+    NSLog(@"%@", dict);
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
