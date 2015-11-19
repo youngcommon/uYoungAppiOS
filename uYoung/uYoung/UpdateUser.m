@@ -24,6 +24,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             [delegate didUpdateEnd:YES];
+        }else{
+            [delegate didUpdateEnd:NO];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
