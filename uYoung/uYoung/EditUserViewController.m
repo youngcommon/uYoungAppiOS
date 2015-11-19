@@ -203,13 +203,13 @@
     [_citySelector setHidden:YES];
     
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"provinces_cities" ofType:@"plist"];
-    _citydict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    _provinceArr = [_citydict allKeys];
+    NSString *plistPath = [bundle pathForResource:@"cities_locations" ofType:@"plist"];
+    _cityarr = [[NSArray alloc] initWithContentsOfFile:plistPath];
+//    _cityNameArr = [_citydict allKeys];
     
-    NSInteger selectedProvinceIndex = [_citySelector selectedRowInComponent:0];
-    NSString *seletedProvince = [_provinceArr objectAtIndex:selectedProvinceIndex];
-    _cityArr = [_citydict objectForKey:seletedProvince];
+    NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
+    NSString *seletedCity = [_cityNameArr objectAtIndex:selectedCityIndex];
+    _locationNameArr = [[_cityarr objectAtIndex:selectedCityIndex]objectForKey:@"subDictCityList"];
     
     //创建选择按钮
     _selectedButton = [[UIButton alloc]initWithFrame:CGRectMake(0, mScreenHeight-60, mScreenWidth/2, 60)];
@@ -228,13 +228,13 @@
 }
 
 -(void) buttonPressed:(id)sender{
-    NSInteger rowProvince = [_citySelector selectedRowInComponent:0];
-    NSString *province = [_provinceArr objectAtIndex:rowProvince];
+    NSInteger rowcity = [_citySelector selectedRowInComponent:0];
+    NSString *city = [_cityNameArr objectAtIndex:rowcity];
     
-    NSInteger rowCity = [_citySelector selectedRowInComponent:1];
-    NSString *city = [_cityArr objectAtIndex:rowCity];
+    NSInteger rowlocation = [_citySelector selectedRowInComponent:1];
+    NSString *location = [_locationNameArr objectAtIndex:rowlocation];
     
-    [_locationSelButton setTitle:[NSString stringWithFormat:@"%@ - %@", province, city] forState:UIControlStateNormal];
+    [_locationSelButton setTitle:[NSString stringWithFormat:@"%@ - %@", city, location] forState:UIControlStateNormal];
     [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
     [_selectedButton setHidden:YES];
     [_cancelButton setHidden:YES];
@@ -256,19 +256,19 @@
 
 //确定picker的每个轮子的item数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == 0) {//省份个数
-        return [_provinceArr count];
-    } else {//市的个数
-        return [_cityArr count];
+    if (component == 0) {//城市个数
+        return [_cityNameArr count];
+    } else {//区域个数
+        return [_locationNameArr count];
     }
 }
 //确定每个轮子的每一项显示什么内容
 #pragma mark 实现协议UIPickerViewDelegate方法
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (component == 0) {//选择省份名
-        return [_provinceArr objectAtIndex:row];
+        return [_cityNameArr objectAtIndex:row];
     } else {//选择市名
-        return [_cityArr objectAtIndex:row];
+        return [_locationNameArr objectAtIndex:row];
     }
 }
 
@@ -276,22 +276,22 @@
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == 0) {
-        NSString *seletedProvince = [_provinceArr objectAtIndex:row];
-        _cityArr = [_citydict objectForKey:seletedProvince];
+        NSString *seletedProvince = [_cityNameArr objectAtIndex:row];
+        _locationNameArr = [[_cityarr objectAtIndex:row]objectForKey:@"subDictCityList"];
         
         //重点！更新第二个轮子的数据
         [_citySelector reloadComponent:1];
         
         NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:1];
-        NSString *seletedCity = [_cityArr objectAtIndex:selectedCityIndex];
+        NSString *seletedCity = [_cityNameArr objectAtIndex:selectedCityIndex];
         
         NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
         NSLog(@"%@",msg);
     } else {
         NSInteger selectedProvinceIndex = [_citySelector selectedRowInComponent:0];
-        NSString *seletedProvince = [_provinceArr objectAtIndex:selectedProvinceIndex];
+        NSString *seletedProvince = [_cityNameArr objectAtIndex:selectedProvinceIndex];
         
-        NSString *seletedCity = [_cityArr objectAtIndex:row];
+        NSString *seletedCity = [_locationNameArr objectAtIndex:row];
         NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
         NSLog(@"%@",msg);
     }

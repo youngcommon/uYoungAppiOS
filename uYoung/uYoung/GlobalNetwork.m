@@ -63,7 +63,7 @@
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSDictionary *cities = [responseObject objectForKey:@"resultData"];
+            NSArray *cities = [responseObject objectForKey:@"resultData"];
             [delegate successGetCities:cities];
         }
         

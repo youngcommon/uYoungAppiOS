@@ -84,8 +84,15 @@
     [[NSUserDefaults standardUserDefaults] setObject:qiniuHost forKey:QINIU_HOST];
 }
 
--(void)successGetCities:(NSDictionary*)dict{
-    NSLog(@"%@", dict);
+-(void)successGetCities:(NSArray*)arr{
+    NSLog(@"%@", arr);
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities_locations" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+
+    BOOL success = [[data mutableCopy]writeToFile:plistPath atomically:YES];
+    NSLog(@"%d", success);
+    
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

@@ -36,4 +36,6 @@
 
 #define QINIU_HOST @"qiniu_host"
 
+#define CITY_LIST @"city_list"
+
 #endif /* GlobalConfig_h */

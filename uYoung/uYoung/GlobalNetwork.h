@@ -13,7 +13,7 @@
 
 @optional
 -(void)successGetQNToken:(NSDictionary*)token;
--(void)successGetCities:(NSDictionary*)dict;
+-(void)successGetCities:(NSArray*)arr;
 
 @end
 
