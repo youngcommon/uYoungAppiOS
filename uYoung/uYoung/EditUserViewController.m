@@ -22,8 +22,8 @@
     [super viewDidLoad];
     _backCoverImageView.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    [self initUser];
     [self initPicker];
+    [self initUser];
     [self updateConstraints];
     _isKeyboardHidden = YES;
     
@@ -78,7 +78,33 @@
             [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
             _gender = 2;
         }
+        
         //设置区域
+        if (_cityarr&&[_cityarr count]>0) {
+            NSString *cityName;
+            NSString *locationName;
+            for (int i=0; i<[_cityarr count]; i++) {
+                CityModel *city = _cityarr[i];
+                if (city.id == _cityId) {
+                    [_citySelector selectRow:i inComponent:0 animated:YES];//设置滚轮默认选中
+                    cityName = city.cnName;
+                    NSArray *subs = city.subDictCityList;
+                    if (subs&&[subs count]>0) {
+                        _locationArr = subs;
+                        for (int j=0; j<[subs count]; j++) {
+                            CityModel *location = subs[j];
+                            if (location.id == _locationId) {
+                                [_citySelector selectRow:j inComponent:1 animated:YES];
+                                locationName = location.cnName;
+                            }
+                        }
+                    }else{
+                        locationName = cityName;
+                    }
+                }
+            }
+            [_locationSelButton setTitle:[NSString stringWithFormat:@"%@ - %@", cityName, locationName] forState:UIControlStateNormal];
+        }
         
         //设置公司
         if ([NSString isBlankString:_loginUser.company]==NO) {
@@ -209,7 +235,7 @@
     } else {
         _cityarr = [[NSArray alloc]init];
     }
-    
+
     NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
     CityModel *parentCity = [_cityarr objectAtIndex:selectedCityIndex];
     
@@ -527,6 +553,7 @@
     UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
     [userDetailModel save];
     _loginUser = [userDetailModel copy];
+    [self initUser];
 }
 
 //获得七牛云存储的头像的url
