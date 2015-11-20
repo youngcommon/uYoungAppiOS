@@ -10,6 +10,7 @@
 #import "NSString+StringUtil.h"
 #import <UIImageView+AFNetworking.h>
 #import "UIWindow+YoungHUD.h"
+#import "CityModel.h"
 
 @interface EditUserViewController ()
 
@@ -202,14 +203,17 @@
     [self.view addSubview:_citySelector];
     [_citySelector setHidden:YES];
     
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"cities_locations" ofType:@"plist"];
-    _cityarr = [[NSArray alloc] initWithContentsOfFile:plistPath];
-//    _cityNameArr = [_citydict allKeys];
+    NSData *citylistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"citylist"];
+    if (citylistdata) {
+        _cityarr = [NSKeyedUnarchiver unarchiveObjectWithData:citylistdata];
+    } else {
+        _cityarr = [[NSArray alloc]init];
+    }
     
     NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
-    NSString *seletedCity = [_cityNameArr objectAtIndex:selectedCityIndex];
-    _locationNameArr = [[_cityarr objectAtIndex:selectedCityIndex]objectForKey:@"subDictCityList"];
+    CityModel *parentCity = [_cityarr objectAtIndex:selectedCityIndex];
+    
+    _locationArr = [parentCity subDictCityList];
     
     //创建选择按钮
     _selectedButton = [[UIButton alloc]initWithFrame:CGRectMake(0, mScreenHeight-60, mScreenWidth/2, 60)];
@@ -228,11 +232,16 @@
 }
 
 -(void) buttonPressed:(id)sender{
-    NSInteger rowcity = [_citySelector selectedRowInComponent:0];
-    NSString *city = [_cityNameArr objectAtIndex:rowcity];
+    
+    NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
+    CityModel *parentCity = [_cityarr objectAtIndex:selectedCityIndex];
+    NSString *city = parentCity.cnName;
+    
+    _locationArr = [parentCity subDictCityList];
     
     NSInteger rowlocation = [_citySelector selectedRowInComponent:1];
-    NSString *location = [_locationNameArr objectAtIndex:rowlocation];
+    CityModel *locationCity = [_locationArr objectAtIndex:rowlocation];
+    NSString *location = locationCity.cnName;
     
     [_locationSelButton setTitle:[NSString stringWithFormat:@"%@ - %@", city, location] forState:UIControlStateNormal];
     [_locationSelImage setImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
@@ -257,18 +266,21 @@
 //确定picker的每个轮子的item数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (component == 0) {//城市个数
-        return [_cityNameArr count];
+        return [_cityarr count];
     } else {//区域个数
-        return [_locationNameArr count];
+        return [_locationArr count];
     }
 }
+
 //确定每个轮子的每一项显示什么内容
 #pragma mark 实现协议UIPickerViewDelegate方法
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (component == 0) {//选择省份名
-        return [_cityNameArr objectAtIndex:row];
-    } else {//选择市名
-        return [_locationNameArr objectAtIndex:row];
+    if (component == 0) {//选择城市
+        CityModel *city = [_cityarr objectAtIndex:row];
+        return city.cnName;
+    } else {//选择地区
+        CityModel *location = [_locationArr objectAtIndex:row];
+        return location.cnName;
     }
 }
 
@@ -276,24 +288,24 @@
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == 0) {
-        NSString *seletedProvince = [_cityNameArr objectAtIndex:row];
-        _locationNameArr = [[_cityarr objectAtIndex:row]objectForKey:@"subDictCityList"];
+        CityModel *seletedCityModel = [_cityarr objectAtIndex:row];
+        _cityId = seletedCityModel.id;
+        _locationArr = seletedCityModel.subDictCityList;
         
         //重点！更新第二个轮子的数据
         [_citySelector reloadComponent:1];
         
-        NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:1];
-        NSString *seletedCity = [_cityNameArr objectAtIndex:selectedCityIndex];
+        NSInteger selectedLocationIndex = [_citySelector selectedRowInComponent:1];
+        CityModel *selectedLocationModel = [_locationArr objectAtIndex:selectedLocationIndex];
+        _locationId = selectedLocationModel.id;
         
-        NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
-        NSLog(@"%@",msg);
     } else {
-        NSInteger selectedProvinceIndex = [_citySelector selectedRowInComponent:0];
-        NSString *seletedProvince = [_cityNameArr objectAtIndex:selectedProvinceIndex];
+        NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
+        CityModel *seletedCityModel = [_cityarr objectAtIndex:selectedCityIndex];
+        _cityId = seletedCityModel.id;
         
-        NSString *seletedCity = [_locationNameArr objectAtIndex:row];
-        NSString *msg = [NSString stringWithFormat:@"province=%@,city=%@", seletedProvince,seletedCity];
-        NSLog(@"%@",msg);
+        CityModel *seletedLocationModel = [_locationArr objectAtIndex:row];
+        _locationId = seletedLocationModel.id;
     }
 }
 
@@ -491,7 +503,7 @@
     [userData setValue:avater forKey:@"avatarUrl"];
     [userData setValue:email forKey:@"email"];
     [userData setValue:cellphone forKey:@"phone"];
-    [userData setValue:_locationSelButton.titleLabel.text forKey:@"address"];
+    [userData setValue:[NSString stringWithFormat:@"%d-%d", (int)_cityId, (int)_locationId] forKey:@"address"];
     [userData setValue:company forKey:@"company"];
     [userData setValue:position forKey:@"position"];
     [userData setValue:equips forKey:@"equipment"];
@@ -502,11 +514,11 @@
 
 - (void)didUpdateEnd:(BOOL)isSuccess{
     if (isSuccess) {
-        [self.view.window showHUDWithText:@"更新成功" Type:ShowPhotoYes Enabled:YES];
+        [self.view.window showHUDWithText:@"保存成功" Type:ShowPhotoYes Enabled:YES];
         //从新获取用户数据，进行保存
         [UserDetail getUserDetailWithId:_loginUser.id delegate:self];
     } else{
-        [self.view.window showHUDWithText:@"更新失败" Type:ShowPhotoYes Enabled:YES];
+        [self.view.window showHUDWithText:@"保存失败" Type:ShowPhotoNo Enabled:YES];
     }
 }
 

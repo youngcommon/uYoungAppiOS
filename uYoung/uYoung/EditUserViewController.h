@@ -19,9 +19,10 @@
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
 @property (strong, nonatomic) UIPickerView *citySelector;
-@property (strong, nonatomic) NSArray *cityNameArr;
-@property (strong, nonatomic) NSArray *locationNameArr;
+@property (strong, nonatomic) NSArray *locationArr;
 @property (strong, nonatomic) NSArray *cityarr;
+@property (assign, nonatomic) NSInteger cityId;
+@property (assign, nonatomic) NSInteger locationId;
 @property (strong, nonatomic) UIButton *selectedButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (nonatomic, strong) UIImagePickerController *camera;

@@ -46,6 +46,7 @@
 
 - (void)save
 {
+    [self del];
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:self];
     [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"currentUser"];
     [[NSUserDefaults standardUserDefaults] synchronize];

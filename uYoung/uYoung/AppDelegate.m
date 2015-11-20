@@ -14,6 +14,8 @@
 #import "QQAPIDemoEntry.h"
 #endif
 
+#import "CityModel.h"
+
 @interface AppDelegate () <TencentSessionDelegate>
 
 @end
@@ -76,13 +78,18 @@
 }
 
 -(void)successGetCities:(NSArray*)arr{
-    NSLog(@"%@", arr);
+    NSArray * a =  [MTLJSONAdapter modelsOfClass:[CityModel class] fromJSONArray:arr error:nil];
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities_locations" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-
-    BOOL success = [[data mutableCopy]writeToFile:plistPath atomically:YES];
-    NSLog(@"%d", success);
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities_locations" ofType:@"plist"];
+//    NSMutableArray *data = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+//    
+//    data = [[a arrayByAddingObjectsFromArray:data] mutableCopy];
+//
+//    BOOL success = [data writeToFile:plistPath atomically:YES];
+    
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:a];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"citylist"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
 
