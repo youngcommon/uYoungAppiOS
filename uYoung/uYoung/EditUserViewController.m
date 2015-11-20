@@ -80,7 +80,7 @@
         }
         
         //设置区域
-        if (_cityarr&&[_cityarr count]>0) {
+        if (_cityarr&&[_cityarr count]>0&&_cityId>0&&_locationId>0) {
             NSString *cityName;
             NSString *locationName;
             for (int i=0; i<[_cityarr count]; i++) {

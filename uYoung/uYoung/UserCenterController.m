@@ -23,11 +23,10 @@
         LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
 //        [self.view.window.rootViewController presentViewController:loginViewCtl animated:YES completion:nil];
         loginViewCtl.source = @"usercenter";
-        [self presentViewController:loginViewCtl animated:YES completion:nil];
+//        [self presentViewController:loginViewCtl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
     }
-    
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -80,7 +79,6 @@
     [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myActButton];
     
-    
     //默认加载我的相册Controller
     self.albumTableViewController = [[AlbumTableViewController alloc]init];
     self.albumTableViewController.userId = _userDetailModel.id;
@@ -101,6 +99,41 @@
     [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.activityTableViewController.view setHidden:YES];
+    
+    //创建相册名称输入框
+    _createAlbumView = [[UIView alloc]initWithFrame:CGRectMake(0-mScreenWidth, mScreenHeight-36-15+10/2, mScreenWidth, 36)];
+    [_createAlbumView setBackgroundColor:[UIColor whiteColor]];
+    _createAlbumView.alpha = 0.7;
+    [self.view addSubview:_createAlbumView];
+    
+    _createAlbumText = [[UITextField alloc]initWithFrame:CGRectMake(10+60+10, mScreenHeight-26-15, mScreenWidth-10*3-60-10-30-10, 26)];
+    [_createAlbumText setPlaceholder:@" 请输入相册名称"];
+    [_createAlbumText setHidden:YES];
+    _createAlbumText.borderStyle = UITextBorderStyleRoundedRect;
+    [self.view addSubview:_createAlbumText];
+    
+    //创建相册按钮
+    _createAlbum = [[UIButton alloc] initWithFrame:CGRectMake(10, mScreenHeight-26-15, 60, 26)];
+    [_createAlbum setTitle:@"创建相册" forState:UIControlStateNormal];
+    [_createAlbum setTitleColor:UIColorFromRGB(0x4a90e2) forState:UIControlStateNormal];
+    _createAlbum.titleLabel.font = [UIFont systemFontOfSize:12];
+    _createAlbum.layer.borderColor = [UIColorFromRGB(0x4a90e2)CGColor];
+    _createAlbum.layer.borderWidth = 1.0f;
+    _createAlbum.layer.cornerRadius = 4;
+    [_createAlbum addTarget:self action:@selector(createAlbums) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_createAlbum];
+    
+    //创建取消按钮
+    _cancelCreate = [[UIButton alloc] initWithFrame:CGRectMake(10, mScreenHeight-26-15, 60, 26)];
+    [_cancelCreate setTitle:@"取消创建" forState:UIControlStateNormal];
+    [_cancelCreate setTitleColor:UIColorFromRGB(0x4a90e2) forState:UIControlStateNormal];
+    _cancelCreate.titleLabel.font = [UIFont systemFontOfSize:12];
+    _cancelCreate.layer.borderColor = [UIColorFromRGB(0x4a90e2)CGColor];
+    _cancelCreate.layer.borderWidth = 1.0f;
+    _cancelCreate.layer.cornerRadius = 4;
+    [_cancelCreate addTarget:self action:@selector(cancelCreates) forControlEvents:UIControlEventTouchUpInside];
+    [_cancelCreate setHidden:YES];
+    [self.view addSubview:_cancelCreate];
     
 }
 
@@ -148,11 +181,19 @@
             [_myAlbumButton setAlpha:0.65];
             [self.activityTableViewController.view setHidden:YES];
             [self.albumTableViewController.view setHidden:NO];
+            [_createAlbum setHidden:NO];
         }else if(tag==1){//点击我的活动
             [_myAlbumButton setAlpha:0.3];
             [_myActButton setAlpha:0.65];
             [self.activityTableViewController.view setHidden:NO];
             [self.albumTableViewController.view setHidden:YES];
+            [_createAlbum setHidden:YES];
+            [_createAlbumText setHidden:YES];
+            [_cancelCreate setHidden:YES];
+            CGPoint origin = _createAlbumView.frame.origin;
+            CGSize size = _createAlbumView.frame.size;
+            CGRect frame = CGRectMake(0-mScreenWidth, origin.y, size.width, size.height);
+            _createAlbumView.frame = frame;
         }
     }
 }
@@ -164,5 +205,33 @@
 
 - (IBAction)getBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)createAlbums{
+    CGPoint origin = _createAlbumView.frame.origin;
+    CGSize size = _createAlbumView.frame.size;
+    CGRect frame = CGRectMake(0, origin.y, size.width, size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.1];
+    [_createAlbumView setFrame:frame];
+    [UIView commitAnimations];
+    [_createAlbumText setHidden:NO];
+    [_cancelCreate setHidden:NO];
+    [_createAlbum setHidden:YES];
+}
+
+- (void)cancelCreates{
+    [_cancelCreate setHidden:YES];
+    [_createAlbumText setHidden:YES];
+    [_createAlbum setHidden:NO];
+    CGPoint origin = _createAlbumView.frame.origin;
+    CGSize size = _createAlbumView.frame.size;
+    CGRect frame = CGRectMake(0-mScreenWidth, origin.y, size.width, size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.1];
+    [_createAlbumView setFrame:frame];
+    [UIView commitAnimations];
 }
 @end

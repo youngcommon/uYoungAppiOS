@@ -34,6 +34,10 @@
 
 @property (strong, nonatomic) UIButton *myAlbumButton;
 @property (strong, nonatomic) UIButton *myActButton;
+@property (strong, nonatomic) UIButton *createAlbum;
+@property (strong, nonatomic) UIView *createAlbumView;
+@property (strong, nonatomic) UITextField *createAlbumText;
+@property (strong, nonatomic) UIButton *cancelCreate;
 
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 
