@@ -50,7 +50,9 @@
 }
 
 - (void)initUser{
-    _loginUser = [UserDetailModel currentUser];
+    if (_loginUser==nil||[NSString isBlankString:_loginUser.avatarUrl]) {
+        _loginUser = [UserDetailModel currentUser];
+    }
     if (_loginUser&&![_loginUser isEqual:[NSNull null]]) {
         //设置昵称
         if ([NSString isBlankString:_loginUser.nickName]==NO) {
@@ -69,18 +71,24 @@
             }];
         }
         //设置性别
-        if (_loginUser.gender) {//男
+        if (_loginUser.gender==1) {//男
             [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
             [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
             _gender = 1;
         }else{
-            [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
-            [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+            [_femaleButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+            [_maleButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
             _gender = 2;
         }
         
         //设置区域
-        if (_cityarr&&[_cityarr count]>0&&_cityId>0&&_locationId>0) {
+        if (_cityarr&&[_cityarr count]>0) {
+            if (_cityId==0) {
+                _cityId = _loginUser.cityId;
+            }
+            if (_locationId==0) {
+                _locationId = _loginUser.locationId;
+            }
             NSString *cityName;
             NSString *locationName;
             for (int i=0; i<[_cityarr count]; i++) {
@@ -558,6 +566,8 @@
 
 //获得七牛云存储的头像的url
 - (void)getImgUrl:(NSString*)url{
+    long timer = [[NSDate date] timeIntervalSince1970];
+    url = [url stringByAppendingString:[NSString stringWithFormat:@"?%ld", timer]];
     _avater = url;
 }
 

@@ -54,8 +54,10 @@
     [_userHeader addTarget:self action:@selector(gotoUserCenter) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_userHeader];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
     [self initUserAvater];
-    
 }
 
 - (void)gotoUserCenter{
@@ -88,7 +90,7 @@
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         }];
     }else{
-        [_userHeader setImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
+        [_userHeader setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
     }
 }
 

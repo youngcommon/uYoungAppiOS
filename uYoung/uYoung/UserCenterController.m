@@ -23,7 +23,7 @@
         LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
 //        [self.view.window.rootViewController presentViewController:loginViewCtl animated:YES completion:nil];
         loginViewCtl.source = @"usercenter";
-//        [self presentViewController:loginViewCtl animated:YES completion:nil];
+        [self presentViewController:loginViewCtl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
     }
@@ -164,11 +164,11 @@
     }];
     
     [self.nicknameLabel setText:self.userDetailModel.nickName];
-    [self.positionLabel setText:self.userDetailModel.position];
+    [self.positionLabel setText:[NSString stringWithFormat:@"%@-%@", self.userDetailModel.cityName, self.userDetailModel.locationName]];
     [self.companyLabel setText:self.userDetailModel.company];
     [self.currentTitleLabel setText:self.userDetailModel.position];
     [self.cameraLabel setText:self.userDetailModel.equipment];
-    [self.genderImageView setImage:(self.userDetailModel.gender?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
+    [self.genderImageView setImage:(self.userDetailModel.gender==1?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
     
 }
 

@@ -59,7 +59,7 @@
 
 -(void)successGetQNToken:(NSDictionary*)dict{
     NSString *token = dict[@"upToken"];
-    NSString *qiniuHost = dict[@"url"];
+    NSString *qiniuHost = [@"http://" stringByAppendingString:dict[@"url"]];
     if ([NSString isBlankString:token]) {
         return;
     }

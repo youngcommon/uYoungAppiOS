@@ -180,6 +180,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
+//    [self initUserAvater];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
     [self initUserAvater];
 }
 
