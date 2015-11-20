@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QiniuSDK.h>
+#import "GlobalNetwork.h"
 
 @protocol UploadImgDelegate <NSObject>
 
@@ -18,6 +19,12 @@
 
 @interface UploadImageUtil : NSObject
 
-+(void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate;
+@property (strong, nonatomic) UIImage* img;
+@property (strong, nonatomic) NSString* key;
+@property (weak, nonatomic) id<UploadImgDelegate> delegate;
+
+- (void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate;
+
++ (instancetype)dispatchOnce;
 
 @end

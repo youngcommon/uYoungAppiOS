@@ -375,7 +375,7 @@
     [_userHeaderButton setBackgroundImage:img forState:UIControlStateNormal];
     
     //上传图片至七牛云
-    [UploadImageUtil uploadImage:img withKey:[NSString stringWithFormat:@"uyoung_header_%d", (int)_loginUser.id] delegate:self];
+    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uyoung_header_%d", (int)_loginUser.id] delegate:self];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

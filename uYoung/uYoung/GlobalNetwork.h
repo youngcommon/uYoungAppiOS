@@ -12,14 +12,11 @@
 @protocol GlobalNetworkDelegate <NSObject>
 
 @optional
--(void)successGetQNToken:(NSDictionary*)token;
 -(void)successGetCities:(NSArray*)arr;
 
 @end
 
 @interface GlobalNetwork : NSObject
-
-+ (void)getQNUploadToken:(id<GlobalNetworkDelegate>)delegate;
 
 + (void)getAllCityies:(id<GlobalNetworkDelegate>)delegate;
 
