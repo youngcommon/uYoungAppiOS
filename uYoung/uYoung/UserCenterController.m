@@ -13,20 +13,42 @@
 
 @implementation UserCenterController
 
-- (void)viewDidLoad{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
-    
+- (void)viewDidAppear:(BOOL)animated{
     _userDetailModel = [UserDetailModel currentUser];
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-//        [self.view.window.rootViewController presentViewController:loginViewCtl animated:YES completion:nil];
         loginViewCtl.source = @"usercenter";
         [self presentViewController:loginViewCtl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
     }
+    
+    //默认加载我的相册Controller
+    self.albumTableViewController = [[AlbumTableViewController alloc]init];
+    self.albumTableViewController.userId = _userDetailModel.id;
+    [self addChildViewController:self.albumTableViewController];
+    [self.view addSubview:self.albumTableViewController.view];
+    
+    CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
+    self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
+    self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //加载我的活动列表
+    self.activityTableViewController = [[ActivityTableViewController alloc]init];
+    [self addChildViewController:self.activityTableViewController];
+    [self.view addSubview:self.activityTableViewController.view];
+    
+    self.activityTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
+    self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.activityTableViewController.view setHidden:YES];
+}
+
+- (void)viewDidLoad{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -78,27 +100,6 @@
     [_myActButton setTag:1];
     [_myActButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myActButton];
-    
-    //默认加载我的相册Controller
-    self.albumTableViewController = [[AlbumTableViewController alloc]init];
-    self.albumTableViewController.userId = _userDetailModel.id;
-    [self addChildViewController:self.albumTableViewController];
-    [self.view addSubview:self.albumTableViewController.view];
-    
-    CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
-    self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
-    [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
-    self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    //加载我的活动列表
-    self.activityTableViewController = [[ActivityTableViewController alloc]init];
-    [self addChildViewController:self.activityTableViewController];
-    [self.view addSubview:self.activityTableViewController.view];
-    
-    self.activityTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
-    [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
-    self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.activityTableViewController.view setHidden:YES];
     
     //创建相册名称输入框
     _createAlbumView = [[UIView alloc]initWithFrame:CGRectMake(0-mScreenWidth, mScreenHeight-36-15+10/2, mScreenWidth, 36)];
