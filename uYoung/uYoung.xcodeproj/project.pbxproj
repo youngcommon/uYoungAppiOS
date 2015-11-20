@@ -67,7 +67,6 @@
 		847E18491BDFCB7D00882D20 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E18481BDFCB7D00882D20 /* CoreTelephony.framework */; };
 		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
-		849506AE1BFE02FB00119D8C /* cities_locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 849506AD1BFE02FB00119D8C /* cities_locations.plist */; };
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
 		84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
@@ -192,7 +191,6 @@
 		847E18481BDFCB7D00882D20 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		847E184A1BDFCB9E00882D20 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libstdc++.dylib"; sourceTree = "<group>"; };
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
-		849506AD1BFE02FB00119D8C /* cities_locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities_locations.plist; sourceTree = "<group>"; };
 		849506AF1BFE042700119D8C /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
 		849506B01BFE042700119D8C /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
 		84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalNetwork.h; sourceTree = "<group>"; };
@@ -424,7 +422,6 @@
 			children = (
 				483E17D71BAC548E00CDDBD3 /* Info.plist */,
 				483E17D81BAC548E00CDDBD3 /* main.m */,
-				849506AD1BFE02FB00119D8C /* cities_locations.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -594,7 +591,6 @@
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
-				849506AE1BFE02FB00119D8C /* cities_locations.plist in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
