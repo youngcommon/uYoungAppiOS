@@ -13,7 +13,7 @@
 + (void)getActivityDetailWithId:(NSInteger)activityId{
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getById"];
     
-    NSDictionary *parameters = @{@"id": [NSString stringWithFormat:@"%d", activityId]};
+    NSDictionary *parameters = @{@"id": [NSString stringWithFormat:@"%d", (int)activityId]};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
