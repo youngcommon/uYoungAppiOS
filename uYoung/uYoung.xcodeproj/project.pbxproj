@@ -45,6 +45,8 @@
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
 		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
 		8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */; };
+		8462F6521C00BBAB00A6B460 /* CreateActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462F6511C00BBAB00A6B460 /* CreateActivityController.m */; };
+		8462F6541C00BBC900A6B460 /* CreateActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462F6531C00BBC900A6B460 /* CreateActivityController.xib */; };
 		846F17AD1BE107D700EB2DB4 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */; };
 		846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 846F17AA1BE107D700EB2DB4 /* WeiboSDK.bundle */; };
 		846F17B01BE1088A00EB2DB4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17AF1BE1088A00EB2DB4 /* QuartzCore.framework */; };
@@ -152,6 +154,9 @@
 		8457EE041BEA47C600C00176 /* EditUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserViewController.xib; sourceTree = "<group>"; };
 		8457EE091BEA525000C00176 /* NSString+StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringUtil.h"; sourceTree = "<group>"; };
 		8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringUtil.m"; sourceTree = "<group>"; };
+		8462F6501C00BBAB00A6B460 /* CreateActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityController.h; sourceTree = "<group>"; };
+		8462F6511C00BBAB00A6B460 /* CreateActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityController.m; sourceTree = "<group>"; };
+		8462F6531C00BBC900A6B460 /* CreateActivityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityController.xib; sourceTree = "<group>"; };
 		846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		846F17A21BE107D700EB2DB4 /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
 		846F17A31BE107D700EB2DB4 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
@@ -354,6 +359,9 @@
 				8457EE011BEA478200C00176 /* EditUserViewController.h */,
 				8457EE021BEA478200C00176 /* EditUserViewController.m */,
 				8457EE041BEA47C600C00176 /* EditUserViewController.xib */,
+				8462F6501C00BBAB00A6B460 /* CreateActivityController.h */,
+				8462F6511C00BBAB00A6B460 /* CreateActivityController.m */,
+				8462F6531C00BBC900A6B460 /* CreateActivityController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -581,6 +589,7 @@
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
+				8462F6541C00BBC900A6B460 /* CreateActivityController.xib in Resources */,
 				4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */,
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
@@ -672,6 +681,7 @@
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				84763F7F1BFA1FC7002BC70B /* YoungHUDImageView.m in Sources */,
+				8462F6521C00BBAB00A6B460 /* CreateActivityController.m in Sources */,
 				48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
 				48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */,

@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import <UIImageView+LBBlurredImage.h>
 #import "EditUserViewController.h"
+#import "CreateActivityController.h"
 
 @implementation UserCenterController
 
@@ -271,6 +272,7 @@
 }
 
 - (void)createActivity{
-    
+    CreateActivityController *ctl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:ctl animated:YES];
 }
 @end
