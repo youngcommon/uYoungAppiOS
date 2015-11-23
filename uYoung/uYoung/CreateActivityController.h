@@ -19,7 +19,7 @@
 //活动日期
 @property (strong, nonatomic) UIImageView *actDateImg;
 @property (strong, nonatomic) UIImageView *actDateTextImg;
-@property (strong, nonatomic) UIButton *actDateButotn;
+@property (strong, nonatomic) UIButton *actDateButton;
 @property (strong, nonatomic) UIDatePicker *actDatePicker;
 //活动时间
 @property (strong, nonatomic) UIImageView *actTimeImg;

@@ -44,6 +44,7 @@
     _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, backWidth, labelHeight)];
     _actNameInput.borderStyle = UITextBorderStyleNone;
     _actNameInput.placeholder = @"请输入活动名称";
+    _actNameInput.font = labelFont;
     _actNameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     [_backgroundView addSubview:_actNameInput];
     
@@ -65,6 +66,26 @@
     [_actDateTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_top" isFront:NO]];
     [_backgroundView addSubview:_actDateTextImg];
     
+    UIImageView *dateIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/calender"]];
+    CGRect f = [self getIconFrame:_actDateTextImg icon:dateIcon offset:dateIcon.frame.size.width/2];
+    [dateIcon setFrame:f];
+    [_backgroundView addSubview:dateIcon];
+    
+    UILabel *vline = [[UILabel alloc]initWithFrame:CGRectMake(dateIcon.frame.origin.x-dateIcon.frame.size.width/2, _actDateTextImg.frame.origin.y, 1, _actDateTextImg.frame.size.height)];
+    vline.backgroundColor = UIColorFromRGB(0x85b200);
+    [_backgroundView addSubview:vline];
+    
+    CGFloat contentX = _actDateTextImg.frame.origin.x;
+    _actDateButton = [[UIButton alloc]initWithFrame:CGRectMake(contentX, _actDateTextImg.frame.origin.y, _actDateTextImg.frame.size.width, _actDateTextImg.frame.size.height)];
+    _actDateButton.titleLabel.font = labelFont;
+    _actDateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _actDateButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [_actDateButton setTitle:@"2015-12-30" forState:UIControlStateNormal];
+    [_actDateButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actDateButton.backgroundColor = [UIColor clearColor];
+    [_actDateButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:_actDateButton];
+    
     y = y + _actDateImg.frame.size.height + sepInside;
     
     //活动时间
@@ -82,6 +103,41 @@
     _actTimeTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actTimeImg.frame.origin.x+_actTimeImg.frame.size.width, y, backWidth, labelHeight)];
     [_actTimeTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_bottom" isFront:NO]];
     [_backgroundView addSubview:_actTimeTextImg];
+    
+    CGFloat hlineX = _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width/2-5;
+    
+    UIImageView *actBeginTimeIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/time"]];
+    CGRect tf = [self getIconFrameFromFront:_actTimeTextImg icon:actBeginTimeIcon offset:10];
+    [actBeginTimeIcon setFrame:tf];
+    [_backgroundView addSubview:actBeginTimeIcon];
+    
+    _actTimeStartButton = [[UIButton alloc]initWithFrame:CGRectMake(actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.origin.y, hlineX-actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.size.height)];
+    _actTimeStartButton.titleLabel.font = labelFont;
+    _actTimeStartButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+    [_actTimeStartButton setTitle:@"23:58" forState:UIControlStateNormal];
+    [_actTimeStartButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actTimeStartButton.backgroundColor = [UIColor clearColor];
+//    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:_actTimeStartButton];
+    
+    UILabel *hline = [[UILabel alloc]initWithFrame:CGRectMake(hlineX, _actTimeTextImg.frame.origin.y+_actTimeTextImg.frame.size.height/2, 10, 2)];
+    hline.backgroundColor = UIColorFromRGB(0x85b200);
+    [_backgroundView addSubview:hline];
+    
+    UIImageView *actEndTimeIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/time"]];
+    [actEndTimeIcon setFrame:CGRectMake(hline.frame.origin.x+hline.frame.size.width+10, actBeginTimeIcon.frame.origin.y, actEndTimeIcon.frame.size.width, actEndTimeIcon.frame.size.height)];
+    [_backgroundView addSubview:actEndTimeIcon];
+    
+    _actTimeEndButton = [[UIButton alloc]initWithFrame:CGRectMake(actEndTimeIcon.frame.origin.x, _actTimeTextImg.frame.origin.y, hlineX-actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.size.height)];
+    _actTimeEndButton.titleLabel.font = labelFont;
+    _actTimeEndButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+    [_actTimeEndButton setTitle:@"23:58" forState:UIControlStateNormal];
+    [_actTimeEndButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actTimeEndButton.backgroundColor = [UIColor clearColor];
+    //    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:_actTimeEndButton];
     
     y = y + _actTimeImg.frame.size.height + sep;
     
@@ -154,13 +210,25 @@
     _actAddrInput = [[UITextField alloc]initWithFrame:CGRectMake(_actAddrImg.frame.origin.x+_actAddrImg.frame.size.width, y, backWidth, labelHeight)];
     _actAddrInput.borderStyle = UITextBorderStyleNone;
     _actAddrInput.placeholder = @"请输入活动地址";
+    _actAddrInput.font = labelFont;
     _actAddrInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     [_backgroundView addSubview:_actAddrInput];
     
+    //初始化日期选择器
+    NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"];
+    _actDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, mScreenHeight/2, mScreenWidth, mScreenHeight/2-60)];
+    _actDatePicker.locale = locale;
+    _actDatePicker.backgroundColor = UIColorFromRGB(0x85b200);
+    [self.view addSubview:_actDatePicker];
+    [_actDatePicker setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)selectDate{
+    [_actDatePicker setHidden:NO];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
@@ -194,4 +262,17 @@
     CGFloat offsetY = view.frame.origin.y + (view.frame.size.height-16)/2;
     return CGRectMake(offsetX, offsetY, 48, 16);
 }
+
+- (CGRect)getIconFrame:(UIView*)view icon:(UIImageView*)icon offset:(CGFloat)offset{
+    CGFloat offsetX = view.frame.origin.x + view.frame.size.width - offset - icon.frame.size.width;
+    CGFloat offsetY = view.frame.origin.y + (view.frame.size.height-icon.frame.size.height)/2;
+    return CGRectMake(offsetX, offsetY, icon.frame.size.width, icon.frame.size.height);
+}
+
+- (CGRect)getIconFrameFromFront:(UIView*)view icon:(UIImageView*)icon offset:(CGFloat)offset{
+    CGFloat offsetX = view.frame.origin.x + offset;
+    CGFloat offsetY = view.frame.origin.y + (view.frame.size.height-icon.frame.size.height)/2;
+    return CGRectMake(offsetX, offsetY, icon.frame.size.width, icon.frame.size.height);
+}
+
 @end
