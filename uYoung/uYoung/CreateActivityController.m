@@ -106,18 +106,14 @@
     
     CGFloat hlineX = _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width/2-5;
     
-    UIImageView *actBeginTimeIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/time"]];
-    CGRect tf = [self getIconFrameFromFront:_actTimeTextImg icon:actBeginTimeIcon offset:10];
-    [actBeginTimeIcon setFrame:tf];
-    [_backgroundView addSubview:actBeginTimeIcon];
-    
-    _actTimeStartButton = [[UIButton alloc]initWithFrame:CGRectMake(actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.origin.y, hlineX-actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.size.height)];
+    _actTimeStartButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTimeTextImg.frame.origin.x+10, _actTimeTextImg.frame.origin.y, hlineX-_actTimeTextImg.frame.origin.x-10-10, _actTimeTextImg.frame.size.height)];
     _actTimeStartButton.titleLabel.font = labelFont;
     _actTimeStartButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+    _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeStartButton setTitle:@"23:58" forState:UIControlStateNormal];
     [_actTimeStartButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actTimeStartButton.backgroundColor = [UIColor clearColor];
+    [_actTimeStartButton setImage:[UIImage imageNamed:@"uyoung.bundle/time"] forState:UIControlStateNormal];
 //    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTimeStartButton];
     
@@ -125,17 +121,14 @@
     hline.backgroundColor = UIColorFromRGB(0x85b200);
     [_backgroundView addSubview:hline];
     
-    UIImageView *actEndTimeIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/time"]];
-    [actEndTimeIcon setFrame:CGRectMake(hline.frame.origin.x+hline.frame.size.width+10, actBeginTimeIcon.frame.origin.y, actEndTimeIcon.frame.size.width, actEndTimeIcon.frame.size.height)];
-    [_backgroundView addSubview:actEndTimeIcon];
-    
-    _actTimeEndButton = [[UIButton alloc]initWithFrame:CGRectMake(actEndTimeIcon.frame.origin.x, _actTimeTextImg.frame.origin.y, hlineX-actBeginTimeIcon.frame.origin.x, _actTimeTextImg.frame.size.height)];
+    _actTimeEndButton = [[UIButton alloc]initWithFrame:CGRectMake(hline.frame.origin.x+hline.frame.size.width+10, _actTimeTextImg.frame.origin.y, _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width-hlineX-hline.frame.size.width, _actTimeTextImg.frame.size.height)];
     _actTimeEndButton.titleLabel.font = labelFont;
     _actTimeEndButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+    _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeEndButton setTitle:@"23:58" forState:UIControlStateNormal];
     [_actTimeEndButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actTimeEndButton.backgroundColor = [UIColor clearColor];
+    [_actTimeEndButton setImage:[UIImage imageNamed:@"uyoung.bundle/time"] forState:UIControlStateNormal];
     //    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTimeEndButton];
     
