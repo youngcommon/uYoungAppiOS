@@ -170,11 +170,13 @@
     
     _actNumSlider = [[UISlider alloc]initWithFrame:CGRectMake(_actNumTextImg.frame.origin.x, _actNumTextImg.frame.origin.y+_actNumTextImg.frame.size.height/2-12/2, _actNumTextImg.frame.size.width-10, 12)];
     _actNumSlider.minimumValue = 2;
-    _actNumSlider.maximumValue = 20;
+    _actNumSlider.maximumValue = 30;
     _actNumSlider.value = 4;
+    _actNumSlider.continuous = YES ;
     [_actNumSlider setMinimumTrackImage:[self getSliderUIImage:@"uyoung.bundle/slider_max"] forState:UIControlStateNormal];
     [_actNumSlider setMaximumTrackImage:[self getSliderUIImage:@"uyoung.bundle/slider_min"] forState:UIControlStateNormal];
     [_actNumSlider setThumbImage:[UIImage imageNamed:@"uyoung.bundle/slider_thumb"] forState:UIControlStateNormal];
+    [_actNumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     [_backgroundView addSubview:_actNumSlider];
     
     UIFont *actNumFont = [UIFont fontWithName:@"HelveticaNeue" size:8];
@@ -235,6 +237,15 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void) sliderValueChanged:(id)sender{
+    UISlider* control = (UISlider*)sender;
+    if(control == _actNumSlider){
+        float value = control.value;
+        [_actNumLabel setText:[NSString stringWithFormat:@"%d人", (int)value]];
+        _actNum = (int)value;
+    }
 }
 
 - (void)selectDate{
