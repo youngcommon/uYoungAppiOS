@@ -19,6 +19,18 @@
     [super viewDidLoad];
     _backgroundImg.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
+    
+    _minDate = [NSDate date];
+    NSDate *nextHour = [NSDate dateWithTimeInterval:60*60 sinceDate:_minDate];
+    _maxDate = [NSDate dateWithTimeInterval:24*60*60*30*12 sinceDate:_minDate];
+    
+    _minTime = [self getTimeFromString:@"08:00"];
+    _maxTime = [self getTimeFromString:@"23:50"];
+    
+    _from = _minDate;
+    _to = nextHour;
+    _priceType = 0;
+    
     CGFloat sep = 14;//默认行距
     CGFloat sepInside = 2;//默认间距
     CGFloat labelHeight = 40;//默认输入行高
@@ -28,6 +40,24 @@
     CGFloat y = 30;
     CGFloat labelOffset = 12;
     UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    if (mScreenWidth==375) {//iPhone 6
+        sep = 32;//默认行距
+        sepInside = 4;//默认间距
+        labelHeight = 40;//默认输入行高
+        frontWidth = 100;//默认前部宽度
+        backWidth = 185;//默认后部宽度
+        y = 40;
+    }else if(mScreenWidth>375){//iPhone 6+
+        sep = 40;//默认行距
+        sepInside = 4;//默认间距
+        labelHeight = 40;//默认输入行高
+        frontWidth = 110;//默认前部宽度
+        backWidth = 210;//默认后部宽度
+        y = 50;
+    }else if(mScreenWidth<375&&mScreenHeight>480){//iPhone 5
+        sep = 20;//默认行距
+        y = 34;
+    }
     
     //活动名称
     _actNameImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
@@ -80,10 +110,11 @@
     _actDateButton.titleLabel.font = labelFont;
     _actDateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actDateButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    [_actDateButton setTitle:@"2015-12-30" forState:UIControlStateNormal];
+    [_actDateButton setTitle:[self getSimpleDate:_minDate] forState:UIControlStateNormal];
     [_actDateButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actDateButton.backgroundColor = [UIColor clearColor];
-    [_actDateButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_actDateButton setTag:1003];
+    [_actDateButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actDateButton];
     
     y = y + _actDateImg.frame.size.height + sepInside;
@@ -110,11 +141,12 @@
     _actTimeStartButton.titleLabel.font = labelFont;
     _actTimeStartButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
-    [_actTimeStartButton setTitle:@"23:58" forState:UIControlStateNormal];
+    [_actTimeStartButton setTitle:[self getSimpleTime:_minTime] forState:UIControlStateNormal];
     [_actTimeStartButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actTimeStartButton.backgroundColor = [UIColor clearColor];
     [_actTimeStartButton setImage:[UIImage imageNamed:@"uyoung.bundle/time"] forState:UIControlStateNormal];
-//    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_actTimeStartButton setTag:1002];
+    [_actTimeStartButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTimeStartButton];
     
     UILabel *hline = [[UILabel alloc]initWithFrame:CGRectMake(hlineX, _actTimeTextImg.frame.origin.y+_actTimeTextImg.frame.size.height/2, 10, 2)];
@@ -125,11 +157,12 @@
     _actTimeEndButton.titleLabel.font = labelFont;
     _actTimeEndButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
-    [_actTimeEndButton setTitle:@"23:58" forState:UIControlStateNormal];
+    [_actTimeEndButton setTitle:[self getSimpleTime:_maxTime] forState:UIControlStateNormal];
     [_actTimeEndButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actTimeEndButton.backgroundColor = [UIColor clearColor];
     [_actTimeEndButton setImage:[UIImage imageNamed:@"uyoung.bundle/time"] forState:UIControlStateNormal];
-    //    [_actTimeStartButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_actTimeEndButton setTag:1001];
+    [_actTimeEndButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTimeEndButton];
     
     y = y + _actTimeImg.frame.size.height + sep;
@@ -228,8 +261,9 @@
     [_actFreeButton setTitle:@"免费" forState:UIControlStateNormal];
     [_actFreeButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actFreeButton.backgroundColor = [UIColor clearColor];
+    [_actFreeButton setTag:2000];
     [_actFreeButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
-    //    [_actFreeButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_actFreeButton addTarget:self action:@selector(changePrice:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actFreeButton];
     
     _actAAButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -242,8 +276,9 @@
     [_actAAButton setTitle:@"收费" forState:UIControlStateNormal];
     [_actAAButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actAAButton.backgroundColor = [UIColor clearColor];
+    [_actAAButton setTag:2001];
     [_actAAButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
-    //    [_actFreeButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_actAAButton addTarget:self action:@selector(changePrice:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actAAButton];
     
     y = y + _actPriceImg.frame.size.height + sep;
@@ -271,9 +306,45 @@
     NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"];
     _actDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, mScreenHeight/2, mScreenWidth, mScreenHeight/2-60)];
     _actDatePicker.locale = locale;
+    _actDatePicker.datePickerMode = UIDatePickerModeDate;
     _actDatePicker.backgroundColor = UIColorFromRGB(0x85b200);
+    _actDatePicker.minimumDate = _minDate;
+    _actDatePicker.maximumDate = _maxDate;
+    [_actDatePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
     [self.view addSubview:_actDatePicker];
     [_actDatePicker setHidden:YES];
+    
+    //创建选择按钮
+    _selectedButton = [[UIButton alloc]initWithFrame:CGRectMake(0, mScreenHeight-60, mScreenWidth, 60)];
+    _selectedButton.backgroundColor = UIColorFromRGB(0x85b200);
+    [_selectedButton setTitle:@"确 定" forState:UIControlStateNormal];
+    [_selectedButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_selectedButton];
+    [_selectedButton setHidden:YES];
+}
+
+-(void) buttonPressed:(id)sender{
+    [_selectedButton setHidden:YES];
+    [_actDatePicker setHidden:YES];
+}
+
+-(void)dateChanged:(id)sender{
+    UIDatePicker *control = (UIDatePicker*)sender;
+    NSDate *date = control.date;
+    switch (_currentButton) {
+        case 1001://结束时间
+            [_actTimeEndButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
+            _maxTime = date;
+            break;
+        case 1002://开始时间
+            [_actTimeStartButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
+            _minTime = date;
+            break;
+        default:
+            [_actDateButton setTitle:[self getSimpleDate:date] forState:UIControlStateNormal];
+            _selectDate = date;
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -289,8 +360,44 @@
     }
 }
 
-- (void)selectDate{
+- (void)selectDate:(UIButton*)sender{
+    NSInteger tag = sender.tag;
+    _currentButton = tag;
+    switch (tag) {
+        case 1001://结束时间
+            _actDatePicker.datePickerMode = UIDatePickerModeTime;
+            _actDatePicker.minuteInterval = 10;
+            _actDatePicker.minimumDate = _from;
+            _actDatePicker.maximumDate = _maxTime;
+            break;
+        case 1002://开始时间
+            _actDatePicker.datePickerMode = UIDatePickerModeTime;
+            _actDatePicker.minuteInterval = 10;
+            _actDatePicker.maximumDate = _to;
+            _actDatePicker.minimumDate = _minTime;
+            break;
+        default:
+            _actDatePicker.datePickerMode = UIDatePickerModeDate;
+            break;
+    }
+    [_selectedButton setHidden:NO];
     [_actDatePicker setHidden:NO];
+}
+
+- (void)changePrice:(UIButton *)sender {
+    NSInteger tag = sender.tag;
+    if (tag==2000) {//说明选择的是免费
+        UIButton *f = (UIButton*)[_backgroundView viewWithTag:2001];
+        [f setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+        _priceType = 0;
+    }else{//说明选择收费
+        UIButton *m = (UIButton*)[_backgroundView viewWithTag:2000];
+        [m setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+        _priceType = 1;
+    }
+
 }
 
 - (UIImage *)getSliderUIImage:(NSString*)name{
@@ -341,6 +448,28 @@
     CGFloat offsetX = view.frame.origin.x + offset;
     CGFloat offsetY = view.frame.origin.y + (view.frame.size.height-icon.frame.size.height)/2;
     return CGRectMake(offsetX, offsetY, icon.frame.size.width, icon.frame.size.height);
+}
+
+- (NSString*)getSimpleDate:(NSDate*)date{
+    //设置时间输出格式：
+    NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSString * na = [df stringFromDate:date];
+    return na;
+}
+
+- (NSString*)getSimpleTime:(NSDate*)date{
+    //设置时间输出格式：
+    NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setDateFormat:@"HH:mm"];
+    NSString * na = [df stringFromDate:date];
+    return na;
+}
+
+- (NSDate*)getTimeFromString:(NSString*)date{
+    NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setDateFormat:@"HH:mm"];
+    return [df dateFromString:date];
 }
 
 @end

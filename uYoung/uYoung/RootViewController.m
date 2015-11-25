@@ -10,6 +10,7 @@
 #import "ActivityModel.h"
 #import "UserCenterController.h"
 #import <UIImageView+AFNetworking.h>
+#import "CreateActivityController.h"
 
 @interface RootViewController ()
 
@@ -64,7 +65,7 @@
     
 //    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
 //    [self.navigationController pushViewController:userCenter animated:YES];
-    EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+    CreateActivityController *editUserViewCtl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:editUserViewCtl animated:YES];
     
 }

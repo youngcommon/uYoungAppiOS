@@ -38,7 +38,6 @@
 @property (strong, nonatomic) UIImageView *actNumTextImg;
 @property (strong, nonatomic) UISlider *actNumSlider;
 @property (strong, nonatomic) UILabel *actNumLabel;
-@property (assign, nonatomic) NSInteger actNum;
 //费用
 @property (strong, nonatomic) UIImageView *actPriceImg;
 @property (strong, nonatomic) UIImageView *actPriceTextImg;
@@ -47,6 +46,23 @@
 //活动地点
 @property (strong, nonatomic) UIImageView *actAddrImg;
 @property (strong, nonatomic) UITextField *actAddrInput;
+//picker按钮
+@property (strong, nonatomic) UIButton *selectedButton;
+
+//存储各字段值
+@property (strong, nonatomic) NSDate *maxDate;
+@property (strong, nonatomic) NSDate *minDate;
+@property (strong, nonatomic) NSDate *selectDate;
+@property (strong, nonatomic) NSDate *maxTime;
+@property (strong, nonatomic) NSDate *minTime;
+@property (strong, nonatomic) NSString *actTitle;
+@property (strong, nonatomic) NSDate *from;
+@property (strong, nonatomic) NSDate *to;
+@property (assign, nonatomic) NSInteger actType;
+@property (assign, nonatomic) NSInteger actNum;
+@property (assign, nonatomic) NSInteger priceType;
+@property (assign, nonatomic) NSString *addr;
+@property (assign, nonatomic) NSInteger currentButton;//保存当前点击的时间选择器按钮
 
 - (IBAction)back:(id)sender;
 
