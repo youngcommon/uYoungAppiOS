@@ -150,6 +150,22 @@
     [_actTypeTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_top" isFront:NO]];
     [_backgroundView addSubview:_actTypeTextImg];
     
+    UILabel *vTypeline = [[UILabel alloc]initWithFrame:CGRectMake(vline.frame.origin.x, _actTypeTextImg.frame.origin.y, 1, _actTypeTextImg.frame.size.height)];
+    vTypeline.backgroundColor = UIColorFromRGB(0x85b200);
+    [_backgroundView addSubview:vTypeline];
+    
+    UIImageView *downArrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/down_arrow"]];
+    [downArrow setFrame:CGRectMake(vTypeline.frame.origin.x+(_actTypeTextImg.frame.origin.x+_actTypeTextImg.frame.size.width-vTypeline.frame.origin.x)/2-downArrow.frame.size.width/2, _actTypeTextImg.frame.origin.y+_actTypeTextImg.frame.size.height/2-downArrow.frame.size.height/2, downArrow.frame.size.width, downArrow.frame.size.height)];
+    [_backgroundView addSubview:downArrow];
+    
+    _actTypeSelButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x+10, _actTypeTextImg.frame.origin.y, _actTypeTextImg.frame.size.width, _actTypeTextImg.frame.size.height)];
+    _actTypeSelButton.titleLabel.font = labelFont;
+    _actTypeSelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [_actTypeSelButton setTitle:@"人像" forState:UIControlStateNormal];
+    [_actTypeSelButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actTypeSelButton.backgroundColor = [UIColor clearColor];
+    [_backgroundView addSubview:_actTypeSelButton];
+    
     y = y + _actTypeImg.frame.size.height + sepInside;
     
     //参与人数
