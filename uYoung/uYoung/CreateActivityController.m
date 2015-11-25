@@ -221,6 +221,31 @@
     [_actPriceTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO]];
     [_backgroundView addSubview:_actPriceTextImg];
     
+    _actFreeButton = [[UIButton alloc]initWithFrame:CGRectMake(_actPriceTextImg.frame.origin.x+10, _actPriceTextImg.frame.origin.y, _actPriceTextImg.frame.size.width/2-20, _actPriceTextImg.frame.size.height)];
+    _actFreeButton.titleLabel.font = labelFont;
+    _actFreeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _actFreeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+    [_actFreeButton setTitle:@"免费" forState:UIControlStateNormal];
+    [_actFreeButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actFreeButton.backgroundColor = [UIColor clearColor];
+    [_actFreeButton setImage:[UIImage imageNamed:@"uyoung.bundle/selected"] forState:UIControlStateNormal];
+    //    [_actFreeButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:_actFreeButton];
+    
+    _actAAButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_backgroundView addSubview:_actAAButton];
+    
+    _actAAButton = [[UIButton alloc]initWithFrame:CGRectMake(_actFreeButton.frame.origin.x+_actFreeButton.frame.size.width+10, _actFreeButton.frame.origin.y, _actPriceTextImg.frame.origin.x+_actPriceTextImg.frame.size.width-_actFreeButton.frame.origin.x-_actFreeButton.frame.size.width-10-10, _actFreeButton.frame.size.height)];
+    _actAAButton.titleLabel.font = labelFont;
+    _actAAButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _actAAButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+    [_actAAButton setTitle:@"收费" forState:UIControlStateNormal];
+    [_actAAButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
+    _actAAButton.backgroundColor = [UIColor clearColor];
+    [_actAAButton setImage:[UIImage imageNamed:@"uyoung.bundle/unselected"] forState:UIControlStateNormal];
+    //    [_actFreeButton addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:_actAAButton];
+    
     y = y + _actPriceImg.frame.size.height + sep;
     
     //活动地点
