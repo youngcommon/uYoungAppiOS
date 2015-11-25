@@ -37,6 +37,8 @@
 @property (strong, nonatomic) UIImageView *actNumImg;
 @property (strong, nonatomic) UIImageView *actNumTextImg;
 @property (strong, nonatomic) UISlider *actNumSlider;
+@property (strong, nonatomic) UILabel *actNumLabel;
+@property (assign, nonatomic) NSInteger actNum;
 //费用
 @property (strong, nonatomic) UIImageView *actPriceImg;
 @property (strong, nonatomic) UIImageView *actPriceTextImg;

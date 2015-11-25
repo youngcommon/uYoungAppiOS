@@ -168,6 +168,23 @@
     [_actNumTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_bottom" isFront:NO]];
     [_backgroundView addSubview:_actNumTextImg];
     
+    _actNumSlider = [[UISlider alloc]initWithFrame:CGRectMake(_actNumTextImg.frame.origin.x, _actNumTextImg.frame.origin.y+_actNumTextImg.frame.size.height/2-12/2, _actNumTextImg.frame.size.width-10, 12)];
+    _actNumSlider.minimumValue = 2;
+    _actNumSlider.maximumValue = 20;
+    _actNumSlider.value = 4;
+    [_actNumSlider setMinimumTrackImage:[self getSliderUIImage:@"uyoung.bundle/slider_max"] forState:UIControlStateNormal];
+    [_actNumSlider setMaximumTrackImage:[self getSliderUIImage:@"uyoung.bundle/slider_min"] forState:UIControlStateNormal];
+    [_actNumSlider setThumbImage:[UIImage imageNamed:@"uyoung.bundle/slider_thumb"] forState:UIControlStateNormal];
+    [_backgroundView addSubview:_actNumSlider];
+    
+    UIFont *actNumFont = [UIFont fontWithName:@"HelveticaNeue" size:8];
+    _actNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(_actNumSlider.frame.origin.x+10, _actNumSlider.frame.origin.y, _actNumSlider.frame.size.width/2, 12)];
+    [_actNumLabel setFont:actNumFont];
+    [_actNumLabel setText:@"4人"];
+    [actNumLabel setTextAlignment:NSTextAlignmentLeft];
+    [_actNumLabel setTextColor:[UIColor whiteColor]];
+    [_backgroundView addSubview:_actNumLabel];
+    
     y = y + _actNumImg.frame.size.height + sep;
     
     //费用
@@ -222,6 +239,12 @@
 
 - (void)selectDate{
     [_actDatePicker setHidden:NO];
+}
+
+- (UIImage *)getSliderUIImage:(NSString*)name{
+    UIImage *bubble = [UIImage imageNamed:name];
+    UIEdgeInsets capInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
