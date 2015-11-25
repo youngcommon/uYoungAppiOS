@@ -17,13 +17,13 @@
 - (void)viewDidAppear:(BOOL)animated{
     _userDetailModel = [UserDetailModel currentUser];
     
-//    if (_userDetailModel==nil||_userDetailModel.id==0) {
-//        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-//        loginViewCtl.source = @"usercenter";
-//        [self presentViewController:loginViewCtl animated:YES completion:nil];
-//    }else{
-//        [self initViewWithUser];
-//    }
+    if (_userDetailModel==nil||_userDetailModel.id==0) {
+        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+        loginViewCtl.source = @"usercenter";
+        [self presentViewController:loginViewCtl animated:YES completion:nil];
+    }else{
+        [self initViewWithUser];
+    }
 
 }
 
@@ -56,7 +56,7 @@
     
     self.headerImg.layer.cornerRadius = self.headerImg.frame.size.height/2;
     self.headerImg.layer.masksToBounds = YES;
-    self.headerImg.layer.borderWidth = 1.;
+//    self.headerImg.layer.borderWidth = 1.;
     self.headerImg.layer.borderColor = [[UIColor brownColor] CGColor];
     
     CGFloat buttonWidth = mScreenWidth / 2;
@@ -108,6 +108,7 @@
     [_createAlbumView setBackgroundColor:[UIColor whiteColor]];
     _createAlbumView.alpha = 0.7;
     [self.view addSubview:_createAlbumView];
+    [_createAlbumView setHidden:YES];
     
     _createAlbumText = [[UITextField alloc]initWithFrame:CGRectMake(10+60+10, mScreenHeight-26-15, mScreenWidth-10*3-60-10-30-10, 26)];
     [_createAlbumText setPlaceholder:@" 请输入相册名称"];
@@ -171,6 +172,10 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    
+}
+
 - (void)initViewWithUser{
     
     //判断，如果用户资料未填写，则弹出完善资料页面
@@ -224,6 +229,7 @@
             _createAlbumView.frame = frame;
             [_createAct setHidden:NO];
             [_doCreate setHidden:YES];
+            [_createAlbumView setHidden:YES];
         }
     }
 }
@@ -238,6 +244,7 @@
 }
 
 - (void)createAlbums{
+    [_createAlbumView setHidden:NO];
     CGPoint origin = _createAlbumView.frame.origin;
     CGSize size = _createAlbumView.frame.size;
     CGRect frame = CGRectMake(0, origin.y, size.width, size.height);
@@ -265,10 +272,11 @@
     [UIView setAnimationDuration:0.1];
     [_createAlbumView setFrame:frame];
     [UIView commitAnimations];
+    [_createAlbumView setHidden:YES];
 }
 
 - (void)doCreateAlbum{
-    
+    [_createAlbumView setHidden:YES];
 }
 
 - (void)createActivity{
