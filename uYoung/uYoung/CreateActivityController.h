@@ -69,6 +69,9 @@
 @property (strong, nonatomic) NSArray *actTypes;
 @property (strong, nonatomic) UITableView *actTypesTable;
 
+//键盘跟随
+@property (nonatomic, strong) IQKeyboardReturnKeyHandler *returnKeyHandler;
+
 - (IBAction)back:(id)sender;
 
 @end

@@ -19,6 +19,9 @@
     [super viewDidLoad];
     _backgroundImg.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
+    self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
+    self.returnKeyHandler.toolbarManageBehaviour = IQAutoToolbarBySubviews;
     
     _minDate = [NSDate date];
     NSDate *nextHour = [NSDate dateWithTimeInterval:60*60 sinceDate:_minDate];
@@ -334,6 +337,11 @@
     [_selectedButton setHidden:YES];
     
     [self initActTypeSelectView];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.returnKeyHandler = nil;
 }
 
 -(void) buttonPressed:(id)sender{
