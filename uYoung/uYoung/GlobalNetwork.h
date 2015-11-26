@@ -13,11 +13,12 @@
 
 @optional
 -(void)successGetCities:(NSArray*)arr;
-
+-(void)successGetActTypes:(NSArray*)arr;
 @end
 
 @interface GlobalNetwork : NSObject
 
++ (void)getAllActTypes:(id<GlobalNetworkDelegate>)delegate;
 + (void)getAllCityies:(id<GlobalNetworkDelegate>)delegate;
 
 @end

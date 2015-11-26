@@ -11,6 +11,25 @@
 
 @implementation GlobalNetwork
 
++ (void)getAllActTypes:(id<GlobalNetworkDelegate>)delegate{
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/types"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            NSArray *types = [responseObject objectForKey:@"resultData"];
+            [delegate successGetActTypes:types];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+    
+}
+
 + (void)getAllCityies:(id<GlobalNetworkDelegate>)delegate{
     NSString *url = [uyoung_host stringByAppendingString:@"/common/cities"];
     

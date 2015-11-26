@@ -49,6 +49,8 @@
     
     //获得城市
     [GlobalNetwork getAllCityies:self];
+    //获得所有类别
+    [GlobalNetwork getAllActTypes:self];
     
     return YES;
 }
@@ -89,6 +91,14 @@
     
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:a];
     [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"citylist"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+-(void)successGetActTypes:(NSArray*)arr{
+    
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:arr];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"acttype"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
