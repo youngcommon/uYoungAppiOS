@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IQKeyboardManager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>27562A1D7D4BEA937095D80C7219CB80</key>
+		<key>099B5994408EB41E65B719F700F53F81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55DBDD8B7D446F1D618F303A9FB53209</key>
+		<key>6627E2CE58504A680DE862D5526B302C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6627E2CE58504A680DE862D5526B302C</key>
+		<key>7282F0B80082C130C1C2A7D8F3C4E1BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9460AF3335234D77609402C75E19498E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CBF7CCE63F434BD01F49D72E9B3BA26D</key>
+		<key>B0E489F2BF60E8477A5C1B27BCE7BD7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

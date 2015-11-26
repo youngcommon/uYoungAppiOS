@@ -49,6 +49,8 @@
 //picker按钮
 @property (strong, nonatomic) UIButton *selectedButton;
 
+@property (assign, nonatomic) CGFloat viewBottom;
+@property (assign, nonatomic) BOOL isRegister;
 @property (strong, nonatomic) UIFont *labelFont;
 //存储各字段值
 @property (assign, nonatomic) CGFloat delta;
@@ -68,9 +70,6 @@
 //保存活动类型数据
 @property (strong, nonatomic) NSArray *actTypes;
 @property (strong, nonatomic) UITableView *actTypesTable;
-
-//键盘跟随
-@property (nonatomic, strong) IQKeyboardReturnKeyHandler *returnKeyHandler;
 
 - (IBAction)back:(id)sender;
 

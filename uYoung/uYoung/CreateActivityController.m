@@ -19,10 +19,6 @@
     [super viewDidLoad];
     _backgroundImg.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
-    self.returnKeyHandler.toolbarManageBehaviour = IQAutoToolbarBySubviews;
-    
     _minDate = [NSDate date];
     NSDate *nextHour = [NSDate dateWithTimeInterval:60*60 sinceDate:_minDate];
     _maxDate = [NSDate dateWithTimeInterval:24*60*60*30*12 sinceDate:_minDate];
@@ -82,6 +78,7 @@
     _actNameInput.returnKeyType = UIReturnKeyDone;
     _actNameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _actNameInput.delegate = self;
+    [_actNameInput setTag:9001];
     [_backgroundView addSubview:_actNameInput];
     
     y = y + _actNameImg.frame.size.height + sep;
@@ -310,6 +307,7 @@
     _actAddrInput.returnKeyType = UIReturnKeyDone;
     _actAddrInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _actAddrInput.delegate = self;
+    [_actAddrInput setTag:9002];
     [_backgroundView addSubview:_actAddrInput];
     
     //增加键盘事件监听
@@ -341,7 +339,6 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.returnKeyHandler = nil;
 }
 
 -(void) buttonPressed:(id)sender{
@@ -404,7 +401,7 @@
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
     //当用户点击他处时，收回弹出的选择view
-    [self selectActType];
+//    [self selectActType];
 }
 
 #pragma mark - Table view data source
@@ -439,7 +436,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     _actType = (int)_actTypes[indexPath.row][@"type"];
     [_actTypeSelButton setTitle:_actTypes[indexPath.row][@"cnDesc"] forState:UIControlStateNormal];
-//    [_actTypesTable setHidden:YES];
     [self selectActType];
 }
 
@@ -579,11 +575,17 @@
     return YES;
 }
 
-//计算键盘的高度
--(CGFloat)keyboardEndingFrameHeight:(NSDictionary *)userInfo{
-    CGRect keyboardEndingUncorrectedFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
-    CGRect keyboardEndingFrame = [self.view convertRect:keyboardEndingUncorrectedFrame fromView:nil];
-    return keyboardEndingFrame.size.height;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (_isRegister==NO) {
+        _isRegister = YES;
+        _viewBottom = textField.frame.origin.y + textField.frame.size.height;
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    _isRegister = NO;
+    return YES;
 }
 
 - (void)keyboardWillShow:(NSNotification *)notify {
@@ -592,14 +594,13 @@
     // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
     double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGFloat screenHeight = self.view.bounds.size.height;
-//    CGFloat viewBottom = sv.frame.origin.y + sv.frame.size.height;
-    CGFloat viewBottom = 0;
-    if (viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
+
+    if (_viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
     
     // 键盘会盖住输入框, 要移动整个view了
-    _delta = viewBottom + kbHeight - screenHeight + 50;
+    _delta = _viewBottom + kbHeight - screenHeight + 100;
     
-    CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    CGRect viewFrame = CGRectMake(0, 0-_delta, self.view.frame.size.width, self.view.frame.size.height);
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:duration];
