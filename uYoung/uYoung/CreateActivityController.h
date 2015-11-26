@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -51,6 +51,7 @@
 
 @property (strong, nonatomic) UIFont *labelFont;
 //存储各字段值
+@property (assign, nonatomic) CGFloat delta;
 @property (strong, nonatomic) NSDate *maxDate;
 @property (strong, nonatomic) NSDate *minDate;
 @property (strong, nonatomic) NSDate *selectDate;

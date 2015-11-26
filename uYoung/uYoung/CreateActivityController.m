@@ -76,6 +76,9 @@
     _actNameInput.placeholder = @"请输入活动名称";
     _actNameInput.font = _labelFont;
     _actNameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
+    _actNameInput.returnKeyType = UIReturnKeyDone;
+    _actNameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _actNameInput.delegate = self;
     [_backgroundView addSubview:_actNameInput];
     
     y = y + _actNameImg.frame.size.height + sep;
@@ -301,7 +304,14 @@
     _actAddrInput.placeholder = @"请输入活动地址";
     _actAddrInput.font = _labelFont;
     _actAddrInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
+    _actAddrInput.returnKeyType = UIReturnKeyDone;
+    _actAddrInput.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _actAddrInput.delegate = self;
     [_backgroundView addSubview:_actAddrInput];
+    
+    //增加键盘事件监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     
     //初始化日期选择器
     NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"];
@@ -429,6 +439,7 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - slider处理
 - (void) sliderValueChanged:(id)sender{
     UISlider* control = (UISlider*)sender;
     if(control == _actNumSlider){
@@ -462,6 +473,7 @@
     [_actDatePicker setHidden:NO];
 }
 
+#pragma mark - 收费、免费切换
 - (void)changePrice:(UIButton *)sender {
     NSInteger tag = sender.tag;
     if (tag==2000) {//说明选择的是免费
@@ -478,6 +490,12 @@
 
 }
 
+#pragma mark - 返回按钮
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 图片处理
 - (UIImage *)getSliderUIImage:(NSString*)name{
     UIImage *bubble = [UIImage imageNamed:name];
     UIEdgeInsets capInsets = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -505,11 +523,6 @@
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     
 }
-
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (CGRect)getLabelFrame:(UIView*)view offset:(CGFloat)offset{
     CGFloat offsetX = view.frame.origin.x + view.frame.size.width - offset - 48;
     CGFloat offsetY = view.frame.origin.y + (view.frame.size.height-16)/2;
@@ -528,6 +541,7 @@
     return CGRectMake(offsetX, offsetY, icon.frame.size.width, icon.frame.size.height);
 }
 
+#pragma mark - 时间处理
 - (NSString*)getSimpleDate:(NSDate*)date{
     //设置时间输出格式：
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
@@ -548,6 +562,53 @@
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
     [df setDateFormat:@"HH:mm"];
     return [df dateFromString:date];
+}
+
+#pragma mark - 键盘、输入框相关接口方法
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//计算键盘的高度
+-(CGFloat)keyboardEndingFrameHeight:(NSDictionary *)userInfo{
+    CGRect keyboardEndingUncorrectedFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
+    CGRect keyboardEndingFrame = [self.view convertRect:keyboardEndingUncorrectedFrame fromView:nil];
+    return keyboardEndingFrame.size.height;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notify {
+    //sv为弹出键盘的视图，UITextField
+    CGFloat kbHeight = [[notify.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;//获取键盘高度。
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGFloat screenHeight = self.view.bounds.size.height;
+//    CGFloat viewBottom = sv.frame.origin.y + sv.frame.size.height;
+    CGFloat viewBottom = 0;
+    if (viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
+    
+    // 键盘会盖住输入框, 要移动整个view了
+    _delta = viewBottom + kbHeight - screenHeight + 50;
+    
+    CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHidden:(NSNotification *)notify {//键盘消失
+    // 键盘动画时间
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+    _delta = 0.0f;
 }
 
 @end
