@@ -41,6 +41,8 @@
 		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; };
 		48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC41811BDA6962006E44B3 /* LoginViewController.xib */; };
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
+		843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */; };
+		843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */; };
 		84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */; };
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
 		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
@@ -147,6 +149,9 @@
 		48FC41811BDA6962006E44B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		673C8F3E094E334AA1B811DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlbumViewController.h; sourceTree = "<group>"; };
+		843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlbumViewController.m; sourceTree = "<group>"; };
+		843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityAlbumViewController.xib; sourceTree = "<group>"; };
 		84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailEnrollsModel.h; sourceTree = "<group>"; };
 		84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailEnrollsModel.m; sourceTree = "<group>"; };
 		8457EE011BEA478200C00176 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
@@ -362,6 +367,9 @@
 				8462F6501C00BBAB00A6B460 /* CreateActivityController.h */,
 				8462F6511C00BBAB00A6B460 /* CreateActivityController.m */,
 				8462F6531C00BBC900A6B460 /* CreateActivityController.xib */,
+				843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */,
+				843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */,
+				843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -599,6 +607,7 @@
 				84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
+				843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
 			);
@@ -695,6 +704,7 @@
 				84763F811BFA1FC7002BC70B /* YoungHUDLabel.m in Sources */,
 				84763F701BFA1D33002BC70B /* UYoungAlertViewUtil.m in Sources */,
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
+				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
