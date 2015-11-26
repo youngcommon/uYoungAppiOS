@@ -39,7 +39,7 @@
     CGFloat x = (_backgroundView.frame.size.width - frontWidth - backWidth)/2;
     CGFloat y = 30;
     CGFloat labelOffset = 12;
-    UIFont *labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    _labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
     if (mScreenWidth==375) {//iPhone 6
         sep = 32;//默认行距
         sepInside = 4;//默认间距
@@ -65,7 +65,7 @@
     [_backgroundView addSubview:_actNameImg];
     
     UILabel *actNameLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actNameImg offset:labelOffset]];
-    [actNameLabel setFont:labelFont];
+    [actNameLabel setFont:_labelFont];
     [actNameLabel setTextAlignment:NSTextAlignmentRight];
     [actNameLabel setText:@"活动名称"];
     actNameLabel.textColor = [UIColor whiteColor];
@@ -74,7 +74,7 @@
     _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, backWidth, labelHeight)];
     _actNameInput.borderStyle = UITextBorderStyleNone;
     _actNameInput.placeholder = @"请输入活动名称";
-    _actNameInput.font = labelFont;
+    _actNameInput.font = _labelFont;
     _actNameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     [_backgroundView addSubview:_actNameInput];
     
@@ -86,7 +86,7 @@
     [_backgroundView addSubview:_actDateImg];
     
     UILabel *actDateLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actDateImg offset:labelOffset]];
-    [actDateLabel setFont:labelFont];
+    [actDateLabel setFont:_labelFont];
     [actDateLabel setTextAlignment:NSTextAlignmentRight];
     [actDateLabel setText:@"活动日期"];
     actDateLabel.textColor = [UIColor whiteColor];
@@ -107,7 +107,7 @@
     
     CGFloat contentX = _actDateTextImg.frame.origin.x;
     _actDateButton = [[UIButton alloc]initWithFrame:CGRectMake(contentX, _actDateTextImg.frame.origin.y, _actDateTextImg.frame.size.width, _actDateTextImg.frame.size.height)];
-    _actDateButton.titleLabel.font = labelFont;
+    _actDateButton.titleLabel.font = _labelFont;
     _actDateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actDateButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [_actDateButton setTitle:[self getSimpleDate:_minDate] forState:UIControlStateNormal];
@@ -125,7 +125,7 @@
     [_backgroundView addSubview:_actTimeImg];
     
     UILabel *actTimeLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actTimeImg offset:labelOffset]];
-    [actTimeLabel setFont:labelFont];
+    [actTimeLabel setFont:_labelFont];
     [actTimeLabel setTextAlignment:NSTextAlignmentRight];
     [actTimeLabel setText:@"活动时间"];
     actTimeLabel.textColor = [UIColor whiteColor];
@@ -138,7 +138,7 @@
     CGFloat hlineX = _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width/2-5;
     
     _actTimeStartButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTimeTextImg.frame.origin.x+10, _actTimeTextImg.frame.origin.y, hlineX-_actTimeTextImg.frame.origin.x-10-10, _actTimeTextImg.frame.size.height)];
-    _actTimeStartButton.titleLabel.font = labelFont;
+    _actTimeStartButton.titleLabel.font = _labelFont;
     _actTimeStartButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeStartButton setTitle:[self getSimpleTime:_minTime] forState:UIControlStateNormal];
@@ -154,7 +154,7 @@
     [_backgroundView addSubview:hline];
     
     _actTimeEndButton = [[UIButton alloc]initWithFrame:CGRectMake(hline.frame.origin.x+hline.frame.size.width+10, _actTimeTextImg.frame.origin.y, _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width-hlineX-hline.frame.size.width, _actTimeTextImg.frame.size.height)];
-    _actTimeEndButton.titleLabel.font = labelFont;
+    _actTimeEndButton.titleLabel.font = _labelFont;
     _actTimeEndButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeEndButton setTitle:[self getSimpleTime:_maxTime] forState:UIControlStateNormal];
@@ -173,7 +173,7 @@
     [_backgroundView addSubview:_actTypeImg];
     
     UILabel *actTypeLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actTypeImg offset:labelOffset]];
-    [actTypeLabel setFont:labelFont];
+    [actTypeLabel setFont:_labelFont];
     [actTypeLabel setTextAlignment:NSTextAlignmentRight];
     [actTypeLabel setText:@"活动类型"];
     actTypeLabel.textColor = [UIColor whiteColor];
@@ -192,11 +192,12 @@
     [_backgroundView addSubview:downArrow];
     
     _actTypeSelButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x+10, _actTypeTextImg.frame.origin.y, _actTypeTextImg.frame.size.width, _actTypeTextImg.frame.size.height)];
-    _actTypeSelButton.titleLabel.font = labelFont;
+    _actTypeSelButton.titleLabel.font = _labelFont;
     _actTypeSelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [_actTypeSelButton setTitle:@"人像" forState:UIControlStateNormal];
     [_actTypeSelButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
     _actTypeSelButton.backgroundColor = [UIColor clearColor];
+    [_actTypeSelButton addTarget:self action:@selector(selectActType) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTypeSelButton];
     
     y = y + _actTypeImg.frame.size.height + sepInside;
@@ -207,7 +208,7 @@
     [_backgroundView addSubview:_actNumImg];
     
     UILabel *actNumLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actNumImg offset:labelOffset]];
-    [actNumLabel setFont:labelFont];
+    [actNumLabel setFont:_labelFont];
     [actNumLabel setTextAlignment:NSTextAlignmentRight];
     [actNumLabel setText:@"参与人数"];
     actNumLabel.textColor = [UIColor whiteColor];
@@ -244,7 +245,7 @@
     [_backgroundView addSubview:_actPriceImg];
     
     UILabel *actPriceLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actPriceImg offset:labelOffset]];
-    [actPriceLabel setFont:labelFont];
+    [actPriceLabel setFont:_labelFont];
     [actPriceLabel setTextAlignment:NSTextAlignmentRight];
     [actPriceLabel setText:@"费用"];
     actPriceLabel.textColor = [UIColor whiteColor];
@@ -255,7 +256,7 @@
     [_backgroundView addSubview:_actPriceTextImg];
     
     _actFreeButton = [[UIButton alloc]initWithFrame:CGRectMake(_actPriceTextImg.frame.origin.x+10, _actPriceTextImg.frame.origin.y, _actPriceTextImg.frame.size.width/2-20, _actPriceTextImg.frame.size.height)];
-    _actFreeButton.titleLabel.font = labelFont;
+    _actFreeButton.titleLabel.font = _labelFont;
     _actFreeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actFreeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actFreeButton setTitle:@"免费" forState:UIControlStateNormal];
@@ -270,7 +271,7 @@
     [_backgroundView addSubview:_actAAButton];
     
     _actAAButton = [[UIButton alloc]initWithFrame:CGRectMake(_actFreeButton.frame.origin.x+_actFreeButton.frame.size.width+10, _actFreeButton.frame.origin.y, _actPriceTextImg.frame.origin.x+_actPriceTextImg.frame.size.width-_actFreeButton.frame.origin.x-_actFreeButton.frame.size.width-10-10, _actFreeButton.frame.size.height)];
-    _actAAButton.titleLabel.font = labelFont;
+    _actAAButton.titleLabel.font = _labelFont;
     _actAAButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actAAButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actAAButton setTitle:@"收费" forState:UIControlStateNormal];
@@ -289,7 +290,7 @@
     [_backgroundView addSubview:_actAddrImg];
     
     UILabel *actAddrLabel = [[UILabel alloc]initWithFrame:[self getLabelFrame:_actAddrImg offset:labelOffset]];
-    [actAddrLabel setFont:labelFont];
+    [actAddrLabel setFont:_labelFont];
     [actAddrLabel setTextAlignment:NSTextAlignmentRight];
     [actAddrLabel setText:@"活动地点"];
     actAddrLabel.textColor = [UIColor whiteColor];
@@ -298,7 +299,7 @@
     _actAddrInput = [[UITextField alloc]initWithFrame:CGRectMake(_actAddrImg.frame.origin.x+_actAddrImg.frame.size.width, y, backWidth, labelHeight)];
     _actAddrInput.borderStyle = UITextBorderStyleNone;
     _actAddrInput.placeholder = @"请输入活动地址";
-    _actAddrInput.font = labelFont;
+    _actAddrInput.font = _labelFont;
     _actAddrInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     [_backgroundView addSubview:_actAddrInput];
     
@@ -321,6 +322,8 @@
     [_selectedButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_selectedButton];
     [_selectedButton setHidden:YES];
+    
+    [self initActTypeSelectView];
 }
 
 -(void) buttonPressed:(id)sender{
@@ -345,6 +348,73 @@
             _selectDate = date;
             break;
     }
+}
+
+-(void)selectActType{
+    if(_actTypesTable.isHidden){
+        [_actTypesTable setHidden:NO];
+    }else{
+        [_actTypesTable setHidden:YES];
+    }
+}
+
+-(void)initActTypeSelectView{
+    NSData *acttypelistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"acttype"];
+    if (acttypelistdata) {
+        _actTypes = [NSKeyedUnarchiver unarchiveObjectWithData:acttypelistdata];
+    } else {
+        _actTypes = [[NSArray alloc]init];
+    }
+    CGFloat height = [_actTypes count]*30;
+    if (height>200) {
+        height = 200;
+    }
+    _actTypesTable = [[UITableView alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x, _actTypeTextImg.frame.origin.y+_actTypeTextImg.frame.size.height-1, _actTypeTextImg.frame.size.width, height)];
+    _actTypesTable.delegate = self;
+    _actTypesTable.dataSource = self;
+    _actTypesTable.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
+    _actTypesTable.layer.borderWidth = 1;
+    [_backgroundView addSubview:_actTypesTable];
+    [_actTypesTable setHidden:YES];
+}
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
+    [_actTypesTable setHidden:YES];
+}
+
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_actTypes count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithFrame:CGRectZero];
+        [[cell textLabel]setFont:_labelFont];
+        cell.textLabel.textColor = UIColorFromRGB(0x85b200);
+        [[cell textLabel]setText:_actTypes[indexPath.row][@"cnDesc"]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 30;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _actType = (int)_actTypes[indexPath.row][@"type"];
+    [_actTypeSelButton setTitle:_actTypes[indexPath.row][@"cnDesc"] forState:UIControlStateNormal];
+    [_actTypesTable setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {

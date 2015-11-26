@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateActivityController : UIViewController
+@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -49,6 +49,7 @@
 //picker按钮
 @property (strong, nonatomic) UIButton *selectedButton;
 
+@property (strong, nonatomic) UIFont *labelFont;
 //存储各字段值
 @property (strong, nonatomic) NSDate *maxDate;
 @property (strong, nonatomic) NSDate *minDate;
@@ -63,6 +64,9 @@
 @property (assign, nonatomic) NSInteger priceType;
 @property (assign, nonatomic) NSString *addr;
 @property (assign, nonatomic) NSInteger currentButton;//保存当前点击的时间选择器按钮
+//保存活动类型数据
+@property (strong, nonatomic) NSArray *actTypes;
+@property (strong, nonatomic) UITableView *actTypesTable;
 
 - (IBAction)back:(id)sender;
 
