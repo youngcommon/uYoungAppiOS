@@ -351,11 +351,22 @@
 }
 
 -(void)selectActType{
-    if(_actTypesTable.isHidden){
-        [_actTypesTable setHidden:NO];
+    CGRect frame = _actTypesTable.frame;
+    if(frame.size.height==0){
+        CGFloat maxHeight = (_actAddrImg.frame.origin.y+_actAddrImg.frame.size.height)-(_actTypeTextImg.frame.origin.y+_actTypeTextImg.frame.size.height);
+        CGFloat height = [_actTypes count]*30;
+        if (height>maxHeight) {
+            height = maxHeight;
+        }
+        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, height);
     }else{
-        [_actTypesTable setHidden:YES];
+        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 0);
     }
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.2];
+    [_actTypesTable setFrame:frame];
+    [UIView commitAnimations];
 }
 
 -(void)initActTypeSelectView{
@@ -365,21 +376,17 @@
     } else {
         _actTypes = [[NSArray alloc]init];
     }
-    CGFloat height = [_actTypes count]*30;
-    if (height>200) {
-        height = 200;
-    }
-    _actTypesTable = [[UITableView alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x, _actTypeTextImg.frame.origin.y+_actTypeTextImg.frame.size.height-1, _actTypeTextImg.frame.size.width, height)];
+    _actTypesTable = [[UITableView alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x, _actTypeTextImg.frame.origin.y+_actTypeTextImg.frame.size.height-1, _actTypeTextImg.frame.size.width, 0)];
     _actTypesTable.delegate = self;
     _actTypesTable.dataSource = self;
     _actTypesTable.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
     _actTypesTable.layer.borderWidth = 1;
     [_backgroundView addSubview:_actTypesTable];
-    [_actTypesTable setHidden:YES];
 }
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
-    [_actTypesTable setHidden:YES];
+    //当用户点击他处时，收回弹出的选择view
+    [self selectActType];
 }
 
 #pragma mark - Table view data source
@@ -414,7 +421,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     _actType = (int)_actTypes[indexPath.row][@"type"];
     [_actTypeSelButton setTitle:_actTypes[indexPath.row][@"cnDesc"] forState:UIControlStateNormal];
-    [_actTypesTable setHidden:YES];
+//    [_actTypesTable setHidden:YES];
+    [self selectActType];
 }
 
 - (void)didReceiveMemoryWarning {
