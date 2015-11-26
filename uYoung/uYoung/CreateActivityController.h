@@ -52,6 +52,7 @@
 @property (assign, nonatomic) CGFloat viewBottom;
 @property (assign, nonatomic) BOOL isRegister;
 @property (strong, nonatomic) UIFont *labelFont;
+@property (strong, nonatomic) UIView *backview;
 //存储各字段值
 @property (assign, nonatomic) CGFloat delta;
 @property (strong, nonatomic) NSDate *maxDate;

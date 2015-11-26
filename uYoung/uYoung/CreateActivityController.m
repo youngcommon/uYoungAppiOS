@@ -314,6 +314,13 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     
+    //添加遮罩层
+    _backview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    _backview.backgroundColor = [UIColor darkGrayColor];
+    _backview.alpha = 0.4;
+    [self.view addSubview:_backview];
+    [_backview setHidden:YES];
+    
     //初始化日期选择器
     NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"];
     _actDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, mScreenHeight/2, mScreenWidth, mScreenHeight/2-60)];
@@ -342,6 +349,7 @@
 }
 
 -(void) buttonPressed:(id)sender{
+    [_backview setHidden:YES];
     [_selectedButton setHidden:YES];
     [_actDatePicker setHidden:YES];
 }
@@ -401,7 +409,9 @@
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
     //当用户点击他处时，收回弹出的选择view
-//    [self selectActType];
+    if(_actTypesTable.frame.size.height>0){
+        [self selectActType];
+    }
 }
 
 #pragma mark - Table view data source
@@ -454,6 +464,13 @@
 }
 
 - (void)selectDate:(UIButton*)sender{
+    //当用户点击他处时，收回弹出的选择view
+    if(_actTypesTable.frame.size.height>0){
+        [self selectActType];
+    }
+    
+    [_backview setHidden:NO];
+    
     NSInteger tag = sender.tag;
     _currentButton = tag;
     switch (tag) {
@@ -576,6 +593,11 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //当用户点击他处时，收回弹出的选择view
+    if(_actTypesTable.frame.size.height>0){
+        [self selectActType];
+    }
+    
     if (_isRegister==NO) {
         _isRegister = YES;
         _viewBottom = textField.frame.origin.y + textField.frame.size.height;
