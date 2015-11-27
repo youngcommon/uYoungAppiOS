@@ -5,25 +5,34 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityAlbumViewController">
+            <connections>
+                <outlet property="actTitle" destination="qia-9C-nRv" id="KyF-DX-hMz"/>
+                <outlet property="albums" destination="JoG-qX-8dY" id="MND-hk-wPQ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="f16-mu-76B"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-by-y1p">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/background.png" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-by-y1p">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-a6-Qsc">
-                    <rect key="frame" x="20" y="25" width="13" height="22"/>
+                    <rect key="frame" x="20" y="25" width="20" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="13" id="Nmz-s4-50A"/>
+                        <constraint firstAttribute="width" constant="20" id="Nmz-s4-50A"/>
                         <constraint firstAttribute="height" constant="22" id="xTF-WX-aVT"/>
                     </constraints>
-                    <state key="normal" image="back_btn.png"/>
+                    <state key="normal" image="uyoung.bundle/back_btn.png"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="plx-MY-Yr0"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回龙观外拍活动相册" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qia-9C-nRv">
-                    <rect key="frame" x="48" y="25" width="225" height="22"/>
+                    <rect key="frame" x="55" y="25" width="218" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="LH4-Em-JsE"/>
                     </constraints>
@@ -31,14 +40,18 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JoG-qX-8dY">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JoG-qX-8dY">
                     <rect key="frame" x="22" y="65" width="276" height="415"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="28" minimumInteritemSpacing="10" id="fbN-HR-2JO">
-                        <size key="itemSize" width="260" height="200"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="fbN-HR-2JO">
+                        <size key="itemSize" width="260" height="208"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Dwm-GF-rnE"/>
+                        <outlet property="delegate" destination="-1" id="cN9-Z3-aPD"/>
+                    </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -63,7 +76,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back_btn.png" width="13" height="21"/>
-        <image name="background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
+        <image name="uyoung.bundle/background.png" width="320" height="568"/>
     </resources>
 </document>

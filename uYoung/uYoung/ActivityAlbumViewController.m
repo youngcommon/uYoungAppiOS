@@ -7,6 +7,7 @@
 //
 
 #import "ActivityAlbumViewController.h"
+#import "ActivityAlbumCollectionViewCell.h"
 
 @interface ActivityAlbumViewController ()
 
@@ -14,14 +15,39 @@
 
 @implementation ActivityAlbumViewController
 
+static NSString * const reuseIdentifier = @"Cell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _albums.backgroundColor = [UIColor clearColor];
+    UINib * nib = [UINib nibWithNibName:@"ActivityAlbumCollectionViewCell" bundle:nil];
+    [_albums registerNib:nib forCellWithReuseIdentifier:@"Cell"];
+    
+    [_actTitle setText:[NSString stringWithFormat:@"%@相册", _actTitleStr]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+#pragma mark <UICollectionViewDataSource>
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [_actAlbum count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ActivityAlbumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    [cell initCellData:_actAlbum[indexPath.row]];
+    return cell;
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

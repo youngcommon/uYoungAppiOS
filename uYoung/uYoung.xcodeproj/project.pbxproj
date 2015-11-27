@@ -49,6 +49,8 @@
 		8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */; };
 		8462F6521C00BBAB00A6B460 /* CreateActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462F6511C00BBAB00A6B460 /* CreateActivityController.m */; };
 		8462F6541C00BBC900A6B460 /* CreateActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462F6531C00BBC900A6B460 /* CreateActivityController.xib */; };
+		8469F3761C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469F3741C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m */; };
+		8469F3771C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469F3751C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib */; };
 		846F17AD1BE107D700EB2DB4 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */; };
 		846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 846F17AA1BE107D700EB2DB4 /* WeiboSDK.bundle */; };
 		846F17B01BE1088A00EB2DB4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F17AF1BE1088A00EB2DB4 /* QuartzCore.framework */; };
@@ -162,6 +164,9 @@
 		8462F6501C00BBAB00A6B460 /* CreateActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityController.h; sourceTree = "<group>"; };
 		8462F6511C00BBAB00A6B460 /* CreateActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityController.m; sourceTree = "<group>"; };
 		8462F6531C00BBC900A6B460 /* CreateActivityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityController.xib; sourceTree = "<group>"; };
+		8469F3731C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlbumCollectionViewCell.h; sourceTree = "<group>"; };
+		8469F3741C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlbumCollectionViewCell.m; sourceTree = "<group>"; };
+		8469F3751C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		846F17A11BE107D700EB2DB4 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		846F17A21BE107D700EB2DB4 /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
 		846F17A31BE107D700EB2DB4 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
@@ -338,6 +343,9 @@
 				48039FDD1BD3F3EB00CF147A /* EnrollCollectionCell.xib */,
 				48039FE11BD491F000CF147A /* EnrollCollectionView.h */,
 				48039FE21BD491F000CF147A /* EnrollCollectionView.m */,
+				8469F3731C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.h */,
+				8469F3741C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m */,
+				8469F3751C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -596,6 +604,7 @@
 			files = (
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
+				8469F3771C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
 				8462F6541C00BBC900A6B460 /* CreateActivityController.xib in Resources */,
 				4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */,
@@ -699,6 +708,7 @@
 				48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
 				8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */,
+				8469F3761C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m in Sources */,
 				84763F6D1BFA1894002BC70B /* UpdateUser.m in Sources */,
 				8457EE0B1BEA525000C00176 /* NSString+StringUtil.m in Sources */,
 				84763F811BFA1FC7002BC70B /* YoungHUDLabel.m in Sources */,

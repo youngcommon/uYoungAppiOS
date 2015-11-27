@@ -10,4 +10,12 @@
 
 @interface ActivityAlbumViewController : UIViewController
 
+@property (strong, nonatomic) NSString *actTitleStr;
+
+@property (strong, nonatomic) IBOutlet UILabel *actTitle;
+
+@property (strong, nonatomic) NSArray *actAlbum;
+@property (strong, nonatomic) IBOutlet UICollectionView *albums;
+- (IBAction)back:(id)sender;
+
 @end
