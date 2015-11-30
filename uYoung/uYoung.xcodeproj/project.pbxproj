@@ -43,6 +43,8 @@
 		841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841D311A1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib */; };
 		843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */; };
 		843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */; };
+		8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */; };
+		8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */; };
 		84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */; };
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
 		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
@@ -154,6 +156,9 @@
 		843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlbumViewController.h; sourceTree = "<group>"; };
 		843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlbumViewController.m; sourceTree = "<group>"; };
 		843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityAlbumViewController.xib; sourceTree = "<group>"; };
+		8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityStep2Controller.h; sourceTree = "<group>"; };
+		8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityStep2Controller.m; sourceTree = "<group>"; };
+		8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityStep2Controller.xib; sourceTree = "<group>"; };
 		84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailEnrollsModel.h; sourceTree = "<group>"; };
 		84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailEnrollsModel.m; sourceTree = "<group>"; };
 		8457EE011BEA478200C00176 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
@@ -378,6 +383,9 @@
 				843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */,
 				843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */,
 				843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */,
+				8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */,
+				8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */,
+				8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -603,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
+				8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				8469F3771C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
@@ -715,6 +724,7 @@
 				84763F701BFA1D33002BC70B /* UYoungAlertViewUtil.m in Sources */,
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
+				8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,

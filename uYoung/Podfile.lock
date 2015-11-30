@@ -29,6 +29,7 @@ PODS:
     - AFNetworking (~> 2.0)
     - HappyDNS (~> 0.2)
   - SVPullToRefresh (0.4.1)
+  - ZSSRichTextEditor (0.5.2.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - Mantle
   - Qiniu (~> 7.0)
   - SVPullToRefresh
+  - ZSSRichTextEditor
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
@@ -44,5 +46,6 @@ SPEC CHECKSUMS:
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
   Qiniu: ade34d722c8ce0eed7080fd268249e8402a2f535
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
 COCOAPODS: 0.39.0
