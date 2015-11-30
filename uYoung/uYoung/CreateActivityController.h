@@ -73,5 +73,6 @@
 @property (strong, nonatomic) UITableView *actTypesTable;
 
 - (IBAction)back:(id)sender;
+- (IBAction)toStep2:(id)sender;
 
 @end

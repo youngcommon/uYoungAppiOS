@@ -8,6 +8,7 @@
 
 #import "CreateActivityController.h"
 #import "GlobalConfig.h"
+#import "CreateActivityStep2Controller.h"
 
 @interface CreateActivityController ()
 
@@ -514,6 +515,11 @@
 #pragma mark - 返回按钮
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)toStep2:(id)sender {
+    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]initWithNibName:@"CreateActivityStep2Controller" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:step2 animated:YES];
 }
 
 #pragma mark - 图片处理

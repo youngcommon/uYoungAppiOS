@@ -48,6 +48,9 @@
                         <constraint firstAttribute="width" constant="46" id="y6a-RS-jwU"/>
                     </constraints>
                     <state key="normal" title="下一步"/>
+                    <connections>
+                        <action selector="toStep2:" destination="-1" eventType="touchUpInside" id="FWa-rg-Wkq"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-uB-bpp">
                     <rect key="frame" x="22" y="59" width="276" height="401"/>

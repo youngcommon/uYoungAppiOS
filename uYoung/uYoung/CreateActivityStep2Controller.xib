@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateActivityStep2Controller">
             <connections>
+                <outlet property="backgroundImg" destination="8eQ-sk-nXq" id="8P0-U0-29k"/>
+                <outlet property="contentView" destination="Mwn-C1-aYb" id="ohh-k0-Lp8"/>
+                <outlet property="dividLine" destination="48e-rF-Oau" id="jQT-W9-ms4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="gqc-cy-SxN"/>
             </connections>
         </placeholder>
@@ -18,50 +21,104 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SmK-jO-prk">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSy-kr-iet">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSy-kr-iet">
                     <rect key="frame" x="20" y="25" width="20" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="1ee-vM-MCP"/>
+                        <constraint firstAttribute="height" constant="22" id="ByC-ac-6qL"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" image="back_btn.png">
+                    <state key="normal" image="uyoung.bundle/back_btn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="OUz-XY-C8Y"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第二步:活动描述" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZv-4r-5jV">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第二步:活动描述" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZv-4r-5jV">
                     <rect key="frame" x="71" y="26" width="179" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="EuZ-49-oCO"/>
+                        <constraint firstAttribute="width" constant="179" id="v16-bf-A7R"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-C1-aYb">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-C1-aYb">
                     <rect key="frame" x="22" y="59" width="276" height="400"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="uyoung.bundle/backcover.png" translatesAutoresizingMaskIntoConstraints="NO" id="8eQ-sk-nXq">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/backcover.png" translatesAutoresizingMaskIntoConstraints="NO" id="8eQ-sk-nXq">
                             <rect key="frame" x="0.0" y="0.0" width="276" height="400"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="uyoung.bundle/dividing_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="48e-rF-Oau">
-                            <rect key="frame" x="10" y="352" width="256" height="6"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/dividing_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="48e-rF-Oau">
+                            <rect key="frame" x="10" y="331" width="256" height="6"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="6" id="Vxw-6y-8HA"/>
+                            </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwR-hc-oGl">
-                            <rect key="frame" x="101" y="366" width="75" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwR-hc-oGl">
+                            <rect key="frame" x="101" y="345" width="75" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="va0-ot-rhc"/>
+                                <constraint firstAttribute="height" constant="30" id="x2f-Fz-bRF"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="发布活动"/>
+                            <connections>
+                                <action selector="createActivity:" destination="-1" eventType="touchUpOutside" id="g2Q-Vv-eSq"/>
+                            </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="TwR-hc-oGl" firstAttribute="top" secondItem="48e-rF-Oau" secondAttribute="bottom" constant="8" id="0KO-cb-9mw"/>
+                        <constraint firstItem="48e-rF-Oau" firstAttribute="leading" secondItem="Mwn-C1-aYb" secondAttribute="leading" id="7ro-hU-mLA"/>
+                        <constraint firstItem="8eQ-sk-nXq" firstAttribute="leading" secondItem="Mwn-C1-aYb" secondAttribute="leading" id="OcL-T2-mIb"/>
+                        <constraint firstItem="8eQ-sk-nXq" firstAttribute="top" secondItem="Mwn-C1-aYb" secondAttribute="top" id="Odd-Ey-lD4"/>
+                        <constraint firstAttribute="trailing" secondItem="48e-rF-Oau" secondAttribute="trailing" id="XgP-O4-kFz"/>
+                        <constraint firstItem="48e-rF-Oau" firstAttribute="leading" secondItem="Mwn-C1-aYb" secondAttribute="leading" constant="10" id="Y88-PG-lFQ"/>
+                        <constraint firstItem="48e-rF-Oau" firstAttribute="leading" secondItem="Mwn-C1-aYb" secondAttribute="leading" id="Z9M-w6-vQ6"/>
+                        <constraint firstAttribute="trailing" secondItem="48e-rF-Oau" secondAttribute="trailing" constant="10" id="ZOQ-hg-WPw"/>
+                        <constraint firstAttribute="trailing" secondItem="48e-rF-Oau" secondAttribute="trailing" id="c74-ls-SRg"/>
+                        <constraint firstAttribute="bottom" secondItem="TwR-hc-oGl" secondAttribute="bottom" constant="25" id="jde-nO-kor"/>
+                        <constraint firstAttribute="bottom" secondItem="8eQ-sk-nXq" secondAttribute="bottom" id="lnP-70-QGw"/>
+                        <constraint firstAttribute="bottom" secondItem="48e-rF-Oau" secondAttribute="bottom" constant="40" id="yUR-3P-AZN"/>
+                        <constraint firstItem="TwR-hc-oGl" firstAttribute="centerX" secondItem="Mwn-C1-aYb" secondAttribute="centerX" id="ybC-RA-ieu"/>
+                        <constraint firstAttribute="trailing" secondItem="8eQ-sk-nXq" secondAttribute="trailing" id="zKO-FV-cGP"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="7ro-hU-mLA"/>
+                            <exclude reference="XgP-O4-kFz"/>
+                            <exclude reference="Z9M-w6-vQ6"/>
+                            <exclude reference="c74-ls-SRg"/>
+                            <exclude reference="yUR-3P-AZN"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="SSy-kr-iet" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="3EG-2M-r7E"/>
                 <constraint firstItem="SmK-jO-prk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4CC-5W-jzb"/>
                 <constraint firstAttribute="bottom" secondItem="SmK-jO-prk" secondAttribute="bottom" id="C7W-lN-324"/>
+                <constraint firstItem="lZv-4r-5jV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="26" id="E6v-sx-fdz"/>
                 <constraint firstAttribute="trailing" secondItem="SmK-jO-prk" secondAttribute="trailing" id="Ee4-Qm-q4R"/>
+                <constraint firstItem="lZv-4r-5jV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Juh-NG-Wao"/>
+                <constraint firstAttribute="trailing" secondItem="Mwn-C1-aYb" secondAttribute="trailing" constant="22" id="Naq-TS-rb5"/>
+                <constraint firstItem="Mwn-C1-aYb" firstAttribute="top" secondItem="lZv-4r-5jV" secondAttribute="bottom" constant="12" id="OV5-qd-buE"/>
+                <constraint firstItem="SSy-kr-iet" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="aeY-Mz-x0k"/>
+                <constraint firstItem="Mwn-C1-aYb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="ai6-le-jmw"/>
                 <constraint firstItem="SmK-jO-prk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mrg-7T-o4a"/>
+                <constraint firstAttribute="bottom" secondItem="Mwn-C1-aYb" secondAttribute="bottom" constant="21" id="xmd-dX-Lla"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="back_btn.png" width="13" height="21"/>
+        <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/backcover.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
         <image name="uyoung.bundle/dividing_line.png" width="320" height="568"/>

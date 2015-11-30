@@ -45,6 +45,7 @@
 		843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */; };
 		8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */; };
 		8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */; };
+		8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452A5221C0C84D300DB419C /* ActivityDescTextView.m */; };
 		84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */; };
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
 		8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8457EE041BEA47C600C00176 /* EditUserViewController.xib */; };
@@ -159,6 +160,8 @@
 		8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityStep2Controller.h; sourceTree = "<group>"; };
 		8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityStep2Controller.m; sourceTree = "<group>"; };
 		8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityStep2Controller.xib; sourceTree = "<group>"; };
+		8452A5211C0C84D300DB419C /* ActivityDescTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDescTextView.h; sourceTree = "<group>"; };
+		8452A5221C0C84D300DB419C /* ActivityDescTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDescTextView.m; sourceTree = "<group>"; };
 		84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailEnrollsModel.h; sourceTree = "<group>"; };
 		84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailEnrollsModel.m; sourceTree = "<group>"; };
 		8457EE011BEA478200C00176 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserViewController.h; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 				8469F3731C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.h */,
 				8469F3741C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m */,
 				8469F3751C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib */,
+				8452A5211C0C84D300DB419C /* ActivityDescTextView.h */,
+				8452A5221C0C84D300DB419C /* ActivityDescTextView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -704,6 +709,7 @@
 				849506B11BFE042700119D8C /* CityModel.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				84763F7E1BFA1FC7002BC70B /* YoungHUDBackgroundView.m in Sources */,
+				8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
