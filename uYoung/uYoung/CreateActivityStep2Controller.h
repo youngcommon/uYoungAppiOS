@@ -10,4 +10,6 @@
 
 @interface CreateActivityStep2Controller : UIViewController
 
+@property (strong, nonatomic) NSDictionary *step1Data;
+
 @end
