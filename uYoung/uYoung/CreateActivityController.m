@@ -9,6 +9,7 @@
 #import "CreateActivityController.h"
 #import "GlobalConfig.h"
 #import "CreateActivityStep2Controller.h"
+#import "ActivityDescTextView.h"
 
 @interface CreateActivityController ()
 
@@ -518,8 +519,10 @@
 }
 
 - (IBAction)toStep2:(id)sender {
-    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]initWithNibName:@"CreateActivityStep2Controller" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:step2 animated:YES];
+//    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]initWithNibName:@"CreateActivityStep2Controller" bundle:[NSBundle mainBundle]];
+//    [self.navigationController pushViewController:step2 animated:YES];
+    ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
+    [self.navigationController pushViewController:descView animated:YES];
 }
 
 #pragma mark - 图片处理

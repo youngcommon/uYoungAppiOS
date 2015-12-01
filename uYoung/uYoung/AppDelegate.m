@@ -31,11 +31,17 @@
     
     self.root = [[RootViewController alloc]initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
     
-    self.window.rootViewController = self.root;
-    self.navController = [[UINavigationController alloc] initWithRootViewController:self.root];
-    self.navController.delegate = self;
+    [self.root.view setFrame:CGRectMake(0, -100, mScreenWidth, mScreenHeight)];
     
-    [self.window addSubview:self.navController.view];
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.root];
+//    self.navController.delegate = self;
+    self.navController.navigationBar.translucent = NO;
+    self.navController.navigationBarHidden = YES;
+    
+//    self.window.rootViewController = self.root;
+    self.window.rootViewController = self.navController;
+    
+//    [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
     
     //注册QQ SSO

@@ -20,6 +20,7 @@
 		4820A4D51BB280DD006AEC13 /* uyoung.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4820A4D41BB280DD006AEC13 /* uyoung.bundle */; };
 		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; };
 		482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */; };
+		482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AAC1C0DCAB100DEF737 /* editor.html */; };
 		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
@@ -116,7 +117,8 @@
 		4820A4D41BB280DD006AEC13 /* uyoung.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = uyoung.bundle; sourceTree = "<group>"; };
 		4820A4D91BB2D352006AEC13 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		4820A4DA1BB2D352006AEC13 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
-		482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ZSSRichTextEditor.js; sourceTree = "<group>"; };
+		482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ZSSRichTextEditor.js; path = ../ZSSRichTextEditor.js; sourceTree = "<group>"; };
+		482E9AAC1C0DCAB100DEF737 /* editor.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = editor.html; path = ../Pods/ZSSRichTextEditor/ZSSRichTextEditor/editor.html; sourceTree = "<group>"; };
 		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
@@ -417,7 +419,6 @@
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
-				482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */,
 				4820A4DC1BB3D10F006AEC13 /* libs */,
 				4820A4D41BB280DD006AEC13 /* uyoung.bundle */,
 				483E17D51BAC548E00CDDBD3 /* uYoung */,
@@ -460,6 +461,8 @@
 		483E17D61BAC548E00CDDBD3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				482E9AAC1C0DCAB100DEF737 /* editor.html */,
+				482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */,
 				483E17D71BAC548E00CDDBD3 /* Info.plist */,
 				483E17D81BAC548E00CDDBD3 /* main.m */,
 			);
@@ -617,6 +620,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */,
