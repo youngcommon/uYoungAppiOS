@@ -39,20 +39,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ZSSRichTextEditor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>099B5994408EB41E65B719F700F53F81</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>426BC4549A625B5E1E4200D5261A98BF</key>
+		<key>18208742459C29728AF0E718B8B99147</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,42 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D1E6E622F2A6257040427A311E5442B</key>
+		<key>5039475F29ACDA35FBAF9D2EDD1B4A72</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6627E2CE58504A680DE862D5526B302C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7282F0B80082C130C1C2A7D8F3C4E1BD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>785E456A4B5EC8A508CE868E04789C03</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8A0B70A3F1A049AA78659301D4F6CD5B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ACC36B97B73B216EABEB5CF88B7E3E26</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0E489F2BF60E8477A5C1B27BCE7BD7C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CDE895EBB9417E5CFF4D644BC1C86586</key>
+		<key>C14BE86928D5828758EEFA27E1280D6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2ED0E5603FAE214C029EBAFC4A10FE0</key>
+		<key>D9C7B85D0BE9C316167EE25ACA08ACCC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB9E26647386B5D153AED7BC239CF87D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F60A628B4B1555344611F6738676712A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

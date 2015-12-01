@@ -7,6 +7,7 @@
 //
 
 #import "CreateActivityStep2Controller.h"
+#import "GlobalConfig.h"
 
 @interface CreateActivityStep2Controller ()
 
@@ -22,15 +23,11 @@
     CGFloat x = 30;
     CGFloat y = 30;
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(x, y, _contentView.frame.size.width-30*2, _contentView.frame.origin.x+_contentView.frame.size.height-30-25-8-30*2)];
-    view.backgroundColor = [UIColor blueColor];
-    
     ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
-    [descView.view setFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+    [descView.view setFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
     [self addChildViewController:descView];
-    [view addSubview:descView.view];
-    
-    [self.contentView addSubview:view];
+//    [self.contentView addSubview:descView.view];
+    [self.view addSubview:descView.view];
     
 }
 

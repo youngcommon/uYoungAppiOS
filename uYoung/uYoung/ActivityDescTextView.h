@@ -11,6 +11,4 @@
 
 @interface ActivityDescTextView : ZSSRichTextEditor
 
-@property (strong, nonatomic) UITextView *textView;
-
 @end
