@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZSSRichTextEditor.h"
-#import "ZSSPlaceholderViewController.h"
 
-@interface ActivityDescTextView : ZSSPlaceholderViewController
+@interface ActivityDescTextView : ZSSRichTextEditor
 
 @end
