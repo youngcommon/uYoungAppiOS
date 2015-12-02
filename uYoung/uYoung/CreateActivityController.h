@@ -71,6 +71,7 @@
 //保存活动类型数据
 @property (strong, nonatomic) NSArray *actTypes;
 @property (strong, nonatomic) UITableView *actTypesTable;
+@property (strong, nonatomic) NSString *descHtml;
 
 - (IBAction)back:(id)sender;
 - (IBAction)toStep2:(id)sender;

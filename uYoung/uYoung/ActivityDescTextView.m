@@ -14,33 +14,25 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = NO;
-        self.navigationController.navigationBar.frame = CGRectMake(0, 0, mScreenWidth, 59);
+    self.navigationController.navigationBar.frame = CGRectMake(0, 0, mScreenWidth, 59);
+    
+    self.title = @"填写活动描述";
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont fontWithName:@"HelveticaNeue-Bold" size:14], NSFontAttributeName, nil]];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/back_btn.png"]
-                      forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/back_btn.png"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(back)
      forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(0, 0, 13, 22);
-    
     UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = menuButton;
-    
-    [self.navigationItem.leftBarButtonItem setBackgroundVerticalPositionAdjustment:50 forBarMetrics:UIBarMetricsDefault];
     [self.navigationItem.leftBarButtonItem setWidth:20];
     
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/background"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(exportHTML)];
-    
-    NSString *html = @"<!-- This is an HTML comment -->"
-    "<p>This is a test of the <strong>ZSSRichTextEditor</strong> by <a title=\"Zed Said\" href=\"http://www.zedsaid.com\">Zed Said Studio</a></p>";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(exportHTML)];
     
     self.baseURL = [NSURL URLWithString:@"http://www.zedsaid.com"];
-    [self setHTML:html];
 
     self.enabledToolbarItems = @[ZSSRichTextEditorToolbarBold, ZSSRichTextEditorToolbarItalic, ZSSRichTextEditorToolbarUnderline, ZSSRichTextEditorToolbarH1, ZSSRichTextEditorToolbarH2, ZSSRichTextEditorToolbarH3, ZSSRichTextEditorToolbarTextColor, ZSSRichTextEditorToolbarInsertImage, ZSSRichTextEditorToolbarInsertLink, ZSSRichTextEditorToolbarRemoveLink, ZSSRichTextEditorToolbarUndo, ZSSRichTextEditorToolbarRedo];
 
@@ -61,6 +53,7 @@
 
 - (void)exportHTML {
     NSLog(@"%@", [self getHTML]);
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"getHtmlData" object:[self getHTML]];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{

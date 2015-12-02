@@ -344,6 +344,13 @@
     [_selectedButton setHidden:YES];
     
     [self initActTypeSelectView];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHtmlData:) name:@"getHtmlData" object:nil];
+}
+
+- (void)getHtmlData:(NSNotification*)noti{
+    NSString *html = (NSString*)noti.object;
+    _descHtml = html;
 }
 
 -(void)dealloc{
@@ -523,10 +530,11 @@
 //    [self.navigationController pushViewController:step2 animated:YES];
     
     self.navigationItem.hidesBackButton = YES;
+    self.navigationController.navigationBarHidden = NO;
 
     ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
-    
-    [self.navigationController pushViewController:descView animated:YES];
+    [self.navigationController pushViewController:descView animated:NO];
+
 }
 
 #pragma mark - 图片处理
