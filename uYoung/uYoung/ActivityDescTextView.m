@@ -15,20 +15,30 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/background" Height:30] forBarMetrics:UIBarMetricsDefault];
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/back_btn.png"]
+                      forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(back)
+     forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(0, 0, 13, 22);
     
-    self.title = @"填写活动详情";
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = menuButton;
+    
+    [self.navigationItem.leftBarButtonItem setBackgroundVerticalPositionAdjustment:50 forBarMetrics:UIBarMetricsDefault];
+    [self.navigationItem.leftBarButtonItem setWidth:20];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/background"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(exportHTML)];
-    self.navigationItem.backBarButtonItem.title = @"";
     
     NSString *html = @"<!-- This is an HTML comment -->"
     "<p>This is a test of the <strong>ZSSRichTextEditor</strong> by <a title=\"Zed Said\" href=\"http://www.zedsaid.com\">Zed Said Studio</a></p>";
     
     self.baseURL = [NSURL URLWithString:@"http://www.zedsaid.com"];
-//    self.shouldShowKeyboard = NO;
     [self setHTML:html];
 
     self.enabledToolbarItems = @[ZSSRichTextEditorToolbarBold, ZSSRichTextEditorToolbarItalic, ZSSRichTextEditorToolbarUnderline, ZSSRichTextEditorToolbarH1, ZSSRichTextEditorToolbarH2, ZSSRichTextEditorToolbarH3, ZSSRichTextEditorToolbarTextColor, ZSSRichTextEditorToolbarInsertImage, ZSSRichTextEditorToolbarInsertLink, ZSSRichTextEditorToolbarRemoveLink, ZSSRichTextEditorToolbarUndo, ZSSRichTextEditorToolbarRedo];
@@ -59,6 +69,10 @@
     UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, 0, center.y+1, 2);
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
     
+}
+
+- (void)back{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

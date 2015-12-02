@@ -521,7 +521,12 @@
 - (IBAction)toStep2:(id)sender {
 //    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]initWithNibName:@"CreateActivityStep2Controller" bundle:[NSBundle mainBundle]];
 //    [self.navigationController pushViewController:step2 animated:YES];
+    
+    self.navigationController.navigationBar.frame = CGRectMake(0, 0, mScreenWidth, 52);
+    self.navigationItem.hidesBackButton = YES;
+
     ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
+    
     [self.navigationController pushViewController:descView animated:YES];
 }
 
