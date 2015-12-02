@@ -15,6 +15,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = NO;
+        self.navigationController.navigationBar.frame = CGRectMake(0, 0, mScreenWidth, 59);
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/back_btn.png"]
