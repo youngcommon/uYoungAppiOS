@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateActivityController">
             <connections>
-                <outlet property="backgroundImg" destination="gSM-vb-xid" id="uRB-U0-dDj"/>
-                <outlet property="backgroundView" destination="gD8-uB-bpp" id="VMK-PC-4aZ"/>
+                <outlet property="backgroundImg" destination="NUR-Jz-XhJ" id="4fO-fy-REn"/>
+                <outlet property="backgroundView" destination="sY7-lN-6mZ" id="Zxt-LB-bDG"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ggu-bI-Lsd"/>
             </connections>
         </placeholder>
@@ -52,38 +52,34 @@
                         <action selector="toStep2:" destination="-1" eventType="touchUpInside" id="FWa-rg-Wkq"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-uB-bpp">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/backcover.png" translatesAutoresizingMaskIntoConstraints="NO" id="NUR-Jz-XhJ">
                     <rect key="frame" x="22" y="59" width="276" height="401"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/backcover.png" translatesAutoresizingMaskIntoConstraints="NO" id="gSM-vb-xid">
-                            <rect key="frame" x="0.0" y="0.0" width="276" height="401"/>
-                        </imageView>
-                    </subviews>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sY7-lN-6mZ">
+                    <rect key="frame" x="22" y="87" width="276" height="353"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="gSM-vb-xid" secondAttribute="trailing" id="Cuf-l8-ASQ"/>
-                        <constraint firstItem="gSM-vb-xid" firstAttribute="top" secondItem="gD8-uB-bpp" secondAttribute="top" id="HPK-T5-YF9"/>
-                        <constraint firstItem="gSM-vb-xid" firstAttribute="leading" secondItem="gD8-uB-bpp" secondAttribute="leading" id="Jxp-Dh-1g3"/>
-                        <constraint firstAttribute="bottom" secondItem="gSM-vb-xid" secondAttribute="bottom" id="ciX-Rn-UwG"/>
-                    </constraints>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="sY7-lN-6mZ" secondAttribute="trailing" constant="22" id="1yy-mB-F9a"/>
                 <constraint firstItem="HyW-82-lGy" firstAttribute="centerY" secondItem="d29-se-NpO" secondAttribute="centerY" id="3Tp-53-CfS"/>
+                <constraint firstAttribute="bottom" secondItem="NUR-Jz-XhJ" secondAttribute="bottom" constant="20" id="3cw-gN-gEy"/>
+                <constraint firstItem="NUR-Jz-XhJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="8Z5-bn-XD7"/>
                 <constraint firstAttribute="trailing" secondItem="1if-S5-bOI" secondAttribute="trailing" id="CxI-KJ-2Qr"/>
                 <constraint firstItem="EIS-VW-ewj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ehd-cS-yB1"/>
                 <constraint firstItem="d29-se-NpO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="MaC-4n-8v6"/>
-                <constraint firstItem="gD8-uB-bpp" firstAttribute="top" secondItem="HyW-82-lGy" secondAttribute="bottom" constant="8" id="NaR-gf-fJl"/>
-                <constraint firstAttribute="trailing" secondItem="gD8-uB-bpp" secondAttribute="trailing" constant="22" id="RMs-6m-uAe"/>
+                <constraint firstItem="sY7-lN-6mZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="Nmr-kg-TsN"/>
                 <constraint firstItem="1if-S5-bOI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SlE-8H-xIj"/>
                 <constraint firstItem="d29-se-NpO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="X2d-FM-H3N"/>
+                <constraint firstAttribute="trailing" secondItem="NUR-Jz-XhJ" secondAttribute="trailing" constant="22" id="aTv-hY-TRt"/>
                 <constraint firstItem="1if-S5-bOI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aWG-fn-PtG"/>
                 <constraint firstAttribute="bottom" secondItem="1if-S5-bOI" secondAttribute="bottom" id="bef-5J-Jaa"/>
                 <constraint firstAttribute="trailing" secondItem="HyW-82-lGy" secondAttribute="trailing" constant="22" id="eWU-2y-hav"/>
                 <constraint firstItem="EIS-VW-ewj" firstAttribute="centerY" secondItem="d29-se-NpO" secondAttribute="centerY" id="fgf-Xt-Yvw"/>
-                <constraint firstAttribute="bottom" secondItem="gD8-uB-bpp" secondAttribute="bottom" constant="20" id="sCv-k5-doD"/>
-                <constraint firstItem="gD8-uB-bpp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="wYK-BQ-ZF8"/>
+                <constraint firstItem="NUR-Jz-XhJ" firstAttribute="top" secondItem="HyW-82-lGy" secondAttribute="bottom" constant="8" id="gaE-ET-W0L"/>
+                <constraint firstItem="sY7-lN-6mZ" firstAttribute="top" secondItem="HyW-82-lGy" secondAttribute="bottom" constant="36" id="oxC-Jm-Zo8"/>
+                <constraint firstAttribute="bottom" secondItem="sY7-lN-6mZ" secondAttribute="bottom" constant="40" id="qAr-QA-tRr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

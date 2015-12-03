@@ -11,7 +11,7 @@
 @interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
-@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;
 
 //活动名称
 @property (strong, nonatomic) UIImageView *actNameImg;
@@ -46,6 +46,8 @@
 //活动地点
 @property (strong, nonatomic) UIImageView *actAddrImg;
 @property (strong, nonatomic) UITextField *actAddrInput;
+//活动描述
+@property (strong, nonatomic) UIWebView *actDescView;
 //picker按钮
 @property (strong, nonatomic) UIButton *selectedButton;
 

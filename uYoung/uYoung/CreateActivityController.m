@@ -10,6 +10,7 @@
 #import "GlobalConfig.h"
 #import "CreateActivityStep2Controller.h"
 #import "ActivityDescTextView.h"
+#import "NSString+StringUtil.h"
 
 @interface CreateActivityController ()
 
@@ -38,7 +39,8 @@
     CGFloat frontWidth = 80;//默认前部宽度
     CGFloat backWidth = 156;//默认后部宽度
     CGFloat x = (_backgroundView.frame.size.width - frontWidth - backWidth)/2;
-    CGFloat y = 30;
+//    CGFloat y = 30;
+    CGFloat y = 0;
     CGFloat labelOffset = 12;
     _labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
     if (mScreenWidth==375) {//iPhone 6
@@ -311,6 +313,18 @@
     _actAddrInput.delegate = self;
     [_actAddrInput setTag:9002];
     [_backgroundView addSubview:_actAddrInput];
+    
+    y = y + _actAddrImg.frame.size.height + sep;
+    
+    _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y, frontWidth+backWidth, labelHeight*10)];
+    if([NSString isBlankString:_descHtml]==NO){
+        [_actDescView loadHTMLString:_descHtml baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
+    }
+    [_backgroundView addSubview:_actDescView];
+    
+    y = y + _actDescView.frame.size.height + sep;
+    
+    [_backgroundView setContentSize:CGSizeMake(frontWidth+backWidth, y)];
     
     //增加键盘事件监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];

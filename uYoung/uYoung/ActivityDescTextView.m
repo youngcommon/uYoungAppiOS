@@ -38,11 +38,6 @@
 
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
 - (void)insertImage:(NSString *)url alt:(NSString *)alt{
     NSLog(@"##inserImage##%@---%@", url, alt);
 }
@@ -54,6 +49,9 @@
 - (void)exportHTML {
     NSLog(@"%@", [self getHTML]);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"getHtmlData" object:[self getHTML]];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
@@ -67,6 +65,8 @@
 
 - (void)back{
     [self.navigationController popViewControllerAnimated:YES];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 @end
