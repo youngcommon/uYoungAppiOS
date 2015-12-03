@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ZSSRichTextEditor.h"
+#import "UploadImageUtil.h"
 
-@interface ActivityDescTextView : ZSSRichTextEditor
+
+@interface ActivityDescTextView : ZSSRichTextEditor<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UploadImgDelegate>
+
+@property (strong, nonatomic) UIImagePickerController *camera;
 
 @end

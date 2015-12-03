@@ -20,13 +20,9 @@
     
     _backgroundImg.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    CGFloat x = 30;
-    CGFloat y = 30;
-    
     ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
     [descView.view setFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
     [self addChildViewController:descView];
-//    [self.contentView addSubview:descView.view];
     [self.view addSubview:descView.view];
     
 }

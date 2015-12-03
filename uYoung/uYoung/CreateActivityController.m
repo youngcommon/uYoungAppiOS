@@ -663,7 +663,8 @@
     CGFloat kbHeight = [[notify.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;//获取键盘高度。
     // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
     double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGFloat screenHeight = self.view.bounds.size.height;
+//    CGFloat screenHeight = self.view.bounds.size.height;
+    CGFloat screenHeight = _backgroundImg.frame.size.height;
 
     if (_viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
     
