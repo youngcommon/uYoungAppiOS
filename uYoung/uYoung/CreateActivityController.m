@@ -39,27 +39,22 @@
     CGFloat frontWidth = 80;//默认前部宽度
     CGFloat backWidth = 156;//默认后部宽度
     CGFloat x = (_backgroundView.frame.size.width - frontWidth - backWidth)/2;
-//    CGFloat y = 30;
     CGFloat y = 0;
     CGFloat labelOffset = 12;
     _labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
     if (mScreenWidth==375) {//iPhone 6
-        sep = 32;//默认行距
+        sep = 24;//默认行距
         sepInside = 4;//默认间距
-        labelHeight = 40;//默认输入行高
         frontWidth = 100;//默认前部宽度
         backWidth = 185;//默认后部宽度
-        y = 40;
+        y = 5;
     }else if(mScreenWidth>375){//iPhone 6+
-        sep = 40;//默认行距
+        sep = 32;//默认行距
         sepInside = 4;//默认间距
-        labelHeight = 40;//默认输入行高
         frontWidth = 110;//默认前部宽度
         backWidth = 210;//默认后部宽度
-        y = 50;
-    }else if(mScreenWidth<375&&mScreenHeight>480){//iPhone 5
-        sep = 20;//默认行距
-        y = 34;
+        y = 10;
+        labelOffset = 30;
     }
     
     //活动名称
@@ -316,10 +311,25 @@
     
     y = y + _actAddrImg.frame.size.height + sep;
     
-    _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y, frontWidth+backWidth, labelHeight*10)];
+    UIImageView *actDescTitle = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth+backWidth, labelHeight)];
+    [actDescTitle setImage:[self getScaleBackUIImage:@"uyoung.bundle/text_input" isFront:YES]];
+    [_backgroundView addSubview:actDescTitle];
+    
+    UILabel *actDescTitleLable = [[UILabel alloc]initWithFrame:[self getLabelFrame:actDescTitle offset:actDescTitle.frame.origin.x+actDescTitle.frame.size.width-actAddrLabel.frame.origin.x-actAddrLabel.frame.size.width]];
+    [actDescTitleLable setFont:_labelFont];
+    [actDescTitleLable setTextAlignment:NSTextAlignmentRight];
+    [actDescTitleLable setText:@"活动描述"];
+    actDescTitleLable.textColor = [UIColor whiteColor];
+    [_backgroundView addSubview:actDescTitleLable];
+    
+    y = y + actDescTitle.frame.size.height;
+    
+    _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y-1, frontWidth+backWidth, labelHeight)];
     if([NSString isBlankString:_descHtml]==NO){
         [_actDescView loadHTMLString:_descHtml baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
     }
+    _actDescView.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
+    _actDescView.layer.borderWidth = 1.f;
     [_backgroundView addSubview:_actDescView];
     
     y = y + _actDescView.frame.size.height + sep;
@@ -365,6 +375,9 @@
 - (void)getHtmlData:(NSNotification*)noti{
     NSString *html = (NSString*)noti.object;
     _descHtml = html;
+    if([NSString isBlankString:_descHtml]==NO){
+        [_actDescView loadHTMLString:_descHtml baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
+    }
 }
 
 -(void)dealloc{
