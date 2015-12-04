@@ -72,10 +72,9 @@
     NSInteger uid = [UserDetailModel currentUser].id;
     long times = [[NSDate date]timeIntervalSince1970];
     
+    [self.view.window showHUDWithText:@"正在处理图片" Type:ShowLoading Enabled:YES];
     //上传图片至七牛云
     [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] delegate:self];
-    
-    [self.view.window showHUDWithText:@"正在处理图片" Type:ShowLoading Enabled:YES];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

@@ -219,6 +219,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //    [descView setFont:[UIFont systemFontOfSize:18]];
 //    descView.scrollEnabled = YES;
 //    descView.editable = NO;
+    descView.backgroundColor = [UIColor whiteColor];
     NSString *jsString = [NSString stringWithFormat:@"<html>\n<head>\n<style type=\"text/css\">\nbody{font-family: \"%@\";}\n</style>\n</head>\n<body>%@</body>\n</html>", @"Helvetica", desc];
     [descView loadHTMLString:jsString baseURL:nil];
     [self.descScrollView addSubview:descView];
