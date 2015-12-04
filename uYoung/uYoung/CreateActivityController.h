@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ActivityPublish.h"
 
-@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate>
+@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate, UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;
@@ -56,6 +56,11 @@
 @property (assign, nonatomic) BOOL isRegister;
 @property (strong, nonatomic) UIFont *labelFont;
 @property (strong, nonatomic) UIView *backview;
+@property (assign, nonatomic) CGFloat labelHeight;
+@property (assign, nonatomic) CGFloat frontWidth;
+@property (assign, nonatomic) CGFloat backWidth;
+@property (assign, nonatomic) CGFloat sep;
+@property (assign, nonatomic) BOOL isLoadingFinished;
 //存储各字段值
 @property (assign, nonatomic) CGFloat delta;
 @property (strong, nonatomic) NSDate *maxDate;

@@ -32,7 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.userHeader.layer.masksToBounds = YES;
     
     self.titleLable.text = self.model.title;
-    if(self.model.price==0){
+    if(self.model.price==1){
         [self.freeSignetImg setHidden:YES];
     }
     
@@ -214,11 +214,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CGRect frame = self.descScrollView.frame;
     //设置活动描述
-    UITextView *descView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    [descView setText:desc];
-    [descView setFont:[UIFont systemFontOfSize:18]];
-    descView.scrollEnabled = YES;
-    descView.editable = NO;
+    UIWebView *descView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+//    [descView setText:desc];
+//    [descView setFont:[UIFont systemFontOfSize:18]];
+//    descView.scrollEnabled = YES;
+//    descView.editable = NO;
+    NSString *jsString = [NSString stringWithFormat:@"<html>\n<head>\n<style type=\"text/css\">\nbody{font-family: \"%@\";}\n</style>\n</head>\n<body>%@</body>\n</html>", @"Helvetica", desc];
+    [descView loadHTMLString:jsString baseURL:nil];
     [self.descScrollView addSubview:descView];
     
     //设置报名详情

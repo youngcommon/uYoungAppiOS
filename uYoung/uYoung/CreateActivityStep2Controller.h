@@ -13,5 +13,6 @@
 @interface CreateActivityStep2Controller : ZSSRichTextEditor<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UploadImgDelegate>
 
 @property (strong, nonatomic) UIImagePickerController *camera;
+@property (strong, nonatomic) NSString *html;
 
 @end

@@ -35,32 +35,32 @@
     _to = nextHour;
     _priceType = 0;
     
-    CGFloat sep = 14;//默认行距
-    CGFloat sepInside = 2;//默认间距
-    CGFloat labelHeight = 40;//默认输入行高
-    CGFloat frontWidth = 80;//默认前部宽度
-    CGFloat backWidth = 156;//默认后部宽度
-    CGFloat x = (_backgroundView.frame.size.width - frontWidth - backWidth)/2;
+    _sep = 14;//默认行距
+    CGFloat _sepInside = 2;//默认间距
+    _labelHeight = 40;//默认输入行高
+    _frontWidth = 80;//默认前部宽度
+    _backWidth = 156;//默认后部宽度
+    CGFloat x = (_backgroundView.frame.size.width - _frontWidth - _backWidth)/2;
     CGFloat y = 0;
     CGFloat labelOffset = 12;
     _labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
     if (mScreenWidth==375) {//iPhone 6
-        sep = 24;//默认行距
-        sepInside = 4;//默认间距
-        frontWidth = 100;//默认前部宽度
-        backWidth = 185;//默认后部宽度
+        _sep = 24;//默认行距
+        _sepInside = 4;//默认间距
+        _frontWidth = 100;//默认前部宽度
+        _backWidth = 185;//默认后部宽度
         y = 5;
     }else if(mScreenWidth>375){//iPhone 6+
-        sep = 32;//默认行距
-        sepInside = 4;//默认间距
-        frontWidth = 110;//默认前部宽度
-        backWidth = 210;//默认后部宽度
+        _sep = 32;//默认行距
+        _sepInside = 4;//默认间距
+        _frontWidth = 110;//默认前部宽度
+        _backWidth = 210;//默认后部宽度
         y = 10;
         labelOffset = 30;
     }
     
     //活动名称
-    _actNameImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actNameImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actNameImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_mid" isFront:YES]];
     [_backgroundView addSubview:_actNameImg];
     
@@ -71,7 +71,7 @@
     actNameLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actNameLabel];
     
-    _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, backWidth, labelHeight)];
+    _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, _backWidth, _labelHeight)];
     _actNameInput.borderStyle = UITextBorderStyleNone;
     _actNameInput.placeholder = @"请输入活动名称";
     _actNameInput.font = _labelFont;
@@ -82,10 +82,10 @@
     [_actNameInput setTag:9001];
     [_backgroundView addSubview:_actNameInput];
     
-    y = y + _actNameImg.frame.size.height + sep;
+    y = y + _actNameImg.frame.size.height + _sep;
     
     //活动日期
-    _actDateImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actDateImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actDateImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_top" isFront:YES]];
     [_backgroundView addSubview:_actDateImg];
     
@@ -96,7 +96,7 @@
     actDateLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actDateLabel];
     
-    _actDateTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actDateImg.frame.origin.x+_actDateImg.frame.size.width, y, backWidth, labelHeight)];
+    _actDateTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actDateImg.frame.origin.x+_actDateImg.frame.size.width, y, _backWidth, _labelHeight)];
     [_actDateTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_top" isFront:NO]];
     [_backgroundView addSubview:_actDateTextImg];
     
@@ -121,10 +121,10 @@
     [_actDateButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actDateButton];
     
-    y = y + _actDateImg.frame.size.height + sepInside;
+    y = y + _actDateImg.frame.size.height + _sepInside;
     
     //活动时间
-    _actTimeImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actTimeImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actTimeImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_bottom" isFront:YES]];
     [_backgroundView addSubview:_actTimeImg];
     
@@ -135,7 +135,7 @@
     actTimeLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actTimeLabel];
     
-    _actTimeTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actTimeImg.frame.origin.x+_actTimeImg.frame.size.width, y, backWidth, labelHeight)];
+    _actTimeTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actTimeImg.frame.origin.x+_actTimeImg.frame.size.width, y, _backWidth, _labelHeight)];
     [_actTimeTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_bottom" isFront:NO]];
     [_backgroundView addSubview:_actTimeTextImg];
     
@@ -169,10 +169,10 @@
     [_actTimeEndButton addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTimeEndButton];
     
-    y = y + _actTimeImg.frame.size.height + sep;
+    y = y + _actTimeImg.frame.size.height + _sep;
     
     //活动类型
-    _actTypeImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actTypeImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actTypeImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_top" isFront:YES]];
     [_backgroundView addSubview:_actTypeImg];
     
@@ -183,7 +183,7 @@
     actTypeLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actTypeLabel];
     
-    _actTypeTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actTypeImg.frame.origin.x+_actTypeImg.frame.size.width, y, backWidth, labelHeight)];
+    _actTypeTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actTypeImg.frame.origin.x+_actTypeImg.frame.size.width, y, _backWidth, _labelHeight)];
     [_actTypeTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_top" isFront:NO]];
     [_backgroundView addSubview:_actTypeTextImg];
     
@@ -204,10 +204,10 @@
     [_actTypeSelButton addTarget:self action:@selector(selectActType) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actTypeSelButton];
     
-    y = y + _actTypeImg.frame.size.height + sepInside;
+    y = y + _actTypeImg.frame.size.height + _sepInside;
     
     //参与人数
-    _actNumImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actNumImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actNumImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_bottom" isFront:YES]];
     [_backgroundView addSubview:_actNumImg];
     
@@ -218,7 +218,7 @@
     actNumLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actNumLabel];
     
-    _actNumTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actNumImg.frame.origin.x+_actNumImg.frame.size.width, y, backWidth, labelHeight)];
+    _actNumTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actNumImg.frame.origin.x+_actNumImg.frame.size.width, y, _backWidth, _labelHeight)];
     [_actNumTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_bottom" isFront:NO]];
     [_backgroundView addSubview:_actNumTextImg];
     
@@ -241,10 +241,10 @@
     [_actNumLabel setTextColor:[UIColor whiteColor]];
     [_backgroundView addSubview:_actNumLabel];
     
-    y = y + _actNumImg.frame.size.height + sep;
+    y = y + _actNumImg.frame.size.height + _sep;
     
     //费用
-    _actPriceImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actPriceImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actPriceImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_mid" isFront:YES]];
     [_backgroundView addSubview:_actPriceImg];
     
@@ -255,7 +255,7 @@
     actPriceLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actPriceLabel];
     
-    _actPriceTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actPriceImg.frame.origin.x+_actPriceImg.frame.size.width, y, backWidth, labelHeight)];
+    _actPriceTextImg = [[UIImageView alloc]initWithFrame:CGRectMake(_actPriceImg.frame.origin.x+_actPriceImg.frame.size.width, y, _backWidth, _labelHeight)];
     [_actPriceTextImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO]];
     [_backgroundView addSubview:_actPriceTextImg];
     
@@ -286,10 +286,10 @@
     [_actAAButton addTarget:self action:@selector(changePrice:) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:_actAAButton];
     
-    y = y + _actPriceImg.frame.size.height + sep;
+    y = y + _actPriceImg.frame.size.height + _sep;
     
     //活动地点
-    _actAddrImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth, labelHeight)];
+    _actAddrImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth, _labelHeight)];
     [_actAddrImg setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_mid" isFront:YES]];
     [_backgroundView addSubview:_actAddrImg];
     
@@ -300,7 +300,7 @@
     actAddrLabel.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actAddrLabel];
     
-    _actAddrInput = [[UITextField alloc]initWithFrame:CGRectMake(_actAddrImg.frame.origin.x+_actAddrImg.frame.size.width, y, backWidth, labelHeight)];
+    _actAddrInput = [[UITextField alloc]initWithFrame:CGRectMake(_actAddrImg.frame.origin.x+_actAddrImg.frame.size.width, y, _backWidth, _labelHeight)];
     _actAddrInput.borderStyle = UITextBorderStyleNone;
     _actAddrInput.placeholder = @"请输入活动地址";
     _actAddrInput.font = _labelFont;
@@ -311,9 +311,9 @@
     [_actAddrInput setTag:9002];
     [_backgroundView addSubview:_actAddrInput];
     
-    y = y + _actAddrImg.frame.size.height + sep;
+    y = y + _actAddrImg.frame.size.height + _sep;
     
-    UIImageView *actDescTitle = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, frontWidth+backWidth, labelHeight)];
+    UIImageView *actDescTitle = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, _frontWidth+_backWidth, _labelHeight)];
     [actDescTitle setImage:[self getScaleBackUIImage:@"uyoung.bundle/text_input" isFront:YES]];
     [_backgroundView addSubview:actDescTitle];
     
@@ -333,17 +333,19 @@
     
     y = y + actDescTitle.frame.size.height;
     
-    _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y-1, frontWidth+backWidth, labelHeight)];
+    _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y-1, _frontWidth+_backWidth, _labelHeight)];
+
     if([NSString isBlankString:_descHtml]==NO){
         [_actDescView loadHTMLString:_descHtml baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
     }
     _actDescView.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
     _actDescView.layer.borderWidth = 1.f;
+    _actDescView.delegate = self;
     [_backgroundView addSubview:_actDescView];
     
-    y = y + _actDescView.frame.size.height + sep;
+    y = y + _actDescView.frame.size.height + _sep;
     
-    [_backgroundView setContentSize:CGSizeMake(frontWidth+backWidth, y)];
+    [_backgroundView setContentSize:CGSizeMake(_frontWidth+_backWidth, y)];
     
     //增加键盘事件监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -379,14 +381,6 @@
     [self initActTypeSelectView];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHtmlData:) name:@"getHtmlData" object:nil];
-}
-
-- (void)getHtmlData:(NSNotification*)noti{
-    NSString *html = (NSString*)noti.object;
-    _descHtml = html;
-    if([NSString isBlankString:_descHtml]==NO){
-        [_actDescView loadHTMLString:_descHtml baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
-    }
 }
 
 -(void)dealloc{
@@ -456,6 +450,27 @@
     //当用户点击他处时，收回弹出的选择view
     if(_actTypesTable.frame.size.height>0){
         [self selectActType];
+    }
+}
+
+#pragma mark - 处理返回的html数据
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    //修改服务器页面的meta的值
+    NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
+    int height = [height_str intValue];
+    if (height>(_backgroundImg.frame.size.height - _labelHeight)) {
+        height = _backgroundImg.frame.size.height - _labelHeight;
+    }
+    webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, height+_sep);
+    [_backgroundView setContentSize:CGSizeMake(_frontWidth+_backWidth, webView.frame.origin.y+height+_sep)];
+}
+
+- (void)getHtmlData:(NSNotification*)noti{
+    NSString *html = (NSString*)noti.object;
+    _descHtml = html;
+    if([NSString isBlankString:_descHtml]==NO){
+        NSString *jsString = [NSString stringWithFormat:@"<html>\n<head>\n<style type=\"text/css\">\nbody{font-family: \"%@\";}\n</style>\n</head>\n<body>%@</body>\n</html>", @"Helvetica", _descHtml];
+        [_actDescView loadHTMLString:jsString baseURL:nil];
     }
 }
 
@@ -575,8 +590,6 @@
     NSString *toTime = _actTimeEndButton.titleLabel.text;
     NSString *fromTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, fromTime];
     NSString *endTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, toTime];
-    NSDate *from = [self getDateFromFullDateFormat:fromTimeFormat];
-    NSDate *to = [self getDateFromFullDateFormat:endTimeFormat];
     
     UserDetailModel *user = [UserDetailModel currentUser];
     if (user==nil) {
@@ -606,6 +619,9 @@
     self.navigationController.navigationBarHidden = NO;
     
     CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]init];
+    if ([NSString isBlankString:_descHtml]==NO) {
+        step2.html = _descHtml;
+    }
     [self.navigationController pushViewController:step2 animated:NO];
 }
 
