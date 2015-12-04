@@ -573,8 +573,8 @@
     NSString *actDate = _actDateButton.titleLabel.text;
     NSString *fromTime = _actTimeStartButton.titleLabel.text;
     NSString *toTime = _actTimeEndButton.titleLabel.text;
-    NSString *fromTimeFormat = [NSString stringWithFormat:@"%@ %@", actDate, fromTime];
-    NSString *endTimeFormat = [NSString stringWithFormat:@"%@ %@", actDate, toTime];
+    NSString *fromTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, fromTime];
+    NSString *endTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, toTime];
     NSDate *from = [self getDateFromFullDateFormat:fromTimeFormat];
     NSDate *to = [self getDateFromFullDateFormat:endTimeFormat];
     
@@ -584,7 +584,7 @@
     }
 //    NSInteger uid = user.id;
     NSInteger uid = 8;
-    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", from,@"beginTime", to,@"endTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", nil];
+    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", fromTimeFormat,@"strBeginTime", endTimeFormat,@"strEndTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", @(1),@"realNum", nil];
     [ActivityPublish publishActWithDict:param delegate:self];
     
     [self.view.window showHUDWithText:@"发布成功" Type:ShowLoading Enabled:YES];
@@ -659,6 +659,7 @@
 - (NSString*)getSimpleDate:(NSDate*)date{
     //设置时间输出格式：
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
     [df setDateFormat:@"yyyy-MM-dd"];
     NSString * na = [df stringFromDate:date];
     return na;
@@ -667,6 +668,7 @@
 - (NSString*)getSimpleTime:(NSDate*)date{
     //设置时间输出格式：
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
     [df setDateFormat:@"HH:mm"];
     NSString * na = [df stringFromDate:date];
     return na;
@@ -674,13 +676,15 @@
 
 - (NSDate*)getTimeFromString:(NSString*)date{
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
     [df setDateFormat:@"HH:mm"];
     return [df dateFromString:date];
 }
 
 - (NSDate*)getDateFromFullDateFormat:(NSString*)dateStr{
-    NSDateFormatter * df = [[NSDateFormatter alloc] init ];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDateFormatter * df = [[NSDateFormatter alloc] init];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [df dateFromString:dateStr];
 }
 

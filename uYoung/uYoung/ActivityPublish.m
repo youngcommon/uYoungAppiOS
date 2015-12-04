@@ -11,7 +11,7 @@
 @implementation ActivityPublish
 
 + (void)publishActWithDict:(NSDictionary*)dict delegate:(id<ActivityPublishDelegate>)delegate{
-    NSString *url = [uyoung_host stringByAppendingString:@"/activity/add"];
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/add"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
