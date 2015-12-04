@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityPublish.h"
 
-@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;
@@ -65,7 +66,7 @@
 @property (strong, nonatomic) NSString *actTitle;
 @property (strong, nonatomic) NSDate *from;
 @property (strong, nonatomic) NSDate *to;
-@property (assign, nonatomic) NSInteger actType;
+@property (assign, nonatomic) long actType;
 @property (assign, nonatomic) NSInteger actNum;
 @property (assign, nonatomic) NSInteger priceType;
 @property (assign, nonatomic) NSString *addr;
@@ -76,6 +77,9 @@
 @property (strong, nonatomic) NSString *descHtml;
 
 - (IBAction)back:(id)sender;
-- (IBAction)toStep2:(id)sender;
+- (IBAction)createAct:(id)sender;
+
+
+- (void)toStep2;
 
 @end

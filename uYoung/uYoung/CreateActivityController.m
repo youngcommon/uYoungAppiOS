@@ -11,6 +11,8 @@
 #import "CreateActivityStep2Controller.h"
 #import "ActivityDescTextView.h"
 #import "NSString+StringUtil.h"
+#import "UIWindow+YoungHUD.h"
+#import "UserDetailModel.h"
 
 @interface CreateActivityController ()
 
@@ -322,6 +324,13 @@
     actDescTitleLable.textColor = [UIColor whiteColor];
     [_backgroundView addSubview:actDescTitleLable];
     
+    UIButton *createDescHtml = [[UIButton alloc]initWithFrame:[self getLabelFrame:actDescTitle offset:labelOffset]];
+    [createDescHtml setTitle:@"[编辑]" forState:UIControlStateNormal];
+    [createDescHtml.titleLabel setFont:_labelFont];
+    [createDescHtml.titleLabel setTextAlignment:NSTextAlignmentRight];
+    [createDescHtml addTarget:self action:@selector(editActDesc) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:createDescHtml];
+    
     y = y + actDescTitle.frame.size.height;
     
     _actDescView = [[UIWebView alloc]initWithFrame:CGRectMake(x, y-1, frontWidth+backWidth, labelHeight)];
@@ -480,7 +489,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    _actType = (int)_actTypes[indexPath.row][@"type"];
+    NSDictionary *act = (NSDictionary*)(_actTypes[indexPath.row]);
+    if (act!=nil) {
+        _actType = [((NSNumber*)[act valueForKey:@"type"])longValue];
+    }
     [_actTypeSelButton setTitle:_actTypes[indexPath.row][@"cnDesc"] forState:UIControlStateNormal];
     [self selectActType];
 }
@@ -552,16 +564,49 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)toStep2:(id)sender {
-//    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]initWithNibName:@"CreateActivityStep2Controller" bundle:[NSBundle mainBundle]];
-//    [self.navigationController pushViewController:step2 animated:YES];
+#pragma mark - 发布活动
+- (IBAction)createAct:(id)sender {
+    NSString *title = _actNameInput.text;
+    NSString *address = _actAddrInput.text;
+    NSString *actDescHtml = _descHtml;
     
+    NSString *actDate = _actDateButton.titleLabel.text;
+    NSString *fromTime = _actTimeStartButton.titleLabel.text;
+    NSString *toTime = _actTimeEndButton.titleLabel.text;
+    NSString *fromTimeFormat = [NSString stringWithFormat:@"%@ %@", actDate, fromTime];
+    NSString *endTimeFormat = [NSString stringWithFormat:@"%@ %@", actDate, toTime];
+    NSDate *from = [self getDateFromFullDateFormat:fromTimeFormat];
+    NSDate *to = [self getDateFromFullDateFormat:endTimeFormat];
+    
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user==nil) {
+        
+    }
+//    NSInteger uid = user.id;
+    NSInteger uid = 8;
+    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", from,@"beginTime", to,@"endTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", nil];
+    [ActivityPublish publishActWithDict:param delegate:self];
+    
+    [self.view.window showHUDWithText:@"发布成功" Type:ShowLoading Enabled:YES];
+}
+
+#pragma mark - 发布活动回调
+- (void)publishEnd:(BOOL)isSuccess{
+    if(isSuccess){
+        [self.view.window showHUDWithText:@"发布成功" Type:ShowPhotoYes Enabled:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [self.view.window showHUDWithText:@"发布失败" Type:ShowPhotoNo Enabled:YES];
+    }
+}
+
+#pragma mark - 编辑活动描述
+- (void)editActDesc {
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.navigationBarHidden = NO;
-
-    ActivityDescTextView *descView = [[ActivityDescTextView alloc]init];
-    [self.navigationController pushViewController:descView animated:NO];
-
+    
+    CreateActivityStep2Controller *step2 = [[CreateActivityStep2Controller alloc]init];
+    [self.navigationController pushViewController:step2 animated:NO];
 }
 
 #pragma mark - 图片处理
@@ -631,6 +676,12 @@
     NSDateFormatter * df = [[NSDateFormatter alloc] init ];
     [df setDateFormat:@"HH:mm"];
     return [df dateFromString:date];
+}
+
+- (NSDate*)getDateFromFullDateFormat:(NSString*)dateStr{
+    NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm"];
+    return [df dateFromString:dateStr];
 }
 
 #pragma mark - 键盘、输入框相关接口方法

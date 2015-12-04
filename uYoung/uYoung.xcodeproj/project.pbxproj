@@ -21,6 +21,7 @@
 		4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4820A4DA1BB2D352006AEC13 /* ActivityModel.m */; };
 		482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */; };
 		482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AAC1C0DCAB100DEF737 /* editor.html */; };
+		482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AB21C11446F00DEF737 /* ActivityPublish.m */; };
 		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
@@ -46,7 +47,6 @@
 		843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */; };
 		843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */; };
 		8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */; };
-		8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */; };
 		8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452A5221C0C84D300DB419C /* ActivityDescTextView.m */; };
 		84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */; };
 		8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457EE021BEA478200C00176 /* EditUserViewController.m */; };
@@ -119,6 +119,8 @@
 		4820A4DA1BB2D352006AEC13 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
 		482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ZSSRichTextEditor.js; path = ../ZSSRichTextEditor.js; sourceTree = "<group>"; };
 		482E9AAC1C0DCAB100DEF737 /* editor.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = editor.html; path = ../Pods/ZSSRichTextEditor/ZSSRichTextEditor/editor.html; sourceTree = "<group>"; };
+		482E9AB11C11446F00DEF737 /* ActivityPublish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityPublish.h; sourceTree = "<group>"; };
+		482E9AB21C11446F00DEF737 /* ActivityPublish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityPublish.m; sourceTree = "<group>"; };
 		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
@@ -163,7 +165,6 @@
 		843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityAlbumViewController.xib; sourceTree = "<group>"; };
 		8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityStep2Controller.h; sourceTree = "<group>"; };
 		8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityStep2Controller.m; sourceTree = "<group>"; };
-		8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityStep2Controller.xib; sourceTree = "<group>"; };
 		8452A5211C0C84D300DB419C /* ActivityDescTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDescTextView.h; sourceTree = "<group>"; };
 		8452A5221C0C84D300DB419C /* ActivityDescTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDescTextView.m; sourceTree = "<group>"; };
 		84547B891BF8C0C50047CF0F /* ActivityDetailEnrollsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailEnrollsModel.h; sourceTree = "<group>"; };
@@ -311,6 +312,8 @@
 				84763F6C1BFA1894002BC70B /* UpdateUser.m */,
 				84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */,
 				84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */,
+				482E9AB11C11446F00DEF737 /* ActivityPublish.h */,
+				482E9AB21C11446F00DEF737 /* ActivityPublish.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -394,7 +397,6 @@
 				843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */,
 				8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */,
 				8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */,
-				8452A51F1C0C7C8D00DB419C /* CreateActivityStep2Controller.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -623,7 +625,6 @@
 				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
-				8452A5201C0C7C8D00DB419C /* CreateActivityStep2Controller.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				8469F3771C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib in Resources */,
 				48FC41831BDA6962006E44B3 /* LoginViewController.xib in Resources */,
@@ -722,6 +723,7 @@
 				84763F701BFA1D33002BC70B /* UYoungAlertViewUtil.m in Sources */,
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
+				482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */,
 				8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,

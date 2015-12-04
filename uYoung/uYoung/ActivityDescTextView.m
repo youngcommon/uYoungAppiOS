@@ -9,6 +9,8 @@
 #import "ActivityDescTextView.h"
 #import "GlobalConfig.h"
 #import "UserDetailModel.h"
+#import "UIWindow+YoungHUD.h"
+#import "NSString+StringUtil.h"
 
 @implementation ActivityDescTextView
 
@@ -45,7 +47,6 @@
         //此处设置只能使用相机，禁止使用视频功能
         _camera.mediaTypes = @[(NSString*)kUTTypeImage];
         
-//        [[self topViewController] presentViewController:_camera animated:YES completion:nil];
         [self presentViewController:_camera animated:YES completion:nil];
     }
     
@@ -66,22 +67,26 @@
     //上传图片至七牛云
     [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] delegate:self];
     
-//    [[self topViewController] dismissViewControllerAnimated:YES completion:nil];
+    [self.view.window showHUDWithText:@"正在处理图片" Type:ShowLoading Enabled:YES];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
 //用户取消回调
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-//    [[self topViewController] dismissViewControllerAnimated:YES completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)getImgUrl:(NSString*)url{
-    url = [NSString stringWithFormat:@"%@-%@", url, @"actdesc100"];
-//    [self insertImage:url alt:@""];
-    [self focusTextEditor];
-    [self insertHTML:[NSString stringWithFormat:@"<img src=\"%@\" />", url]];
+    if([NSString isBlankString:url]){
+        [self.view.window showHUDWithText:@"图片插入失败" Type:ShowPhotoNo Enabled:YES];
+    }else{
+        [self.view.window showHUDWithText:@"图片处理成功" Type:ShowPhotoYes Enabled:YES];
+        url = [NSString stringWithFormat:@"%@-%@", url, @"actdesc200"];
+        [self focusTextEditor];
+        [self insertHTML:[NSString stringWithFormat:@"<img src=\"%@\" />", url]];
+    }
 }
 
 - (void)exportHTML {
