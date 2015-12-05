@@ -30,6 +30,9 @@
 - (void)viewDidLoad{
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
+    //增加键盘事件监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];
@@ -113,6 +116,7 @@
     _createAlbumText = [[UITextField alloc]initWithFrame:CGRectMake(10+60+10, mScreenHeight-26-15, mScreenWidth-10*3-60-10-30-10, 26)];
     [_createAlbumText setPlaceholder:@" 请输入相册名称"];
     [_createAlbumText setHidden:YES];
+    [_createAlbumText setReturnKeyType:UIReturnKeyDone];
     _createAlbumText.borderStyle = UITextBorderStyleRoundedRect;
     [self.view addSubview:_createAlbumText];
     
@@ -179,10 +183,10 @@
 - (void)initViewWithUser{
     
     //判断，如果用户资料未填写，则弹出完善资料页面
-//    if ([NSString isBlankString:self.userDetailModel.nickName]||[NSString isBlankString:self.userDetailModel.avatarUrl]||[NSString isBlankString:self.userDetailModel.company]||[NSString isBlankString:self.userDetailModel.position]) {
-//        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+    if ([NSString isBlankString:self.userDetailModel.nickName]||[NSString isBlankString:self.userDetailModel.avatarUrl]||[NSString isBlankString:self.userDetailModel.company]||[NSString isBlankString:self.userDetailModel.position]) {
+        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
 //        [self.navigationController pushViewController:editUserViewCtl animated:YES];
-//    }
+    }
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
@@ -277,10 +281,55 @@
 
 - (void)doCreateAlbum{
     [_createAlbumView setHidden:YES];
+    NSString *albumName = _createAlbumText.text;
+    if ([NSString isBlankString:albumName]==NO) {
+        
+    }
 }
 
 - (void)createActivity{
     CreateActivityController *ctl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:ctl animated:YES];
+}
+
+#pragma mark - 键盘、输入框相关接口方法
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notify {
+    //sv为弹出键盘的视图，UITextField
+    CGFloat kbHeight = [[notify.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;//获取键盘高度。
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    //    CGFloat screenHeight = self.view.bounds.size.height;
+    CGFloat screenHeight = self.view.frame.size.height;
+    CGFloat viewBottom = _createAlbumText.frame.origin.y + _createAlbumText.frame.size.height;
+    
+    if (viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
+    
+    // 键盘会盖住输入框, 要移动整个view了
+    _delta = viewBottom + kbHeight - screenHeight + 5;
+    
+    CGRect viewFrame = CGRectMake(0, 0-_delta, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHidden:(NSNotification *)notify {//键盘消失
+    // 键盘动画时间
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+    _delta = 0.0f;
 }
 @end

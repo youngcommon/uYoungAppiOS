@@ -721,6 +721,14 @@
         _isRegister = YES;
         _viewBottom = textField.frame.origin.y + textField.frame.size.height;
     }
+    
+    if(_actDatePicker.isHidden==NO){
+        [_actDatePicker setHidden:YES];
+    }
+    if (_actTimePicker.isHidden==NO) {
+        [_actTimePicker setHidden:YES];
+    }
+    
     return YES;
 }
 

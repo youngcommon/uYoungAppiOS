@@ -16,7 +16,7 @@
 #import "EditUserViewController.h"
 #import "LoginViewController.h"
 
-@interface UserCenterController : UIViewController<UserDetailDelegate>
+@interface UserCenterController : UIViewController<UserDetailDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyTitleLabel;
@@ -40,6 +40,8 @@
 @property (strong, nonatomic) UIButton *cancelCreate;
 @property (strong, nonatomic) UIButton *doCreate;
 @property (strong, nonatomic) UIButton *createAct;
+
+@property (assign, nonatomic) CGFloat delta;
 
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 
