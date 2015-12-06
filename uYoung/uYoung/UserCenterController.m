@@ -11,19 +11,20 @@
 #import <UIImageView+LBBlurredImage.h>
 #import "EditUserViewController.h"
 #import "CreateActivityController.h"
+#import "AlbumDetailViewController.h"
 
 @implementation UserCenterController
 
 - (void)viewDidAppear:(BOOL)animated{
     _userDetailModel = [UserDetailModel currentUser];
     
-    if (_userDetailModel==nil||_userDetailModel.id==0) {
-        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-        loginViewCtl.source = @"usercenter";
-        [self presentViewController:loginViewCtl animated:YES completion:nil];
-    }else{
+//    if (_userDetailModel==nil||_userDetailModel.id==0) {
+//        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+//        loginViewCtl.source = @"usercenter";
+//        [self presentViewController:loginViewCtl animated:YES completion:nil];
+//    }else{
         [self initViewWithUser];
-    }
+//    }
 
 }
 
@@ -285,6 +286,8 @@
     if ([NSString isBlankString:albumName]==NO) {
         
     }
+    AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:viewCtl animated:YES];
 }
 
 - (void)createActivity{
