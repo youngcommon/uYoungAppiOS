@@ -10,6 +10,7 @@
 #import "GlobalConfig.h"
 #import "ActivityTableViewController.h"
 #import "mantle.h"
+#import "ActivityFilterViewController.h"
 
 @interface RootViewController : UIViewController
 
@@ -17,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) UIButton *userHeader;
+@property (strong, nonatomic) ActivityFilterViewController *filter;
 
 @property (strong, nonatomic) ActivityTableViewController *activityTabViewController;
+- (IBAction)showFilter:(id)sender;
 
 @end

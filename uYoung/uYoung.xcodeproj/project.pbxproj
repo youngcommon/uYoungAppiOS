@@ -25,6 +25,8 @@
 		482E9ABA1C1523E400DEF737 /* AlbumPicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AB81C1523E400DEF737 /* AlbumPicCollectionCell.m */; };
 		482E9ABB1C1523E400DEF737 /* AlbumPicCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */; };
 		482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AC01C156E5500DEF737 /* UIImageView+LazyInit.m */; };
+		482E9AC41C1576EE00DEF737 /* ActivityFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */; };
+		482E9AC61C15772A00DEF737 /* ActivityFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */; };
 		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
@@ -131,6 +133,9 @@
 		482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumPicCollectionCell.xib; sourceTree = "<group>"; };
 		482E9ABF1C156E5500DEF737 /* UIImageView+LazyInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LazyInit.h"; sourceTree = "<group>"; };
 		482E9AC01C156E5500DEF737 /* UIImageView+LazyInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LazyInit.m"; sourceTree = "<group>"; };
+		482E9AC21C1576EE00DEF737 /* ActivityFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterViewController.h; sourceTree = "<group>"; };
+		482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityFilterViewController.m; sourceTree = "<group>"; };
+		482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFilterViewController.xib; sourceTree = "<group>"; };
 		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
@@ -416,6 +421,9 @@
 				84628FB51C1330F600683C13 /* AlbumDetailViewController.h */,
 				84628FB61C1330F600683C13 /* AlbumDetailViewController.m */,
 				84628FB81C13313700683C13 /* AlbumDetailViewController.xib */,
+				482E9AC21C1576EE00DEF737 /* ActivityFilterViewController.h */,
+				482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */,
+				482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -645,6 +653,7 @@
 			files = (
 				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
+				482E9AC61C15772A00DEF737 /* ActivityFilterViewController.xib in Resources */,
 				482E9ABB1C1523E400DEF737 /* AlbumPicCollectionCell.xib in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
@@ -757,6 +766,7 @@
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 				482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */,
 				84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */,
+				482E9AC41C1576EE00DEF737 /* ActivityFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

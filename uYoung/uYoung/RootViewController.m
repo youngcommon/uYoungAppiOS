@@ -27,6 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _filter = [[ActivityFilterViewController alloc]initWithNibName:@"ActivityFilterViewController" bundle:[NSBundle mainBundle]];
+    _filter.view.frame = CGRectMake(mScreenWidth+_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
+    [self addChildViewController:_filter];
+    [self.view addSubview:_filter.view];
+    
     CGFloat y = 20;
     
     y += self.header.frame.size.height;
@@ -57,6 +62,7 @@
     [_userHeader addTarget:self action:@selector(gotoUserCenter) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_userHeader];
     
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -83,8 +89,6 @@
 }
 
 - (void)initUserAvater{
-    __weak UIButton *header = _userHeader;
-    
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
         [_userHeader.imageView lazyInitSmallImageWithUrl:loginUser.avatarUrl];
@@ -94,10 +98,24 @@
             [header setBackgroundImage:image forState:UIControlStateNormal];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         }];*/
-        
     }else{
         [_userHeader setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
     }
+}
+
+- (IBAction)showFilter:(id)sender {
+    CGPoint point = _activityTabViewController.view.frame.origin;
+    CGSize size = _activityTabViewController.view.frame.size;
+    CGRect viewFrame = CGRectMake(0-_filter.view.frame.size.width, point.y, size.width, size.height);
+    CGRect headerFrame = CGRectMake(0-_filter.view.frame.size.width, _header.frame.origin.y, size.width, _header.frame.size.height);
+    CGRect filterFrame = CGRectMake(mScreenWidth-_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3];
+    [self.activityTabViewController.view setFrame:viewFrame];
+    [self.header setFrame:headerFrame];
+    [self.filter.view setFrame:filterFrame];
+    [UIView commitAnimations];
 }
 
 @end

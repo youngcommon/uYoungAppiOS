@@ -45,7 +45,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.isAlbum = NO;
-
+    [cell initCellWithDict:_pics[indexPath.row]];
     return cell;
 }
 
@@ -55,11 +55,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    return UIEdgeInsetsMake(0, 0, 5, 5);
-//}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    //跳转到图片下载逻辑
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
