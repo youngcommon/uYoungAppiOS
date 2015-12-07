@@ -19,8 +19,16 @@
 @property (weak, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) UIButton *userHeader;
 @property (strong, nonatomic) ActivityFilterViewController *filter;
-
+@property (assign, nonatomic) BOOL isFilter;
+@property (strong, nonatomic) UILabel *userHeaderBackground;
 @property (strong, nonatomic) ActivityTableViewController *activityTabViewController;
+
+@property (assign, nonatomic) CGRect viewFrameOrigin;
+@property (assign, nonatomic) CGRect headerFrameOrigin;
+@property (assign, nonatomic) CGRect filterFrameOrigin;
+@property (assign, nonatomic) CGRect headBackOrigin;
+@property (assign, nonatomic) CGRect headFrameOrigin;
+
 - (IBAction)showFilter:(id)sender;
 
 @end

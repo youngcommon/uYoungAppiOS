@@ -27,11 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _filter = [[ActivityFilterViewController alloc]initWithNibName:@"ActivityFilterViewController" bundle:[NSBundle mainBundle]];
-    _filter.view.frame = CGRectMake(mScreenWidth+_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
-    [self addChildViewController:_filter];
-    [self.view addSubview:_filter.view];
-    
     CGFloat y = 20;
     
     y += self.header.frame.size.height;
@@ -49,19 +44,26 @@
     
     [self.activityTabViewController initActivityList:1];
     
-    UILabel *userHeaderBackground = [[UILabel alloc]initWithFrame:CGRectMake(mScreenWidth/2-33, mScreenHeight-10-66, 66, 66)];
-    userHeaderBackground.backgroundColor = UIColorFromRGB(0x85b200);
-    userHeaderBackground.alpha = 0.6;
-    userHeaderBackground.layer.cornerRadius = userHeaderBackground.frame.size.height/2;
-    userHeaderBackground.layer.masksToBounds = YES;
-    [self.view addSubview:userHeaderBackground];
+    _userHeaderBackground = [[UILabel alloc]initWithFrame:CGRectMake(mScreenWidth/2-33, mScreenHeight-10-66, 66, 66)];
+    _userHeaderBackground.backgroundColor = UIColorFromRGB(0x85b200);
+    _userHeaderBackground.alpha = 0.6;
+    _userHeaderBackground.layer.cornerRadius = _userHeaderBackground.frame.size.height/2;
+    _userHeaderBackground.layer.masksToBounds = YES;
+    [self.view addSubview:_userHeaderBackground];
     
-    _userHeader = [[UIButton alloc]initWithFrame:CGRectMake(userHeaderBackground.frame.origin.x+5, userHeaderBackground.frame.origin.y+5, 56, 56)];
+    _userHeader = [[UIButton alloc]initWithFrame:CGRectMake(_userHeaderBackground.frame.origin.x+5, _userHeaderBackground.frame.origin.y+5, 56, 56)];
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     [_userHeader addTarget:self action:@selector(gotoUserCenter) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_userHeader];
     
+    _filter = [[ActivityFilterViewController alloc]initWithNibName:@"ActivityFilterViewController" bundle:[NSBundle mainBundle]];
+    _filter.view.frame = CGRectMake(mScreenWidth+_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
+    [self addChildViewController:_filter];
+    [self.view addSubview:_filter.view];
+    
+    _isFilter = NO;
+    _filterFrameOrigin = _filter.view.frame;
     
 }
 
@@ -104,18 +106,22 @@
 }
 
 - (IBAction)showFilter:(id)sender {
-    CGPoint point = _activityTabViewController.view.frame.origin;
-    CGSize size = _activityTabViewController.view.frame.size;
-    CGRect viewFrame = CGRectMake(0-_filter.view.frame.size.width, point.y, size.width, size.height);
-    CGRect headerFrame = CGRectMake(0-_filter.view.frame.size.width, _header.frame.origin.y, size.width, _header.frame.size.height);
-    CGRect filterFrame = CGRectMake(mScreenWidth-_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3];
-    [self.activityTabViewController.view setFrame:viewFrame];
-    [self.header setFrame:headerFrame];
-    [self.filter.view setFrame:filterFrame];
-    [UIView commitAnimations];
+    if (_isFilter==NO) {
+        CGRect filterFrame = CGRectMake(mScreenWidth-_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [self.filter.view setFrame:filterFrame];
+        [UIView commitAnimations];
+        _isFilter = YES;
+    }else{
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [self.filter.view setFrame:_filterFrameOrigin];
+        [UIView commitAnimations];
+        _isFilter = NO;
+    }
 }
 
 @end

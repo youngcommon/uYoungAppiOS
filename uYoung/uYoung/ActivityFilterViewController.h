@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityFilterViewController : UIViewController
+@protocol ActivityFilterDelegate <NSObject>
+@optional
 
+@end
+
+@interface ActivityFilterViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *createTimeButton;
+@property (strong, nonatomic) IBOutlet UIButton *actTimeButton;
+@property (strong, nonatomic) IBOutlet UIButton *actTypeButton;
+@property (strong, nonatomic) IBOutlet UIButton *actStatusButton;
+@property (strong, nonatomic) IBOutlet UISwitch *priceSwitch;
+@property (strong, nonatomic) IBOutlet UIButton *commitButton;
+
+- (IBAction)commit:(id)sender;
 @end
