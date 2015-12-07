@@ -36,6 +36,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="img" destination="4qR-Qa-rrJ" id="UiJ-H8-tUS"/>
+                <outlet property="longLine" destination="wMx-DE-dQN" id="b2F-ZQ-Bie"/>
+                <outlet property="shortLine" destination="4B9-Jv-zFf" id="GKc-rA-rnn"/>
             </connections>
         </collectionViewCell>
     </objects>

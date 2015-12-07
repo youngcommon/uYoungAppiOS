@@ -11,6 +11,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "UIWindow+YoungHUD.h"
 #import "CityModel.h"
+#import "UIImageView+LazyInit.h"
 
 @interface EditUserViewController ()
 
@@ -60,7 +61,8 @@
         }
         //设置头像
         if ([NSString isBlankString:_loginUser.avatarUrl]==NO) {
-            __weak UIButton *weak = _userHeaderButton;
+            [_userHeaderButton.imageView lazyInitSmallImageWithUrl:_loginUser.avatarUrl];
+            /*__weak UIButton *weak = _userHeaderButton;
             NSString *avatarUrl = _loginUser.avatarUrl;
             NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
             [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
@@ -68,7 +70,7 @@
             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                 UIImage *img = [UIImage imageNamed:UserDefaultHeader];
                 [weak setBackgroundImage:img forState:UIControlStateNormal];
-            }];
+            }];*/
         }
         //设置性别
         if (_loginUser.gender==1) {//男

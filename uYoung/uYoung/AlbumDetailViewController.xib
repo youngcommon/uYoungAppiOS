@@ -54,7 +54,7 @@
                     <state key="normal" backgroundImage="uyoung.bundle/logo_icon.png"/>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="g6C-bJ-0fb">
-                    <rect key="frame" x="24" y="137" width="272" height="343"/>
+                    <rect key="frame" x="24" y="137" width="272" height="323"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="10" id="m0w-Jr-oFq">
                         <size key="itemSize" width="124" height="100"/>
@@ -142,6 +142,7 @@
                 <constraint firstItem="kWV-Xn-BwG" firstAttribute="top" secondItem="93a-bw-SG3" secondAttribute="bottom" constant="4" id="il0-Tb-Abb"/>
                 <constraint firstItem="g6C-bJ-0fb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pYM-5Q-Pgj"/>
                 <constraint firstAttribute="trailing" secondItem="grC-SF-Sn3" secondAttribute="trailing" id="qDm-8v-8hb"/>
+                <constraint firstAttribute="bottom" secondItem="g6C-bJ-0fb" secondAttribute="bottom" constant="20" id="raY-fJ-cjq"/>
                 <constraint firstAttribute="trailing" secondItem="g6C-bJ-0fb" secondAttribute="trailing" constant="24" id="sD4-fd-hPX"/>
                 <constraint firstItem="93a-bw-SG3" firstAttribute="top" secondItem="hQQ-EX-vJ4" secondAttribute="bottom" constant="21" id="tlL-Un-VpN"/>
                 <constraint firstItem="Xxo-nE-F3L" firstAttribute="top" secondItem="kWV-Xn-BwG" secondAttribute="bottom" constant="4" id="wtI-yi-ggn"/>
@@ -150,6 +151,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="zmf-mN-rOh"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

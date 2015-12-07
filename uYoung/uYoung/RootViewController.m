@@ -12,6 +12,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "CreateActivityController.h"
 #import "ActivityAlbumViewController.h"
+#import "UIImageView+LazyInit.h"
 
 @interface RootViewController ()
 
@@ -86,12 +87,14 @@
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
-        NSString *avaterUrl = loginUser.avatarUrl;
+        [_userHeader.imageView lazyInitSmallImageWithUrl:loginUser.avatarUrl];
+        /*NSString *avaterUrl = loginUser.avatarUrl;
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [_userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [header setBackgroundImage:image forState:UIControlStateNormal];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        }];
+        }];*/
+        
     }else{
         [_userHeader setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
     }

@@ -9,6 +9,7 @@
 #import "ActivityTableViewCell.h"
 #import <UIImageView+AFNetworking.h>
 #import "GlobalConfig.h"
+#import "UIImageView+LazyInit.h"
 
 @implementation ActivityTableViewCell
 
@@ -49,13 +50,15 @@
     self.toTimeLabel.text = model.toTime;
     self.personNumLabel.text = [NSString stringWithFormat:@"%d人", (int)model.personNum];
     self.addrLabel.text = model.addr;
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:model.headerUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:600.0];
+    
+    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl];
+    /*NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:model.headerUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:600.0];
     [self.headerImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [_headerImg setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         UIImage *img = [UIImage imageNamed:UserDefaultHeader];
         [_headerImg setImage:img];
-    }];
+    }];*/
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

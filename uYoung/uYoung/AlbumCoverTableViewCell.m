@@ -9,6 +9,7 @@
 #import "AlbumCoverTableViewCell.h"
 #import <UIImageView+AFNetworking.h>
 #import "GlobalConfig.h"
+#import "UIImageView+LazyInit.h"
 
 @implementation AlbumCoverTableViewCell
 
@@ -27,16 +28,16 @@
 
 - (void)fillDataWithAlbumModel:(AlbumModel*)model{
     [_albumNameLabel setText:model.albumName];
-    [_albumViewLabel setText:[NSString stringWithFormat:@"%i", model.totalLikeCount]];
-    [_albumPhotoCountLabel setText:[NSString stringWithFormat:@"%i", model.totalPhotoCount]];
+    [_albumViewLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalLikeCount]];
+    [_albumPhotoCountLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalPhotoCount]];
     [_albumCreateLabel setText:model.createTime];
     
-    NSString *photoUrl = model.firstPhotoUrl;
-//    photoUrl = @"http://pic1a.nipic.com/2008-09-12/2008912172513848_2.jpg";
+    [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl];
+    /*NSString *photoUrl = model.firstPhotoUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:photoUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [_albumCoverImage setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [_albumCoverImage setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];*/
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

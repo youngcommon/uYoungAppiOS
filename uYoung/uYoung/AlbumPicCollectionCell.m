@@ -15,6 +15,14 @@
     _img.layer.borderColor = [[UIColor lightGrayColor]CGColor];
     _img.layer.borderWidth = 1;
     
+    if (_isAlbum==NO) {
+        [_shortLine setHidden:YES];
+        [_longLine setHidden:YES];
+    }
+}
+
+- (void)initCellWithDict:(NSDictionary*)dict{
+    
 }
 
 @end
