@@ -22,6 +22,8 @@
 		482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AA61C0D8A6E00DEF737 /* ZSSRichTextEditor.js */; };
 		482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AAC1C0DCAB100DEF737 /* editor.html */; };
 		482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AB21C11446F00DEF737 /* ActivityPublish.m */; };
+		482E9ABA1C1523E400DEF737 /* AlbumPicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AB81C1523E400DEF737 /* AlbumPicCollectionCell.m */; };
+		482E9ABB1C1523E400DEF737 /* AlbumPicCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */; };
 		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
@@ -123,6 +125,9 @@
 		482E9AAC1C0DCAB100DEF737 /* editor.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = editor.html; path = ../Pods/ZSSRichTextEditor/ZSSRichTextEditor/editor.html; sourceTree = "<group>"; };
 		482E9AB11C11446F00DEF737 /* ActivityPublish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityPublish.h; sourceTree = "<group>"; };
 		482E9AB21C11446F00DEF737 /* ActivityPublish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityPublish.m; sourceTree = "<group>"; };
+		482E9AB71C1523E400DEF737 /* AlbumPicCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumPicCollectionCell.h; sourceTree = "<group>"; };
+		482E9AB81C1523E400DEF737 /* AlbumPicCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumPicCollectionCell.m; sourceTree = "<group>"; };
+		482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumPicCollectionCell.xib; sourceTree = "<group>"; };
 		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
@@ -368,6 +373,9 @@
 				8469F3751C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib */,
 				8452A5211C0C84D300DB419C /* ActivityDescTextView.h */,
 				8452A5221C0C84D300DB419C /* ActivityDescTextView.m */,
+				482E9AB71C1523E400DEF737 /* AlbumPicCollectionCell.h */,
+				482E9AB81C1523E400DEF737 /* AlbumPicCollectionCell.m */,
+				482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 			files = (
 				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
+				482E9ABB1C1523E400DEF737 /* AlbumPicCollectionCell.xib in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
 				48640E9D1BCFFFAA0093B702 /* AlbumCoverTableViewCell.xib in Resources */,
 				8469F3771C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.xib in Resources */,
@@ -704,6 +713,7 @@
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
 				84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
+				482E9ABA1C1523E400DEF737 /* AlbumPicCollectionCell.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,
