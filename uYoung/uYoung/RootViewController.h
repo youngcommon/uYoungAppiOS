@@ -12,7 +12,7 @@
 #import "mantle.h"
 #import "ActivityFilterViewController.h"
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController<ActivityFilterDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggle;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
@@ -23,11 +23,7 @@
 @property (strong, nonatomic) UILabel *userHeaderBackground;
 @property (strong, nonatomic) ActivityTableViewController *activityTabViewController;
 
-@property (assign, nonatomic) CGRect viewFrameOrigin;
-@property (assign, nonatomic) CGRect headerFrameOrigin;
-@property (assign, nonatomic) CGRect filterFrameOrigin;
-@property (assign, nonatomic) CGRect headBackOrigin;
-@property (assign, nonatomic) CGRect headFrameOrigin;
+@property (strong, nonatomic) UIView *cover;
 
 - (IBAction)showFilter:(id)sender;
 

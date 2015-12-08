@@ -57,13 +57,19 @@
     [_userHeader addTarget:self action:@selector(gotoUserCenter) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_userHeader];
     
+    _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [_cover setBackgroundColor:[UIColor lightGrayColor]];
+    _cover.alpha = 0.5f;
+    [self.view addSubview:_cover];
+    [_cover setHidden:YES];
+    
     _filter = [[ActivityFilterViewController alloc]initWithNibName:@"ActivityFilterViewController" bundle:[NSBundle mainBundle]];
     _filter.view.frame = CGRectMake(mScreenWidth+_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
+    _filter.delegate = self;
     [self addChildViewController:_filter];
     [self.view addSubview:_filter.view];
     
     _isFilter = NO;
-    _filterFrameOrigin = _filter.view.frame;
     
 }
 
@@ -114,14 +120,21 @@
         [self.filter.view setFrame:filterFrame];
         [UIView commitAnimations];
         _isFilter = YES;
+        [_cover setHidden:NO];
     }else{
+        CGRect filterFrame = CGRectMake(mScreenWidth+_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationDuration:0.3];
-        [self.filter.view setFrame:_filterFrameOrigin];
+        [self.filter.view setFrame:filterFrame];
         [UIView commitAnimations];
         _isFilter = NO;
+        [_cover setHidden:YES];
     }
+}
+
+-(void)commitWithFilterData:(NSDictionary*)data{
+    [self showFilter:nil];
 }
 
 @end
