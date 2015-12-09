@@ -11,6 +11,7 @@
 #import "AddPicCollectionViewCell.h"
 #import "GlobalConfig.h"
 #import "UIImageView+LazyInit.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface AlbumDetailViewController ()
 
@@ -35,6 +36,9 @@ static NSString * const reuseIdentifier = @"Cell";
     UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
+    if (_pics==nil||_pics==NULL) {
+        _pics = [[NSArray alloc]init];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,13 +50,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return [_pics count] + 1;
-    return 2;
+    return [_pics count] + 1;
+//    return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.row;
-    if (index==(2-1)) {//说明是添加相片按钮
+    if ([_pics count]==0||index==([_pics count]-1)) {//说明是添加相片按钮
         UINib *nib = [UINib nibWithNibName:@"AddPicCollectionViewCell" bundle:nil];
         [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
         
@@ -72,11 +76,50 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //跳转到图片下载逻辑
+    NSInteger index = indexPath.row;
+    if ([_pics count]==0||index==([_pics count]-1)) {//如果是上传照片被点击
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            _camera = [[UIImagePickerController alloc] init];
+            _camera.delegate = self;
+            _camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //此处设置只能使用相机，禁止使用视频功能
+            _camera.mediaTypes = @[(NSString*)kUTTypeImage];
+            
+            [self presentViewController:_camera animated:YES completion:nil];
+        }
+    }else{
+        //跳转到图片下载逻辑
+        
+    }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
+}
+
+//点击相册中的图片或照相机照完后点击use后触发的方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *img;
+    if ([info objectForKey:UIImagePickerControllerEditedImage]) {
+        img = [info objectForKey:UIImagePickerControllerEditedImage];
+    }else{
+        img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    
+//    NSInteger uid = [UserDetailModel currentUser].id;
+//    long times = [[NSDate date]timeIntervalSince1970];
+    
+    //上传图片至七牛云
+//    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] delegate:self];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//用户取消回调
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)back:(id)sender {

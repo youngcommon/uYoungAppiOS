@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumDetailViewController : UIViewController
+@interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIButton *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;
@@ -23,6 +23,8 @@
 @property (assign, nonatomic) NSInteger ownerUid;
 
 @property (strong, nonatomic) NSArray *pics;
+
+@property (strong, nonatomic) UIImagePickerController *camera;
 
 - (IBAction)back:(id)sender;
 
