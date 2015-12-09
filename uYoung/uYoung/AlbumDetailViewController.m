@@ -9,6 +9,7 @@
 #import "AlbumDetailViewController.h"
 #import "AlbumPicCollectionCell.h"
 #import "GlobalConfig.h"
+#import "UIImageView+LazyInit.h"
 
 @interface AlbumDetailViewController ()
 
@@ -23,6 +24,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
+    
+    [_userHeader.imageView lazyInitSmallImageWithUrl:_userHeaderUrl];
+    [_albumName setText:_albumNameStr];
+    [_nickName setText:_nickNameStr];
+    [_createDate setText:_createDateStr];
+    [_totalPics setText:[NSString stringWithFormat:@"%d", (int)[_pics count]]];
     
     UINib * nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];

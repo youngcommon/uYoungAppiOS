@@ -16,6 +16,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *totalPics;
 @property (strong, nonatomic) IBOutlet UICollectionView *allPics;
 
+@property (strong, nonatomic) NSString *albumNameStr;
+@property (strong, nonatomic) NSString *nickNameStr;
+@property (strong, nonatomic) NSString *createDateStr;
+@property (strong, nonatomic) NSString *userHeaderUrl;
+@property (assign, nonatomic) NSInteger ownerUid;
+
 @property (strong, nonatomic) NSArray *pics;
 
 - (IBAction)back:(id)sender;

@@ -48,7 +48,6 @@
     }
     
     NSString *cityName;
-    NSString *locationName;
     for (int i=0; i<[cityarr count]; i++) {
         CityModel *city = cityarr[i];
         if (city.id == _cityId) {

@@ -286,8 +286,16 @@
     if ([NSString isBlankString:albumName]==NO) {
         
     }
-    AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:viewCtl animated:YES];
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user!=nil&&user!=NULL) {
+        AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
+        viewCtl.albumNameStr = _createAlbumText.text;
+        viewCtl.ownerUid = user.id;
+        viewCtl.nickNameStr = user.nickName;
+        viewCtl.userHeaderUrl = user.avatarUrl;
+        viewCtl.createDateStr = [self getNowDateStr];
+        [self.navigationController pushViewController:viewCtl animated:YES];
+    }
 }
 
 - (void)createActivity{
@@ -334,5 +342,15 @@
     [self.view setFrame:viewFrame];
     [UIView commitAnimations];
     _delta = 0.0f;
+}
+
+- (NSString*)getNowDateStr{
+    NSDate *date = [NSDate date];
+    //设置时间输出格式：
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSString * na = [df stringFromDate:date];
+    return na;
 }
 @end
