@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoDetailModel.h"
 
 @interface AlbumPicCollectionCell : UICollectionViewCell
 
@@ -14,6 +15,6 @@
 
 @property (strong, nonatomic) NSDictionary *picData;
 
-- (void)initCellWithDict:(NSDictionary*)dict;
+- (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail;
 
 @end

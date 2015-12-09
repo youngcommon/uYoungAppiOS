@@ -12,6 +12,7 @@
 #import "GlobalConfig.h"
 #import "UIImageView+LazyInit.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "PhotoDetailModel.h"
 
 @interface AlbumDetailViewController ()
 
@@ -31,7 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_albumName setText:_albumNameStr];
     [_nickName setText:_nickNameStr];
     [_createDate setText:_createDateStr];
-    [_totalPics setText:[NSString stringWithFormat:@"%d", (int)[_pics count]]];
+    [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
     
     UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
@@ -56,7 +57,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.row;
-    if ([_pics count]==0||index==([_pics count]-1)) {//说明是添加相片按钮
+    if ([_pics count]==0||index==[_pics count]) {//说明是添加相片按钮
         UINib *nib = [UINib nibWithNibName:@"AddPicCollectionViewCell" bundle:nil];
         [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
         
@@ -64,7 +65,7 @@ static NSString * const reuseIdentifier = @"Cell";
         return cell;
     }else{
         AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell initCellWithDict:_pics[indexPath.row]];
+        [cell initCellWithPhotoDetail:((PhotoDetailModel*)_pics[indexPath.row])];
         return cell;
     }
 }
@@ -77,7 +78,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger index = indexPath.row;
-    if ([_pics count]==0||index==([_pics count]-1)) {//如果是上传照片被点击
+    if ([_pics count]==0||index==([_pics count])) {//如果是上传照片被点击
         
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             _camera = [[UIImagePickerController alloc] init];

@@ -88,6 +88,9 @@
 		847E184B1BDFCB9E00882D20 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184A1BDFCB9E00882D20 /* libstdc++.dylib */; };
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
+		84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65A1C1879950090E173 /* AlbumDetailModel.m */; };
+		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
+		84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C6601C1881C10090E173 /* AlbumDetail.m */; };
 		84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
 		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
@@ -244,6 +247,12 @@
 		847E184C1BDFCBB700882D20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = "../../Library/Developer/Xcode/iOS DeviceSupport/6.1.3 (10B329)/Symbols/usr/lib/libz.dylib"; sourceTree = "<group>"; };
 		849506AF1BFE042700119D8C /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
 		849506B01BFE042700119D8C /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
+		84A2C6591C1879950090E173 /* AlbumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailModel.h; sourceTree = "<group>"; };
+		84A2C65A1C1879950090E173 /* AlbumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailModel.m; sourceTree = "<group>"; };
+		84A2C65C1C18803F0090E173 /* PhotoDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailModel.h; sourceTree = "<group>"; };
+		84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailModel.m; sourceTree = "<group>"; };
+		84A2C65F1C1881C10090E173 /* AlbumDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetail.h; sourceTree = "<group>"; };
+		84A2C6601C1881C10090E173 /* AlbumDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetail.m; sourceTree = "<group>"; };
 		84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalNetwork.h; sourceTree = "<group>"; };
 		84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalNetwork.m; sourceTree = "<group>"; };
 		84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -337,6 +346,8 @@
 				84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */,
 				482E9AB11C11446F00DEF737 /* ActivityPublish.h */,
 				482E9AB21C11446F00DEF737 /* ActivityPublish.m */,
+				84A2C65F1C1881C10090E173 /* AlbumDetail.h */,
+				84A2C6601C1881C10090E173 /* AlbumDetail.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -363,6 +374,10 @@
 				84547B8A1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m */,
 				849506AF1BFE042700119D8C /* CityModel.h */,
 				849506B01BFE042700119D8C /* CityModel.m */,
+				84A2C6591C1879950090E173 /* AlbumDetailModel.h */,
+				84A2C65A1C1879950090E173 /* AlbumDetailModel.m */,
+				84A2C65C1C18803F0090E173 /* PhotoDetailModel.h */,
+				84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -744,6 +759,8 @@
 				849506B11BFE042700119D8C /* CityModel.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				84763F7E1BFA1FC7002BC70B /* YoungHUDBackgroundView.m in Sources */,
+				84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */,
+				84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */,
 				8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
@@ -772,6 +789,7 @@
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
+				84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 				482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */,

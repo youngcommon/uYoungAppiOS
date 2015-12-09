@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlbumDetail.h"
 
-@interface ActivityAlbumViewController : UIViewController
+@interface ActivityAlbumViewController : UIViewController<AlbumDetailDelegate>
 
 @property (strong, nonatomic) NSString *actTitleStr;
 

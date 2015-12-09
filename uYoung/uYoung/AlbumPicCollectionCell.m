@@ -7,6 +7,7 @@
 //
 
 #import "AlbumPicCollectionCell.h"
+#import "UIImageView+LazyInit.h"
 
 @implementation AlbumPicCollectionCell
 
@@ -17,8 +18,8 @@
     
 }
 
-- (void)initCellWithDict:(NSDictionary*)dict{
-    
+- (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
+    [_img lazyInitSmallImageWithUrl:photoDetail.photoUrl];
 }
 
 @end
