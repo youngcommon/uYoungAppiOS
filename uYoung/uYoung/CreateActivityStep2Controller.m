@@ -69,6 +69,12 @@
         img = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
     
+    //处理图片，只获得缩略图上传
+    //269*88 要显示的大小
+    CGSize reSize = CGSizeMake(200, 100);
+    //得到最后绘出来的图片大小
+    img = [self thumbnailWithImageWithoutScale:img size:reSize];
+    
     NSInteger uid = [UserDetailModel currentUser].id;
     long times = [[NSDate date]timeIntervalSince1970];
     
@@ -107,6 +113,25 @@
     CGPoint center = CGPointMake(bubble.size.width / 2.0f, height);
     UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, 0, center.y+1, 2);
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+}
+
+#pragma mark 压缩图片
+- (UIImage *)thumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize{
+    UIImage *newimage;
+    if (nil == image) {
+        newimage = nil;
+    }
+    else{
+        CGRect rect = CGRectMake(0, 0, asize.width, asize.height);
+        UIGraphicsBeginImageContext(asize);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+        UIRectFill(CGRectMake(0, 0, asize.width, asize.height));//clear background
+        [image drawInRect:rect];
+        newimage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    return newimage;
 }
 
 @end
