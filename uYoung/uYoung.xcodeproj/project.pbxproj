@@ -27,6 +27,8 @@
 		482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AC01C156E5500DEF737 /* UIImageView+LazyInit.m */; };
 		482E9AC41C1576EE00DEF737 /* ActivityFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */; };
 		482E9AC61C15772A00DEF737 /* ActivityFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */; };
+		482E9ACA1C18193400DEF737 /* AddPicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482E9AC81C18193400DEF737 /* AddPicCollectionViewCell.m */; };
+		482E9ACB1C18193400DEF737 /* AddPicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E9AC91C18193400DEF737 /* AddPicCollectionViewCell.xib */; };
 		48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */; };
 		483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */ = {isa = PBXBuildFile; fileRef = 483AFDBE1BC817DF0054985D /* ActivityList.m */; };
 		483E17D91BAC548E00CDDBD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E17D81BAC548E00CDDBD3 /* main.m */; };
@@ -136,6 +138,9 @@
 		482E9AC21C1576EE00DEF737 /* ActivityFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterViewController.h; sourceTree = "<group>"; };
 		482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityFilterViewController.m; sourceTree = "<group>"; };
 		482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFilterViewController.xib; sourceTree = "<group>"; };
+		482E9AC71C18193400DEF737 /* AddPicCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPicCollectionViewCell.h; sourceTree = "<group>"; };
+		482E9AC81C18193400DEF737 /* AddPicCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPicCollectionViewCell.m; sourceTree = "<group>"; };
+		482E9AC91C18193400DEF737 /* AddPicCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPicCollectionViewCell.xib; sourceTree = "<group>"; };
 		48308DBC1BFB0A4E0014EFA5 /* UploadImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		48308DBD1BFB0A4E0014EFA5 /* UploadImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		483AFDBD1BC817DF0054985D /* ActivityList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityList.h; sourceTree = "<group>"; };
@@ -384,6 +389,9 @@
 				482E9AB71C1523E400DEF737 /* AlbumPicCollectionCell.h */,
 				482E9AB81C1523E400DEF737 /* AlbumPicCollectionCell.m */,
 				482E9AB91C1523E400DEF737 /* AlbumPicCollectionCell.xib */,
+				482E9AC71C18193400DEF737 /* AddPicCollectionViewCell.h */,
+				482E9AC81C18193400DEF737 /* AddPicCollectionViewCell.m */,
+				482E9AC91C18193400DEF737 /* AddPicCollectionViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -664,6 +672,7 @@
 				483E17E21BAC548E00CDDBD3 /* Main.storyboard in Resources */,
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
+				482E9ACB1C18193400DEF737 /* AddPicCollectionViewCell.xib in Resources */,
 				8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				84628FB91C13313700683C13 /* AlbumDetailViewController.xib in Resources */,
@@ -745,6 +754,7 @@
 				48039FE31BD491F000CF147A /* EnrollCollectionView.m in Sources */,
 				4820A4DB1BB2D352006AEC13 /* ActivityModel.m in Sources */,
 				48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */,
+				482E9ACA1C18193400DEF737 /* AddPicCollectionViewCell.m in Sources */,
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
 				48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */,

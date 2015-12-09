@@ -13,31 +13,21 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="124" height="100"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B9-Jv-zFf">
-                        <rect key="frame" x="8" y="4" width="108" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMx-DE-dQN">
-                        <rect key="frame" x="5" y="8" width="114" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="4qR-Qa-rrJ">
-                        <rect key="frame" x="0.0" y="12" width="124" height="88"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="4qR-Qa-rrJ">
+                        <rect key="frame" x="0.0" y="0.0" width="124" height="100"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4qR-Qa-rrJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2LQ-mg-Jhn"/>
+                <constraint firstAttribute="trailing" secondItem="4qR-Qa-rrJ" secondAttribute="trailing" id="BV8-Ji-lgA"/>
+                <constraint firstAttribute="bottom" secondItem="4qR-Qa-rrJ" secondAttribute="bottom" id="CcU-JP-NQ2"/>
+                <constraint firstItem="4qR-Qa-rrJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tS0-LV-oiK"/>
+            </constraints>
             <connections>
                 <outlet property="img" destination="4qR-Qa-rrJ" id="UiJ-H8-tUS"/>
-                <outlet property="longLine" destination="wMx-DE-dQN" id="b2F-ZQ-Bie"/>
-                <outlet property="shortLine" destination="4B9-Jv-zFf" id="GKc-rA-rnn"/>
             </connections>
         </collectionViewCell>
     </objects>

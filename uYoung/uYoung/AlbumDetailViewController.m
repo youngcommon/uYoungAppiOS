@@ -8,6 +8,7 @@
 
 #import "AlbumDetailViewController.h"
 #import "AlbumPicCollectionCell.h"
+#import "AddPicCollectionViewCell.h"
 #import "GlobalConfig.h"
 #import "UIImageView+LazyInit.h"
 
@@ -31,7 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_createDate setText:_createDateStr];
     [_totalPics setText:[NSString stringWithFormat:@"%d", (int)[_pics count]]];
     
-    UINib * nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
 }
@@ -45,15 +46,23 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return [_pics count];
-    return 13;
+//    return [_pics count] + 1;
+    return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.isAlbum = NO;
-    [cell initCellWithDict:_pics[indexPath.row]];
-    return cell;
+    NSInteger index = indexPath.row;
+    if (index==(2-1)) {//说明是添加相片按钮
+        UINib *nib = [UINib nibWithNibName:@"AddPicCollectionViewCell" bundle:nil];
+        [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
+        
+        AddPicCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        return cell;
+    }else{
+        AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        [cell initCellWithDict:_pics[indexPath.row]];
+        return cell;
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

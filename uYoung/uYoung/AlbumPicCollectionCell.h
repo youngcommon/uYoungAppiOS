@@ -11,9 +11,6 @@
 @interface AlbumPicCollectionCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *img;
-@property (assign, nonatomic) BOOL isAlbum;
-@property (weak, nonatomic) IBOutlet UILabel *shortLine;
-@property (weak, nonatomic) IBOutlet UILabel *longLine;
 
 @property (strong, nonatomic) NSDictionary *picData;
 
