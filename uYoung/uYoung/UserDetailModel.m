@@ -33,6 +33,9 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
     self = [super initWithDictionary:dictionaryValue error:error];
+    
+    self.avatarUrl = [NSString stringWithFormat:@"%@-actdesc200", self.avatarUrl];
+    
     if (self == nil) return nil;
     NSArray *arr = [self.address componentsSeparatedByString:@"-"];
     if (arr&&[arr count]==2) {

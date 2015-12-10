@@ -18,13 +18,13 @@
 - (void)viewDidAppear:(BOOL)animated{
     _userDetailModel = [UserDetailModel currentUser];
     
-//    if (_userDetailModel==nil||_userDetailModel.id==0) {
-//        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-//        loginViewCtl.source = @"usercenter";
-//        [self presentViewController:loginViewCtl animated:YES completion:nil];
-//    }else{
+    if (_userDetailModel==nil||_userDetailModel.id==0) {
+        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+        loginViewCtl.source = @"usercenter";
+        [self presentViewController:loginViewCtl animated:YES completion:nil];
+    }else{
         [self initViewWithUser];
-//    }
+    }
 
 }
 
