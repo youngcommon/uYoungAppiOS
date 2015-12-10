@@ -15,6 +15,7 @@
 #import "NSString+StringUtil.h"
 #import "EditUserViewController.h"
 #import "LoginViewController.h"
+#import "SystemConfigViewController.h"
 
 @interface UserCenterController : UIViewController<UserDetailDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
@@ -41,6 +42,10 @@
 @property (strong, nonatomic) UIButton *doCreate;
 @property (strong, nonatomic) UIButton *createAct;
 
+@property (strong, nonatomic) UIView *cover;
+@property (strong, nonatomic) SystemConfigViewController *sysCtl;
+@property (assign, nonatomic) CGRect oriFrame;
+
 @property (assign, nonatomic) CGFloat delta;
 
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
@@ -50,6 +55,7 @@
 
 @property (assign, nonatomic) NSInteger userId;
 - (IBAction)editUser:(id)sender;
+- (IBAction)systemConfig:(id)sender;
 
 - (IBAction)getBack:(id)sender;
 

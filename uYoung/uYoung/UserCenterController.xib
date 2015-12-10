@@ -68,6 +68,9 @@
                     <state key="normal" title="Edit">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="editUser:" destination="-1" eventType="touchUpInside" id="u9f-2k-e4l"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-RY-YeI">
                     <rect key="frame" x="117" y="86" width="86" height="86"/>
@@ -228,7 +231,7 @@
                     </constraints>
                     <state key="normal" image="uyoung.bundle/settings.png"/>
                     <connections>
-                        <action selector="editUser:" destination="-1" eventType="touchUpInside" id="GEI-U4-Q6X"/>
+                        <action selector="systemConfig:" destination="-1" eventType="touchUpInside" id="Lpi-Gr-V3e"/>
                     </connections>
                 </button>
             </subviews>

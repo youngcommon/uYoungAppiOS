@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemConfigViewController">
+            <connections>
+                <outlet property="logoutButton" destination="eyW-Gn-Ngx" id="yPj-1F-xqK"/>
+                <outlet property="systable" destination="eKV-qV-FXD" id="fyj-LQ-00z"/>
+                <outlet property="view" destination="iN0-l3-epB" id="0ke-l1-gxd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="172" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyW-Gn-Ngx">
+                    <rect key="frame" x="35" y="420" width="102" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="zhZ-tX-TGH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="退 出 登 录">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="CUo-2L-tEf"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6K-ZZ-hbq">
+                    <rect key="frame" x="65" y="385" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="NbK-zY-0SG"/>
+                        <constraint firstAttribute="width" constant="42" id="gd0-zb-6nG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eKV-qV-FXD">
+                    <rect key="frame" x="0.0" y="82" width="172" height="273"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ONj-C7-zRL"/>
+                        <outlet property="delegate" destination="-1" id="AqA-mH-w5A"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBU-2m-4Q5">
+                    <rect key="frame" x="94" y="33" width="70" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="MWS-UY-VIL"/>
+                        <constraint firstAttribute="width" constant="70" id="mA3-Be-5vZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="iBU-2m-4Q5" secondAttribute="trailing" constant="8" id="7d6-4l-Oqs"/>
+                <constraint firstItem="R6K-ZZ-hbq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="65" id="ACZ-0e-VuU"/>
+                <constraint firstItem="eKV-qV-FXD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Alt-9f-2MG"/>
+                <constraint firstAttribute="trailing" secondItem="eKV-qV-FXD" secondAttribute="trailing" id="BSY-9K-AEs"/>
+                <constraint firstItem="eyW-Gn-Ngx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="IC2-wp-5qt"/>
+                <constraint firstItem="iBU-2m-4Q5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="ImC-cL-enw"/>
+                <constraint firstItem="iBU-2m-4Q5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="QKO-gh-rO3"/>
+                <constraint firstItem="eKV-qV-FXD" firstAttribute="top" secondItem="iBU-2m-4Q5" secondAttribute="bottom" constant="28" id="YCm-ua-iZp"/>
+                <constraint firstItem="eyW-Gn-Ngx" firstAttribute="top" secondItem="R6K-ZZ-hbq" secondAttribute="bottom" constant="14" id="Zb0-3H-qRJ"/>
+                <constraint firstAttribute="trailing" secondItem="eyW-Gn-Ngx" secondAttribute="trailing" constant="35" id="d9X-pQ-Ati"/>
+                <constraint firstAttribute="trailing" secondItem="R6K-ZZ-hbq" secondAttribute="trailing" constant="65" id="k9Y-Zm-IRT"/>
+                <constraint firstAttribute="bottom" secondItem="eyW-Gn-Ngx" secondAttribute="bottom" constant="30" id="saF-gq-4ZP"/>
+                <constraint firstItem="R6K-ZZ-hbq" firstAttribute="top" secondItem="eKV-qV-FXD" secondAttribute="bottom" constant="30" id="wfi-SR-9Iw"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QKO-gh-rO3"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="315" y="198"/>
+        </view>
+    </objects>
+</document>

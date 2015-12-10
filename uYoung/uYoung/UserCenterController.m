@@ -168,6 +168,19 @@
     [_createAct setHidden:YES];
     [self.view addSubview:_createAct];
     
+    //添加系统设置遮罩
+    _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [_cover setBackgroundColor:[UIColor lightGrayColor]];
+    _cover.alpha = 0.5;
+    [_cover setHidden:YES];
+    [self.view addSubview:_cover];
+    
+    //添加系统设置页面
+    _sysCtl = [[SystemConfigViewController alloc]initWithNibName:@"SystemConfigViewController" bundle:[NSBundle mainBundle]];
+    _sysCtl.view.frame = CGRectMake(mScreenWidth, 0, _sysCtl.view.frame.size.width, self.view.frame.size.height);
+    [self addChildViewController:_sysCtl];
+    [self.view addSubview:_sysCtl.view];
+    
 }
 
 - (void)refreshViews:(NSNotification*)no{
@@ -175,10 +188,6 @@
     if (_userDetailModel&&[_userDetailModel isEqual:[NSNull null]]==NO&&_userDetailModel.id>0) {
         [self initViewWithUser];
     }
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    
 }
 
 - (void)initViewWithUser{
@@ -191,12 +200,11 @@
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-        [self.headerBackBlurImg setImageToBlur:img blurRadius:80. completionBlock:nil];
         [self.headerImg setImage:img];
     }];
     
@@ -242,6 +250,27 @@
 - (IBAction)editUser:(id)sender {
     EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:editUserViewCtl animated:YES];
+}
+
+- (IBAction)systemConfig:(id)sender {
+    [_cover setHidden:NO];
+    _oriFrame = _sysCtl.view.frame;
+    CGRect viewFrame = CGRectMake(self.view.frame.size.width-172, 0, 172, _sysCtl.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3];
+    [_sysCtl.view setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
+    //当用户点击他处时，收回弹出的选择view
+    [_cover setHidden:YES];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3];
+    [_sysCtl.view setFrame:_oriFrame];
+    [UIView commitAnimations];
 }
 
 - (IBAction)getBack:(id)sender {
