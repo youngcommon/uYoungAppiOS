@@ -99,13 +99,13 @@
 - (void)initUserAvater{
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
-        [_userHeader.imageView lazyInitSmallImageWithUrl:loginUser.avatarUrl];
-        /*NSString *avaterUrl = loginUser.avatarUrl;
+        __weak UIButton *button = _userHeader;
+        NSString *avaterUrl = loginUser.avatarUrl;
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [_userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-            [header setBackgroundImage:image forState:UIControlStateNormal];
+            [button setImage:image forState:UIControlStateNormal];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        }];*/
+        }];
     }else{
         [_userHeader setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
     }

@@ -46,6 +46,7 @@
 		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; };
 		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; };
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; };
+		48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C8BFCE1C1B164A0060241C /* CreateAlbum.m */; };
 		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; };
 		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; };
 		48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC41801BDA6962006E44B3 /* LoginViewController.m */; };
@@ -176,6 +177,8 @@
 		4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
+		48C8BFCD1C1B164A0060241C /* CreateAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlbum.h; sourceTree = "<group>"; };
+		48C8BFCE1C1B164A0060241C /* CreateAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlbum.m; sourceTree = "<group>"; };
 		48FC41791BD91040006E44B3 /* AlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumModel.h; sourceTree = "<group>"; };
 		48FC417A1BD91040006E44B3 /* AlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumModel.m; sourceTree = "<group>"; };
 		48FC417C1BD91157006E44B3 /* UserAlbumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumList.h; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				482E9AB21C11446F00DEF737 /* ActivityPublish.m */,
 				84A2C65F1C1881C10090E173 /* AlbumDetail.h */,
 				84A2C6601C1881C10090E173 /* AlbumDetail.m */,
+				48C8BFCD1C1B164A0060241C /* CreateAlbum.h */,
+				48C8BFCE1C1B164A0060241C /* CreateAlbum.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -795,6 +800,7 @@
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
 				482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */,
+				48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */,
 				8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,

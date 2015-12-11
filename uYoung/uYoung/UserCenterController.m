@@ -313,18 +313,23 @@
     [_createAlbumView setHidden:YES];
     NSString *albumName = _createAlbumText.text;
     if ([NSString isBlankString:albumName]==NO) {
-        
+        UserDetailModel *user = [UserDetailModel currentUser];
+        if (user!=nil&&user!=NULL) {
+            NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@(user.id),@"createUserId",
+            albumName,@"albumName",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", nil];
+            [CreateAlbum createAlbum:dict delegate:self];
+        }
     }
-    UserDetailModel *user = [UserDetailModel currentUser];
-    if (user!=nil&&user!=NULL) {
+}
+
+- (void)successCreateAlbum:(long)albumId{
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
         viewCtl.albumNameStr = _createAlbumText.text;
-        viewCtl.ownerUid = user.id;
-        viewCtl.nickNameStr = user.nickName;
-        viewCtl.userHeaderUrl = user.avatarUrl;
+//        viewCtl.ownerUid = user.id;
+//        viewCtl.nickNameStr = user.nickName;
+//        viewCtl.userHeaderUrl = user.avatarUrl;
         viewCtl.createDateStr = [self getNowDateStr];
         [self.navigationController pushViewController:viewCtl animated:YES];
-    }
 }
 
 - (void)createActivity{
