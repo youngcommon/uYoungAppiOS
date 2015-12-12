@@ -12,6 +12,7 @@
 #import "EditUserViewController.h"
 #import "CreateActivityController.h"
 #import "AlbumDetailViewController.h"
+#import "UIWindow+YoungHUD.h"
 
 @implementation UserCenterController
 
@@ -29,6 +30,8 @@
 }
 
 - (void)viewDidLoad{
+    
+    _userDetailModel = [UserDetailModel currentUser];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
     //增加键盘事件监听
@@ -315,21 +318,27 @@
     if ([NSString isBlankString:albumName]==NO) {
         UserDetailModel *user = [UserDetailModel currentUser];
         if (user!=nil&&user!=NULL) {
+            [self.view.window showHUDWithText:@"正在创建相册" Type:ShowLoading Enabled:YES];
             NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@(user.id),@"createUserId",
-            albumName,@"albumName",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", nil];
+            albumName,@"albumName",albumName,@"title",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", nil];
             [CreateAlbum createAlbum:dict delegate:self];
         }
     }
 }
 
-- (void)successCreateAlbum:(long)albumId{
+- (void)successCreateAlbum:(AlbumDetailModel*)detail{
+    if (detail!=nil) {
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
         viewCtl.albumNameStr = _createAlbumText.text;
-//        viewCtl.ownerUid = user.id;
-//        viewCtl.nickNameStr = user.nickName;
-//        viewCtl.userHeaderUrl = user.avatarUrl;
+        viewCtl.ownerUid = detail.oriUserId;
+        viewCtl.nickNameStr = detail.oriNickName;
+        viewCtl.userHeaderUrl = detail.oriUrl;
         viewCtl.createDateStr = [self getNowDateStr];
         [self.navigationController pushViewController:viewCtl animated:YES];
+    }else{
+        [self.view.window showHUDWithText:@"创建失败" Type:ShowPhotoNo Enabled:YES];
+    }
+    
 }
 
 - (void)createActivity{

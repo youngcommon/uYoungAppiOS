@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import "AlbumDetailModel.h"
 
 @protocol CreateAlbumDelegate <NSObject>
 
 @optional
-- (void)successCreateAlbum:(long)albumId;
+- (void)successCreateAlbum:(AlbumDetailModel*)detail;
 @end
 
 @interface CreateAlbum : NSObject

@@ -23,10 +23,13 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
-            [delegate successCreateAlbum:0];
+            AlbumDetailModel *detail = [MTLJSONAdapter modelOfClass:[AlbumDetailModel class] fromJSONDictionary:resultData error:nil];
+            [delegate successCreateAlbum:detail];
+        }else{
+            [delegate successCreateAlbum:nil];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [delegate successCreateAlbum:0];
+        [delegate successCreateAlbum:nil];
     }];
 }
 
