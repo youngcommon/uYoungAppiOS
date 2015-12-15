@@ -57,6 +57,8 @@
     [GlobalNetwork getAllCityies:self];
     //获得所有类别
     [GlobalNetwork getAllActTypes:self];
+    //获得所有状态
+    [GlobalNetwork getAllActStatus:self];
     
     //注册键盘跟随
 //    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
@@ -112,6 +114,14 @@
     
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:arr];
     [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"acttype"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+-(void)successGetActStatus:(NSArray*)arr{
+    
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:arr];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"actstatus"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

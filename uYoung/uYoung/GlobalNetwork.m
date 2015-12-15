@@ -31,7 +31,7 @@
 }
 
 + (void)getAllCityies:(id<GlobalNetworkDelegate>)delegate{
-    NSString *url = [uyoung_host stringByAppendingString:@"/common/cities"];
+    NSString *url = [uyoung_host stringByAppendingString:@"common/cities"];
     
     NSString *md5Format = @"%@uYoungSign_QNToken%d";
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc]initWithCapacity:3];
@@ -59,6 +59,24 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
 
+}
+
++ (void)getAllActStatus:(id<GlobalNetworkDelegate>)delegate{
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/statuses"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            NSArray *status = [responseObject objectForKey:@"resultData"];
+            [delegate successGetActStatus:status];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
 }
 
 @end

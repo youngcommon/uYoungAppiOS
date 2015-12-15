@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     _labelFont = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    _smallLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:13];
     
     _createTimeButton.layer.borderColor = [UIColorFromRGB(0x4a90e2)CGColor];
     _createTimeButton.layer.borderWidth = 1;
@@ -67,9 +68,9 @@
     [self.view addSubview:_actTypeTable];
     
     //初始化活动状态类型数据
-//    NSData *acttypelistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"acttype"];
-    if (acttypelistdata) {
-        _actStatusData = [NSKeyedUnarchiver unarchiveObjectWithData:acttypelistdata];
+    NSData *actstatuslistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"actstatus"];
+    if (actstatuslistdata) {
+        _actStatusData = [NSKeyedUnarchiver unarchiveObjectWithData:actstatuslistdata];
     } else {
         _actStatusData = [[NSArray alloc]init];
     }
@@ -154,12 +155,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithFrame:CGRectZero];
-        [[cell textLabel]setFont:_labelFont];
         cell.textLabel.textColor = UIColorFromRGB(0x4a90e2);
         if (tag==2) {
+            [[cell textLabel]setFont:_labelFont];
             [[cell textLabel]setText:_actTypeData[indexPath.row][@"cnDesc"]];
         }else{
-            [[cell textLabel]setText:_actStatusData[indexPath.row][@"cnDesc"]];
+            [[cell textLabel]setFont:_smallLabelFont];
+            [[cell textLabel]setText:_actStatusData[indexPath.row][@"desc"]];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor lightGrayColor];
@@ -181,8 +183,8 @@
         _actTypeFilter = [((NSNumber*)[act valueForKey:@"type"])longValue];
     }else{
         act = (NSDictionary*)(_actStatusData[indexPath.row]);
-        [_actStatusButton setTitle:act[@"cnDesc"] forState:UIControlStateNormal];
-        _actStatusFilter = [((NSNumber*)[act valueForKey:@"type"])longValue];
+        [_actStatusButton setTitle:act[@"desc"] forState:UIControlStateNormal];
+        _actStatusFilter = [((NSNumber*)[act valueForKey:@"id"])longValue];
     }
     [self selectActType:tag];
 }
