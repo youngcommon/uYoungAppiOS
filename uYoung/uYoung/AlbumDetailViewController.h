@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELCImagePickerController.h"
 
-@interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, ELCImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIButton *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;

@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ELCImagePickerController (0.2.0)
   - HappyDNS (0.2.3)
   - LBBlurredImage (0.2.2)
   - Mantle (2.0.5):
@@ -33,14 +34,25 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - ELCImagePickerController (from `https://github.com/B-Sides/ELCImagePickerController.git`)
   - LBBlurredImage
   - Mantle
   - Qiniu (~> 7.0)
   - SVPullToRefresh
   - ZSSRichTextEditor
 
+EXTERNAL SOURCES:
+  ELCImagePickerController:
+    :git: https://github.com/B-Sides/ELCImagePickerController.git
+
+CHECKOUT OPTIONS:
+  ELCImagePickerController:
+    :commit: a96964e7ab9d2bfc3cefe48038985ba4db8adf47
+    :git: https://github.com/B-Sides/ELCImagePickerController.git
+
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  ELCImagePickerController: b1b7084434a7d49f2cfc916bde1f3ba353d38de9
   HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
@@ -48,4 +60,4 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

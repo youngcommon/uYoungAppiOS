@@ -80,7 +80,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger index = indexPath.row;
     if ([_pics count]==0||index==([_pics count])) {//如果是上传照片被点击
         
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        /*if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             _camera = [[UIImagePickerController alloc] init];
             _camera.delegate = self;
             _camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -88,7 +88,19 @@ static NSString * const reuseIdentifier = @"Cell";
             _camera.mediaTypes = @[(NSString*)kUTTypeImage];
             
             [self presentViewController:_camera animated:YES completion:nil];
-        }
+        }*/
+
+        
+        ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc]initImagePicker];
+        elcPicker.maximumImagesCount = 6;
+        elcPicker.returnsOriginalImage = NO;
+        elcPicker.returnsImage = YES;
+        elcPicker.onOrder = YES;
+        elcPicker.imagePickerDelegate = self;
+        
+        //Present modally
+        [self presentViewController:elcPicker animated:YES completion:nil];
+        
     }else{
         //跳转到图片下载逻辑
         

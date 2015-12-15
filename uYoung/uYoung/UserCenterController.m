@@ -328,6 +328,7 @@
 
 - (void)successCreateAlbum:(AlbumDetailModel*)detail{
     if (detail!=nil) {
+        [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
         viewCtl.albumNameStr = _createAlbumText.text;
         viewCtl.ownerUid = detail.oriUserId;
