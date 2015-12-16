@@ -91,16 +91,6 @@ static NSString * const reuseIdentifier = @"Cell";
         }*/
 
         
-        ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc]initImagePicker];
-        elcPicker.maximumImagesCount = 6;
-        elcPicker.returnsOriginalImage = NO;
-        elcPicker.returnsImage = YES;
-        elcPicker.onOrder = YES;
-        elcPicker.imagePickerDelegate = self;
-        
-        //Present modally
-        [self presentViewController:elcPicker animated:YES completion:nil];
-        
     }else{
         //跳转到图片下载逻辑
         

@@ -90,7 +90,6 @@
 		847E184D1BDFCBB700882D20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 847E184C1BDFCBB700882D20 /* libz.dylib */; };
 		847ED5B61C19B8A3009A696B /* SystemConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847ED5B51C19B8A3009A696B /* SystemConfigViewController.m */; };
 		847ED5B81C19B8C7009A696B /* SystemConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847ED5B71C19B8C7009A696B /* SystemConfigViewController.xib */; };
-		848E3E5E1C2055A30060088E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848E3E5D1C2055A30060088E /* AssetsLibrary.framework */; };
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
 		84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65A1C1879950090E173 /* AlbumDetailModel.m */; };
 		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
@@ -277,7 +276,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848E3E5E1C2055A30060088E /* AssetsLibrary.framework in Frameworks */,
 				846F17B81BE108E200EB2DB4 /* Foundation.framework in Frameworks */,
 				84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */,
 				846F17B61BE108CD00EB2DB4 /* UIKit.framework in Frameworks */,
@@ -619,7 +617,6 @@
 				483E17D01BAC548E00CDDBD3 /* Frameworks */,
 				483E17D11BAC548E00CDDBD3 /* Resources */,
 				8C033E6CAF683F8142F1067C /* Copy Pods Resources */,
-				510037CCECDC1A19C88DDDD5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -729,21 +726,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		510037CCECDC1A19C88DDDD5 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		69B596F72EA594C2A99819C2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
