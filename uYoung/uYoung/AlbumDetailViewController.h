@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZLPhotoPickerViewController.h"
 
-@interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, ZLPhotoPickerViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIButton *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) NSString *userHeaderUrl;
 @property (assign, nonatomic) NSInteger ownerUid;
 
-@property (strong, nonatomic) NSArray *pics;
+@property (strong, nonatomic) NSMutableArray *pics;
 
 @property (strong, nonatomic) UIImagePickerController *camera;
 

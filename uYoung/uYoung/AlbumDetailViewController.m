@@ -89,12 +89,31 @@ static NSString * const reuseIdentifier = @"Cell";
             
             [self presentViewController:_camera animated:YES completion:nil];
         }*/
-
+        [self selectPhotos];
         
     }else{
         //跳转到图片下载逻辑
         
     }
+}
+
+#pragma mark - 选择相册
+- (void)selectPhotos {
+    // 创建控制器
+    ZLPhotoPickerViewController *pickerVc = [[ZLPhotoPickerViewController alloc] init];
+    // 默认显示相册里面的内容SavePhotos
+    // 最多能选6张图片
+    pickerVc.maxCount = 6;
+    pickerVc.topShowPhotoPicker = YES;
+    pickerVc.status = PickerViewShowStatusCameraRoll;
+    pickerVc.delegate = self;
+    [pickerVc showPickerVc:self];
+}
+
+#pragma mark - 相册回调
+- (void)pickerViewControllerDoneAsstes:(NSArray *)assets{
+    [self.pics addObjectsFromArray:assets];
+    [self.allPics reloadData];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{

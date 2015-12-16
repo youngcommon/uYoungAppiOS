@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DACircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HappyDNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,7 +39,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ZLPhotoLib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,12 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1142D38A2F1395E4C05CAD4FEA282AE7</key>
+		<key>04A5130CF0A815D899A72FAF61E5B1EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B13FEAB33EA338527A1100A5AC302AC</key>
+		<key>3748A1FACFE0AF6F35D95416E5E2CA16</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4F46F767864E58E86A33F45FD43B4678</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5039475F29ACDA35FBAF9D2EDD1B4A72</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B5E0E49F246ADE4A66936926468A9FD</key>
+		<key>6FF1E9DF8DCCD1462E5A6B562384B60F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>976944FF40425D91F86AEC30BA4DE364</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EF3F19F91FAADFEF8669270D8CF81244</key>
+		<key>E800550AC6810B90299CDF85B3A65CBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F60A628B4B1555344611F6738676712A</key>
+		<key>EA08CB0163E119A8238617D04C361AE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA815480A09B27FAFC47910C48A9BFA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -58,6 +58,7 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "ZLPhotoLib/ZLPhotoLib/ZLPhotoLib.bundle"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbgcolor.png"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbgcolor@2x.png"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbold.png"
@@ -134,6 +135,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/editor.html"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "ZLPhotoLib/ZLPhotoLib/ZLPhotoLib.bundle"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbgcolor.png"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbgcolor@2x.png"
   install_resource "ZSSRichTextEditor/ZSSRichTextEditor/Images/ZSSbold.png"

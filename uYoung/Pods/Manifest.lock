@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DACircularProgress (2.3.1)
   - HappyDNS (0.2.3)
   - LBBlurredImage (0.2.2)
   - Mantle (2.0.5):
@@ -28,7 +29,13 @@ PODS:
   - Qiniu (7.0.15):
     - AFNetworking (~> 2.0)
     - HappyDNS (~> 0.2)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - SVPullToRefresh (0.4.1)
+  - ZLPhotoLib (1.0.0):
+    - DACircularProgress (~> 2.3)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
   - ZSSRichTextEditor (0.5.2.1)
 
 DEPENDENCIES:
@@ -37,15 +44,28 @@ DEPENDENCIES:
   - Mantle
   - Qiniu (~> 7.0)
   - SVPullToRefresh
+  - ZLPhotoLib (from `https://github.com/MakeZL/ZLPhotoLib`)
   - ZSSRichTextEditor
+
+EXTERNAL SOURCES:
+  ZLPhotoLib:
+    :git: https://github.com/MakeZL/ZLPhotoLib
+
+CHECKOUT OPTIONS:
+  ZLPhotoLib:
+    :commit: a3013a57c0fe8cfde45c359e3e49600b49d506fd
+    :git: https://github.com/MakeZL/ZLPhotoLib
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
   Qiniu: ade34d722c8ce0eed7080fd268249e8402a2f535
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  ZLPhotoLib: 733844bac76aed461783c8332b556be3c1e0324f
   ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
 COCOAPODS: 0.38.2
