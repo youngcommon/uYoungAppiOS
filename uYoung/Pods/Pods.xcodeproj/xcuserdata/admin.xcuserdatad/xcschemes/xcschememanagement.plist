@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ELCImagePickerController.xcscheme</key>
+		<key>DACircularProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,7 +39,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ZLPhotoLib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,17 +62,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0225324D6A2AFAA4AF894ADA00F449B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3824844FBF3B4570885695B9A475CC38</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>426BC4549A625B5E1E4200D5261A98BF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>59F9518A56CFC1CC9011AD1ECFF33F13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,22 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BBA4DBABE12F2FB824EF230A03A07133</key>
+		<key>94AC9C3ECDD695A40DF19483B907145D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CEB71C3F06CBA605F54E9662D0F016FC</key>
+		<key>9775596B3CA16905FC8F66DA8E2A3C67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E92E60AF9526B964F0418425623C292F</key>
+		<key>B2D19CC7F608ECCF8DD78C3D728A4B04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FCF7DD6C296A467C7D06D97FC2259A50</key>
+		<key>CD62F6EE0DDCB5D021FF6F599DE09255</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F549FF45A60BCCFAF2C4CD630C17DD7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

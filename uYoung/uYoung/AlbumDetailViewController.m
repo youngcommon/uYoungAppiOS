@@ -13,6 +13,7 @@
 #import "UIImageView+LazyInit.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "PhotoDetailModel.h"
+#import "AlbumUploadViewController.h"
 
 @interface AlbumDetailViewController ()
 
@@ -89,7 +90,9 @@ static NSString * const reuseIdentifier = @"Cell";
             
             [self presentViewController:_camera animated:YES completion:nil];
         }*/
-        [self selectPhotos];
+        AlbumUploadViewController *upload = [[AlbumUploadViewController alloc] initWithNibName:@"AlbumUploadViewController" bundle:[NSBundle mainBundle]];
+        [self presentViewController:upload animated:YES completion:nil];
+//        [self.navigationController pushViewController:upload animated:YES];
         
     }else{
         //跳转到图片下载逻辑
@@ -97,52 +100,29 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
-#pragma mark - 选择相册
-- (void)selectPhotos {
-    // 创建控制器
-    ZLPhotoPickerViewController *pickerVc = [[ZLPhotoPickerViewController alloc] init];
-    // 默认显示相册里面的内容SavePhotos
-    // 最多能选6张图片
-    pickerVc.maxCount = 6;
-    pickerVc.topShowPhotoPicker = YES;
-    pickerVc.status = PickerViewShowStatusCameraRoll;
-    pickerVc.delegate = self;
-    [pickerVc showPickerVc:self];
-}
-
-#pragma mark - 相册回调
-- (void)pickerViewControllerDoneAsstes:(NSArray *)assets{
-    [self.pics addObjectsFromArray:assets];
-    [self.allPics reloadData];
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
 //点击相册中的图片或照相机照完后点击use后触发的方法
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    UIImage *img;
-    if ([info objectForKey:UIImagePickerControllerEditedImage]) {
-        img = [info objectForKey:UIImagePickerControllerEditedImage];
-    }else{
-        img = [info objectForKey:UIImagePickerControllerOriginalImage];
-    }
-    
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+//    UIImage *img;
+//    if ([info objectForKey:UIImagePickerControllerEditedImage]) {
+//        img = [info objectForKey:UIImagePickerControllerEditedImage];
+//    }else{
+//        img = [info objectForKey:UIImagePickerControllerOriginalImage];
+//    }
+
 //    NSInteger uid = [UserDetailModel currentUser].id;
 //    long times = [[NSDate date]timeIntervalSince1970];
     
     //上传图片至七牛云
 //    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] delegate:self];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
     
-}
+//}
 
 //用户取消回调
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

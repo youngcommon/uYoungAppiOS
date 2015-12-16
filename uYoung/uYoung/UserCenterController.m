@@ -267,13 +267,15 @@
 }
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
-    //当用户点击他处时，收回弹出的选择view
-    [_cover setHidden:YES];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3];
-    [_sysCtl.view setFrame:_oriFrame];
-    [UIView commitAnimations];
+    if (_cover.hidden==NO) {
+        //当用户点击他处时，收回弹出的选择view
+        [_cover setHidden:YES];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [_sysCtl.view setFrame:_oriFrame];
+        [UIView commitAnimations];
+    }
 }
 
 - (IBAction)getBack:(id)sender {

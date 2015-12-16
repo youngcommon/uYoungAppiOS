@@ -91,6 +91,8 @@
 		847ED5B61C19B8A3009A696B /* SystemConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847ED5B51C19B8A3009A696B /* SystemConfigViewController.m */; };
 		847ED5B81C19B8C7009A696B /* SystemConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847ED5B71C19B8C7009A696B /* SystemConfigViewController.xib */; };
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
+		8497707B1C219D7000822BC4 /* AlbumUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */; };
+		8497707D1C219D8C00822BC4 /* AlbumUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */; };
 		84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65A1C1879950090E173 /* AlbumDetailModel.m */; };
 		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
 		84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C6601C1881C10090E173 /* AlbumDetail.m */; };
@@ -256,6 +258,9 @@
 		848E3E5D1C2055A30060088E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		849506AF1BFE042700119D8C /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
 		849506B01BFE042700119D8C /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
+		849770791C219D7000822BC4 /* AlbumUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumUploadViewController.h; sourceTree = "<group>"; };
+		8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumUploadViewController.m; sourceTree = "<group>"; };
+		8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumUploadViewController.xib; sourceTree = "<group>"; };
 		84A2C6591C1879950090E173 /* AlbumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailModel.h; sourceTree = "<group>"; };
 		84A2C65A1C1879950090E173 /* AlbumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailModel.m; sourceTree = "<group>"; };
 		84A2C65C1C18803F0090E173 /* PhotoDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailModel.h; sourceTree = "<group>"; };
@@ -462,6 +467,9 @@
 				847ED5B41C19B8A3009A696B /* SystemConfigViewController.h */,
 				847ED5B51C19B8A3009A696B /* SystemConfigViewController.m */,
 				847ED5B71C19B8C7009A696B /* SystemConfigViewController.xib */,
+				849770791C219D7000822BC4 /* AlbumUploadViewController.h */,
+				8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */,
+				8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -617,6 +625,7 @@
 				483E17D01BAC548E00CDDBD3 /* Frameworks */,
 				483E17D11BAC548E00CDDBD3 /* Resources */,
 				8C033E6CAF683F8142F1067C /* Copy Pods Resources */,
+				6C58CFD9DEACB12BE7B8CF5D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -710,6 +719,7 @@
 				84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
 				4841A88F1BCD405600F1B4F8 /* UserCenterController.xib in Resources */,
+				8497707D1C219D8C00822BC4 /* AlbumUploadViewController.xib in Resources */,
 				843C44001C075AF700D53820 /* ActivityAlbumViewController.xib in Resources */,
 				841D311B1BB1AC8B005BDEF0 /* ActivityTableViewCell.xib in Resources */,
 				483E17E41BAC548E00CDDBD3 /* Images.xcassets in Resources */,
@@ -739,6 +749,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6C58CFD9DEACB12BE7B8CF5D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8C033E6CAF683F8142F1067C /* Copy Pods Resources */ = {
@@ -775,6 +800,7 @@
 				849506B11BFE042700119D8C /* CityModel.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				84763F7E1BFA1FC7002BC70B /* YoungHUDBackgroundView.m in Sources */,
+				8497707B1C219D7000822BC4 /* AlbumUploadViewController.m in Sources */,
 				84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */,
 				84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */,
 				8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */,

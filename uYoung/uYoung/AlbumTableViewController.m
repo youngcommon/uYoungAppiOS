@@ -8,6 +8,8 @@
 
 #import "AlbumTableViewController.h"
 #import "UserAlbumList.h"
+#import "AlbumDetailViewController.h"
+#import "AlbumModel.h"
 
 @interface AlbumTableViewController ()
 
@@ -34,6 +36,7 @@
      _albumListData = [[NSMutableArray alloc] initWithArray:data];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
+    NSLog(@"##########userAlbumList==============%d=============", [data count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,5 +77,16 @@
         return 280;
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AlbumModel *model = (AlbumModel*)_albumListData[indexPath.row];
+    
+    AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
+    viewCtl.albumNameStr = model.albumName;
+    viewCtl.ownerUid = _userId;
+    [self.navigationController pushViewController:viewCtl animated:YES];
+}
+
+
 
 @end
