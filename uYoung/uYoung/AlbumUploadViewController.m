@@ -61,16 +61,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    UIImage *image;
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     ZLPhotoAssets *asset = self.assets[indexPath.row];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
-        [cell.img setImage:asset.originImage];
+        image = asset.originImage;
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
     }else if([asset isKindOfClass:[UIImage class]]){
         [cell.img setImage:(UIImage*)asset];
     }
-    cell.img.contentMode = UIViewContentModeCenter;
+    [cell.img setImage:[self scaleToSize:cell.frame.size image:image]];
+//    cell.img.contentMode = UIViewContentModeCenter;
     return cell;
     
 }
@@ -157,6 +159,44 @@ static NSString * const reuseIdentifier = @"Cell";
     if (indexPath.row > [self.assets count]) return;
     [self.assets removeObjectAtIndex:indexPath.row];
     [self.imageCollection reloadData];
+}
+
+#pragma mark 图片等比例缩放
+-(UIImage*)scaleToSize:(CGSize)size image:(UIImage*)img{
+    CGFloat width = CGImageGetWidth(img.CGImage);
+    CGFloat height = CGImageGetHeight(img.CGImage);
+    
+    float verticalRadio = size.height*1.0/height;
+    float horizontalRadio = size.width*1.0/width;
+    
+    float radio = 1;
+    if(verticalRadio>1 && horizontalRadio>1){
+        radio = verticalRadio > horizontalRadio ? horizontalRadio : verticalRadio;
+    }else{
+        radio = verticalRadio < horizontalRadio ? verticalRadio : horizontalRadio;
+    }
+    
+    width = width*radio;
+    height = height*radio;
+    
+    int xPos = (size.width - width)/2;
+    int yPos = (size.height-height)/2;
+    
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    
+    // 绘制改变大小的图片
+    [img drawInRect:CGRectMake(xPos, yPos, width, height)];
+    
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    
+    // 返回新的改变大小后的图片
+    return scaledImage;
 }
 
 @end

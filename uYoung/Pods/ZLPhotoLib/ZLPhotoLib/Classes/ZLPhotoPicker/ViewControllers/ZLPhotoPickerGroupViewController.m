@@ -173,6 +173,17 @@
             
         }];
         
+    }else if(self.status == PickerViewShowStatusSavePhotos){
+        [datas getAllGroupWithPhotos:^(NSArray *groups) {
+            self.groups = groups;
+            if (self.status) {
+                [self jump2StatusVc];
+            }
+            
+            weakSelf.tableView.dataSource = self;
+            [weakSelf.tableView reloadData];
+            
+        }];
     }else{
         // 获取所有的图片URLs
         [datas getAllGroupWithPhotosAndVideos:^(NSArray *groups) {
