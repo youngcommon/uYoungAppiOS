@@ -29,7 +29,7 @@ static NSString * const reuseIdentifier = @"Cell";
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     
-    [_userHeader.imageView lazyInitSmallImageWithUrl:_userHeaderUrl];
+    [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl];
     [_albumName setText:_albumNameStr];
     [_nickName setText:_nickNameStr];
     [_createDate setText:_createDateStr];
@@ -73,7 +73,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(124, 100);
+    CGFloat size;
+    if (mScreenWidth==375) {//iPhone 6
+        size = 140;
+    }else if(mScreenWidth>375){//iPhone 6+
+        size = 160;
+    }else{
+        size = 125;
+    }
+    return CGSizeMake(size, size);
     
 }
 

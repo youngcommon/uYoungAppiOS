@@ -36,7 +36,6 @@
      _albumListData = [[NSMutableArray alloc] initWithArray:data];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
-    NSLog(@"##########userAlbumList==============%d=============", [data count]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,13 +79,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AlbumModel *model = (AlbumModel*)_albumListData[indexPath.row];
-    
-    AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
-    viewCtl.albumNameStr = model.albumName;
-    viewCtl.ownerUid = _userId;
-    [self.navigationController pushViewController:viewCtl animated:YES];
+    [AlbumDetail getAlbumDetailByAlbumId:model.id delegate:self];
 }
 
+-(void)successGetAlbumDetail:(AlbumDetailModel*)model{
+    if (model!=nil) {
+        AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
+        viewCtl.albumNameStr = model.albumDesc;
+        viewCtl.ownerUid = model.oriUserId;
+        viewCtl.nickNameStr = model.oriNickName;
+        viewCtl.userHeaderUrl = model.oriUrl;
+        viewCtl.createDateStr = [self getDateStrByTimeInterval:model.createTime];
+        viewCtl.pics = model.photos;
+        [self.navigationController pushViewController:viewCtl animated:YES];
+    }
+}
 
+- (NSString*)getDateStrByTimeInterval:(long)interval{
+    NSDate *date = [[NSDate alloc]initWithTimeIntervalSince1970:interval/1000.0];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSString * na = [df stringFromDate:date];
+    return na;
+}
 
 @end

@@ -10,7 +10,7 @@
 
 @interface AlbumDetailViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
-@property (strong, nonatomic) IBOutlet UIButton *userHeader;
+@property (strong, nonatomic) IBOutlet UIImageView *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;
 @property (strong, nonatomic) IBOutlet UILabel *createDate;
 @property (strong, nonatomic) IBOutlet UILabel *totalPics;

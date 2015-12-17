@@ -10,8 +10,9 @@
 #import "AlbumCoverTableViewCell.h"
 #import "GlobalConfig.h"
 #import "AlbumModel.h"
+#import "AlbumDetail.h"
 
-@interface AlbumTableViewController : UITableViewController
+@interface AlbumTableViewController : UITableViewController<AlbumDetailDelegate>
 
 @property (strong, nonatomic) NSMutableArray *albumListData;
 

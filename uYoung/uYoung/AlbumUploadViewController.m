@@ -9,6 +9,7 @@
 #import "AlbumUploadViewController.h"
 #import "ZLPhotoAssets.h"
 #import "UIImageView+WebCache.h"
+#import "GlobalConfig.h"
 
 @interface AlbumUploadViewController ()
 
@@ -26,13 +27,14 @@ static NSString * const reuseIdentifier = @"Cell";
     
     _assets = [[NSMutableArray alloc]initWithCapacity:0];
     
+    [self selectPhotos];
 }
 
-/*- (void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     if (_assets==nil||[_assets count]==0) {
         [self selectPhotos];
     }
-}*/
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -40,7 +42,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)showSysPhoto:(id)sender {
@@ -72,14 +73,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [cell.img setImage:(UIImage*)asset];
     }
     [cell.img setImage:[self scaleToSize:cell.frame.size image:image]];
-//    cell.img.contentMode = UIViewContentModeCenter;
     return cell;
-    
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return CGSizeMake(125, 125);
     
 }
 
@@ -93,6 +87,19 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CGFloat size;
+    if (mScreenWidth==375) {//iPhone 6
+        size = 150;
+    }else if(mScreenWidth>375){//iPhone 6+
+        size = 180;
+    }else{
+        size = 125;
+    }
+    return CGSizeMake(size, size);
+}
+
 #pragma mark - 选择相册
 - (void)selectPhotos {
     // 创建控制器
@@ -101,15 +108,15 @@ static NSString * const reuseIdentifier = @"Cell";
     // 最多能选6张图片
     pickerVc.maxCount = 9;
     pickerVc.topShowPhotoPicker = YES;
-//    pickerVc.status = PickerViewShowStatusCameraRoll;
     pickerVc.status = PickerViewShowStatusSavePhotos;
     pickerVc.delegate = self;
+    pickerVc.selectPickers = self.assets;
     [pickerVc showPickerVc:self];
 }
 
 #pragma mark - 相册回调
 - (void)pickerViewControllerDoneAsstes:(NSArray *)assets{
-    [self.assets addObjectsFromArray:assets];
+    self.assets = [NSMutableArray arrayWithArray:assets];
     [self.imageCollection reloadData];
 }
 

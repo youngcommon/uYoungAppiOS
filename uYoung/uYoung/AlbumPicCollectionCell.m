@@ -13,9 +13,6 @@
 
 - (void)awakeFromNib {
     
-    _img.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    _img.layer.borderWidth = 1;
-    
 }
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{

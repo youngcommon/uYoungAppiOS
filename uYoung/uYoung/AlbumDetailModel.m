@@ -14,6 +14,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"albumId" : @"albumId",
+             @"albumDesc" : @"albumDesc",
              @"oriUserId" : @"oriUserId",
              @"oriUrl" : @"oriUrl",
              @"oriNickName" : @"oriNickName",
