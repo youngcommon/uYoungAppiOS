@@ -30,11 +30,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self selectPhotos];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+/*-(void)viewDidAppear:(BOOL)animated{
     if (_assets==nil||[_assets count]==0) {
         [self selectPhotos];
     }
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

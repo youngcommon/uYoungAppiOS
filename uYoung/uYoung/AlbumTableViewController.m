@@ -97,7 +97,7 @@
 
 - (NSString*)getDateStrByTimeInterval:(long)interval{
     NSDate *date = [[NSDate alloc]initWithTimeIntervalSince1970:interval/1000.0];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setTimeZone:[NSTimeZone localTimeZone]];
     [df setDateFormat:@"yyyy-MM-dd"];
     NSString * na = [df stringFromDate:date];

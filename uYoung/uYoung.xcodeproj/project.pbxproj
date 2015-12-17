@@ -431,45 +431,15 @@
 		4820A4BE1BB00592006AEC13 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */,
-				4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */,
+				84A8A3C31C22F2D400B69EC2 /* album */,
+				84A8A3C21C22F2BF00B69EC2 /* user */,
+				84A8A3C11C22F28500B69EC2 /* activity */,
 				4820A4C91BB1417D006AEC13 /* RootViewController.h */,
 				4820A4CA1BB1417D006AEC13 /* RootViewController.m */,
 				4820A4CB1BB1417D006AEC13 /* RootViewController.xib */,
-				4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */,
-				4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */,
-				4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */,
-				4841A8871BCD33B400F1B4F8 /* UserCenterController.h */,
-				4841A8881BCD33B400F1B4F8 /* UserCenterController.m */,
-				4841A88E1BCD405600F1B4F8 /* UserCenterController.xib */,
-				48640E911BCFEB220093B702 /* AlbumTableViewController.h */,
-				48640E921BCFEB220093B702 /* AlbumTableViewController.m */,
-				48FC417F1BDA6962006E44B3 /* LoginViewController.h */,
-				48FC41801BDA6962006E44B3 /* LoginViewController.m */,
-				48FC41811BDA6962006E44B3 /* LoginViewController.xib */,
-				8457EE011BEA478200C00176 /* EditUserViewController.h */,
-				8457EE021BEA478200C00176 /* EditUserViewController.m */,
-				8457EE041BEA47C600C00176 /* EditUserViewController.xib */,
-				8462F6501C00BBAB00A6B460 /* CreateActivityController.h */,
-				8462F6511C00BBAB00A6B460 /* CreateActivityController.m */,
-				8462F6531C00BBC900A6B460 /* CreateActivityController.xib */,
-				843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */,
-				843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */,
-				843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */,
-				8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */,
-				8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */,
-				84628FB51C1330F600683C13 /* AlbumDetailViewController.h */,
-				84628FB61C1330F600683C13 /* AlbumDetailViewController.m */,
-				84628FB81C13313700683C13 /* AlbumDetailViewController.xib */,
-				482E9AC21C1576EE00DEF737 /* ActivityFilterViewController.h */,
-				482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */,
-				482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */,
 				847ED5B41C19B8A3009A696B /* SystemConfigViewController.h */,
 				847ED5B51C19B8A3009A696B /* SystemConfigViewController.m */,
 				847ED5B71C19B8C7009A696B /* SystemConfigViewController.xib */,
-				849770791C219D7000822BC4 /* AlbumUploadViewController.h */,
-				8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */,
-				8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -611,6 +581,60 @@
 				84763F7C1BFA1FC7002BC70B /* YoungHUDLabel.m */,
 			);
 			name = indicator;
+			sourceTree = "<group>";
+		};
+		84A8A3C11C22F28500B69EC2 /* activity */ = {
+			isa = PBXGroup;
+			children = (
+				4820A4C11BB00667006AEC13 /* ActivityTableViewController.h */,
+				4820A4C21BB00667006AEC13 /* ActivityTableViewController.m */,
+				4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */,
+				4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */,
+				4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */,
+				8462F6501C00BBAB00A6B460 /* CreateActivityController.h */,
+				8462F6511C00BBAB00A6B460 /* CreateActivityController.m */,
+				8462F6531C00BBC900A6B460 /* CreateActivityController.xib */,
+				843C43FC1C075A8E00D53820 /* ActivityAlbumViewController.h */,
+				843C43FD1C075A8E00D53820 /* ActivityAlbumViewController.m */,
+				843C43FF1C075AF700D53820 /* ActivityAlbumViewController.xib */,
+				8452A51C1C0C7C3F00DB419C /* CreateActivityStep2Controller.h */,
+				8452A51D1C0C7C3F00DB419C /* CreateActivityStep2Controller.m */,
+				482E9AC21C1576EE00DEF737 /* ActivityFilterViewController.h */,
+				482E9AC31C1576EE00DEF737 /* ActivityFilterViewController.m */,
+				482E9AC51C15772A00DEF737 /* ActivityFilterViewController.xib */,
+			);
+			name = activity;
+			sourceTree = "<group>";
+		};
+		84A8A3C21C22F2BF00B69EC2 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				4841A8871BCD33B400F1B4F8 /* UserCenterController.h */,
+				4841A8881BCD33B400F1B4F8 /* UserCenterController.m */,
+				4841A88E1BCD405600F1B4F8 /* UserCenterController.xib */,
+				48FC417F1BDA6962006E44B3 /* LoginViewController.h */,
+				48FC41801BDA6962006E44B3 /* LoginViewController.m */,
+				48FC41811BDA6962006E44B3 /* LoginViewController.xib */,
+				8457EE011BEA478200C00176 /* EditUserViewController.h */,
+				8457EE021BEA478200C00176 /* EditUserViewController.m */,
+				8457EE041BEA47C600C00176 /* EditUserViewController.xib */,
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
+		84A8A3C31C22F2D400B69EC2 /* album */ = {
+			isa = PBXGroup;
+			children = (
+				48640E911BCFEB220093B702 /* AlbumTableViewController.h */,
+				48640E921BCFEB220093B702 /* AlbumTableViewController.m */,
+				84628FB51C1330F600683C13 /* AlbumDetailViewController.h */,
+				84628FB61C1330F600683C13 /* AlbumDetailViewController.m */,
+				84628FB81C13313700683C13 /* AlbumDetailViewController.xib */,
+				849770791C219D7000822BC4 /* AlbumUploadViewController.h */,
+				8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */,
+				8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */,
+			);
+			name = album;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
