@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *createDate;
 @property (strong, nonatomic) IBOutlet UILabel *totalPics;
 @property (strong, nonatomic) IBOutlet UICollectionView *allPics;
-@property (strong, nonatomic) IBOutlet UIImageView *backCover;
 
 @property (strong, nonatomic) NSString *albumNameStr;
 @property (strong, nonatomic) NSString *nickNameStr;

@@ -89,15 +89,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    CGFloat size;
-    if (mScreenWidth==375) {//iPhone 6
-        size = 150;
-    }else if(mScreenWidth>375){//iPhone 6+
-        size = 180;
-    }else{
-        size = 125;
-    }
-    return CGSizeMake(size, size);
+    return CGSizeMake(mScreenWidth/2, mScreenWidth/2);
 }
 
 #pragma mark - 选择相册

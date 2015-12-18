@@ -26,15 +26,13 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _backCover.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
-    
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     
     [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl];
     [_nickName setText:_nickNameStr];
     [_albumName setText:_albumNameStr];
-    [_createDate setText:[NSString stringWithFormat:@"%@创建", _createDateStr]];
+    [_createDate setText:[NSString stringWithFormat:@"创建于%@", _createDateStr]];
     [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
     
     UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
@@ -64,6 +62,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
         
         AddPicCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.frame = CGRectMake(cell.frame.origin.x+mScreenWidth/8, cell.frame.origin.y+mScreenWidth/8, mScreenWidth/4, mScreenWidth/4);
         return cell;
     }else{
         AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -74,15 +73,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    CGFloat size;
-    if (mScreenWidth==375) {//iPhone 6
-        size = 125;
-    }else if(mScreenWidth>375){//iPhone 6+
-        size = 140;
-    }else{
-        size = 110;
-    }
-    return CGSizeMake(size, size);
+    return CGSizeMake((mScreenWidth-20)/2, (mScreenWidth-20)/2);
     
 }
 
@@ -97,15 +88,6 @@ static NSString * const reuseIdentifier = @"Cell";
         //跳转到图片下载逻辑
         
     }
-}
-
-- (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
-    UIImage *bubble = [UIImage imageNamed:name];
-    
-    CGPoint center = CGPointMake(bubble.size.width / 2.0f, height);
-    UIEdgeInsets capInsets = UIEdgeInsetsMake(center.y, 0, center.y+1, 2);
-    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
-    
 }
 
 - (IBAction)back:(id)sender {
