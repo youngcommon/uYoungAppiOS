@@ -32,12 +32,7 @@
     [_albumPhotoCountLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalPhotoCount]];
     [_albumCreateLabel setText:model.createTime];
     
-    [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl];
-    /*NSString *photoUrl = model.firstPhotoUrl;
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:photoUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [_albumCoverImage setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:@"uyoung.bundle"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [_albumCoverImage setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){}];*/
+    [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

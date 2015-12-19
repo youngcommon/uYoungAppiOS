@@ -191,8 +191,9 @@ static NSString * const reuseIdentifier = @"Cell";
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     self.loginUser = [loginUser copy];
     if ([NSString isBlankString:self.loginUser.avatarUrl]==NO) {
-        NSString *avaterUrl = self.loginUser.avatarUrl;
-        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        NSString *avatarUrl = self.loginUser.avatarUrl;
+        avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [self.userHeader.imageView setImage:image];
             [_userHeader setBackgroundImage:image forState:UIControlStateNormal];

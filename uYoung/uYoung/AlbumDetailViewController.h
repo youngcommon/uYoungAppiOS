@@ -25,5 +25,6 @@
 @property (strong, nonatomic) NSArray *pics;
 
 - (IBAction)back:(id)sender;
+- (IBAction)selectPics:(id)sender;
 
 @end

@@ -51,14 +51,7 @@
     self.personNumLabel.text = [NSString stringWithFormat:@"%d人", (int)model.personNum];
     self.addrLabel.text = model.addr;
     
-    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl];
-    /*NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:model.headerUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:600.0];
-    [self.headerImg setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [_headerImg setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-        [_headerImg setImage:img];
-    }];*/
+    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:@"actdesc200"];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

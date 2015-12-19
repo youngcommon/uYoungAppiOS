@@ -43,15 +43,7 @@
 }
 
 -(void)lazyInitImg:(NSString*)url img:(UIImageView*)imgView{
-    [imgView lazyInitSmallImageWithUrl:url];
-    /*__weak UIImageView *iv = imgView;
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
-    [imgView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [iv setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-        [iv setImage:img];
-    }];*/
+    [imgView lazyInitSmallImageWithUrl:url suffix:@"pic621"];
 }
 
 @end

@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "uYoung/RootViewController.m"
-            timestampString = "471448730.04172"
+            filePath = "uYoung/UIImageView+LazyInit.m"
+            timestampString = "472225974.648179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-initUserAvater"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-lazyInitSmallImageWithUrl:suffix:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

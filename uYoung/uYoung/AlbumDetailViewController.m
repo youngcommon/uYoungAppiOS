@@ -29,7 +29,7 @@ static NSString * const reuseIdentifier = @"Cell";
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     
-    [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl];
+    [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl suffix:@"actdesc200"];
     [_nickName setText:_nickNameStr];
     [_albumName setText:_albumNameStr];
     [_createDate setText:[NSString stringWithFormat:@"创建于%@", _createDateStr]];
@@ -52,11 +52,11 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [_pics count] + 1;
+    return [_pics count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger index = indexPath.row;
+    /*NSInteger index = indexPath.row;
     if ([_pics count]==0||index==[_pics count]) {//说明是添加相片按钮
         UINib *nib = [UINib nibWithNibName:@"AddPicCollectionViewCell" bundle:nil];
         [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
@@ -68,7 +68,11 @@ static NSString * const reuseIdentifier = @"Cell";
         AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
         [cell initCellWithPhotoDetail:((PhotoDetailModel*)_pics[indexPath.row])];
         return cell;
-    }
+    }*/
+    
+    AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    [cell initCellWithPhotoDetail:((PhotoDetailModel*)_pics[indexPath.row])];
+    return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,19 +82,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger index = indexPath.row;
-    if ([_pics count]==0||index==([_pics count])) {//如果是上传照片被点击
-        
-        AlbumUploadViewController *upload = [[AlbumUploadViewController alloc] initWithNibName:@"AlbumUploadViewController" bundle:[NSBundle mainBundle]];
-        [self presentViewController:upload animated:YES completion:nil];
-        
-    }else{
-        //跳转到图片下载逻辑
-        
-    }
+    //跳转到图片下载逻辑
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)selectPics:(id)sender {
+    AlbumUploadViewController *upload = [[AlbumUploadViewController alloc] initWithNibName:@"AlbumUploadViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:upload animated:YES completion:nil];
 }
 @end

@@ -16,7 +16,7 @@
 }
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
-    [_img lazyInitSmallImageWithUrl:photoDetail.photoUrl];
+    [_img lazyInitSmallImageWithUrl:photoDetail.photoUrl suffix:@"pic621"];
 }
 
 @end

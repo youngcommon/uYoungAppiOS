@@ -10,6 +10,6 @@
 
 @interface UIImageView (LazyInit)
 
-- (void)lazyInitSmallImageWithUrl:(NSString*)url;
+- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix;
 
 @end

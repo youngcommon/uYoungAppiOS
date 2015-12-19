@@ -79,11 +79,11 @@
 
 - (void)gotoUserCenter{
     
-//    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-//    [self.navigationController pushViewController:userCenter animated:YES];
+    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:userCenter animated:YES];
 //    CreateActivityController *editUserViewCtl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
-    ActivityAlbumViewController *editUserViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:editUserViewCtl animated:YES];
+//    ActivityAlbumViewController *editUserViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
+//    [self.navigationController pushViewController:editUserViewCtl animated:YES];
     
 }
 
@@ -100,8 +100,9 @@
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
         __weak UIButton *button = _userHeader;
-        NSString *avaterUrl = loginUser.avatarUrl;
-        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avaterUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        NSString *avatarUrl = loginUser.avatarUrl;
+        avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [_userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [button setImage:image forState:UIControlStateNormal];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){

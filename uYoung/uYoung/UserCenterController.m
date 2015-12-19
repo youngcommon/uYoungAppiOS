@@ -202,6 +202,7 @@
     }
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
+    avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
     [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];

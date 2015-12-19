@@ -61,16 +61,7 @@
         }
         //设置头像
         if ([NSString isBlankString:_loginUser.avatarUrl]==NO) {
-            [_userHeaderButton.imageView lazyInitSmallImageWithUrl:_loginUser.avatarUrl];
-            /*__weak UIButton *weak = _userHeaderButton;
-            NSString *avatarUrl = _loginUser.avatarUrl;
-            NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
-            [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-                [weak setBackgroundImage:image forState:UIControlStateNormal];
-            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-                [weak setBackgroundImage:img forState:UIControlStateNormal];
-            }];*/
+            [self initUserAvater];
         }
         //设置性别
         if (_loginUser.gender==1) {//男
@@ -598,6 +589,19 @@
 -(void)keyboardWillDisappear:(NSNotification *)notification{
     self.view.frame = CGRectMake(0, 0, mScreenWidth, mScreenHeight);
     _isKeyboardHidden = YES;
+}
+
+- (void)initUserAvater{
+    __weak UIButton *weakB = self.userHeaderButton;
+    
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@-%@", _loginUser.avatarUrl, @"actdesc200"];
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [weakB setBackgroundImage:image forState:UIControlStateNormal];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+        [weakB setBackgroundImage:img forState:UIControlStateNormal];
+    }];
 }
 
 @end

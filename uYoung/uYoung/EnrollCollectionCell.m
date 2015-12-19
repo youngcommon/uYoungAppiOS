@@ -24,14 +24,7 @@
 - (void)updateFrameWithModel:(ActivityDetailEnrollsModel*)model{
     _enrollUser = model;
     
-    [_enrollUserHeader lazyInitSmallImageWithUrl:_enrollUser.avatar];
-    /*NSString *avatarUrl = _enrollUser.avatar;
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [_enrollUserHeader setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [_enrollUserHeader setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        [_enrollUserHeader setImage:[UIImage imageNamed:UserDefaultHeader]];
-    }];*/
+    [_enrollUserHeader lazyInitSmallImageWithUrl:_enrollUser.avatar suffix:@"actdesc200"];
     
     NSString *nickName = _enrollUser.nickName;
     if (nickName==nil) {

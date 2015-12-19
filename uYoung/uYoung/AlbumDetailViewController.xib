@@ -35,16 +35,6 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="mnB-PP-4gr"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是第一个相册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnw-Xh-pHg">
-                    <rect key="frame" x="53" y="26" width="214" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="IQc-4V-z9j"/>
-                        <constraint firstAttribute="width" constant="214" id="n0e-sd-Rus"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-rT-IrA">
                     <rect key="frame" x="38" y="55" width="30" height="30"/>
                     <constraints>
@@ -93,7 +83,7 @@
                         <constraint firstAttribute="height" constant="21" id="x05-xS-TCq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建于2015-12-30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n52-rB-nCK">
@@ -102,15 +92,37 @@
                         <constraint firstAttribute="height" constant="21" id="Kam-3W-laf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是第一个相册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnw-Xh-pHg">
+                    <rect key="frame" x="68" y="26" width="184" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="IQc-4V-z9j"/>
+                        <constraint firstAttribute="width" constant="184" id="n0e-sd-Rus"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-Uv-Qc1">
+                    <rect key="frame" x="22" y="418" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="1ZP-Ve-ASz"/>
+                        <constraint firstAttribute="height" constant="40" id="Udi-OQ-ZyH"/>
+                    </constraints>
+                    <state key="normal" image="uyoung.bundle/plusone.png"/>
+                    <connections>
+                        <action selector="selectPics:" destination="-1" eventType="touchUpInside" id="mGb-bc-oYl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="grC-SF-Sn3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="07E-HH-xse"/>
                 <constraint firstItem="cIF-yn-c8m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1Ht-PR-dvu"/>
                 <constraint firstItem="kXN-VZ-gu3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="3qR-RX-iNd"/>
+                <constraint firstAttribute="bottom" secondItem="GqJ-Uv-Qc1" secondAttribute="bottom" constant="22" id="49b-1C-kA2"/>
                 <constraint firstAttribute="bottom" secondItem="grC-SF-Sn3" secondAttribute="bottom" id="61x-0P-pXB"/>
                 <constraint firstItem="Lnw-Xh-pHg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="84b-sy-8Jn"/>
                 <constraint firstAttribute="trailing" secondItem="kXN-VZ-gu3" secondAttribute="trailing" constant="10" id="BGY-On-9dX"/>
@@ -125,6 +137,7 @@
                 <constraint firstAttribute="bottom" secondItem="kXN-VZ-gu3" secondAttribute="bottom" id="Rdx-c9-8jP"/>
                 <constraint firstItem="pCx-x7-ybs" firstAttribute="leading" secondItem="KXt-rT-IrA" secondAttribute="trailing" constant="6" id="UB1-JY-bxw"/>
                 <constraint firstItem="SLe-7M-sU5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="X2a-ma-VgP"/>
+                <constraint firstItem="GqJ-Uv-Qc1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="X5r-J9-CdE"/>
                 <constraint firstItem="cIF-yn-c8m" firstAttribute="top" secondItem="KXt-rT-IrA" secondAttribute="bottom" constant="10" id="Z61-el-REl"/>
                 <constraint firstItem="n52-rB-nCK" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" id="bL4-Lt-Jsp"/>
                 <constraint firstItem="tUr-Fa-IeY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="e9m-Op-MVg"/>
@@ -139,5 +152,6 @@
     <resources>
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/plusone.png" width="320" height="568"/>
     </resources>
 </document>

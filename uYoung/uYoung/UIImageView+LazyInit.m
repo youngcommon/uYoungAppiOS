@@ -13,12 +13,10 @@
 
 @implementation UIImageView (LazyInit)
 
-- (void)lazyInitSmallImageWithUrl:(NSString*)url{
+- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix{
     __weak UIImageView *img = self;
     if ([NSString isBlankString:url]==NO) {
-        if ([url hasSuffix:@"-actdesc200"]==NO) {
-            url = [NSString stringWithFormat:@"%@-actdesc200", url];
-        }
+        url = [NSString stringWithFormat:@"%@-%@", url, suffix];
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [self setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [img setImage:image];
