@@ -64,12 +64,17 @@
     if ([NSString isBlankString:token]) {
         return;
     }
+    
+    QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"text/plain" progressHandler:^(NSString *key, float percent){
+        NSLog(@"############%@---%f###########", key, percent);
+    } params:nil checkCrc:YES cancellationSignal:nil];
+    
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     NSData *data = UIImageJPEGRepresentation(_img, 1.0);
     [upManager putData:data key:_key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSString *url = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:key];
         [_delegate getImgUrl:url];
-    } option:nil];
+    } option:opt];
 }
 
 + (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button{
