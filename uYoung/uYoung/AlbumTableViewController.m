@@ -20,8 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAlbumList:) name:@"userAlbumList" object:nil];
-    [UserAlbumList getUserAlbumListWithUid:_userId];
     
+    [self refreshData];
+}
+
+- (void)refreshData{
+    [UserAlbumList getUserAlbumListWithUid:_userId];
 }
 
 -(void)dealloc{

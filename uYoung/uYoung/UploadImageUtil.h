@@ -25,6 +25,8 @@
 
 - (void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate;
 
++ (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button;
+
 + (instancetype)dispatchOnce;
 
 @end

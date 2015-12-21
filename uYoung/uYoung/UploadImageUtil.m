@@ -9,6 +9,7 @@
 #import "UploadImageUtil.h"
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
+#import <UIImageView+AFNetworking.h>
 
 @implementation UploadImageUtil
 
@@ -69,6 +70,19 @@
         NSString *url = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:key];
         [_delegate getImgUrl:url];
     } option:nil];
+}
+
++ (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button{
+    __weak UIButton *weakB = button;
+    long timer = [[NSDate date] timeIntervalSince1970];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", url, @"actdesc200", timer];
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [button.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [weakB setBackgroundImage:image forState:UIControlStateNormal];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
+        [weakB setBackgroundImage:img forState:UIControlStateNormal];
+    }];
 }
 
 @end

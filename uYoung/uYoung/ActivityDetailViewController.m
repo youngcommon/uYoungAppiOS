@@ -8,6 +8,7 @@
 
 #import "ActivityDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
+#import "UploadImageUtil.h"
 
 @interface ActivityDetailViewController ()
 
@@ -192,7 +193,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.loginUser = [loginUser copy];
     if ([NSString isBlankString:self.loginUser.avatarUrl]==NO) {
         NSString *avatarUrl = self.loginUser.avatarUrl;
-        avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
+        [UploadImageUtil lazyInitAvatarOfButton:avatarUrl button:_userHeader];
+        /*avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
         NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
             [self.userHeader.imageView setImage:image];
@@ -200,7 +202,7 @@ static NSString * const reuseIdentifier = @"Cell";
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
             UIImage *img = [UIImage imageNamed:UserDefaultHeader];
             [_userHeader setBackgroundImage:img forState:UIControlStateNormal];
-        }];
+        }];*/
     }
 }
 

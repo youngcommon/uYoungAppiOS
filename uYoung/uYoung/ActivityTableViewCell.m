@@ -51,7 +51,8 @@
     self.personNumLabel.text = [NSString stringWithFormat:@"%d人", (int)model.personNum];
     self.addrLabel.text = model.addr;
     
-    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:@"actdesc200"];
+    long timer = [[NSDate date]timeIntervalSince1970];
+    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:[NSString stringWithFormat:@"%@?%ld", @"actdesc200", timer]];
     if(model.price==0){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{

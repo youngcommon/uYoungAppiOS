@@ -559,8 +559,9 @@
 
 //获得七牛云存储的头像的url
 - (void)getImgUrl:(NSString*)url{
-    long timer = [[NSDate date] timeIntervalSince1970];
-    url = [url stringByAppendingString:[NSString stringWithFormat:@"?%ld", timer]];
+//    long timer = [[NSDate date] timeIntervalSince1970];
+//    url = [url stringByAppendingString:[NSString stringWithFormat:@"?%ld", timer]];
+    
     _avater = url;
 }
 
@@ -592,16 +593,17 @@
 }
 
 - (void)initUserAvater{
-    __weak UIButton *weakB = self.userHeaderButton;
-    
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@-%@", _loginUser.avatarUrl, @"actdesc200"];
+    [UploadImageUtil lazyInitAvatarOfButton:_loginUser.avatarUrl button:_userHeaderButton];
+    /*__weak UIButton *weakB = self.userHeaderButton;
+    long timer = [[NSDate date] timeIntervalSince1970];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", _loginUser.avatarUrl, @"actdesc200", timer];
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [_userHeaderButton.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [weakB setBackgroundImage:image forState:UIControlStateNormal];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         UIImage *img = [UIImage imageNamed:UserDefaultHeader];
         [weakB setBackgroundImage:img forState:UIControlStateNormal];
-    }];
+    }];*/
 }
 
 @end

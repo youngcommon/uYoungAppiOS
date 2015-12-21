@@ -190,6 +190,8 @@
     _userDetailModel = (UserDetailModel*)[no object];
     if (_userDetailModel&&[_userDetailModel isEqual:[NSNull null]]==NO&&_userDetailModel.id>0) {
         [self initViewWithUser];
+        self.albumTableViewController.userId = _userDetailModel.id;
+        [self.albumTableViewController refreshData];
     }
 }
 
@@ -202,7 +204,8 @@
     }
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
-    avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
+    long timer = [[NSDate date]timeIntervalSince1970];
+    avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
     [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];

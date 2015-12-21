@@ -18,4 +18,6 @@
 
 @property (assign, nonatomic) NSInteger userId;
 
+- (void)refreshData;
+
 @end
