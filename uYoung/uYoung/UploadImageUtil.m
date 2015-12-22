@@ -67,10 +67,12 @@
     
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     NSData *data = UIImageJPEGRepresentation(_img, 1.0);
-    long length = [data length]/(1000*1000);
+    NSNumber *num = @([data length]);
+    long length = [num longValue]/(1000*1000);
     if(length>6){//如果上传的照片大于6M，则进行压缩
-        data = UIImageJPEGRepresentation(_img, 0.7);
+        data = UIImageJPEGRepresentation(_img, 0.8);
     }
+
     [upManager putData:data key:_key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSString *url = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:key];
         [_delegate getImgUrl:url];

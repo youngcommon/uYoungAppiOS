@@ -13,6 +13,7 @@
 #import "UIImage+scales.h"
 #import "UserDetailModel.h"
 #import "NSString+StringUtil.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface AlbumUploadViewController ()
 
@@ -53,13 +54,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)uploadImages:(id)sender {
     if(_assets!=nil&&[_assets count]>0){
+        [self.view.window showHUDWithText:@"正在上传..." Type:ShowLoading Enabled:YES];
         NSString *format = @"uy_user/%ld/album/%ld/t/%ld";
         for (int i=0; i<[_assets count]; i++) {
             long timer = [[NSDate date]timeIntervalSince1970];
             NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, timer];
             NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
             AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)[_imageCollection cellForItemAtIndexPath:indexpath];
-            UIImage *image = cell.img.image;
+            UIImage *image = cell.oriImg;
             [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key delegate:self];
         }
     }
@@ -84,6 +86,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [_photoDetailModels addObject:result];
     }
     if ([_imgParams count]==_counter) {
+        [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
     }
@@ -104,16 +107,14 @@ static NSString * const reuseIdentifier = @"Cell";
     ZLPhotoAssets *asset = self.assets[indexPath.row];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
         image = asset.originImage;
-        NSLog(@"############# ZLPhotoAssets class ##############");
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
         image = cell.img.image;
-        NSLog(@"############# NSString class ##############");
     }else if([asset isKindOfClass:[UIImage class]]){
         image = (UIImage*)asset;
-        NSLog(@"############# UIImage class ##############");
     }
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
+    cell.oriImg = image;
     return cell;
     
 }
