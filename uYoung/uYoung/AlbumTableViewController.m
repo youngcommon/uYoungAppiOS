@@ -91,6 +91,7 @@
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
         viewCtl.albumNameStr = model.albumDesc;
         viewCtl.ownerUid = model.oriUserId;
+        viewCtl.albumid = model.albumId;
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
         viewCtl.createDateStr = [self getDateStrByTimeInterval:model.createTime];

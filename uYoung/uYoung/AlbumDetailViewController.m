@@ -26,8 +26,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh:) name:@"refreshAlbum" object:nil];
+    
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
+    
     
     [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl suffix:@"actdesc200"];
     [_nickName setText:_nickNameStr];
@@ -43,6 +46,16 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+- (void)refresh:(NSNotification*)notification{
+    NSArray *photoDetailModels = (NSArray*)[notification object];
+    NSMutableArray *temp = [[NSMutableArray alloc]initWithArray:_pics];
+    [temp addObjectsFromArray:photoDetailModels];
+    _pics = [temp copy];
+    [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
+    [_allPics reloadData];
+    [_allPics reloadInputViews];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -56,19 +69,6 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    /*NSInteger index = indexPath.row;
-    if ([_pics count]==0||index==[_pics count]) {//说明是添加相片按钮
-        UINib *nib = [UINib nibWithNibName:@"AddPicCollectionViewCell" bundle:nil];
-        [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
-        
-        AddPicCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.frame = CGRectMake(cell.frame.origin.x+mScreenWidth/8, cell.frame.origin.y+mScreenWidth/8, mScreenWidth/4, mScreenWidth/4);
-        return cell;
-    }else{
-        AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell initCellWithPhotoDetail:((PhotoDetailModel*)_pics[indexPath.row])];
-        return cell;
-    }*/
     
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     [cell initCellWithPhotoDetail:((PhotoDetailModel*)_pics[indexPath.row])];
@@ -91,6 +91,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)selectPics:(id)sender {
     AlbumUploadViewController *upload = [[AlbumUploadViewController alloc] initWithNibName:@"AlbumUploadViewController" bundle:[NSBundle mainBundle]];
+    upload.albumid = _albumid;
+    upload.owneruid = _ownerUid;
     [self presentViewController:upload animated:YES completion:nil];
 }
 @end

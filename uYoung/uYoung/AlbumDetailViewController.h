@@ -20,7 +20,8 @@
 @property (strong, nonatomic) NSString *nickNameStr;
 @property (strong, nonatomic) NSString *createDateStr;
 @property (strong, nonatomic) NSString *userHeaderUrl;
-@property (assign, nonatomic) NSInteger ownerUid;
+@property (assign, nonatomic) long ownerUid;
+@property (assign, nonatomic) long albumid;
 
 @property (strong, nonatomic) NSArray *pics;
 

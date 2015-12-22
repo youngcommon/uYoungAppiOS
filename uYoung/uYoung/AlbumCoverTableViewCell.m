@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "GlobalConfig.h"
 #import "UIImageView+LazyInit.h"
+#import "UIImage+scales.h"
 
 @implementation AlbumCoverTableViewCell
 
@@ -33,6 +34,7 @@
     [_albumCreateLabel setText:model.createTime];
     
     [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621"];
+    [_albumCoverImage setImage:[_albumCoverImage.image scaleToSize:_albumCoverImage.frame.size]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

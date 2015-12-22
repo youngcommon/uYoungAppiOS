@@ -10,9 +10,9 @@
 
 @interface AlbumDetailModel : MTLModel<MTLJSONSerializing>
 
-@property (assign, nonatomic) NSInteger albumId;
+@property (assign, nonatomic) long albumId;
 @property (strong, nonatomic) NSString *albumDesc;
-@property (assign, nonatomic) NSInteger oriUserId;
+@property (assign, nonatomic) long oriUserId;
 @property (strong, nonatomic) NSString *oriUrl;
 @property (strong, nonatomic) NSString *oriNickName;
 @property (assign, nonatomic) long createTime;

@@ -10,6 +10,9 @@
 #import "ZLPhotoAssets.h"
 #import "UIImageView+WebCache.h"
 #import "GlobalConfig.h"
+#import "UIImage+scales.h"
+#import "UserDetailModel.h"
+#import "NSString+StringUtil.h"
 
 @interface AlbumUploadViewController ()
 
@@ -26,15 +29,15 @@ static NSString * const reuseIdentifier = @"Cell";
     [_imageCollection registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
     _assets = [[NSMutableArray alloc]initWithCapacity:0];
+    _imgParams = [[NSMutableArray alloc]initWithCapacity:1];
     
     [self selectPhotos];
 }
 
-/*-(void)viewDidAppear:(BOOL)animated{
-    if (_assets==nil||[_assets count]==0) {
-        [self selectPhotos];
-    }
-}*/
+-(void)viewDidAppear:(BOOL)animated{
+    _counter = 0;
+    _photoDetailModels = [[NSMutableArray alloc]initWithCapacity:1];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -49,7 +52,41 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)uploadImages:(id)sender {
-    
+    if(_assets!=nil&&[_assets count]>0){
+        NSString *format = @"uy_user/%ld/album/%ld/t/%ld";
+        for (int i=0; i<[_assets count]; i++) {
+            long timer = [[NSDate date]timeIntervalSince1970];
+            NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, timer];
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+            AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)[_imageCollection cellForItemAtIndexPath:indexpath];
+            UIImage *image = cell.img.image;
+            [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key delegate:self];
+        }
+    }
+}
+
+#pragma mark - 上传成功后回调
+- (void)getImgUrl:(NSString*)url{
+    //写入uYoung数据库
+    if ([NSString isBlankString:url]==NO) {
+        NSMutableDictionary *param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", url,@"photoUrl", @"xxx",@"photoName", nil];
+        [_imgParams addObject:param];
+    }
+    if ([_assets count]==[_imgParams count]) {//说明图片已经全部上传完毕
+        [CreateAlbum uploadAlbumImage:_imgParams delegate:self];
+    }
+}
+
+#pragma mark - 更新uYoung数据后回调
+- (void)finishUploadImage:(PhotoDetailModel*)result{
+    _counter += 1;
+    if (result!=nil) {
+        [_photoDetailModels addObject:result];
+    }
+    if ([_imgParams count]==_counter) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+    }
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -67,12 +104,16 @@ static NSString * const reuseIdentifier = @"Cell";
     ZLPhotoAssets *asset = self.assets[indexPath.row];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
         image = asset.originImage;
+        NSLog(@"############# ZLPhotoAssets class ##############");
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
+        image = cell.img.image;
+        NSLog(@"############# NSString class ##############");
     }else if([asset isKindOfClass:[UIImage class]]){
-        [cell.img setImage:(UIImage*)asset];
+        image = (UIImage*)asset;
+        NSLog(@"############# UIImage class ##############");
     }
-    [cell.img setImage:[self scaleToSize:cell.frame.size image:image]];
+    [cell.img setImage:[image scaleToSize:cell.frame.size]];
     return cell;
     
 }
@@ -158,44 +199,6 @@ static NSString * const reuseIdentifier = @"Cell";
     if (indexPath.row > [self.assets count]) return;
     [self.assets removeObjectAtIndex:indexPath.row];
     [self.imageCollection reloadData];
-}
-
-#pragma mark 图片等比例缩放
--(UIImage*)scaleToSize:(CGSize)size image:(UIImage*)img{
-    CGFloat width = CGImageGetWidth(img.CGImage);
-    CGFloat height = CGImageGetHeight(img.CGImage);
-    
-    float verticalRadio = size.height*1.0/height;
-    float horizontalRadio = size.width*1.0/width;
-    
-    float radio = 1;
-    if(verticalRadio>1 && horizontalRadio>1){
-        radio = verticalRadio > horizontalRadio ? horizontalRadio : verticalRadio;
-    }else{
-        radio = verticalRadio < horizontalRadio ? verticalRadio : horizontalRadio;
-    }
-    
-    width = width*radio;
-    height = height*radio;
-    
-    int xPos = (size.width - width)/2;
-    int yPos = (size.height-height)/2;
-    
-    // 创建一个bitmap的context
-    // 并把它设置成为当前正在使用的context
-    UIGraphicsBeginImageContext(size);
-    
-    // 绘制改变大小的图片
-    [img drawInRect:CGRectMake(xPos, yPos, width, height)];
-    
-    // 从当前context中创建一个改变大小后的图片
-    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 使当前的context出堆栈
-    UIGraphicsEndImageContext();
-    
-    // 返回新的改变大小后的图片
-    return scaledImage;
 }
 
 @end

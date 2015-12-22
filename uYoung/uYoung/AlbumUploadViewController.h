@@ -10,12 +10,21 @@
 #import "ZLPhotoPickerViewController.h"
 #import "AlbumPicCollectionCell.h"
 #import "ZLPhotoPickerBrowserViewController.h"
+#import "UploadImageUtil.h"
+#import "CreateAlbum.h"
 
-@interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate>
+@interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate, UploadImgDelegate, CreateAlbumDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *imageCollection;
 
 @property (strong, nonatomic) NSMutableArray *assets;
+
+@property (assign, nonatomic) long albumid;
+@property (assign, nonatomic) long owneruid;
+
+@property (strong, nonatomic) NSMutableArray *imgParams;
+@property (assign, nonatomic) NSInteger counter;
+@property (strong, nonatomic) NSMutableArray *photoDetailModels;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)showSysPhoto:(id)sender;
