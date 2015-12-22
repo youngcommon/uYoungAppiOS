@@ -94,6 +94,9 @@
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
 		8497707B1C219D7000822BC4 /* AlbumUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */; };
 		8497707D1C219D8C00822BC4 /* AlbumUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */; };
+		84A2A05C1C298E01005061CE /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A05B1C298E01005061CE /* PhotoDetailViewController.m */; };
+		84A2A05E1C2992B1005061CE /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A05D1C2992B1005061CE /* PhotoDetailViewController.xib */; };
+		84A2A0611C29A131005061CE /* PhotoDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A0601C29A131005061CE /* PhotoDownload.m */; };
 		84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65A1C1879950090E173 /* AlbumDetailModel.m */; };
 		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
 		84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C6601C1881C10090E173 /* AlbumDetail.m */; };
@@ -264,6 +267,11 @@
 		849770791C219D7000822BC4 /* AlbumUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumUploadViewController.h; sourceTree = "<group>"; };
 		8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumUploadViewController.m; sourceTree = "<group>"; };
 		8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumUploadViewController.xib; sourceTree = "<group>"; };
+		84A2A05A1C298E01005061CE /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
+		84A2A05B1C298E01005061CE /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		84A2A05D1C2992B1005061CE /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
+		84A2A05F1C29A131005061CE /* PhotoDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDownload.h; sourceTree = "<group>"; };
+		84A2A0601C29A131005061CE /* PhotoDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDownload.m; sourceTree = "<group>"; };
 		84A2C6591C1879950090E173 /* AlbumDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailModel.h; sourceTree = "<group>"; };
 		84A2C65A1C1879950090E173 /* AlbumDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailModel.m; sourceTree = "<group>"; };
 		84A2C65C1C18803F0090E173 /* PhotoDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailModel.h; sourceTree = "<group>"; };
@@ -368,6 +376,8 @@
 				84A2C6601C1881C10090E173 /* AlbumDetail.m */,
 				48C8BFCD1C1B164A0060241C /* CreateAlbum.h */,
 				48C8BFCE1C1B164A0060241C /* CreateAlbum.m */,
+				84A2A05F1C29A131005061CE /* PhotoDownload.h */,
+				84A2A0601C29A131005061CE /* PhotoDownload.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -638,6 +648,9 @@
 				849770791C219D7000822BC4 /* AlbumUploadViewController.h */,
 				8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */,
 				8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */,
+				84A2A05A1C298E01005061CE /* PhotoDetailViewController.h */,
+				84A2A05B1C298E01005061CE /* PhotoDetailViewController.m */,
+				84A2A05D1C2992B1005061CE /* PhotoDetailViewController.xib */,
 			);
 			name = album;
 			sourceTree = "<group>";
@@ -727,6 +740,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A2A05E1C2992B1005061CE /* PhotoDetailViewController.xib in Resources */,
 				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
 				482E9AC61C15772A00DEF737 /* ActivityFilterViewController.xib in Resources */,
@@ -846,6 +860,7 @@
 				484CAF271C28EA2400AFBC30 /* UIImage+scales.m in Sources */,
 				482E9ACA1C18193400DEF737 /* AddPicCollectionViewCell.m in Sources */,
 				48640E931BCFEB230093B702 /* AlbumTableViewController.m in Sources */,
+				84A2A05C1C298E01005061CE /* PhotoDetailViewController.m in Sources */,
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
 				48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
@@ -858,6 +873,7 @@
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
 				482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */,
+				84A2A0611C29A131005061CE /* PhotoDownload.m in Sources */,
 				48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */,
 				8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */,
 				4841A8891BCD33B400F1B4F8 /* UserCenterController.m in Sources */,

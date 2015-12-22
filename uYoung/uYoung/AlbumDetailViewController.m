@@ -14,6 +14,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "PhotoDetailModel.h"
 #import "AlbumUploadViewController.h"
+#import "PhotoDetailViewController.h"
 
 @interface AlbumDetailViewController ()
 
@@ -83,6 +84,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //跳转到图片下载逻辑
+    PhotoDetailModel *model = ((PhotoDetailModel*)_pics[indexPath.row]);
+    PhotoDetailViewController *ctl = [[PhotoDetailViewController alloc]initWithNibName:@"PhotoDetailViewController" bundle:[NSBundle mainBundle]];
+    ctl.photoUrl = model.photoUrl;
+    [self.navigationController pushViewController:ctl animated:YES];
 }
 
 - (IBAction)back:(id)sender {

@@ -38,4 +38,8 @@
 
 #define CITY_LIST @"city_list"
 
+#define QINIU_AK @"tq_GXB57qnS-yuR3Ci8ljH6qhcghtk51S-hkUJuS"
+
+#define QINIU_SK @"1GPL8ts0TUNS1EUM3_AHpAnyws5VKtKhxL8zYTLo"
+
 #endif /* GlobalConfig_h */

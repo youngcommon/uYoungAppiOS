@@ -16,22 +16,74 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="4qR-Qa-rrJ">
                         <rect key="frame" x="0.0" y="0.0" width="124" height="100"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/like.png" translatesAutoresizingMaskIntoConstraints="NO" id="KA8-PS-A3a">
+                        <rect key="frame" x="8" y="82" width="12" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="0B9-vf-qfx"/>
+                            <constraint firstAttribute="width" constant="12" id="VI4-6y-4Rm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3J-yU-Lqy">
+                        <rect key="frame" x="22" y="81" width="36" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="bbH-0R-LFW"/>
+                            <constraint firstAttribute="height" constant="12" id="jS9-vf-WJf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/view.png" translatesAutoresizingMaskIntoConstraints="NO" id="zkD-KL-TrG">
+                        <rect key="frame" x="66" y="83" width="16" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="fan-rc-XJ3"/>
+                            <constraint firstAttribute="height" constant="8" id="syq-Mc-Qud"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug2-Vg-fxQ">
+                        <rect key="frame" x="84" y="81" width="36" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="USH-Iw-cSl"/>
+                            <constraint firstAttribute="width" constant="36" id="xbd-0H-ZxZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="4qR-Qa-rrJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2LQ-mg-Jhn"/>
+                <constraint firstItem="C3J-yU-Lqy" firstAttribute="centerY" secondItem="KA8-PS-A3a" secondAttribute="centerY" id="4m2-Vn-PqY"/>
+                <constraint firstItem="ug2-Vg-fxQ" firstAttribute="leading" secondItem="zkD-KL-TrG" secondAttribute="trailing" constant="2" id="8j8-tz-g0y"/>
                 <constraint firstAttribute="trailing" secondItem="4qR-Qa-rrJ" secondAttribute="trailing" id="BV8-Ji-lgA"/>
                 <constraint firstAttribute="bottom" secondItem="4qR-Qa-rrJ" secondAttribute="bottom" id="CcU-JP-NQ2"/>
+                <constraint firstAttribute="bottom" secondItem="KA8-PS-A3a" secondAttribute="bottom" constant="8" id="DaC-N0-0gE"/>
+                <constraint firstItem="C3J-yU-Lqy" firstAttribute="leading" secondItem="KA8-PS-A3a" secondAttribute="trailing" constant="2" id="Jx1-M8-RiY"/>
+                <constraint firstAttribute="trailing" secondItem="ug2-Vg-fxQ" secondAttribute="trailing" constant="4" id="Lll-GD-e3J"/>
+                <constraint firstItem="zkD-KL-TrG" firstAttribute="leading" secondItem="C3J-yU-Lqy" secondAttribute="trailing" constant="8" id="k06-ee-wkd"/>
+                <constraint firstItem="zkD-KL-TrG" firstAttribute="centerY" secondItem="KA8-PS-A3a" secondAttribute="centerY" id="r06-XI-kiv"/>
+                <constraint firstItem="ug2-Vg-fxQ" firstAttribute="centerY" secondItem="KA8-PS-A3a" secondAttribute="centerY" id="t21-sz-VqA"/>
                 <constraint firstItem="4qR-Qa-rrJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tS0-LV-oiK"/>
+                <constraint firstItem="KA8-PS-A3a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="wXZ-e7-VWk"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="k06-ee-wkd"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="img" destination="4qR-Qa-rrJ" id="UiJ-H8-tUS"/>
+                <outlet property="likeLabel" destination="C3J-yU-Lqy" id="MIk-ph-ffW"/>
+                <outlet property="viewLabel" destination="ug2-Vg-fxQ" id="dKW-lM-WON"/>
             </connections>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="uyoung.bundle/like.png" width="320" height="568"/>
         <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
+        <image name="uyoung.bundle/view.png" width="320" height="568"/>
     </resources>
 </document>

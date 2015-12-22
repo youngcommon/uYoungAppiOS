@@ -14,4 +14,6 @@
 
 - (NSString*)stringToMD5;
 
+- (NSString *) hmacSha1:(NSString*)sk;
+
 @end

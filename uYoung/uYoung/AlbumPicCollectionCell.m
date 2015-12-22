@@ -17,6 +17,8 @@
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
     [_img lazyInitSmallImageWithUrl:photoDetail.photoUrl suffix:@"pic621"];
+    [_viewLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.viewCount]];
+    [_likeLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.likeCount]];
 }
 
 @end
