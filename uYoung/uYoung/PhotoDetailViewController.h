@@ -13,6 +13,12 @@
 @interface PhotoDetailViewController : UIViewController<PhotoDownloadDelegate>
 
 @property (strong, nonatomic) NSString *photoUrl;
+@property (strong, nonatomic) IBOutlet UIButton *showExif;
+@property (strong, nonatomic) IBOutlet UIView *exifView;
+
+
 - (IBAction)back:(id)sender;
+- (IBAction)likeThisPhoto:(UIButton*)sender;
+- (IBAction)toggleExif:(id)sender;
 
 @end

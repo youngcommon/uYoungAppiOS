@@ -18,6 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _showExif.layer.borderColor = lableTextColor;
+    _showExif.layer.borderWidth = 1;
+    _showExif.layer.cornerRadius = 4;
+    _showExif.layer.masksToBounds = YES;
+    
+    [_exifView setHidden:YES];
+    
     [self getDownLoadUrl];
 }
 
@@ -30,12 +38,11 @@
     NSDate *now = [NSDate date];
     NSDate *tomorrow = [now initWithTimeIntervalSinceNow:(24*60*60)];
     long exp = [tomorrow timeIntervalSince1970];
-    exp = 1450870660;
     //构建下载url
     NSString *secOriUrl = [NSString stringWithFormat:@"%@?e=%ld", _photoUrl, exp];
     NSString *sign = [secOriUrl hmacSha1:QINIU_SK];
     NSString *encodedSign = [QNUrlSafeBase64 encodeString:sign];
-    NSString *token = [NSString stringWithFormat:@"%@:%@", QINIU_SK, encodedSign];
+    NSString *token = [NSString stringWithFormat:@"%@:%@", QINIU_AK, encodedSign];
     NSString *downloadUrl = [NSString stringWithFormat:@"%@&token=%@", secOriUrl, token];
     //下载图片
     [PhotoDownload downloadPhotoExif:downloadUrl delegate:self];
@@ -51,5 +58,13 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)likeThisPhoto:(UIButton*)sender {
+    [sender setImage:[UIImage imageNamed:@"uyoung.bundle/had_like"] forState:UIControlStateNormal];
+}
+
+- (IBAction)toggleExif:(id)sender {
+    [_exifView setHidden:![_exifView isHidden]];
 }
 @end
