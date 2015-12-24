@@ -87,6 +87,8 @@ static NSString * const reuseIdentifier = @"Cell";
     PhotoDetailModel *model = ((PhotoDetailModel*)_pics[indexPath.row]);
     PhotoDetailViewController *ctl = [[PhotoDetailViewController alloc]initWithNibName:@"PhotoDetailViewController" bundle:[NSBundle mainBundle]];
     ctl.photoUrl = model.photoUrl;
+    ctl.photoDetails = _pics;
+    ctl.index = indexPath.row;
     [self.navigationController pushViewController:ctl animated:YES];
 }
 

@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *showExif;
 @property (strong, nonatomic) IBOutlet UIView *exifView;
 
+@property (strong, nonatomic) NSArray *photoDetails;
+@property (assign, nonatomic) NSInteger index;
 
 - (IBAction)back:(id)sender;
 - (IBAction)likeThisPhoto:(UIButton*)sender;

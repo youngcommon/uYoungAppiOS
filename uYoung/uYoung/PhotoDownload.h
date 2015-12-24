@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import <UIImageView+AFNetworking.h>
 
 @protocol PhotoDownloadDelegate <NSObject>
 
@@ -19,5 +20,9 @@
 @interface PhotoDownload : NSObject
 
 + (void)downloadPhotoExif:(NSString*)url delegate:(id<PhotoDownloadDelegate>)delegate;
+
++ (void)downloadPhoto:(NSString*)url delegate:(id<PhotoDownloadDelegate>)delegate;
+
++ (void)getDownloadUrl:(long)photoId finish:(void (^)(NSString *downloadUrl, NSString *exifUrl))finish;
 
 @end

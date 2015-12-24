@@ -9,9 +9,12 @@
 #import "PhotoDetailViewController.h"
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
+#import "PhotoDetailModel.h"
 
-@interface PhotoDetailViewController ()
-
+@interface PhotoDetailViewController ()<UIScrollViewDelegate>{
+    UIScrollView *_scrollview;
+    UIImageView *_imageview;
+}
 @end
 
 @implementation PhotoDetailViewController
@@ -26,34 +29,58 @@
     
     [_exifView setHidden:YES];
     
-    [self getDownLoadUrl];
+    _scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    [_scrollview setBackgroundColor:[UIColor clearColor]];
+    [self.view insertSubview:_scrollview atIndex:0];
+    
+    //设置实现缩放
+    //设置代理scrollview的代理对象
+    _scrollview.delegate=self;
+    //设置最大伸缩比例
+    _scrollview.maximumZoomScale=2.0;
+    //设置最小伸缩比例
+    _scrollview.minimumZoomScale=0.5;
+    
+    [self getDownLoadUrl:_index];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)getDownLoadUrl{
-    //过期时间
-    NSDate *now = [NSDate date];
-    NSDate *tomorrow = [now initWithTimeIntervalSinceNow:(24*60*60)];
-    long exp = [tomorrow timeIntervalSince1970];
-    //构建下载url
-    NSString *secOriUrl = [NSString stringWithFormat:@"%@?e=%ld", _photoUrl, exp];
-    NSString *sign = [secOriUrl hmacSha1:QINIU_SK];
-    NSString *encodedSign = [QNUrlSafeBase64 encodeString:sign];
-    NSString *token = [NSString stringWithFormat:@"%@:%@", QINIU_AK, encodedSign];
-    NSString *downloadUrl = [NSString stringWithFormat:@"%@&token=%@", secOriUrl, token];
-    //下载图片
-    [PhotoDownload downloadPhotoExif:downloadUrl delegate:self];
+//告诉scrollview要缩放的是哪个子控件
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return _imageview;
+}
+
+- (void)getDownLoadUrl:(NSInteger)atIndex{
+    PhotoDetailModel *model = (PhotoDetailModel*)_photoDetails[atIndex];
+    //获得下载url
+    [PhotoDownload getDownloadUrl:model.id finish:^(NSString *downloadUrl, NSString *exifUrl) {
+        if ([NSString isBlankString:downloadUrl]==NO) {
+            //图片
+            [PhotoDownload downloadPhoto:downloadUrl delegate:self];
+        }
+        if ([NSString isBlankString:exifUrl]) {
+            //下载图片
+            [PhotoDownload downloadPhotoExif:exifUrl delegate:self];
+        }
+    }];
 }
 
 - (void)downloadImageFinish:(UIImage*)image{
-    
+    if (image!=nil) {
+        _imageview=[[UIImageView alloc]initWithImage:image];
+        //调用initWithImage:方法，它创建出来的imageview的宽高和图片的宽高一样
+        [_scrollview addSubview:_imageview];
+        _scrollview.contentSize=image.size;
+    }
 }
 
 - (void)downloadExifFinish:(NSDictionary*)dict{
-    
+    if (dict!=nil) {
+        NSLog(@"###############%@##################", dict);
+    }
 }
 
 - (IBAction)back:(id)sender {
