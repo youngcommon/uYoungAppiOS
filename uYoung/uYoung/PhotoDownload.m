@@ -26,16 +26,6 @@
     }];
 }
 
-+ (void)downloadPhoto:(NSString*)url delegate:(id<PhotoDownloadDelegate>)delegate{
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1000.0];
-    UIImageView *view = [[UIImageView alloc]init];
-    [view setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [delegate downloadImageFinish:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        [delegate downloadImageFinish:nil];
-    }];
-}
-
 + (void)getDownloadUrl:(long)photoId finish:(void (^)(NSString *downloadUrl, NSString *exifUrl))finish{
     NSString *url = [uyoung_host stringByAppendingString:@"photo/downloadUrl"];
     

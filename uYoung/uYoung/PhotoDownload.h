@@ -13,15 +13,12 @@
 @protocol PhotoDownloadDelegate <NSObject>
 
 @optional
-- (void)downloadImageFinish:(UIImage*)image;
 - (void)downloadExifFinish:(NSDictionary*)dict;
 @end
 
 @interface PhotoDownload : NSObject
 
 + (void)downloadPhotoExif:(NSString*)url delegate:(id<PhotoDownloadDelegate>)delegate;
-
-+ (void)downloadPhoto:(NSString*)url delegate:(id<PhotoDownloadDelegate>)delegate;
 
 + (void)getDownloadUrl:(long)photoId finish:(void (^)(NSString *downloadUrl, NSString *exifUrl))finish;
 

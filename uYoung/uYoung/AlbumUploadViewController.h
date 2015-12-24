@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) NSMutableArray *assets;
 
+@property (strong, nonatomic) NSMutableArray *oriImage;//保存原图
+
 @property (assign, nonatomic) long albumid;
 @property (assign, nonatomic) long owneruid;
 

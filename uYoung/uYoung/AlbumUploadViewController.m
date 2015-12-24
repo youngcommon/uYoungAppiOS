@@ -53,15 +53,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)uploadImages:(id)sender {
-    if(_assets!=nil&&[_assets count]>0){
+    if(_assets!=nil&&[_assets count]>0&&[_assets count]==[_oriImage count]){
         [self.view.window showHUDWithText:@"正在上传..." Type:ShowLoading Enabled:YES];
         NSString *format = @"uy_user/%ld/album/%ld/t/%ld";
-        for (int i=0; i<[_assets count]; i++) {
+        for (int i=0; i<[_oriImage count]; i++) {
             long timer = [[NSDate date]timeIntervalSince1970];
             NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, timer];
-            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
-            AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)[_imageCollection cellForItemAtIndexPath:indexpath];
-            UIImage *image = cell.oriImg;
+            UIImage *image = _oriImage[i];
             [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key delegate:self];
         }
     }
@@ -115,6 +113,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
+    [_oriImage addObject:image];
     return cell;
     
 }

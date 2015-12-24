@@ -10,6 +10,8 @@
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
 #import "PhotoDetailModel.h"
+#import "UIImage+scales.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface PhotoDetailViewController ()<UIScrollViewDelegate>{
     UIScrollView *_scrollview;
@@ -29,8 +31,10 @@
     
     [_exifView setHidden:YES];
     
-    _scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    _scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, -40, mScreenWidth, mScreenHeight+40)];
     [_scrollview setBackgroundColor:[UIColor clearColor]];
+    _scrollview.showsHorizontalScrollIndicator = NO;
+    _scrollview.showsVerticalScrollIndicator = NO;
     [self.view insertSubview:_scrollview atIndex:0];
     
     _imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -56,13 +60,20 @@
     return _imageview;
 }
 
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view{
+    NSLog(@"##%f==%f==%f==%f##", _imageview.frame.origin.x, _imageview.frame.origin.y, _imageview.frame.size.width, _imageview.frame.size.height);
+    NSLog(@"##%f==%f==%f==%f##", _scrollview.frame.origin.x, _scrollview.frame.origin.y, _scrollview.frame.size.width, _scrollview.frame.size.height);
+    
+    NSLog(@"##%f==%f==%f==%f##", scrollView.frame.origin.x, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height);
+    NSLog(@"##%f==%f==%f==%f##", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+}
+
 - (void)getDownLoadUrl:(NSInteger)atIndex{
     PhotoDetailModel *model = (PhotoDetailModel*)_photoDetails[atIndex];
     //获得下载url
     [PhotoDownload getDownloadUrl:model.id finish:^(NSString *downloadUrl, NSString *exifUrl) {
         if ([NSString isBlankString:downloadUrl]==NO) {
             //图片
-//            [PhotoDownload downloadPhoto:downloadUrl delegate:self];
             [self lazyInitImage:downloadUrl];
         }
         if ([NSString isBlankString:exifUrl]) {
@@ -73,23 +84,21 @@
 }
 
 - (void)lazyInitImage:(NSString*)imageUrl{
-    /*if (image!=nil) {
-        _imageview=[[UIImageView alloc]initWithImage:image];
-        //调用initWithImage:方法，它创建出来的imageview的宽高和图片的宽高一样
-        [_scrollview addSubview:_imageview];
-        _scrollview.contentSize=image.size;
-    }*/
-    
+    [self.view.window showHUDWithText:@"正在下载图片" Type:ShowLoading Enabled:YES];
+    __weak UIView *weakV = self.view;
     __weak UIImageView *weakImg = _imageview;
     __weak UIScrollView *weakScrl = _scrollview;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1000.0];
     [_imageview setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        image = [image scaleToSize:weakScrl.frame.size];
         [weakImg setImage:image];
         CGSize imgSize = image.size;
         [weakImg setFrame:CGRectMake(0, weakScrl.frame.size.height/2-imgSize.height/2, imgSize.width, imgSize.height)];
         weakScrl.contentSize = image.size;
+        [weakV.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         NSLog(@"=============================");
+        [weakV.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     }];
 }
 
