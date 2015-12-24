@@ -46,7 +46,7 @@
     //设置最大伸缩比例
     _scrollview.maximumZoomScale=2.0;
     //设置最小伸缩比例
-    _scrollview.minimumZoomScale=0.5;
+    _scrollview.minimumZoomScale=1;
     
     [self getDownLoadUrl:_index];
 }
@@ -60,12 +60,18 @@
     return _imageview;
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view{
-    NSLog(@"##%f==%f==%f==%f##", _imageview.frame.origin.x, _imageview.frame.origin.y, _imageview.frame.size.width, _imageview.frame.size.height);
-    NSLog(@"##%f==%f==%f==%f##", _scrollview.frame.origin.x, _scrollview.frame.origin.y, _scrollview.frame.size.width, _scrollview.frame.size.height);
-    
-    NSLog(@"##%f==%f==%f==%f##", scrollView.frame.origin.x, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height);
-    NSLog(@"##%f==%f==%f==%f##", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale{
+    CGSize imgSize = _imageview.image.size;
+    CGFloat scalex = scrollView.frame.size.width / imgSize.width;
+    CGFloat scaley = scrollView.frame.size.height / imgSize.height;
+    CGFloat s = MAX(scalex, scaley);
+    CGFloat width = imgSize.width * s;
+    CGFloat height = imgSize.height * s;
+    float dwidth = ((scrollView.frame.size.width - width) / 2.0f);
+    float dheight = ((scrollView.frame.size.height - height) / 2.0f);
+    CGRect rect = CGRectMake(dwidth, dheight, imgSize.width * s, imgSize.height * s);
+    [_imageview setFrame:rect];
+    NSLog(@"=======%f========", scale);
 }
 
 - (void)getDownLoadUrl:(NSInteger)atIndex{
@@ -90,15 +96,13 @@
     __weak UIScrollView *weakScrl = _scrollview;
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1000.0];
     [_imageview setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        image = [image scaleToSize:weakScrl.frame.size];
+        CGRect rect = [PhotoDetailViewController fitToImageView:image size:weakScrl.frame.size];
         [weakImg setImage:image];
-        CGSize imgSize = image.size;
-        [weakImg setFrame:CGRectMake(0, weakScrl.frame.size.height/2-imgSize.height/2, imgSize.width, imgSize.height)];
+        [weakImg setFrame:rect];
         weakScrl.contentSize = image.size;
         [weakV.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        NSLog(@"=============================");
-        [weakV.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+        [weakV.window showHUDWithText:@"下载失败" Type:ShowPhotoNo Enabled:YES];
     }];
 }
 
@@ -119,4 +123,18 @@
 - (IBAction)toggleExif:(id)sender {
     [_exifView setHidden:![_exifView isHidden]];
 }
+
++ (CGRect)fitToImageView:(UIImage*)img size:(CGSize)viewsize{
+    CGSize imgSize = img.size;
+    CGFloat scalex = viewsize.width / imgSize.width;
+    CGFloat scaley = viewsize.height / imgSize.height;
+    CGFloat scale = MIN(scalex, scaley);
+    CGFloat width = imgSize.width * scale;
+    CGFloat height = imgSize.height * scale;
+    float dwidth = ((viewsize.width - width) / 2.0f);
+    float dheight = ((viewsize.height - height) / 2.0f);
+    CGRect rect = CGRectMake(dwidth, dheight, imgSize.width * scale, imgSize.height * scale);
+    return rect;
+}
+
 @end
