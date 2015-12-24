@@ -29,9 +29,12 @@
     
     [_exifView setHidden:YES];
     
-    _scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    _scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
     [_scrollview setBackgroundColor:[UIColor clearColor]];
     [self.view insertSubview:_scrollview atIndex:0];
+    
+    _imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_scrollview addSubview:_imageview];
     
     //设置实现缩放
     //设置代理scrollview的代理对象
@@ -59,7 +62,8 @@
     [PhotoDownload getDownloadUrl:model.id finish:^(NSString *downloadUrl, NSString *exifUrl) {
         if ([NSString isBlankString:downloadUrl]==NO) {
             //图片
-            [PhotoDownload downloadPhoto:downloadUrl delegate:self];
+//            [PhotoDownload downloadPhoto:downloadUrl delegate:self];
+            [self lazyInitImage:downloadUrl];
         }
         if ([NSString isBlankString:exifUrl]) {
             //下载图片
@@ -68,13 +72,25 @@
     }];
 }
 
-- (void)downloadImageFinish:(UIImage*)image{
-    if (image!=nil) {
+- (void)lazyInitImage:(NSString*)imageUrl{
+    /*if (image!=nil) {
         _imageview=[[UIImageView alloc]initWithImage:image];
         //调用initWithImage:方法，它创建出来的imageview的宽高和图片的宽高一样
         [_scrollview addSubview:_imageview];
         _scrollview.contentSize=image.size;
-    }
+    }*/
+    
+    __weak UIImageView *weakImg = _imageview;
+    __weak UIScrollView *weakScrl = _scrollview;
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1000.0];
+    [_imageview setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [weakImg setImage:image];
+        CGSize imgSize = image.size;
+        [weakImg setFrame:CGRectMake(0, weakScrl.frame.size.height/2-imgSize.height/2, imgSize.width, imgSize.height)];
+        weakScrl.contentSize = image.size;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        NSLog(@"=============================");
+    }];
 }
 
 - (void)downloadExifFinish:(NSDictionary*)dict{
