@@ -22,4 +22,8 @@
 
 + (void)getDownloadUrl:(long)photoId finish:(void (^)(NSString *downloadUrl, NSString *exifUrl))finish;
 
++ (void)photoIsLike:(long)uid photoId:(long)photoId ops:(void (^)(BOOL isLike))ops;
+
++ (void)photoLike:(long)uid photoId:(long)photoId;
+
 @end

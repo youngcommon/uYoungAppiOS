@@ -12,6 +12,7 @@
 #import "PhotoDetailModel.h"
 #import "UIImage+scales.h"
 #import "UIWindow+YoungHUD.h"
+#import "UserDetailModel.h"
 
 @interface PhotoDetailViewController ()<UIScrollViewDelegate>{
     UIScrollView *_scrollview;
@@ -31,6 +32,8 @@
     
     [_exifView setHidden:YES];
     
+    _isLike = NO;
+    
     _scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, -40, mScreenWidth, mScreenHeight+40)];
     [_scrollview setBackgroundColor:[UIColor clearColor]];
     _scrollview.showsHorizontalScrollIndicator = NO;
@@ -48,6 +51,7 @@
     //设置最小伸缩比例
     _scrollview.minimumZoomScale=1;
     
+    [self initIsLike:_index];
     [self getDownLoadUrl:_index];
 }
 
@@ -60,18 +64,14 @@
     return _imageview;
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale{
-    CGSize imgSize = _imageview.image.size;
-    CGFloat scalex = scrollView.frame.size.width / imgSize.width;
-    CGFloat scaley = scrollView.frame.size.height / imgSize.height;
-    CGFloat s = MAX(scalex, scaley);
-    CGFloat width = imgSize.width * s;
-    CGFloat height = imgSize.height * s;
-    float dwidth = ((scrollView.frame.size.width - width) / 2.0f);
-    float dheight = ((scrollView.frame.size.height - height) / 2.0f);
-    CGRect rect = CGRectMake(dwidth, dheight, imgSize.width * s, imgSize.height * s);
-    [_imageview setFrame:rect];
-    NSLog(@"=======%f========", scale);
+// 让UIImageView在UIScrollView缩放后居中显示
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
+    (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
+    (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    _imageview.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
+                            scrollView.contentSize.height * 0.5 + offsetY);
 }
 
 - (void)getDownLoadUrl:(NSInteger)atIndex{
@@ -112,12 +112,31 @@
     }
 }
 
+- (void)initIsLike:(NSInteger)atIndex{
+    PhotoDetailModel *model = (PhotoDetailModel*)_photoDetails[atIndex];
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user!=nil&&model!=nil) {
+        [PhotoDownload photoIsLike:user.id photoId:model.id ops:^(BOOL isLike) {
+            _isLike = isLike;
+            NSString *likeimg = isLike ? @"uyoung.bundle/had_like" : @"uyoung.bundle/no_like";
+            [_likeButton setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+        }];
+    }
+}
+
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)likeThisPhoto:(UIButton*)sender {
-    [sender setImage:[UIImage imageNamed:@"uyoung.bundle/had_like"] forState:UIControlStateNormal];
+    PhotoDetailModel *model = (PhotoDetailModel*)_photoDetails[_index];
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user!=nil&&model!=nil) {
+        [PhotoDownload photoLike:user.id photoId:model.id];
+    }
+    NSString *likeimg = _isLike ? @"uyoung.bundle/no_like" : @"uyoung.bundle/had_like";
+    [sender setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+    _isLike = !_isLike;
 }
 
 - (IBAction)toggleExif:(id)sender {

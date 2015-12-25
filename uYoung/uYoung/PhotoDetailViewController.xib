@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoDetailViewController">
             <connections>
                 <outlet property="exifView" destination="iRp-oS-CbG" id="dJE-cc-rM0"/>
+                <outlet property="likeButton" destination="02a-bE-bNX" id="ELI-vZ-Ewe"/>
                 <outlet property="showExif" destination="dCr-h3-r3e" id="pTx-pF-vcd"/>
                 <outlet property="view" destination="iN0-l3-epB" id="WOQ-yD-Adi"/>
             </connections>
