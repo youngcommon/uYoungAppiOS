@@ -94,6 +94,8 @@
 		849506B11BFE042700119D8C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506B01BFE042700119D8C /* CityModel.m */; };
 		8497707B1C219D7000822BC4 /* AlbumUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */; };
 		8497707D1C219D8C00822BC4 /* AlbumUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */; };
+		84993B581C2D808B00888FC7 /* JZAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84993B551C2D808B00888FC7 /* JZAlbumViewController.m */; };
+		84993B591C2D808B00888FC7 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84993B571C2D808B00888FC7 /* PhotoView.m */; };
 		84A2A05C1C298E01005061CE /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A05B1C298E01005061CE /* PhotoDetailViewController.m */; };
 		84A2A05E1C2992B1005061CE /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A05D1C2992B1005061CE /* PhotoDetailViewController.xib */; };
 		84A2A0611C29A131005061CE /* PhotoDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A0601C29A131005061CE /* PhotoDownload.m */; };
@@ -267,6 +269,10 @@
 		849770791C219D7000822BC4 /* AlbumUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumUploadViewController.h; sourceTree = "<group>"; };
 		8497707A1C219D7000822BC4 /* AlbumUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumUploadViewController.m; sourceTree = "<group>"; };
 		8497707C1C219D8C00822BC4 /* AlbumUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumUploadViewController.xib; sourceTree = "<group>"; };
+		84993B541C2D808B00888FC7 /* JZAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZAlbumViewController.h; sourceTree = "<group>"; };
+		84993B551C2D808B00888FC7 /* JZAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZAlbumViewController.m; sourceTree = "<group>"; };
+		84993B561C2D808B00888FC7 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		84993B571C2D808B00888FC7 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
 		84A2A05A1C298E01005061CE /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
 		84A2A05B1C298E01005061CE /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
 		84A2A05D1C2992B1005061CE /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
@@ -547,6 +553,7 @@
 		8457EE061BEA518C00C00176 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				84993B531C2D806900888FC7 /* pageimgutil */,
 				84763F721BFA1F89002BC70B /* indicator */,
 				8457EE091BEA525000C00176 /* NSString+StringUtil.h */,
 				8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */,
@@ -596,6 +603,17 @@
 				84763F7C1BFA1FC7002BC70B /* YoungHUDLabel.m */,
 			);
 			name = indicator;
+			sourceTree = "<group>";
+		};
+		84993B531C2D806900888FC7 /* pageimgutil */ = {
+			isa = PBXGroup;
+			children = (
+				84993B541C2D808B00888FC7 /* JZAlbumViewController.h */,
+				84993B551C2D808B00888FC7 /* JZAlbumViewController.m */,
+				84993B561C2D808B00888FC7 /* PhotoView.h */,
+				84993B571C2D808B00888FC7 /* PhotoView.m */,
+			);
+			name = pageimgutil;
 			sourceTree = "<group>";
 		};
 		84A8A3C11C22F28500B69EC2 /* activity */ = {
@@ -849,6 +867,7 @@
 				8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
+				84993B581C2D808B00888FC7 /* JZAlbumViewController.m in Sources */,
 				4820A4CC1BB1417D006AEC13 /* RootViewController.m in Sources */,
 				84763F7F1BFA1FC7002BC70B /* YoungHUDImageView.m in Sources */,
 				8462F6521C00BBAB00A6B460 /* CreateActivityController.m in Sources */,
@@ -881,6 +900,7 @@
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
 				84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
+				84993B591C2D808B00888FC7 /* PhotoView.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
 				482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */,
 				84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */,

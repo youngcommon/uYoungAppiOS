@@ -26,6 +26,7 @@ PODS:
   - Mantle (2.0.5):
     - Mantle/extobjc (= 2.0.5)
   - Mantle/extobjc (2.0.5)
+  - MBProgressHUD (0.9.1)
   - Qiniu (7.0.15):
     - AFNetworking (~> 2.0)
     - HappyDNS (~> 0.2)
@@ -42,7 +43,9 @@ DEPENDENCIES:
   - AFNetworking
   - LBBlurredImage
   - Mantle
+  - MBProgressHUD (~> 0.9.1)
   - Qiniu (~> 7.0)
+  - SDWebImage
   - SVPullToRefresh
   - ZLPhotoLib (from `https://github.com/MakeZL/ZLPhotoLib`)
   - ZSSRichTextEditor
@@ -62,6 +65,7 @@ SPEC CHECKSUMS:
   HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Qiniu: ade34d722c8ce0eed7080fd268249e8402a2f535
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c

@@ -24,6 +24,7 @@
 @property (assign, nonatomic) long albumid;
 
 @property (strong, nonatomic) NSArray *pics;
+@property (strong, nonatomic) NSMutableArray *picUrls;
 
 - (IBAction)back:(id)sender;
 - (IBAction)selectPics:(id)sender;
