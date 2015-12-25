@@ -119,13 +119,17 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [_imageCollection deselectItemAtIndexPath:indexPath animated:YES];
-    
-    AlbumPicCollectionCell *cell = (AlbumPicCollectionCell *)[_imageCollection cellForItemAtIndexPath:indexPath];
-    
-    [self setupPhotoBrowser:cell];
-    
+    // 图片游览器
+    ZLPhotoPickerBrowserViewController *pickerBrowser = [[ZLPhotoPickerBrowserViewController alloc] init];
+    // 数据源/delegate
+    pickerBrowser.delegate = self;
+    pickerBrowser.dataSource = self;
+    // 是否可以删除照片
+    pickerBrowser.editing = YES;
+    // 当前选中的值
+    pickerBrowser.currentIndexPath = [NSIndexPath indexPathForItem:indexPath.row inSection:0];
+    // 展示控制器
+    [pickerBrowser showPickerVc:self];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,22 +159,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
-}
-
-#pragma mark - setupCell click ZLPhotoPickerBrowserViewController
-- (void) setupPhotoBrowser:(AlbumPicCollectionCell *) cell{
-    NSIndexPath *indexPath = [self.imageCollection indexPathForCell:cell];
-    // 图片游览器
-    ZLPhotoPickerBrowserViewController *pickerBrowser = [[ZLPhotoPickerBrowserViewController alloc] init];
-    // 数据源/delegate
-    pickerBrowser.delegate = self;
-    pickerBrowser.dataSource = self;
-    // 是否可以删除照片
-    pickerBrowser.editing = YES;
-    // 当前选中的值
-    pickerBrowser.currentIndexPath = [NSIndexPath indexPathForItem:indexPath.row inSection:0];
-    // 展示控制器
-    [pickerBrowser showPickerVc:self];
 }
 
 #pragma mark - <ZLPhotoPickerBrowserViewControllerDataSource>
