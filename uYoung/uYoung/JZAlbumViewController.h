@@ -27,6 +27,14 @@
  *  接收当前图片的序号,默认的是0
  */
 @property(nonatomic, assign) NSInteger currentIndex;
+/**
+ *  用来显示图片是否like
+ */
+@property(nonatomic, strong) UIButton *likeButton;
+/**
+ *  用来保存图片是否like
+ */
+@property(nonatomic, strong) NSMutableDictionary *likeDict;
 
 
 @end

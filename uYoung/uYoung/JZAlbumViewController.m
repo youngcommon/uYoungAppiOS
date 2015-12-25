@@ -13,6 +13,7 @@
 #import "GlobalConfig.h"
 #import "PhotoDetailModel.h"
 #import "NSString+StringUtil.h"
+#import "UserDetailModel.h"
 
 @interface JZAlbumViewController ()<UIScrollViewDelegate,PhotoViewDelegate>
 {
@@ -39,14 +40,34 @@
     lastScale = 1.0;
     self.view.backgroundColor = [UIColor blackColor];
 
+    _likeDict = [[NSMutableDictionary alloc]initWithCapacity:0];
     [self initScrollView];
     [self addLabels];
     [self setPicCurrentIndex:self.currentIndex];
+    [self addLikeButton];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addLikeButton{
+    _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth-70-20, mScreenHeight-40-34-20, 70, 34)];
+    [_likeButton setImage:[UIImage imageNamed:@"uyoung.bundle/no_like"] forState:UIControlStateNormal];//默认都为非选中状态
+    [_likeButton addTarget:self action:@selector(likePhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_likeButton];
+}
+
+- (void)likePhoto:(NSInteger)atIndex{
+    PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[atIndex];
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user!=nil&&model!=nil) {
+        [PhotoDownload photoLike:user.id photoId:model.id];
+    }
+//    NSString *likeimg = _isLike ? @"uyoung.bundle/no_like" : @"uyoung.bundle/had_like";
+//    [sender setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+//    _isLike = !_isLike;
 }
 
 -(void)initScrollView{
@@ -70,10 +91,10 @@
 }
 
 -(void)addLabels{
-    self.sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, mScreenHeight-64-49, 60, 30)];
+    self.sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake((mScreenWidth-60)/2, mScreenHeight-30-60, 60, 30)];
     self.sliderLabel.backgroundColor = [UIColor clearColor];
     self.sliderLabel.textColor = [UIColor whiteColor];
-    self.sliderLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)(self.currentIndex+1), (unsigned long)self.imgArr.count];
+    self.sliderLabel.text = [NSString stringWithFormat:@"%ld / %lu", (long)(self.currentIndex+1), (unsigned long)self.imgArr.count];
     [self.view addSubview:self.sliderLabel];
 }
 
@@ -112,6 +133,7 @@
         return;
     }
     
+    UserDetailModel *user = [UserDetailModel currentUser];
     PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[atIndex];
     //获得下载url
     [PhotoDownload getDownloadUrl:model.id finish:^(NSString *downloadUrl, NSString *exifUrl) {
@@ -123,6 +145,11 @@
             //下载图片
 //            [PhotoDownload downloadPhotoExif:exifUrl delegate:self];
         }
+    }];
+    
+    //获取图片是否like
+    [PhotoDownload photoIsLike:user.id photoId:model.id ops:^(BOOL isLike) {
+        [_likeDict setObject:@(isLike) forKey:[NSString stringWithFormat:@"%d", (int)atIndex]];
     }];
 }
 
