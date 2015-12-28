@@ -53,21 +53,23 @@
 }
 
 - (void)addLikeButton{
-    _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth-70-20, mScreenHeight-40-34-20, 70, 34)];
+    _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth-70-20, 40+20, 70, 34)];
     [_likeButton setImage:[UIImage imageNamed:@"uyoung.bundle/no_like"] forState:UIControlStateNormal];//默认都为非选中状态
-    [_likeButton addTarget:self action:@selector(likePhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [_likeButton addTarget:self action:@selector(likePhoto) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_likeButton];
 }
 
-- (void)likePhoto:(NSInteger)atIndex{
-    PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[atIndex];
+- (void)likePhoto{
+    PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[_currentIndex];
     UserDetailModel *user = [UserDetailModel currentUser];
     if (user!=nil&&model!=nil) {
         [PhotoDownload photoLike:user.id photoId:model.id];
     }
-//    NSString *likeimg = _isLike ? @"uyoung.bundle/no_like" : @"uyoung.bundle/had_like";
-//    [sender setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
-//    _isLike = !_isLike;
+    NSString *key = [NSString stringWithFormat:@"%d", (int)_currentIndex];
+    BOOL _isLike = [[_likeDict objectForKey:key]boolValue];
+    NSString *likeimg = _isLike ? @"uyoung.bundle/no_like" : @"uyoung.bundle/had_like";
+    [_likeButton setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+    [_likeDict setObject:@(!_isLike) forKey:key];
 }
 
 -(void)initScrollView{
@@ -102,8 +104,8 @@
     _currentIndex = currentIndex;
     self.scrollView.contentOffset = CGPointMake(mScreenWidth*currentIndex, 0);
     [self getDownLoadUrl:_currentIndex];
-    [self getDownLoadUrl:_currentIndex+1];
-    [self getDownLoadUrl:_currentIndex-1];
+//    [self getDownLoadUrl:_currentIndex+1];
+//    [self getDownLoadUrl:_currentIndex-1];
 }
 
 -(void)loadPhote:(NSString*)url atIndex:(NSInteger)index{
@@ -133,6 +135,8 @@
         return;
     }
     
+    _currentIndex = atIndex;
+    
     UserDetailModel *user = [UserDetailModel currentUser];
     PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[atIndex];
     //获得下载url
@@ -142,15 +146,24 @@
             [self loadPhote:downloadUrl atIndex:atIndex];
         }
         if ([NSString isBlankString:exifUrl]) {
-            //下载图片
 //            [PhotoDownload downloadPhotoExif:exifUrl delegate:self];
         }
     }];
     
-    //获取图片是否like
-    [PhotoDownload photoIsLike:user.id photoId:model.id ops:^(BOOL isLike) {
-        [_likeDict setObject:@(isLike) forKey:[NSString stringWithFormat:@"%d", (int)atIndex]];
-    }];
+    NSString *key = [NSString stringWithFormat:@"%d", (int)atIndex];
+    BOOL hasKey = [[_likeDict allKeys]containsObject:key];
+    if (hasKey) {
+        BOOL _isLike = [[_likeDict objectForKey:key]boolValue];
+        NSString *likeimg = _isLike ? @"uyoung.bundle/had_like" : @"uyoung.bundle/no_like";
+        [_likeButton setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+    }else{
+        //获取图片是否like
+        [PhotoDownload photoIsLike:user.id photoId:model.id ops:^(BOOL isLike) {
+            [_likeDict setObject:@(isLike) forKey:[NSString stringWithFormat:@"%d", (int)atIndex]];
+            NSString *likeimg = isLike ? @"uyoung.bundle/had_like" : @"uyoung.bundle/no_like";
+            [_likeButton setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
+        }];
+    }
 }
 
 //手势
