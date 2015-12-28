@@ -99,15 +99,8 @@
 - (void)initUserAvater{
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if ([NSString isBlankString:loginUser.avatarUrl]==NO) {
-//        __weak UIButton *button = _userHeader;
         NSString *avatarUrl = loginUser.avatarUrl;
         [UploadImageUtil lazyInitAvatarOfButton:avatarUrl button:_userHeader];
-        /*avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
-        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-        [_userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-            [button setImage:image forState:UIControlStateNormal];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        }];*/
     }else{
         [_userHeader setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/logo_icon"] forState:UIControlStateNormal];
     }
