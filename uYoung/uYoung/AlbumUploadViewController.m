@@ -90,6 +90,8 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+        //更新相册封面
+        
     }
 }
 
