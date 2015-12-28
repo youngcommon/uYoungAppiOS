@@ -23,6 +23,8 @@
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
             [img setImage:[UIImage imageNamed:UserDefaultHeader]];
         }];
+    }else{
+        [self setImage:[UIImage imageNamed:UserDefaultHeader]];
     }
 }
 
