@@ -208,7 +208,7 @@
     avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
     [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [self.headerBackBlurImg setImageToBlur:image blurRadius:80. completionBlock:nil];
+        [self.headerBackBlurImg setImageToBlur:image blurRadius:10. completionBlock:nil];
         [self.headerImg setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         UIImage *img = [UIImage imageNamed:UserDefaultHeader];

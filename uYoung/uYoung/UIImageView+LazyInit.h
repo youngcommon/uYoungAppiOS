@@ -12,4 +12,6 @@
 
 - (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix;
 
+- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix placeholdImg:(NSString*)imagenamed;
+
 @end
