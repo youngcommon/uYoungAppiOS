@@ -13,7 +13,7 @@
 @protocol UploadImgDelegate <NSObject>
 
 @optional
-- (void)getImgUrl:(NSString*)url;
+- (void)getImgKey:(NSString*)key host:(NSString*)host;
 
 @end
 

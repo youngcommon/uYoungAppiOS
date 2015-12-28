@@ -14,4 +14,10 @@
 
 + (void)getActivityDetailWithId:(NSInteger)activityId;
 
++ (void)getSignStatusWithUser:(long)userId actId:(long)actId opts:(void(^)(NSInteger status))status;
+
++ (void)signupActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
+
++ (void)unsignedActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
+
 @end

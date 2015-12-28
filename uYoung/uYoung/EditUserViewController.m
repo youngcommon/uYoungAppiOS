@@ -559,7 +559,11 @@
 }
 
 //获得七牛云存储的头像的url
-- (void)getImgUrl:(NSString*)url{
+- (void)getImgKey:(NSString*)key host:(NSString *)host{
+    if ([NSString isBlankString:host]) {
+        host = QINIU_HOST;
+    }
+    NSString *url = [[host stringByAppendingString:@"/"]stringByAppendingString:key];
     _avater = url;
 }
 

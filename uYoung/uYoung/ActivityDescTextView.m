@@ -78,10 +78,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)getImgUrl:(NSString*)url{
-    if([NSString isBlankString:url]){
+- (void)getImgKey:(NSString*)key host:(NSString *)host{
+    if([NSString isBlankString:key]){
         [self.view.window showHUDWithText:@"图片插入失败" Type:ShowPhotoNo Enabled:YES];
     }else{
+        if ([NSString isBlankString:host]) {
+            host = QINIU_HOST;
+        }
+        NSString *url = [[host stringByAppendingString:@"/"]stringByAppendingString:key];
         [self.view.window showHUDWithText:@"图片处理成功" Type:ShowPhotoYes Enabled:YES];
         url = [NSString stringWithFormat:@"%@-%@", url, @"actdesc200"];
         [self focusTextEditor];

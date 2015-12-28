@@ -15,6 +15,7 @@
 #endif
 
 #import "CityModel.h"
+#import "UploadImageUtil.h"
 
 @interface AppDelegate () <TencentSessionDelegate>
 

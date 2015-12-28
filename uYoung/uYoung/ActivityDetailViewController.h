@@ -44,7 +44,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *descScrollView;
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 

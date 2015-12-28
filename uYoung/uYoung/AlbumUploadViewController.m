@@ -66,10 +66,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - 上传成功后回调
-- (void)getImgUrl:(NSString*)url{
+- (void)getImgKey:(NSString*)key host:(NSString *)host{
+    if ([NSString isBlankString:host]) {
+        host = QINIU_HOST;
+    }
     //写入uYoung数据库
-    if ([NSString isBlankString:url]==NO) {
-        NSMutableDictionary *param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", url,@"photoUrl", @"xxx",@"photoName", nil];
+    if ([NSString isBlankString:key]==NO) {
+        NSMutableDictionary *param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", nil];
         [_imgParams addObject:param];
     }
     if ([_assets count]==[_imgParams count]) {//说明图片已经全部上传完毕

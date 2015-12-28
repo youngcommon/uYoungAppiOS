@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityDetailViewController">
             <connections>
                 <outlet property="backBtn" destination="bsl-37-SZC" id="6s4-u3-GER"/>
-                <outlet property="button" destination="Kxc-WU-kXp" id="s9u-c3-wYf"/>
                 <outlet property="contentView" destination="lHj-4h-9Qk" id="Flp-2z-bXa"/>
                 <outlet property="descScrollView" destination="Z9b-gJ-GoM" id="GV8-QU-P5k"/>
                 <outlet property="freeSignetImg" destination="05b-Gf-d3f" id="3XW-PF-YM8"/>
                 <outlet property="headerBackground" destination="nbO-EU-H4f" id="bFm-O1-c83"/>
                 <outlet property="pageControl" destination="h0f-mB-H7I" id="f2E-jI-5t7"/>
                 <outlet property="sepLineCons" destination="vi6-SQ-bjU" id="ZmE-rf-2os"/>
+                <outlet property="signupButton" destination="Kxc-WU-kXp" id="RDu-VN-DEx"/>
                 <outlet property="titleLable" destination="189-CY-PXp" id="UV4-WV-ahD"/>
                 <outlet property="userHeader" destination="Jv7-WZ-1Gn" id="PaR-FF-ZPC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -88,7 +88,6 @@
                                 <constraint firstAttribute="width" constant="64" id="qsl-1r-Cjp"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="参加活动"/>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/dividing_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="fp2-jm-7gV">
                             <rect key="frame" x="10" y="330" width="256" height="6"/>

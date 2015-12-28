@@ -42,4 +42,6 @@
 
 #define QINIU_SK @"1GPL8ts0TUNS1EUM3_AHpAnyws5VKtKhxL8zYTLo"
 
+#define QINIU_HOST @"http://7xnzko.com1.z0.glb.clouddn.com"
+
 #endif /* GlobalConfig_h */

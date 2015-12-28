@@ -65,6 +65,8 @@
         return;
     }
     
+    [self saveQiniuHost:qiniuHost];
+    
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     NSData *data = UIImageJPEGRepresentation(_img, 1.0);
     NSNumber *num = @([data length]);
@@ -74,10 +76,15 @@
     }
 
     [upManager putData:data key:_key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSString *url = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:key];
-        [_delegate getImgUrl:url];
+        [_delegate getImgKey:key host:qiniuHost];
     } option:nil];
     
+}
+
+- (void)saveQiniuHost:(NSString*)host{
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:host];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"qiniu_host"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button{

@@ -9,6 +9,7 @@
 #import "ActivityDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import "UploadImageUtil.h"
+#import "ActivityAlbumViewController.h"
 
 @interface ActivityDetailViewController ()
 
@@ -177,15 +178,14 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
-    
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
-//    [self initUserAvater];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [self initUserAvater];
+    [self initSignupButton];
 }
 
 - (void)initUserAvater{
@@ -194,20 +194,77 @@ static NSString * const reuseIdentifier = @"Cell";
     if ([NSString isBlankString:self.loginUser.avatarUrl]==NO) {
         NSString *avatarUrl = self.loginUser.avatarUrl;
         [UploadImageUtil lazyInitAvatarOfButton:avatarUrl button:_userHeader];
-        /*avatarUrl = [NSString stringWithFormat:@"%@-%@", avatarUrl, @"actdesc200"];
-        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-        [self.userHeader.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-            [self.userHeader.imageView setImage:image];
-            [_userHeader setBackgroundImage:image forState:UIControlStateNormal];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-            UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-            [_userHeader setBackgroundImage:img forState:UIControlStateNormal];
-        }];*/
     }
 }
 
-- (void)fillActivityDetail:(NSNotification*)notification
-{
+- (void)initSignupButton{
+    //判断当前活动状态
+    NSInteger status = self.model.status;
+    switch (status) {
+        case 1://进行中
+            [_signupButton setTitle:@"活动进行中" forState:UIControlStateNormal];
+            [_signupButton setEnabled:NO];
+            break;
+        case 2://已完成
+            [_signupButton setTitle:@"查看活动成果" forState:UIControlStateNormal];
+            [_signupButton addTarget:self action:@selector(toActivityAlbum) forControlEvents:UIControlEventTouchUpInside];
+            break;
+        case 3://已取消
+            [_signupButton setTitle:@"已取消" forState:UIControlStateNormal];
+            [_signupButton setEnabled:NO];
+            break;
+        default://0报名中
+            if (_loginUser!=nil&&[NSString isBlankString:self.loginUser.avatarUrl]==NO){
+                //判断报名状态
+                [ActivityDetail getSignStatusWithUser:_loginUser.id actId:self.model.activityId opts:^(NSInteger status) {
+                    [self initSignupButtonWithStatus:status];
+                }];
+            }
+            break;
+    }
+    
+}
+
+//查看活动相册
+- (void)toActivityAlbum{
+    ActivityAlbumViewController *editUserViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:editUserViewCtl animated:YES];
+}
+
+- (void)initSignupButtonWithStatus:(NSInteger)status{
+    switch (status) {
+        case 1://已报名
+            [_signupButton removeTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
+            [_signupButton setTitle:@"取消报名" forState:UIControlStateNormal];
+            [_signupButton addTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
+            break;
+        default://0与2都认为可以再报名
+            [_signupButton removeTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
+            [_signupButton setTitle:@"参加活动" forState:UIControlStateNormal];
+            [_signupButton addTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
+            break;
+    }
+}
+
+//取消报名
+- (void)unsignedActivity{
+    [ActivityDetail unsignedActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
+        if (success) {
+            [self initSignupButtonWithStatus:0];
+        }
+    }];
+}
+
+//报名参加活动
+- (void)signupAct{
+    [ActivityDetail signupActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
+        if (success) {
+            [self initSignupButtonWithStatus:1];
+        }
+    }];
+}
+
+- (void)fillActivityDetail:(NSNotification*)notification{
     NSDictionary *dic = (NSDictionary*)[notification object];
     self.detailModel = [MTLJSONAdapter modelOfClass:[ActivityDetailModel class] fromJSONDictionary:dic error:nil];
     
@@ -218,10 +275,6 @@ static NSString * const reuseIdentifier = @"Cell";
     CGRect frame = self.descScrollView.frame;
     //设置活动描述
     UIWebView *descView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-//    [descView setText:desc];
-//    [descView setFont:[UIFont systemFontOfSize:18]];
-//    descView.scrollEnabled = YES;
-//    descView.editable = NO;
     descView.backgroundColor = [UIColor whiteColor];
     NSString *jsString = [NSString stringWithFormat:@"<html>\n<head>\n<style type=\"text/css\">\nbody{font-family: \"%@\";}\n</style>\n</head>\n<body>%@</body>\n</html>", @"Helvetica", desc];
     [descView loadHTMLString:jsString baseURL:nil];
@@ -298,8 +351,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     //更新UIPageControl的当前页
     CGPoint offset = scrollView.contentOffset;
     CGRect bounds = scrollView.frame;
@@ -324,11 +376,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController pushViewController:userCenter animated:YES];
     
 }
-
-/*- (void)loginSuccess{
-    [self initUserAvater];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}*/
 
 - (UIImage *)getScaleUIImage:(NSString*)name Height:(CGFloat)height{
     UIImage *bubble = [UIImage imageNamed:name];
