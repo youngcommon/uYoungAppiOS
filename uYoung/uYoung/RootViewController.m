@@ -42,7 +42,7 @@
     
     [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
-    [self.activityTabViewController initActivityList:1];
+    [self.activityTabViewController initActivityList:0];
     
     _userHeaderBackground = [[UILabel alloc]initWithFrame:CGRectMake(mScreenWidth/2-33, mScreenHeight-10-66, 66, 66)];
     _userHeaderBackground.backgroundColor = UIColorFromRGB(0x85b200);

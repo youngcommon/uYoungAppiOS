@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     self.currentPage = 1;
-    self.status = 1;
+    self.status = 0;
     
     [self initPullAndPushView];
     
