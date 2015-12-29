@@ -34,7 +34,7 @@
 }
 
 + (void)getSignStatusWithUser:(long)userId actId:(long)actId opts:(void(^)(NSInteger status))status{
-    NSString *url = [uyoung_host stringByAppendingString:@"activity/get"];
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/getSignUp"];
     
     NSDictionary *parameters = @{@"uid":@(userId), @"activityId":@(actId)};
     
