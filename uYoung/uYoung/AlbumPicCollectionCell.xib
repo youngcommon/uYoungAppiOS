@@ -76,7 +76,9 @@
             </variation>
             <connections>
                 <outlet property="img" destination="4qR-Qa-rrJ" id="UiJ-H8-tUS"/>
+                <outlet property="likeImg" destination="KA8-PS-A3a" id="tgP-fR-hfb"/>
                 <outlet property="likeLabel" destination="C3J-yU-Lqy" id="MIk-ph-ffW"/>
+                <outlet property="viewImg" destination="zkD-KL-TrG" id="jFW-l1-rI3"/>
                 <outlet property="viewLabel" destination="ug2-Vg-fxQ" id="dKW-lM-WON"/>
             </connections>
         </collectionViewCell>

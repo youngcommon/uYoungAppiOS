@@ -13,7 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (strong, nonatomic) IBOutlet UILabel *likeLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *likeImg;
 @property (strong, nonatomic) IBOutlet UILabel *viewLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *viewImg;
 @property (strong, nonatomic) UIImage *oriImg;
 
 @property (assign, nonatomic) BOOL showLabels;//是否显示like和viewlabel
@@ -21,5 +23,7 @@
 @property (strong, nonatomic) NSDictionary *picData;
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail;
+
+- (void)hiddenLabels;
 
 @end

@@ -14,10 +14,13 @@
 @implementation AlbumPicCollectionCell
 
 - (void)awakeFromNib {
-    if (!_showLabels) {
-        [_likeLabel setHidden:YES];
-        [_viewLabel setHidden:NO];
-    }
+}
+
+- (void)hiddenLabels{
+    [_likeLabel setHidden:YES];
+    [_viewLabel setHidden:YES];
+    [_likeImg setHidden:YES];
+    [_viewImg setHidden:YES];
 }
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
