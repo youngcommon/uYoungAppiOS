@@ -14,4 +14,6 @@
 
 + (void)getUserAlbumListWithUid:(NSInteger)userId;
 
++ (void)deleteUserAlbum:(long)albumId uid:(long)uid success:(void(^)(BOOL success))success;
+
 @end

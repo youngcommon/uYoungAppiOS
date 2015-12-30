@@ -10,6 +10,7 @@
 #import "UserAlbumList.h"
 #import "AlbumDetailViewController.h"
 #import "AlbumModel.h"
+#import "UserDetailModel.h"
 
 @interface AlbumTableViewController ()
 
@@ -54,8 +55,7 @@
     return [self.albumListData count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"AlbumCell";
     
     AlbumCoverTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -84,6 +84,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AlbumModel *model = (AlbumModel*)_albumListData[indexPath.row];
     [AlbumDetail getAlbumDetailByAlbumId:model.id delegate:self];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{     //当在Cell上滑动时会调用此函数
+    
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user==nil||[user isEqual:[NSNull null]]) {
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return  UITableViewCellEditingStyleDelete;  //返回此值时,Cell会做出响应显示Delete按键,点击Delete后会调用下面的函数,别给传递UITableViewCellEditingStyleDelete参数
+    }
+    
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //对选中的Cell根据editingStyle进行操作
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        AlbumModel *model = (AlbumModel*)_albumListData[indexPath.row];
+        if (model!=nil&&model.id>0) {
+            UserDetailModel *user = [UserDetailModel currentUser];
+            //调用删除相册接口
+            [UserAlbumList deleteUserAlbum:model.id uid:user.id success:^(BOOL success) {
+                if (success) {
+                    //删除成功，处理table数据
+                    [self.albumListData removeObjectAtIndex:indexPath.row];
+                    [self.tableView reloadData];
+                }
+                [self.tableView reloadInputViews];
+            }];
+        }
+    }
+    
 }
 
 -(void)successGetAlbumDetail:(AlbumDetailModel*)model{
