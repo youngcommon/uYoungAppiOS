@@ -27,7 +27,10 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    [self.albumCoverImage setFrame:CGRectMake(self.albumCoverImage.frame.origin.x, self.albumCoverImage.frame.origin.y, self.albumCoverImage.frame.size.width, height)];
+    _albumCoverImage.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    _albumCoverImage.layer.borderWidth = 1;
+    
+//    [self.albumCoverImage setFrame:CGRectMake(self.albumCoverImage.frame.origin.x, self.albumCoverImage.frame.origin.y, self.albumCoverImage.frame.size.width, height)];
 }
 
 - (void)fillDataWithAlbumModel:(AlbumModel*)model{
@@ -36,14 +39,11 @@
     [_albumPhotoCountLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalPhotoCount]];
     [_albumCreateLabel setText:model.createTime];
     if (model!=nil&&[NSString isBlankString:model.firstPhotoUrl]==NO) {
-        [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621" placeholdImg:@"uyoung.bundle/nopic_tip"];
-//        [_albumCoverImage setImage:[_albumCoverImage.image scaleToSize:_albumCoverImage.frame.size]];
-    }/*else{
-        UIImageView *nopic = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nopic_tip"]];
-        CGRect frame = CGRectMake((self.frame.size.width-192), (self.frame.size.height-182), 192, 182);
-        [nopic setFrame:frame];
-        [self addSubview:nopic];
-    }*/
+        [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621" placeholdImg:@"uyoung.bundle/no_cover"];
+    }else{
+        [_albumCoverImage setImage:[UIImage imageNamed:@"uyoung.bundle/no_cover"]];
+    }
+    [_albumCoverImage setContentMode:UIViewContentModeScaleToFill];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

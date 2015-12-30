@@ -68,6 +68,8 @@
     
     [cell fillDataWithAlbumModel:_albumListData[indexPath.row]];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;//不展示点击效果
+    
     return cell;
 }
 
@@ -84,6 +86,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AlbumModel *model = (AlbumModel*)_albumListData[indexPath.row];
     [AlbumDetail getAlbumDetailByAlbumId:model.id delegate:self];
+    
+    //背景不变色
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{     //当在Cell上滑动时会调用此函数

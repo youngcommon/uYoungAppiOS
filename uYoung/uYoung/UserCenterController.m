@@ -92,6 +92,8 @@
     //默认加载我的相册Controller
     self.albumTableViewController = [[AlbumTableViewController alloc]init];
     self.albumTableViewController.userId = _userDetailModel.id;
+    self.albumTableViewController.tableView.showsHorizontalScrollIndicator = NO;
+    self.albumTableViewController.tableView.showsVerticalScrollIndicator = NO;
     [self addChildViewController:self.albumTableViewController];
     [self.view addSubview:self.albumTableViewController.view];
     

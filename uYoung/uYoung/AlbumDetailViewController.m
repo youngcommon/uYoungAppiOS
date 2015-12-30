@@ -47,11 +47,6 @@ static NSString * const reuseIdentifier = @"Cell";
         _pics = [[NSArray alloc]init];
     }
     
-    _picUrls = [[NSMutableArray alloc]initWithCapacity:[_pics count]];
-    for (int i=0; i<[_pics count]; i++) {
-        PhotoDetailModel *model = (PhotoDetailModel*)_pics[i];
-        [_picUrls addObject:model.photoUrl];
-    }
 }
 
 - (void)refresh:(NSNotification*)notification{
@@ -92,16 +87,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //跳转到图片下载逻辑
-//    PhotoDetailModel *model = ((PhotoDetailModel*)_pics[indexPath.row]);
-//    PhotoDetailViewController *ctl = [[PhotoDetailViewController alloc]initWithNibName:@"PhotoDetailViewController" bundle:[NSBundle mainBundle]];
-//    ctl.photoUrl = model.photoUrl;
-//    ctl.photoDetails = _pics;
-//    ctl.index = indexPath.row;
-//    [self.navigationController pushViewController:ctl animated:YES];
-    
     JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
     jzAlbumVC.currentIndex = indexPath.row;//这个参数表示当前图片的index，默认是0
-    jzAlbumVC.imgArr = _pics;//图片数组，可以是url，也可以是UIImage
+    jzAlbumVC.imgArr = [[NSMutableArray alloc]initWithArray:_pics];//图片数组，可以是url，也可以是UIImage
     [self presentViewController:jzAlbumVC animated:YES completion:nil];
 }
 

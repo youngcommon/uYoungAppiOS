@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *albumViewLabel;
 @property (weak, nonatomic) IBOutlet UILabel *albumCreateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *albumPhotoCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *longVertical;
+@property (strong, nonatomic) IBOutlet UILabel *shortVertical;
 
 - (void)fillDataWithAlbumModel:(AlbumModel*)model;
 
