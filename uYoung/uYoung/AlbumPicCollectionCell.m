@@ -18,12 +18,13 @@
 }
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
-    NSString *qiniuHost = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+    /*NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+    NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
     if ([NSString isBlankString:qiniuHost]) {
         qiniuHost = QINIU_HOST;
     }
-    NSString *photoUrl = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:photoDetail.photoUrl];
-    [_img lazyInitSmallImageWithUrl:photoUrl suffix:@"pic621"];
+    NSString *photoUrl = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:photoDetail.photoUrl];*/
+    [_img lazyInitSmallImageWithUrl:photoDetail.photoUrl suffix:@"pic621"];
     [_viewLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.viewCount]];
     [_likeLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.likeCount]];
 }

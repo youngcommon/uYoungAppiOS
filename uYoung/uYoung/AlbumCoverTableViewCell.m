@@ -37,14 +37,13 @@
     [_albumCreateLabel setText:model.createTime];
     if (model!=nil&&[NSString isBlankString:model.firstPhotoUrl]==NO) {
         [_albumCoverImage lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621" placeholdImg:@"uyoung.bundle/nopic_tip"];
-        [_albumCoverImage setImage:[_albumCoverImage.image scaleToSize:_albumCoverImage.frame.size]];
-    }else{
+//        [_albumCoverImage setImage:[_albumCoverImage.image scaleToSize:_albumCoverImage.frame.size]];
+    }/*else{
         UIImageView *nopic = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nopic_tip"]];
-        NSLog(@"%f===%f===%f===%f", self.frame.size.width, self.frame.size.height, self.frame.origin.x, self.frame.origin.y);
         CGRect frame = CGRectMake((self.frame.size.width-192), (self.frame.size.height-182), 192, 182);
         [nopic setFrame:frame];
         [self addSubview:nopic];
-    }
+    }*/
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

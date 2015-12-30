@@ -23,7 +23,9 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
-            AlbumDetailModel *detail = [MTLJSONAdapter modelOfClass:[AlbumDetailModel class] fromJSONDictionary:resultData error:nil];
+            NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithDictionary:resultData];
+            [data removeObjectForKey:@"createTime"];
+            AlbumModel *detail = [MTLJSONAdapter modelOfClass:[AlbumModel class] fromJSONDictionary:data error:nil];
             [delegate successCreateAlbum:detail];
         }else{
             [delegate successCreateAlbum:nil];
@@ -57,5 +59,7 @@
         }
     }
 }
+
+
 
 @end

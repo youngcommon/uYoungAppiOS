@@ -307,6 +307,7 @@
     [_createAlbumText setHidden:YES];
     [_createAlbum setHidden:NO];
     [_doCreate setHidden:YES];
+    [_createAlbumText setText:@""];
     CGPoint origin = _createAlbumView.frame.origin;
     CGSize size = _createAlbumView.frame.size;
     CGRect frame = CGRectMake(0-mScreenWidth, origin.y, size.width, size.height);
@@ -332,16 +333,24 @@
     }
 }
 
-- (void)successCreateAlbum:(AlbumDetailModel*)detail{
+- (void)successCreateAlbum:(AlbumModel*)detail{
     if (detail!=nil) {
+        UserDetailModel *user = [UserDetailModel currentUser];
         [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
         viewCtl.albumNameStr = _createAlbumText.text;
-        viewCtl.ownerUid = detail.oriUserId;
-        viewCtl.nickNameStr = detail.oriNickName;
-        viewCtl.userHeaderUrl = detail.oriUrl;
+        viewCtl.albumid = detail.id;
+        viewCtl.ownerUid = user.id;
+        viewCtl.nickNameStr = user.nickName;
+        viewCtl.userHeaderUrl = user.avatarUrl;
         viewCtl.createDateStr = [self getNowDateStr];
+        detail.createTime = [self getNowDateStr];
+        [self.albumTableViewController.albumListData addObject:detail];
+        [self.albumTableViewController.tableView reloadData];
+        [self.albumTableViewController.tableView reloadInputViews];
         [self.navigationController pushViewController:viewCtl animated:YES];
+        [self cancelCreates];
+        [_createAlbumText resignFirstResponder];
     }else{
         [self.view.window showHUDWithText:@"创建失败" Type:ShowPhotoNo Enabled:YES];
     }

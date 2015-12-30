@@ -24,10 +24,6 @@
 
 - (void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate{
     
-    _img = img;
-    _key = key;
-    _delegate = delegate;
-    
     NSString *url = [uyoung_host stringByAppendingString:@"/qn/qnUpToken"];
     
     NSString *md5Format = @"%@uYoungSign_QNToken%d";
@@ -51,16 +47,16 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *data = [responseObject objectForKey:@"resultData"];
-            [self successGetQNToken:data];
+            [self successGetQNToken:data withKey:key andImg:img delegate:delegate];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
 }
 
--(void)successGetQNToken:(NSDictionary*)dict{
+-(void)successGetQNToken:(NSDictionary*)dict withKey:(NSString*)key andImg:(UIImage*)img delegate:(id<UploadImgDelegate>)delegate;{
     NSString *token = dict[@"upToken"];
-    NSString *qiniuHost = [@"http://" stringByAppendingString:dict[@"url"]];
+    NSString *qiniuHost = dict[@"url"];
     if ([NSString isBlankString:token]) {
         return;
     }
@@ -68,16 +64,20 @@
     [self saveQiniuHost:qiniuHost];
     
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
-    NSData *data = UIImageJPEGRepresentation(_img, 1.0);
+    NSData *data = UIImageJPEGRepresentation(img, 1.0);
     NSNumber *num = @([data length]);
     long length = [num longValue]/(1000*1000);
     if(length>6){//如果上传的照片大于6M，则进行压缩
-        data = UIImageJPEGRepresentation(_img, 0.8);
+        data = UIImageJPEGRepresentation(img, 0.8);
     }
+    
+    QNUploadOption *option = [[QNUploadOption alloc]initWithProgressHandler:^(NSString *key, float percent) {
+        NSLog(@"##UploadImg-->key:%@; percent:%f", key, percent);
+    }];
 
-    [upManager putData:data key:_key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        [_delegate getImgKey:key host:qiniuHost];
-    } option:nil];
+    [upManager putData:data key:key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        [delegate getImgKey:key host:qiniuHost];
+    } option:option];
     
 }
 

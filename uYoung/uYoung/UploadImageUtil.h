@@ -19,10 +19,6 @@
 
 @interface UploadImageUtil : NSObject
 
-@property (strong, nonatomic) UIImage* img;
-@property (strong, nonatomic) NSString* key;
-@property (weak, nonatomic) id<UploadImgDelegate> delegate;
-
 - (void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate;
 
 + (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button;

@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
-#import "AlbumDetailModel.h"
+#import "AlbumModel.h"
 #import "PhotoDetailModel.h"
 
 @protocol CreateAlbumDelegate <NSObject>
 
 @optional
-- (void)successCreateAlbum:(AlbumDetailModel*)detail;
+- (void)successCreateAlbum:(AlbumModel*)detail;
 - (void)finishUploadImage:(PhotoDetailModel*)result;
 @end
 
