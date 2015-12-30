@@ -22,5 +22,6 @@
 
 + (void)createAlbum:(NSDictionary*)dict delegate:(id<CreateAlbumDelegate>)delegate;
 + (void)uploadAlbumImage:(NSArray*)arr delegate:(id<CreateAlbumDelegate>)delegate;
++ (void)updateAlbumCover:(NSString*)coverUrl albumId:(long)albumId success:(void(^)(BOOL success))success;
 
 @end

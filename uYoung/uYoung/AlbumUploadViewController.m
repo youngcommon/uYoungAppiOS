@@ -93,7 +93,10 @@ static NSString * const reuseIdentifier = @"Cell";
         [self dismissViewControllerAnimated:YES completion:nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
         //更新相册封面
-        
+        NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+        NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
+        NSString *url = [qiniuHost stringByAppendingString:result.photoUrl];
+        [CreateAlbum updateAlbumCover:url albumId:result.albumId success:nil];
     }
 }
 

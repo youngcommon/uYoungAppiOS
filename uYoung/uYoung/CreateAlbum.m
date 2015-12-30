@@ -60,6 +60,22 @@
     }
 }
 
-
++ (void)updateAlbumCover:(NSString*)coverUrl albumId:(long)albumId success:(void(^)(BOOL success))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"album/updateFirstUrl"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    NSDictionary *dict = @{@"id":@(albumId), @"url":coverUrl};
+    
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        /*NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+        }else{
+        }*/
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+}
 
 @end
