@@ -124,6 +124,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
     [_oriImage addObject:image];
+    cell.showLabels = NO;
     return cell;
     
 }

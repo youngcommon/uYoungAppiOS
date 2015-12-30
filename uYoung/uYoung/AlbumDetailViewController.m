@@ -79,6 +79,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoDetailModel *model = (PhotoDetailModel*)_pics[indexPath.row];
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.showLabels = YES;
     [cell initCellWithPhotoDetail:model];
     return cell;
 }
