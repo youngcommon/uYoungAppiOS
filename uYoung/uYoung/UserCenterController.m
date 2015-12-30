@@ -29,6 +29,11 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self cancelCreates];
+    [_createAlbumText resignFirstResponder];
+}
+
 - (void)viewDidLoad{
     
     _userDetailModel = [UserDetailModel currentUser];
@@ -351,8 +356,6 @@
         [self.albumTableViewController.tableView reloadData];
         [self.albumTableViewController.tableView reloadInputViews];
         [self.navigationController pushViewController:viewCtl animated:YES];
-        [self cancelCreates];
-        [_createAlbumText resignFirstResponder];
     }else{
         [self.view.window showHUDWithText:@"创建失败" Type:ShowPhotoNo Enabled:YES];
     }
