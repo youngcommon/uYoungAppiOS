@@ -46,7 +46,7 @@
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:photoUrl] placeholderImage:[UIImage imageNamed:@"comment_empty_img"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){
             hud.progress = ((float)receivedSize)/expectedSize;
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-            NSLog(@"图片加载完成");
+//            NSLog(@"图片加载完成");
             if (!isCached) {
                 [hud hide:YES];
             }
@@ -130,14 +130,14 @@
 
 #pragma mark - 图片的点击，touch事件
 -(void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer{
-    NSLog(@"单击");
+//    NSLog(@"单击");
     if (gestureRecognizer.numberOfTapsRequired == 1) {
         [self.delegate TapHiddenPhotoView];
     }
 }
 
 -(void)handleDoubleTap:(UITapGestureRecognizer *)gestureRecognizer{
-    NSLog(@"双击");
+//    NSLog(@"双击");
     if (gestureRecognizer.numberOfTapsRequired == 2) {
         if(_scrollView.zoomScale == 1){
             float newScale = [_scrollView zoomScale] *2;
@@ -152,7 +152,7 @@
 }
 
 -(void)handleTwoFingerTap:(UITapGestureRecognizer *)gestureRecongnizer{
-    NSLog(@"2手指操作");
+//    NSLog(@"2手指操作");
     float newScale = [_scrollView zoomScale]/2;
     CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gestureRecongnizer locationInView:gestureRecongnizer.view]];
     [_scrollView zoomToRect:zoomRect animated:YES];

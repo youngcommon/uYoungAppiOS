@@ -9,6 +9,7 @@
 #import "UIImageView+LazyInit.h"
 #import <UIImageView+AFNetworking.h>
 #import "GlobalConfig.h"
+#import "UIImageView+WebCache.h"
 #import "NSString+StringUtil.h"
 
 @implementation UIImageView (LazyInit)
@@ -17,7 +18,7 @@
     [self lazyInitSmallImageWithUrl:url suffix:suffix placeholdImg:UserDefaultHeader];
 }
 
-- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix placeholdImg:(NSString*)imagenamed{
+/*- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix placeholdImg:(NSString*)imagenamed{
     __weak UIImageView *img = self;
     if ([NSString isBlankString:url]==NO) {
         url = [NSString stringWithFormat:@"%@-%@", url, suffix];
@@ -26,6 +27,21 @@
             [img setImage:image];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
             [img setImage:[UIImage imageNamed:imagenamed]];
+        }];
+    }else{
+        [self setImage:[UIImage imageNamed:imagenamed]];
+    }
+}*/
+
+- (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix placeholdImg:(NSString*)imagenamed{
+    __weak UIImageView *img = self;
+    if ([NSString isBlankString:url]==NO) {
+        url = [NSString stringWithFormat:@"%@-%@", url, suffix];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        BOOL isCached = [manager cachedImageExistsForURL:[NSURL URLWithString:url]];
+        NSLog(@"##图片:%@-->##%@", url, isCached?@"已缓存":@"未缓存");
+        [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:imagenamed] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+            [img setImage:image];
         }];
     }else{
         [self setImage:[UIImage imageNamed:imagenamed]];
