@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateActivityController">
@@ -21,9 +21,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d29-se-NpO">
-                    <rect key="frame" x="15" y="25" width="20" height="22"/>
+                    <rect key="frame" x="10" y="25" width="45" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="6gJ-gp-QS1"/>
+                        <constraint firstAttribute="width" constant="45" id="6gJ-gp-QS1"/>
                         <constraint firstAttribute="height" constant="22" id="g22-FD-qkt"/>
                     </constraints>
                     <state key="normal" image="uyoung.bundle/back_btn.png"/>
@@ -71,7 +71,7 @@
                 <constraint firstItem="d29-se-NpO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="MaC-4n-8v6"/>
                 <constraint firstItem="sY7-lN-6mZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="Nmr-kg-TsN"/>
                 <constraint firstItem="1if-S5-bOI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SlE-8H-xIj"/>
-                <constraint firstItem="d29-se-NpO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="X2d-FM-H3N"/>
+                <constraint firstItem="d29-se-NpO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="X2d-FM-H3N"/>
                 <constraint firstAttribute="trailing" secondItem="NUR-Jz-XhJ" secondAttribute="trailing" constant="22" id="aTv-hY-TRt"/>
                 <constraint firstItem="1if-S5-bOI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aWG-fn-PtG"/>
                 <constraint firstAttribute="bottom" secondItem="1if-S5-bOI" secondAttribute="bottom" id="bef-5J-Jaa"/>

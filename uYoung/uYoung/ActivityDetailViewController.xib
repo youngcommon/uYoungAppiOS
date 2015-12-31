@@ -46,10 +46,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsl-37-SZC">
-                    <rect key="frame" x="15" y="30" width="20" height="22"/>
+                    <rect key="frame" x="10" y="30" width="45" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="BW9-Nb-pLb"/>
-                        <constraint firstAttribute="width" constant="20" id="ekL-oG-mpF"/>
+                        <constraint firstAttribute="width" constant="45" id="ekL-oG-mpF"/>
                     </constraints>
                     <state key="normal" image="uyoung.bundle/back_btn.png"/>
                     <connections>
@@ -139,7 +139,7 @@
                 <constraint firstItem="Jv7-WZ-1Gn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="hSa-rv-Sm3"/>
                 <constraint firstItem="iRO-fJ-f1K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="miW-eR-j2R"/>
                 <constraint firstItem="189-CY-PXp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o0t-mf-zC2"/>
-                <constraint firstItem="bsl-37-SZC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="qCI-9c-BhK"/>
+                <constraint firstItem="bsl-37-SZC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="qCI-9c-BhK"/>
                 <constraint firstItem="Jv7-WZ-1Gn" firstAttribute="centerY" secondItem="189-CY-PXp" secondAttribute="centerY" id="qPl-TY-Sh5"/>
                 <constraint firstItem="iRO-fJ-f1K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tpa-zx-kK3"/>
                 <constraint firstItem="lHj-4h-9Qk" firstAttribute="top" secondItem="Jv7-WZ-1Gn" secondAttribute="bottom" constant="8" id="zng-ZJ-uZP"/>

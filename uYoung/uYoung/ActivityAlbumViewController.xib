@@ -21,9 +21,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-a6-Qsc">
-                    <rect key="frame" x="20" y="25" width="20" height="22"/>
+                    <rect key="frame" x="10" y="25" width="45" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="Nmz-s4-50A"/>
+                        <constraint firstAttribute="width" constant="45" id="Nmz-s4-50A"/>
                         <constraint firstAttribute="height" constant="22" id="xTF-WX-aVT"/>
                     </constraints>
                     <state key="normal" image="uyoung.bundle/back_btn.png"/>
@@ -32,7 +32,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回龙观外拍活动相册" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qia-9C-nRv">
-                    <rect key="frame" x="55" y="25" width="218" height="22"/>
+                    <rect key="frame" x="70" y="25" width="203" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="LH4-Em-JsE"/>
                     </constraints>
@@ -68,7 +68,7 @@
                 <constraint firstAttribute="bottom" secondItem="JoG-qX-8dY" secondAttribute="bottom" id="nvn-wb-SxP"/>
                 <constraint firstItem="qia-9C-nRv" firstAttribute="centerY" secondItem="UKL-a6-Qsc" secondAttribute="centerY" id="rhy-6K-phF"/>
                 <constraint firstAttribute="trailing" secondItem="T6G-by-y1p" secondAttribute="trailing" id="rje-Ga-eKn"/>
-                <constraint firstItem="UKL-a6-Qsc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="vLU-qX-IiG"/>
+                <constraint firstItem="UKL-a6-Qsc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="vLU-qX-IiG"/>
                 <constraint firstItem="T6G-by-y1p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="w5L-hO-moG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

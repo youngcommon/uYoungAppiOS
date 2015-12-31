@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditUserViewController">
@@ -62,10 +62,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Jf-LS-MsQ">
-                    <rect key="frame" x="15" y="25" width="20" height="22"/>
+                    <rect key="frame" x="10" y="25" width="45" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="NxT-Zc-BHi"/>
-                        <constraint firstAttribute="width" constant="20" id="qz2-T2-BcO"/>
+                        <constraint firstAttribute="width" constant="45" id="qz2-T2-BcO"/>
                     </constraints>
                     <state key="normal" image="uyoung.bundle/back_btn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -440,7 +440,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="0Jf-LS-MsQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="1xY-0j-cIo"/>
+                <constraint firstItem="0Jf-LS-MsQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="1xY-0j-cIo"/>
                 <constraint firstItem="0Ch-QU-Rk7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Jg-PM-dfr"/>
                 <constraint firstAttribute="trailing" secondItem="0Ch-QU-Rk7" secondAttribute="trailing" id="58h-PK-kJ2"/>
                 <constraint firstAttribute="bottom" secondItem="9nj-R5-gB7" secondAttribute="bottom" constant="20" id="7Qg-ui-ZJT"/>
