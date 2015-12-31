@@ -269,12 +269,13 @@
 - (IBAction)systemConfig:(id)sender {
     [_cover setHidden:NO];
     _oriFrame = _sysCtl.view.frame;
-    CGRect viewFrame = CGRectMake(self.view.frame.size.width-172, 0, 172, _sysCtl.view.frame.size.height);
+    CGRect viewFrame = CGRectMake(self.view.frame.size.width-205, 0, 205, _sysCtl.view.frame.size.height);
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:0.3];
     [_sysCtl.view setFrame:viewFrame];
     [UIView commitAnimations];
+    [_sysCtl loadCacheSize];
 }
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{

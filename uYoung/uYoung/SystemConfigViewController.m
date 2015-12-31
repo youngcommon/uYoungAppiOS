@@ -8,6 +8,8 @@
 
 #import "SystemConfigViewController.h"
 #import "UserDetailModel.h"
+#import "UIImageView+WebCache.h"
+#import "GlobalConfig.h"
 
 @interface SystemConfigViewController ()
 
@@ -24,7 +26,7 @@
     _logoutButton.layer.cornerRadius = 4;
     _logoutButton.layer.masksToBounds = YES;
     
-    _data = [[NSArray alloc]initWithObjects:@"关于有样儿", @"清除缓存", @"意见反馈", nil];
+    _data = [[NSMutableArray alloc]initWithObjects:@"关于有样儿", @"", @"意见反馈", nil];
     
 }
 
@@ -62,6 +64,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.textLabel setText:_data[indexPath.row]];
     [cell setBackgroundColor:[UIColor clearColor]];
+//    if (indexPath.row==2) {
+//        [self loadCacheSize];
+//    }
     
     return cell;
 }
@@ -71,6 +76,34 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger index = indexPath.row;
+    switch (index) {
+        case 0://关于
+            break;
+        case 1://清除缓存
+        {
+            [[SDImageCache sharedImageCache] clearDisk];
+            [[SDImageCache sharedImageCache] clearMemory];
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            [cell.textLabel setText:@"清理缓存(0.0K)"];
+            break;
+        }
+        case 2://反馈
+            break;
+    }
+}
+
+- (void)loadCacheSize{
+    UITableViewCell *cell = [_systable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    NSUInteger tmpSize = [[SDImageCache sharedImageCache]getSize];
+    NSLog(@"###################%ld###############", tmpSize);
+    float size = tmpSize / 1024;
+    NSString *clearCacheName =
+    size<=1024 ?
+    [NSString stringWithFormat:@"清理缓存(%.2fK)",size] :
+    (size/1024<=1024?[NSString stringWithFormat:@"清理缓存(%.2fM)",size / 1024]:@"清理缓存(1G+)")
+    ;
+    [cell.textLabel setText:clearCacheName];
 }
 
 @end

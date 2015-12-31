@@ -12,7 +12,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *systable;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 
-@property (strong, nonatomic) NSArray *data;
+@property (strong, nonatomic) NSMutableArray *data;
 
 - (IBAction)logout:(id)sender;
+- (void)loadCacheSize;
 @end
