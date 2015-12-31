@@ -26,6 +26,8 @@
     
     _loginButton.layer.cornerRadius = 6.f;
     _loginButton.layer.masksToBounds = YES;
+    _loginButton.layer.borderWidth = 1;
+    _loginButton.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
     
     if (mScreenWidth<375) {
         [_coverMsgImage setHidden:YES];
