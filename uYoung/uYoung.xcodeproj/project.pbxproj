@@ -47,6 +47,7 @@
 		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; };
 		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; };
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; };
+		48ACA7161C3A688D00DCF2CC /* DoubanLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */; };
 		48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C8BFCE1C1B164A0060241C /* CreateAlbum.m */; };
 		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; };
 		48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417D1BD91157006E44B3 /* UserAlbumList.m */; };
@@ -187,6 +188,14 @@
 		4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
+		48ACA7011C3A625800DCF2CC /* libDoubanApiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libDoubanApiEngine.framework; path = "../../Downloads/douban-objc-client-master/libDoubanApiEngine.framework"; sourceTree = "<group>"; };
+		48ACA7031C3A63EC00DCF2CC /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		48ACA7061C3A641E00DCF2CC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		48ACA7081C3A643600DCF2CC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		48ACA7141C3A688D00DCF2CC /* DoubanLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanLoginViewController.h; sourceTree = "<group>"; };
+		48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanLoginViewController.m; sourceTree = "<group>"; };
+		48ACA7181C3A6BE700DCF2CC /* libDoubanApiEngine */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDoubanApiEngine; path = libDoubanApiEngine.framework/Versions/A/libDoubanApiEngine; sourceTree = "<group>"; };
+		48ACA71A1C3A6BFB00DCF2CC /* libDoubanApiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libDoubanApiEngine.framework; sourceTree = "<group>"; };
 		48C8BFCD1C1B164A0060241C /* CreateAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlbum.h; sourceTree = "<group>"; };
 		48C8BFCE1C1B164A0060241C /* CreateAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlbum.m; sourceTree = "<group>"; };
 		48FC41791BD91040006E44B3 /* AlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumModel.h; sourceTree = "<group>"; };
@@ -330,6 +339,12 @@
 		4277B826B647482D792A3320 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48ACA71A1C3A6BFB00DCF2CC /* libDoubanApiEngine.framework */,
+				48ACA7181C3A6BE700DCF2CC /* libDoubanApiEngine */,
+				48ACA7081C3A643600DCF2CC /* MobileCoreServices.framework */,
+				48ACA7061C3A641E00DCF2CC /* CFNetwork.framework */,
+				48ACA7031C3A63EC00DCF2CC /* libxml2.2.dylib */,
+				48ACA7011C3A625800DCF2CC /* libDoubanApiEngine.framework */,
 				848E3E5D1C2055A30060088E /* AssetsLibrary.framework */,
 				84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */,
 				846F17B71BE108E200EB2DB4 /* Foundation.framework */,
@@ -651,6 +666,8 @@
 				8457EE011BEA478200C00176 /* EditUserViewController.h */,
 				8457EE021BEA478200C00176 /* EditUserViewController.m */,
 				8457EE041BEA47C600C00176 /* EditUserViewController.xib */,
+				48ACA7141C3A688D00DCF2CC /* DoubanLoginViewController.h */,
+				48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -886,6 +903,7 @@
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				84993B591C2D808B00888FC7 /* PhotoView.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,
+				48ACA7161C3A688D00DCF2CC /* DoubanLoginViewController.m in Sources */,
 				482E9AC11C156E5500DEF737 /* UIImageView+LazyInit.m in Sources */,
 				84547B8B1BF8C0C50047CF0F /* ActivityDetailEnrollsModel.m in Sources */,
 				482E9AC41C1576EE00DEF737 /* ActivityFilterViewController.m in Sources */,
@@ -1029,6 +1047,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
+					"$(PROJECT_DIR)/libDoubanApiEngine.framework/Versions/A",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1094,6 +1113,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
+					"$(PROJECT_DIR)/libDoubanApiEngine.framework/Versions/A",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
