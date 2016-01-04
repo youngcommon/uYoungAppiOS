@@ -60,15 +60,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,
-                                                           0,
-                                                           self.view.bounds.size.width,
-                                                           self.view.bounds.size.height - 49)];
+    
+    CGFloat topHeight = 70;
+    
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, topHeight)];
+    topView.backgroundColor = UIColorFromRGB(0x85b200);
+    [self.view addSubview:topView];
+    
+    UIButton *close = [[UIButton alloc]initWithFrame:CGRectMake(10, (topView.frame.size.height-30)/2, 46, 30)];
+    [close setTitle:@"关闭" forState:UIControlStateNormal];
+    close.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    close.titleLabel.textColor = [UIColor whiteColor];
+    [close addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:close];
+    
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, topHeight, self.view.bounds.size.width, self.view.bounds.size.height - topHeight)];
     self.webView.scalesPageToFit = YES;
     self.webView.delegate = self;
     NSURLRequest *request = [NSURLRequest requestWithURL:self.requestURL];
     [self.webView loadRequest:request];
     [self.view addSubview:self.webView];
+}
+
+-(void)close{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
