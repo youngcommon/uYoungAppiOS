@@ -55,6 +55,7 @@
 @property (assign, nonatomic) CGFloat viewBottom;
 @property (assign, nonatomic) BOOL isRegister;
 @property (strong, nonatomic) UIFont *labelFont;
+@property (strong, nonatomic) UIFont *textFont;
 @property (strong, nonatomic) UIView *backview;
 @property (assign, nonatomic) CGFloat labelHeight;
 @property (assign, nonatomic) CGFloat frontWidth;

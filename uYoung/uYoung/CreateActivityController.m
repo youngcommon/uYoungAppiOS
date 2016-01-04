@@ -24,15 +24,20 @@
     [super viewDidLoad];
     _backgroundImg.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
-    _minDate = [NSDate date];
-    NSDate *nextHour = [NSDate dateWithTimeInterval:60*60 sinceDate:_minDate];
-    _maxDate = [NSDate dateWithTimeInterval:24*60*60*30*12 sinceDate:_minDate];
+    _minDate = [NSDate date];//开始日期不能小于今天
+    NSString *md = [self getSimpleDate:_minDate];
+    md = [md stringByAppendingString:@" 08:00:00"];
+    _minDate = [self getDateFromFullDateFormat:md];
+    NSDate *next2Hour = [NSDate dateWithTimeInterval:60*60*2 sinceDate:_minDate];
+    _maxDate = [NSDate dateWithTimeInterval:24*60*60*30*3 sinceDate:next2Hour];//最大为三个月
     
-    _minTime = [self getTimeFromString:@"08:00"];
-    _maxTime = [self getTimeFromString:@"23:50"];
+    _selectDate = _minDate;
+    _minTime = _minDate;
+    _maxTime = _maxDate;
     
     _from = _minDate;
-    _to = nextHour;
+    _to = _maxDate;
+    
     _priceType = 0;
     
     _sep = 14;//默认行距
@@ -44,6 +49,7 @@
     CGFloat y = 0;
     CGFloat labelOffset = 12;
     _labelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    _textFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
     if (mScreenWidth==375) {//iPhone 6
         _sep = 24;//默认行距
         _sepInside = 4;//默认间距
@@ -74,7 +80,7 @@
     _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, _backWidth, _labelHeight)];
     _actNameInput.borderStyle = UITextBorderStyleNone;
     _actNameInput.placeholder = @"请输入活动名称";
-    _actNameInput.font = _labelFont;
+    _actNameInput.font = _textFont;
     _actNameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     _actNameInput.returnKeyType = UIReturnKeyDone;
     _actNameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -111,7 +117,7 @@
     
     CGFloat contentX = _actDateTextImg.frame.origin.x;
     _actDateButton = [[UIButton alloc]initWithFrame:CGRectMake(contentX, _actDateTextImg.frame.origin.y, _actDateTextImg.frame.size.width, _actDateTextImg.frame.size.height)];
-    _actDateButton.titleLabel.font = _labelFont;
+    _actDateButton.titleLabel.font = _textFont;
     _actDateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actDateButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [_actDateButton setTitle:[self getSimpleDate:_minDate] forState:UIControlStateNormal];
@@ -142,7 +148,7 @@
     CGFloat hlineX = _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width/2-5;
     
     _actTimeStartButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTimeTextImg.frame.origin.x+10, _actTimeTextImg.frame.origin.y, hlineX-_actTimeTextImg.frame.origin.x-10-10, _actTimeTextImg.frame.size.height)];
-    _actTimeStartButton.titleLabel.font = _labelFont;
+    _actTimeStartButton.titleLabel.font = _textFont;
     _actTimeStartButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeStartButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeStartButton setTitle:[self getSimpleTime:_minTime] forState:UIControlStateNormal];
@@ -158,7 +164,7 @@
     [_backgroundView addSubview:hline];
     
     _actTimeEndButton = [[UIButton alloc]initWithFrame:CGRectMake(hline.frame.origin.x+hline.frame.size.width+10, _actTimeTextImg.frame.origin.y, _actTimeTextImg.frame.origin.x+_actTimeTextImg.frame.size.width-hlineX-hline.frame.size.width, _actTimeTextImg.frame.size.height)];
-    _actTimeEndButton.titleLabel.font = _labelFont;
+    _actTimeEndButton.titleLabel.font = _textFont;
     _actTimeEndButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actTimeEndButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actTimeEndButton setTitle:[self getSimpleTime:_maxTime] forState:UIControlStateNormal];
@@ -196,7 +202,7 @@
     [_backgroundView addSubview:downArrow];
     
     _actTypeSelButton = [[UIButton alloc]initWithFrame:CGRectMake(_actTypeTextImg.frame.origin.x+10, _actTypeTextImg.frame.origin.y, _actTypeTextImg.frame.size.width, _actTypeTextImg.frame.size.height)];
-    _actTypeSelButton.titleLabel.font = _labelFont;
+    _actTypeSelButton.titleLabel.font = _textFont;
     _actTypeSelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [_actTypeSelButton setTitle:@"人像" forState:UIControlStateNormal];
     [_actTypeSelButton setTitleColor:UIColorFromRGB(0x85b200) forState:UIControlStateNormal];
@@ -260,7 +266,7 @@
     [_backgroundView addSubview:_actPriceTextImg];
     
     _actFreeButton = [[UIButton alloc]initWithFrame:CGRectMake(_actPriceTextImg.frame.origin.x+10, _actPriceTextImg.frame.origin.y, _actPriceTextImg.frame.size.width/2-20, _actPriceTextImg.frame.size.height)];
-    _actFreeButton.titleLabel.font = _labelFont;
+    _actFreeButton.titleLabel.font = _textFont;
     _actFreeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actFreeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actFreeButton setTitle:@"免费" forState:UIControlStateNormal];
@@ -275,7 +281,7 @@
     [_backgroundView addSubview:_actAAButton];
     
     _actAAButton = [[UIButton alloc]initWithFrame:CGRectMake(_actFreeButton.frame.origin.x+_actFreeButton.frame.size.width+10, _actFreeButton.frame.origin.y, _actPriceTextImg.frame.origin.x+_actPriceTextImg.frame.size.width-_actFreeButton.frame.origin.x-_actFreeButton.frame.size.width-10-10, _actFreeButton.frame.size.height)];
-    _actAAButton.titleLabel.font = _labelFont;
+    _actAAButton.titleLabel.font = _textFont;
     _actAAButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _actAAButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     [_actAAButton setTitle:@"收费" forState:UIControlStateNormal];
@@ -303,7 +309,7 @@
     _actAddrInput = [[UITextField alloc]initWithFrame:CGRectMake(_actAddrImg.frame.origin.x+_actAddrImg.frame.size.width, y, _backWidth, _labelHeight)];
     _actAddrInput.borderStyle = UITextBorderStyleNone;
     _actAddrInput.placeholder = @"请输入活动地址";
-    _actAddrInput.font = _labelFont;
+    _actAddrInput.font = _textFont;
     _actAddrInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     _actAddrInput.returnKeyType = UIReturnKeyDone;
     _actAddrInput.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -326,7 +332,7 @@
     
     UIButton *createDescHtml = [[UIButton alloc]initWithFrame:[self getLabelFrame:actDescTitle offset:labelOffset]];
     [createDescHtml setTitle:@"[编辑]" forState:UIControlStateNormal];
-    [createDescHtml.titleLabel setFont:_labelFont];
+    [createDescHtml.titleLabel setFont:_textFont];
     [createDescHtml.titleLabel setTextAlignment:NSTextAlignmentRight];
     [createDescHtml addTarget:self action:@selector(editActDesc) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:createDescHtml];
@@ -399,11 +405,12 @@
     switch (_currentButton) {
         case 1001://结束时间
             [_actTimeEndButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
-            _maxTime = date;
+            _to = date;
             break;
         case 1002://开始时间
             [_actTimeStartButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
-            _minTime = date;
+//            _minTime = date;
+            _from = date;
             break;
         default:
             [_actDateButton setTitle:[self getSimpleDate:date] forState:UIControlStateNormal];
@@ -490,7 +497,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithFrame:CGRectZero];
-        [[cell textLabel]setFont:_labelFont];
+        [[cell textLabel]setFont:_textFont];
         cell.textLabel.textColor = UIColorFromRGB(0x85b200);
         [[cell textLabel]setText:_actTypes[indexPath.row][@"cnDesc"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -540,17 +547,17 @@
         case 1001://结束时间
             _actDatePicker.datePickerMode = UIDatePickerModeTime;
             _actDatePicker.minuteInterval = 10;
-            _actDatePicker.minimumDate = _from;
-            _actDatePicker.maximumDate = _maxTime;
+            _actDatePicker.minimumDate = _minTime;
+            _actDatePicker.date = _maxTime;
             break;
         case 1002://开始时间
             _actDatePicker.datePickerMode = UIDatePickerModeTime;
             _actDatePicker.minuteInterval = 10;
-            _actDatePicker.maximumDate = _to;
-            _actDatePicker.minimumDate = _minTime;
+            _actDatePicker.date = _minTime;
             break;
         default:
             _actDatePicker.datePickerMode = UIDatePickerModeDate;
+            _actDatePicker.date = _selectDate;
             break;
     }
     [_selectedButton setHidden:NO];
@@ -595,8 +602,7 @@
     if (user==nil) {
         
     }
-//    NSInteger uid = user.id;
-    NSInteger uid = 8;
+    NSInteger uid = user.id;
     NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", fromTimeFormat,@"strBeginTime", endTimeFormat,@"strEndTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", @(1),@"realNum", nil];
     [ActivityPublish publishActWithDict:param delegate:self];
     
