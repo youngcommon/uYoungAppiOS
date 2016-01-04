@@ -44,12 +44,13 @@
 
 
 - (IBAction)doubanLogin:(UIButton *)sender {
-    NSString *str = [NSString stringWithFormat:@"https://www.douban.com/service/auth2/auth?client_id=%@&redirect_uri=%@&response_type=code", DOUBAN_API_KEY, DOUBAN_REDIRECT_URL];
+    NSString *str = [NSString stringWithFormat:@"https://www.douban.com/service/auth2/auth?client_id=%@&redirect_uri=%@&response_type=token", DOUBAN_API_KEY, DOUBAN_REDIRECT_URL];
     
     NSString *urlStr = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlStr];
     DoubanLoginViewController *webViewController = [[DoubanLoginViewController alloc] initWithRequestURL:url];
-    [self.navigationController pushViewController:webViewController animated:YES];
+//    [self.navigationController pushViewController:webViewController animated:YES];
+    [self presentViewController:webViewController animated:YES completion:nil];
 }
 
 - (IBAction)qqLogin:(UIButton *)sender{

@@ -170,6 +170,13 @@
     }
 }
 
+-(void)doubanSuccessLogin:(NSDictionary*)dict{
+    if (dict!=nil&&[dict count]>0) {
+        self.doubanDic = dict;
+        [self loginSuccess];
+    }
+}
+
 - (void)loginSuccess{
     NSString *thirdUid;
     NSString *accessToken;
@@ -195,6 +202,13 @@
         userType = 1;
         avaterUrl = self.userLoginInfoDic[@"figureurl_qq_2"];
         dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", @(genderVal), @"gender", city, @"city", nil];
+    }else if(self.doubanDic&&self.doubanDic[@"id"]>0){
+        thirdUid = self.doubanDic[@"id"];
+        nickName = self.doubanDic[@"name"];
+        avaterUrl = self.doubanDic[@"large_avatar"];
+        userType = 3;
+        city = self.doubanDic[@"loc_name"];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", city, @"city", nil];
     }else{
         //说明是微博登陆
         thirdUid = self.sinaInfoDic[@"uid"];

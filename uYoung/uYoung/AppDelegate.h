@@ -28,6 +28,9 @@
 @property (strong, nonatomic) TencentOAuth *tencentOAuth;
 @property (nonatomic, strong) NSDictionary *userLoginInfoDic;
 @property (nonatomic, strong) NSDictionary *sinaInfoDic;
+@property (nonatomic, strong) NSDictionary *doubanDic;
+
+-(void)doubanSuccessLogin:(NSDictionary*)dict;
 
 @end
 
