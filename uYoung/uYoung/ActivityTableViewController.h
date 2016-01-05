@@ -22,6 +22,8 @@
 @property (nonatomic, assign) BOOL noMorePage;
 @property (nonatomic, assign) long userid;
 
+@property (nonatomic, strong) NSDictionary *params;
+
 - (void)resetActivityList:(NSDictionary*)param;
 
 @end

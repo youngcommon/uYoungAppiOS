@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="logoutButton" destination="eyW-Gn-Ngx" id="yPj-1F-xqK"/>
                 <outlet property="systable" destination="eKV-qV-FXD" id="fyj-LQ-00z"/>
+                <outlet property="versionLabel" destination="R6K-ZZ-hbq" id="956-de-ysN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0ke-l1-gxd"/>
             </connections>
         </placeholder>
@@ -52,10 +53,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6K-ZZ-hbq">
-                    <rect key="frame" x="81" y="385" width="42" height="21"/>
+                    <rect key="frame" x="35" y="385" width="135" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="NbK-zY-0SG"/>
-                        <constraint firstAttribute="width" constant="42" id="f8t-9A-ksu"/>
+                        <constraint firstAttribute="width" constant="135" id="f8t-9A-ksu"/>
                         <constraint firstAttribute="width" constant="42" id="gd0-zb-6nG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

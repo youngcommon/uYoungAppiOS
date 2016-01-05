@@ -89,12 +89,12 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakself getDataFromNet:YES withParams:nil];
+        [weakself getDataFromNet:YES];
     }];
     
     //注册上拉刷新功能
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakself getDataFromNet:NO withParams:nil];
+        [weakself getDataFromNet:NO];
     }];
     
     [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
@@ -105,6 +105,7 @@
 }
 
 - (void)resetActivityList:(NSDictionary*)param{
+    _params = param;
     self.noMorePage = NO;
     //根据参数请求网络，获得数据
     NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
@@ -126,8 +127,8 @@
     }
 }
 
-- (void)getDataFromNet:(BOOL)isTop withParams:(NSDictionary*)param{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
+- (void)getDataFromNet:(BOOL)isTop{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:_params];
     [params setObject:@(pageSize) forKey:@"pageSize"];
     if (_userid>0) {
         [params setObject:@(_userid) forKey:@"creatorUid"];

@@ -45,7 +45,7 @@
     _actStatusButton.layer.masksToBounds = YES;
     
     _priceSwitch.on = NO;
-    _isFree = 0;
+    _isFree = 1;
     
     //价格选择开关
     [_priceSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
@@ -151,7 +151,7 @@
 
 -(void)switchAction:(id)sender{
     UISwitch *switchButton = (UISwitch*)sender;
-    _isFree = [switchButton isOn]?1:0;
+    _isFree = [switchButton isOn]?0:1;
 }
 
 #pragma mark - Table view data source

@@ -26,6 +26,15 @@
     _logoutButton.layer.cornerRadius = 4;
     _logoutButton.layer.masksToBounds = YES;
     
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // app版本
+    NSString *app_version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    // app build版本
+    NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    [_versionLabel setText:[NSString stringWithFormat:@"v %@.%@", app_version, app_build]];
+    
     _data = [[NSMutableArray alloc]initWithObjects:@"关于有样儿", @"", @"意见反馈", nil];
     
 }

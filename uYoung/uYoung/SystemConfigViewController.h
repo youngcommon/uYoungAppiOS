@@ -11,6 +11,7 @@
 @interface SystemConfigViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *systable;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @property (strong, nonatomic) NSMutableArray *data;
 
