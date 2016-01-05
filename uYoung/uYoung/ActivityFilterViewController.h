@@ -27,7 +27,7 @@
 @property (strong, nonatomic) UIFont *labelFont;
 @property (strong, nonatomic) UIFont *smallLabelFont;
 
-@property (assign, nonatomic) BOOL isFree;
+@property (assign, nonatomic) NSInteger isFree;
 @property (assign, nonatomic) NSInteger sortType;
 @property (assign, nonatomic) NSInteger actTypeFilter;
 @property (assign, nonatomic) NSInteger actStatusFilter;

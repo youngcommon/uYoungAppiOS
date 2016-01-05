@@ -200,14 +200,14 @@
             genderVal = 1;
         }
         city = self.userLoginInfoDic[@"city"];
-        userType = 1;
+        userType = 2;
         avaterUrl = self.userLoginInfoDic[@"figureurl_qq_2"];
         dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", @(genderVal), @"gender", city, @"city", nil];
     }else if(self.doubanDic&&self.doubanDic[@"id"]>0){
         thirdUid = self.doubanDic[@"id"];
         nickName = self.doubanDic[@"name"];
         avaterUrl = self.doubanDic[@"large_avatar"];
-        userType = 0;
+        userType = 1;
         city = self.doubanDic[@"loc_name"];
         accessToken = self.doubanToken;
         dict = [[NSDictionary alloc]initWithObjectsAndKeys:accessToken, @"accessToken", thirdUid, @"thirdUid", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", city, @"city", nil];
@@ -217,7 +217,7 @@
         accessToken = self.sinaInfoDic[@"access_token"];
         refreshToken = self.sinaInfoDic[@"refresh_token"];
         nickName = self.sinaInfoDic[@"app"][@"name"];
-        userType = 2;
+        userType = 3;
         avaterUrl = self.sinaInfoDic[@"app"][@"logo"];
         expireIn = self.sinaInfoDic[@"expires_in"];
         dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", expireIn, @"expireIn", nil];

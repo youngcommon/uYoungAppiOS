@@ -20,7 +20,8 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, assign) BOOL noMorePage;
+@property (nonatomic, assign) long userid;
 
-- (void)initActivityList: (NSInteger)type;
+- (void)resetActivityList:(NSDictionary*)param;
 
 @end

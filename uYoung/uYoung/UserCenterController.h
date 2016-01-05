@@ -54,7 +54,8 @@
 @property (strong, nonatomic) AlbumTableViewController *albumTableViewController;
 @property (strong, nonatomic) ActivityTableViewController *activityTableViewController;
 
-@property (assign, nonatomic) NSInteger userId;
+@property (assign, nonatomic) long userId;
+
 - (IBAction)editUser:(id)sender;
 - (IBAction)systemConfig:(id)sender;
 

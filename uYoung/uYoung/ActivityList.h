@@ -12,6 +12,7 @@
 
 @interface ActivityList : NSObject
 
-+ (void)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status isTop:(BOOL)isTop;
++ (void)getActivityListWithParam:(NSDictionary*)param isTop:(BOOL)isTop;
+//+ (void)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status isTop:(BOOL)isTop;
 
 @end

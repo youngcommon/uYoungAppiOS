@@ -40,9 +40,11 @@
     [self.activityTabViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.activityTabViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+    [self.toggle setHidden:YES];
+    /*[self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];*/
     
-    [self.activityTabViewController initActivityList:0];
+    NSDictionary *defaultParam = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"asc",@"sort", nil];
+    [self.activityTabViewController resetActivityList:defaultParam];
     
     _userHeaderBackground = [[UILabel alloc]initWithFrame:CGRectMake(mScreenWidth/2-33, mScreenHeight-10-66, 66, 66)];
     _userHeaderBackground.backgroundColor = UIColorFromRGB(0x85b200);
@@ -87,10 +89,10 @@
     
 }
 
-- (void)segmentAction:(UISegmentedControl*)seg{
+/*- (void)segmentAction:(UISegmentedControl*)seg{
     NSInteger index = seg.selectedSegmentIndex;
     [self.activityTabViewController initActivityList:(index+1)];
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -129,6 +131,7 @@
 }
 
 -(void)commitWithFilterData:(NSDictionary*)data{
+    [self.activityTabViewController resetActivityList:data];
     [self showFilter:nil];
 }
 

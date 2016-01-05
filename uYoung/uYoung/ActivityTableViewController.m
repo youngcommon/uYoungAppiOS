@@ -89,12 +89,12 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakself getDataFromNet:YES];
+        [weakself getDataFromNet:YES withParams:nil];
     }];
     
     //注册上拉刷新功能
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakself getDataFromNet:NO];
+        [weakself getDataFromNet:NO withParams:nil];
     }];
     
     [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
@@ -104,15 +104,20 @@
     [self.tableView triggerPullToRefresh];
 }
 
-- (void)initActivityList: (NSInteger)type{
+- (void)resetActivityList:(NSDictionary*)param{
     self.noMorePage = NO;
-    self.status = type;
     //根据参数请求网络，获得数据
-    [ActivityList getActivityListWithPageNum:1 status:self.status isTop:YES];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
+    [params setObject:@(pageSize) forKey:@"pageSize"];
+    [params setObject:@(1) forKey:@"pageNum"];
+    if (_userid>0) {
+        [params setObject:@(_userid) forKey:@"creatorUid"];
+    }
+    [ActivityList getActivityListWithParam:params isTop:YES];
 }
 
 - (void)reloadDataWithArray:(NSArray*)arr{
-    if(arr!=nil&&[arr count]>0){
+    if(arr!=nil&&![arr isEqual:[NSNull null]]&&[arr count]>0){
         NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
         [self.activityListData removeAllObjects];
         self.activityListData = [[NSMutableArray alloc] initWithArray:data];
@@ -121,28 +126,34 @@
     }
 }
 
-- (void)getDataFromNet:(BOOL)isTop{
+- (void)getDataFromNet:(BOOL)isTop withParams:(NSDictionary*)param{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
+    [params setObject:@(pageSize) forKey:@"pageSize"];
+    if (_userid>0) {
+        [params setObject:@(_userid) forKey:@"creatorUid"];
+    }
     if (isTop) {
-        [ActivityList getActivityListWithPageNum:1 status:self.status isTop:isTop];
+        [params setObject:@(1) forKey:@"pageNum"];
+        [ActivityList getActivityListWithParam:params isTop:isTop];
     }else{
         if (self.noMorePage){
             //停止菊花
             [self.tableView.infiniteScrollingView stopAnimating];
         }else{
             self.currentPage = self.currentPage + 1;
-            [ActivityList getActivityListWithPageNum:self.currentPage status:self.status isTop:isTop];
+            [params setObject:@(self.currentPage) forKey:@"pageNum"];
+            [ActivityList getActivityListWithParam:params isTop:isTop];
         }
     }
 }
 
-- (void)insertRowAtTop:(NSNotification*)notification
-{
+- (void)insertRowAtTop:(NSNotification*)notification{
     NSArray *arr = (NSArray*)[notification object];
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
         
-        if (arr==nil||[arr count]<pageSize) {
+        if ([arr isEqual:[NSNull null]]||arr==nil||[arr count]<pageSize) {
             self.noMorePage = YES;
         }else{
             self.noMorePage = NO;
@@ -154,8 +165,7 @@
     });
 }
 
-- (void)insertRowAtBottom:(NSNotification*)notification
-{
+- (void)insertRowAtBottom:(NSNotification*)notification{
     NSArray *arr = (NSArray*)[notification object];
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);

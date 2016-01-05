@@ -45,7 +45,7 @@
     _actStatusButton.layer.masksToBounds = YES;
     
     _priceSwitch.on = NO;
-    _isFree = NO;
+    _isFree = 0;
     
     //价格选择开关
     [_priceSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
@@ -101,6 +101,8 @@
     _actStatusTable.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:_actStatusTable];
     
+    _actStatusFilter = -1;
+    _actTypeFilter = -1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,13 +144,14 @@
 }
 
 - (IBAction)commit:(id)sender {
-    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(_isFree),@"isfree", nil];
+    NSString *sortColumn = _sortType==0?@"createTimeSort":@"beginTimeSort";
+    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),sortColumn, @"asc",@"sort", @(_isFree),@"feeType", @(_actTypeFilter),@"activityType", @(_actStatusFilter),@"status", nil];
     [_delegate commitWithFilterData:data];
 }
 
 -(void)switchAction:(id)sender{
     UISwitch *switchButton = (UISwitch*)sender;
-    _isFree = [switchButton isOn];
+    _isFree = [switchButton isOn]?1:0;
 }
 
 #pragma mark - Table view data source
@@ -159,9 +162,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger tag = tableView.tag;
     if (tag==2) {
-        return [_actTypeData count];
+        return [_actTypeData count]+1;
     }else{
-        return [_actStatusData count];
+        return [_actStatusData count]+1;
     }
 }
 
@@ -171,14 +174,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
+        NSString *txt = @"全部";
         cell = [[UITableViewCell alloc]initWithFrame:CGRectZero];
         cell.textLabel.textColor = UIColorFromRGB(0x4a90e2);
         if (tag==2) {
             [[cell textLabel]setFont:_labelFont];
-            [[cell textLabel]setText:_actTypeData[indexPath.row][@"cnDesc"]];
+            if (indexPath.row>0) {
+                txt = _actTypeData[indexPath.row-1][@"cnDesc"];
+            }
+            [[cell textLabel]setText:txt];
         }else{
             [[cell textLabel]setFont:_smallLabelFont];
-            [[cell textLabel]setText:_actStatusData[indexPath.row][@"desc"]];
+            if (indexPath.row>0) {
+                txt = _actStatusData[indexPath.row-1][@"desc"];
+            }
+            [[cell textLabel]setText:txt];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor lightGrayColor];
@@ -195,13 +205,25 @@
     NSDictionary *act;
     NSInteger tag = tableView.tag;
     if (tag==2) {
-        act = (NSDictionary*)(_actTypeData[indexPath.row]);
-        [_actTypeButton setTitle:act[@"cnDesc"] forState:UIControlStateNormal];
-        _actTypeFilter = [((NSNumber*)[act valueForKey:@"type"])longValue];
+        if (indexPath.row==0) {
+            _actTypeFilter = -1;
+            [_actTypeButton setTitle:@"全部" forState:UIControlStateNormal];
+        }else{
+            act = _actTypeData[indexPath.row-1];
+            [_actTypeButton setTitle:act[@"cnDesc"] forState:UIControlStateNormal];
+            act = (NSDictionary*)(_actTypeData[indexPath.row-1]);
+            _actTypeFilter = [((NSNumber*)[act valueForKey:@"type"])longValue];
+        }
     }else{
-        act = (NSDictionary*)(_actStatusData[indexPath.row]);
-        [_actStatusButton setTitle:act[@"desc"] forState:UIControlStateNormal];
-        _actStatusFilter = [((NSNumber*)[act valueForKey:@"id"])longValue];
+        if (indexPath.row==0) {
+            _actStatusFilter = -1;
+            [_actStatusButton setTitle:@"全部" forState:UIControlStateNormal];
+        }else{
+            act = _actStatusData[indexPath.row-1];
+            [_actStatusButton setTitle:act[@"desc"] forState:UIControlStateNormal];
+            act = (NSDictionary*)(_actStatusData[indexPath.row-1]);
+            _actStatusFilter = [((NSNumber*)[act valueForKey:@"id"])longValue];
+        }
     }
     [self selectActType:tag];
 }
