@@ -10,9 +10,7 @@
 
 @implementation UserDetail
 
-+ (void)getUserDetailWithId:(NSInteger)userId delegate:(id<UserDetailDelegate>)delegate{
-    
-//    __weak UserDetailDelegate *weakDelegate = delegate;
++ (void)getUserDetailWithId:(NSInteger)userId success:(void(^)(UserDetailModel *userDetailModel))success{
     NSString *url = [uyoung_host stringByAppendingString:@"userInfo/getByUid"];
     
     NSDictionary *parameters = @{@"uid": [NSString stringWithFormat:@"%d", (int)userId]};
@@ -26,14 +24,18 @@
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
-                [delegate fillUserDetail:resultData];
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"fillUserDetail" object:resultData];
+                UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:resultData error:nil];
+                success(userDetailModel);
+            }else{
+                success(nil);
             }
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        success(nil);
     }];
 }
+
 
 @end

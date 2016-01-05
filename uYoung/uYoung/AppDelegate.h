@@ -19,7 +19,7 @@
 #define kMAIN_SCREEN_HEIGHT  ([[UIScreen mainScreen] bounds].size.height)
 
 @class TencentOAuth;
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserDetailDelegate, UserLoginDelegate, GlobalNetworkDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, WeiboSDKDelegate, UserLoginDelegate, GlobalNetworkDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *root;

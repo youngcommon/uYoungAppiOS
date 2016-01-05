@@ -544,18 +544,14 @@
     if (isSuccess) {
         [self.view.window showHUDWithText:@"保存成功" Type:ShowPhotoYes Enabled:YES];
         //从新获取用户数据，进行保存
-        [UserDetail getUserDetailWithId:_loginUser.id delegate:self];
+        [UserDetail getUserDetailWithId:_loginUser.id success:^(UserDetailModel *userDetailModel) {
+            [userDetailModel save];
+            _loginUser = [userDetailModel copy];
+            [self initUser];
+        }];
     } else{
         [self.view.window showHUDWithText:@"保存失败" Type:ShowPhotoNo Enabled:YES];
     }
-}
-
-//保存更新本地用户数据
-- (void)fillUserDetail:(NSDictionary*)dict{
-    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
-    [userDetailModel save];
-    _loginUser = [userDetailModel copy];
-    [self initUser];
 }
 
 //获得七牛云存储的头像的url

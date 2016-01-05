@@ -229,13 +229,10 @@
 }
 
 - (void)postThirdData:(NSInteger)uid{
-    [UserDetail getUserDetailWithId:uid delegate:self];
-}
-
-- (void)fillUserDetail:(NSDictionary*)dict{
-    UserDetailModel *userDetailModel = [MTLJSONAdapter modelOfClass:[UserDetailModel class] fromJSONDictionary:dict error:nil];
-    [userDetailModel save];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:userDetailModel];
+    [UserDetail getUserDetailWithId:uid success:^(UserDetailModel *userDetailModel) {
+        [userDetailModel save];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:userDetailModel];
+    }];
 }
 
 @end

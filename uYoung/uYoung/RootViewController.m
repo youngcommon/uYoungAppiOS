@@ -80,8 +80,8 @@
 }
 
 - (void)gotoUserCenter{
-    
     UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    userCenter.userDetailModel = [UserDetailModel currentUser];
     [self.navigationController pushViewController:userCenter animated:YES];
 //    CreateActivityController *editUserViewCtl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
 //    ActivityAlbumViewController *editUserViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];

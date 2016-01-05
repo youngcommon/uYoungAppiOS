@@ -9,15 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
 #import "GlobalConfig.h"
-
-@protocol UserDetailDelegate <NSObject>
-@optional
-- (void)fillUserDetail:(NSDictionary*)dict;
-
-@end
+#import "UserDetailModel.h"
 
 @interface UserDetail : NSObject
 
-+ (void)getUserDetailWithId:(NSInteger)userId delegate:(id<UserDetailDelegate>)delegate;
++ (void)getUserDetailWithId:(NSInteger)userId success:(void(^)(UserDetailModel *userDetailModel))success;
 
 @end

@@ -18,7 +18,7 @@
 #import "SystemConfigViewController.h"
 #import "CreateAlbum.h"
 
-@interface UserCenterController : UIViewController<UserDetailDelegate, UITextFieldDelegate, CreateAlbumDelegate>
+@interface UserCenterController : UIViewController<UITextFieldDelegate, CreateAlbumDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyTitleLabel;

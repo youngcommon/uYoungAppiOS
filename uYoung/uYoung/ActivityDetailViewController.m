@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "UploadImageUtil.h"
 #import "ActivityAlbumViewController.h"
+#import "NSString+StringUtil.h"
 
 @interface ActivityDetailViewController ()
 
@@ -67,7 +68,7 @@ static NSString * const reuseIdentifier = @"Cell";
     CGFloat width = actDateTitleSize.width + 5;
         
     x = x + actDateTitleSize.width + 5;
-    NSString *actDateStr = [NSString stringWithFormat:@"%d月%d日", (int)self.model.month, (int)self.model.day];
+    NSString *actDateStr = [NSString stringWithFormat:@"%2d月%2d日", (int)self.model.month, (int)self.model.day];
     CGSize actDateSize = [actDateStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
     _actDate = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actDateSize.width, actDateSize.height)];
     [_actDate setText:actDateStr];
@@ -106,7 +107,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_contentView addSubview:_actTypeTitle];
         
     x = x + actDateTitleSize.width + 5;
-    NSString *actTypeStr = [NSString stringWithFormat:@"%@摄影", self.model.actType];
+    NSString *actTypeStr = [NSString stringWithFormat:@"%@摄影", [NSString isBlankString:self.model.actType]?@"":self.model.actType];
     CGSize actTypeSize = [actTypeStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
     _actType = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actTypeSize.width, actTypeSize.height)];
     [_actType setText:actTypeStr];
@@ -300,10 +301,12 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)gotoEnrollDetail:(NSNotification*)notification{
-    NSString *userId = (NSString*)[notification object];
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
-    userCenter.userId = [userId integerValue];
-    [self.navigationController pushViewController:userCenter animated:YES];
+    NSInteger userId = [[notification object]integerValue];
+    [UserDetail getUserDetailWithId:userId success:^(UserDetailModel *userDetailModel) {
+        UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+        userCenter.userDetailModel = userDetailModel;
+        [self.navigationController pushViewController:userCenter animated:YES];
+    }];
 }
 
 //添加分页导航,默认第一页被选中
@@ -373,6 +376,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (IBAction)toUserCenter:(UIButton *)sender {
     
     UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    userCenter.userDetailModel = [UserDetailModel currentUser];
     [self.navigationController pushViewController:userCenter animated:YES];
     
 }

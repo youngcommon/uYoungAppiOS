@@ -17,7 +17,7 @@
 @implementation UserCenterController
 
 - (void)viewDidAppear:(BOOL)animated{
-    _userDetailModel = [UserDetailModel currentUser];
+//    _userDetailModel = [UserDetailModel currentUser];
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
