@@ -29,8 +29,9 @@
 @property (nonatomic, strong) NSDictionary *userLoginInfoDic;
 @property (nonatomic, strong) NSDictionary *sinaInfoDic;
 @property (nonatomic, strong) NSDictionary *doubanDic;
+@property (nonatomic, strong) NSString *doubanToken;
 
--(void)doubanSuccessLogin:(NSDictionary*)dict;
+-(void)doubanSuccessLogin:(NSDictionary*)dict withToken:(NSString*)token;
 
 @end
 

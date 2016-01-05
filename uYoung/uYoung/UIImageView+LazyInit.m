@@ -36,10 +36,13 @@
 - (void)lazyInitSmallImageWithUrl:(NSString*)url suffix:(NSString*)suffix placeholdImg:(NSString*)imagenamed{
     __weak UIImageView *img = self;
     if ([NSString isBlankString:url]==NO) {
-        url = [NSString stringWithFormat:@"%@-%@", url, suffix];
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        BOOL isCached = [manager cachedImageExistsForURL:[NSURL URLWithString:url]];
-        NSLog(@"##图片:%@-->##%@", url, isCached?@"已缓存":@"未缓存");
+        NSRange range = [url rangeOfString:QINIU_DEFAULT_HOST];
+        if (range.length) {//说明是七牛云的头像
+            url = [NSString stringWithFormat:@"%@-%@", url, suffix];
+        }
+//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//        BOOL isCached = [manager cachedImageExistsForURL:[NSURL URLWithString:url]];
+//        NSLog(@"##图片:%@-->##%@", url, isCached?@"已缓存":@"未缓存");
         [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:imagenamed] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
             [img setImage:image];
         }];

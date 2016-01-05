@@ -44,6 +44,7 @@
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURL *requestURL;
+@property (nonatomic, strong) NSString *expire;
 
 @end
 
@@ -139,7 +140,7 @@
     
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         AppDelegate *delegate = ((AppDelegate *)[[UIApplication sharedApplication] delegate]);
-        [delegate doubanSuccessLogin:responseObject];
+        [delegate doubanSuccessLogin:responseObject withToken:token];
         [weakself dismissViewControllerAnimated:YES completion:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

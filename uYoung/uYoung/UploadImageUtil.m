@@ -89,9 +89,12 @@
 
 + (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button{
     __weak UIButton *weakB = button;
-    long timer = [[NSDate date] timeIntervalSince1970];
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", url, @"actdesc200", timer];
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    NSRange range = [url rangeOfString:QINIU_DEFAULT_HOST];
+    if (range.length) {//说明是七牛云的头像
+        long timer = [[NSDate date] timeIntervalSince1970];
+        url = [NSString stringWithFormat:@"%@-%@?%ld", url, @"actdesc200", timer];
+    }
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [button.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [weakB setBackgroundImage:image forState:UIControlStateNormal];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){

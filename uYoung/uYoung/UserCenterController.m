@@ -211,8 +211,11 @@
     }
     
     NSString *avatarUrl = self.userDetailModel.avatarUrl;
-    long timer = [[NSDate date]timeIntervalSince1970];
-    avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
+    NSRange range = [avatarUrl rangeOfString:QINIU_DEFAULT_HOST];
+    if (range.length) {//说明是七牛云的头像
+        long timer = [[NSDate date]timeIntervalSince1970];
+        avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
+    }
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
     [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         [self.headerBackBlurImg setImageToBlur:image blurRadius:10. completionBlock:nil];
@@ -222,11 +225,18 @@
         [self.headerImg setImage:img];
     }];
     
-    [self.nicknameLabel setText:self.userDetailModel.nickName];
-    [self.positionLabel setText:[NSString stringWithFormat:@"%@-%@", self.userDetailModel.cityName, self.userDetailModel.locationName]];
-    [self.companyLabel setText:self.userDetailModel.company];
-    [self.currentTitleLabel setText:self.userDetailModel.position];
-    [self.cameraLabel setText:self.userDetailModel.equipment];
+    NSString *nick = self.userDetailModel.nickName;
+    [self.nicknameLabel setText:[NSString isBlankString:nick]?@"暂无数据":nick];
+    NSString *city = self.userDetailModel.cityName;
+    NSString *location = self.userDetailModel.locationName;
+    NSString *position = [NSString isBlankString:city]?@"暂无数据":([NSString isBlankString:location]?city:[NSString stringWithFormat:@"%@-%@", city, location]);
+    [self.positionLabel setText:position];
+    NSString *comp = self.userDetailModel.company;
+    [self.companyLabel setText:[NSString isBlankString:comp]?@"暂无数据":comp];
+    NSString *title = self.userDetailModel.position;
+    [self.currentTitleLabel setText:[NSString isBlankString:title]?@"暂无数据":title];
+    NSString *equipment = self.userDetailModel.equipment;
+    [self.cameraLabel setText:[NSString isBlankString:equipment]?@"暂无数据":equipment];
     [self.genderImageView setImage:(self.userDetailModel.gender==1?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
     
 }
