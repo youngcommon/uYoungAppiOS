@@ -10,6 +10,7 @@
 #import "UserDetailModel.h"
 #import "UIImageView+WebCache.h"
 #import "GlobalConfig.h"
+#import "FeedbackViewController.h"
 
 @interface SystemConfigViewController ()
 
@@ -97,8 +98,11 @@
             [cell.textLabel setText:@"清理缓存(0.0K)"];
             break;
         }
-        case 2://反馈
+        case 2:{//反馈
+            FeedbackViewController *feedback = [[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:feedback animated:YES];
             break;
+        }
     }
 }
 

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedbackViewController">
+            <connections>
+                <outlet property="content" destination="65Z-vw-YPT" id="nJ8-RN-gqM"/>
+                <outlet property="email" destination="yyJ-It-LyC" id="SAW-3h-NBJ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Nip-Lb-NnR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZTO-eJ-Dwa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9x-lL-MgF">
+                    <rect key="frame" x="10" y="30" width="45" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="GZv-Zp-iT5"/>
+                        <constraint firstAttribute="height" constant="22" id="nPW-dD-VKv"/>
+                    </constraints>
+                    <state key="normal" image="uyoung.bundle/back_btn.png"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="CcW-cp-lo8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuW-3m-O6k">
+                    <rect key="frame" x="258" y="22" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KXT-50-BvI"/>
+                        <constraint firstAttribute="width" constant="46" id="qTI-cq-RYE"/>
+                    </constraints>
+                    <state key="normal" title="提交"/>
+                    <connections>
+                        <action selector="submit:" destination="-1" eventType="touchUpInside" id="Xa0-VG-e1q"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="问题建议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0a-8w-19Y">
+                    <rect key="frame" x="91" y="27" width="138" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KZv-WF-mEr"/>
+                        <constraint firstAttribute="width" constant="138" id="d4W-iW-pjK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFh-Kc-aL3">
+                    <rect key="frame" x="20" y="82" width="55" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="9lI-1O-lb8"/>
+                        <constraint firstAttribute="height" constant="21" id="reW-Ib-1nk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的邮箱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yyJ-It-LyC">
+                    <rect key="frame" x="84" y="78" width="216" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="tWk-Yk-de6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请将建议写在这里" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="65Z-vw-YPT">
+                    <rect key="frame" x="20" y="134" width="280" height="314"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="5uf-XN-7hL"/>
+                    </connections>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yyJ-It-LyC" secondAttribute="trailing" constant="20" id="9pw-Ar-W2p"/>
+                <constraint firstItem="ZTO-eJ-Dwa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AEq-U7-mQK"/>
+                <constraint firstItem="XFh-Kc-aL3" firstAttribute="top" secondItem="F9x-lL-MgF" secondAttribute="bottom" constant="30" id="B1m-b5-0Jb"/>
+                <constraint firstItem="DuW-3m-O6k" firstAttribute="centerY" secondItem="F9x-lL-MgF" secondAttribute="centerY" constant="-4" id="BSK-BU-GRF"/>
+                <constraint firstItem="65Z-vw-YPT" firstAttribute="top" secondItem="yyJ-It-LyC" secondAttribute="bottom" constant="26" id="DKu-e2-jv3"/>
+                <constraint firstItem="yyJ-It-LyC" firstAttribute="centerY" secondItem="XFh-Kc-aL3" secondAttribute="centerY" id="Eyi-yY-Rou"/>
+                <constraint firstItem="ZTO-eJ-Dwa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="G0m-XA-g2C"/>
+                <constraint firstAttribute="trailing" secondItem="ZTO-eJ-Dwa" secondAttribute="trailing" id="G2f-Qj-MHh"/>
+                <constraint firstAttribute="trailing" secondItem="65Z-vw-YPT" secondAttribute="trailing" constant="20" id="IBi-Oc-YaN"/>
+                <constraint firstAttribute="bottom" secondItem="65Z-vw-YPT" secondAttribute="bottom" constant="32" id="NEr-f2-yVv"/>
+                <constraint firstItem="yyJ-It-LyC" firstAttribute="leading" secondItem="XFh-Kc-aL3" secondAttribute="trailing" constant="9" id="QgY-It-bg1"/>
+                <constraint firstItem="XFh-Kc-aL3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="SMx-3e-6rM"/>
+                <constraint firstItem="F9x-lL-MgF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="TYx-7R-Yzm"/>
+                <constraint firstAttribute="trailing" secondItem="DuW-3m-O6k" secondAttribute="trailing" constant="16" id="d7h-tA-a5X"/>
+                <constraint firstAttribute="bottom" secondItem="ZTO-eJ-Dwa" secondAttribute="bottom" id="eS8-AN-ZGG"/>
+                <constraint firstItem="d0a-8w-19Y" firstAttribute="centerY" secondItem="F9x-lL-MgF" secondAttribute="centerY" constant="-3.5" id="gcC-1C-59c"/>
+                <constraint firstItem="DuW-3m-O6k" firstAttribute="leading" secondItem="d0a-8w-19Y" secondAttribute="trailing" constant="29" id="oPE-OS-ajw"/>
+                <constraint firstItem="F9x-lL-MgF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="pnp-sv-mtx"/>
+                <constraint firstItem="65Z-vw-YPT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="toS-MF-rc3"/>
+                <constraint firstItem="d0a-8w-19Y" firstAttribute="leading" secondItem="F9x-lL-MgF" secondAttribute="trailing" constant="36" id="vnl-QB-f5C"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
+        <image name="uyoung.bundle/background.png" width="320" height="568"/>
+    </resources>
+</document>
