@@ -27,7 +27,7 @@
     NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
     NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
     if ([NSString isBlankString:qiniuHost]) {
-        qiniuHost = QINIU_HOST;
+        qiniuHost = QINIU_DEFAULT_HOST;
     }
     NSString *photoUrl = [[qiniuHost stringByAppendingString:@"/"]stringByAppendingString:photoDetail.photoUrl];
     [_img lazyInitSmallImageWithUrl:photoUrl suffix:@"pic621"];
