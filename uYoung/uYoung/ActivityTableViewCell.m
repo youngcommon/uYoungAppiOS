@@ -36,7 +36,7 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void) initWithActivityModel: (ActivityModel*)model{
+- (void) initWithActivityModel: (ActivityModel*)model showHeader:(BOOL)show{
     if(model.actType){
         self.actTypeLable.text = model.actType;
     }else{
@@ -60,6 +60,9 @@
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/free"];
     }
     
+    if (!show) {
+        [self.headerImg setHidden:YES];
+    }
 }
 
 @end

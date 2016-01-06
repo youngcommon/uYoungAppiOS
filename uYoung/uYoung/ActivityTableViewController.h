@@ -14,13 +14,14 @@
 #import "ActivityList.h"
 
 
-@interface ActivityTableViewController : UITableViewController
+@interface ActivityTableViewController : UITableViewController<ActivityListDelegate>
 
 @property (strong, nonatomic) NSMutableArray *activityListData;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, assign) BOOL noMorePage;
 @property (nonatomic, assign) long userid;
+@property (nonatomic, assign) BOOL showHeader;
 
 @property (nonatomic, strong) NSDictionary *params;
 

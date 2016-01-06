@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *addrLabel;
 @property (strong, nonatomic) ActivityModel *model;
 
-- (void) initWithActivityModel: (ActivityModel*)model;
+@property (assign, nonatomic) BOOL showHeader;
+
+- (void) initWithActivityModel: (ActivityModel*)model showHeader:(BOOL)show;
 
 @end

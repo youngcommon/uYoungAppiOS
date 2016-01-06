@@ -13,6 +13,7 @@
 #import "CreateActivityController.h"
 #import "ActivityAlbumViewController.h"
 #import "UIImageView+LazyInit.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface RootViewController ()
 
@@ -32,7 +33,7 @@
     y += self.header.frame.size.height;
     
     self.activityTabViewController = [[ActivityTableViewController alloc]init];
-    
+    self.activityTabViewController.showHeader = YES;
     [self addChildViewController:self.activityTabViewController];
     [self.view addSubview:self.activityTabViewController.view];
     
@@ -131,6 +132,7 @@
 }
 
 -(void)commitWithFilterData:(NSDictionary*)data{
+    [self.view.window showHUDWithText:@"加载中..." Type:ShowLoading Enabled:YES];
     [self.activityTabViewController resetActivityList:data];
     [self showFilter:nil];
 }

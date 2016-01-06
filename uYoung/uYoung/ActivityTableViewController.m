@@ -8,6 +8,7 @@
 
 #import "ActivityTableViewController.h"
 #import "ActivityDetailViewController.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface ActivityTableViewController ()
 
@@ -23,8 +24,8 @@
     
     [self initPullAndPushView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
 
 -(void)dealloc{
@@ -65,7 +66,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    [cell initWithActivityModel:self.activityListData[[indexPath row]]];
+    [cell initWithActivityModel:self.activityListData[[indexPath row]] showHeader:_showHeader];
     
     return cell;
 }
@@ -114,7 +115,7 @@
     if (_userid>0) {
         [params setObject:@(_userid) forKey:@"creatorUid"];
     }
-    [ActivityList getActivityListWithParam:params isTop:YES];
+    [ActivityList getActivityListWithParam:params isTop:YES delegate:self];
 }
 
 - (void)reloadDataWithArray:(NSArray*)arr{
@@ -135,7 +136,7 @@
     }
     if (isTop) {
         [params setObject:@(1) forKey:@"pageNum"];
-        [ActivityList getActivityListWithParam:params isTop:isTop];
+        [ActivityList getActivityListWithParam:params isTop:isTop delegate:self];
     }else{
         if (self.noMorePage){
             //停止菊花
@@ -143,13 +144,12 @@
         }else{
             self.currentPage = self.currentPage + 1;
             [params setObject:@(self.currentPage) forKey:@"pageNum"];
-            [ActivityList getActivityListWithParam:params isTop:isTop];
+            [ActivityList getActivityListWithParam:params isTop:isTop delegate:self];
         }
     }
 }
 
-- (void)insertRowAtTop:(NSNotification*)notification{
-    NSArray *arr = (NSArray*)[notification object];
+- (void)insertRowAtTop:(NSArray*)arr{
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
@@ -163,11 +163,12 @@
 
         //停止菊花
         [self.tableView.pullToRefreshView stopAnimating];
+        
+        [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     });
 }
 
-- (void)insertRowAtBottom:(NSNotification*)notification{
-    NSArray *arr = (NSArray*)[notification object];
+- (void)insertRowAtBottom:(NSArray*)arr{
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
@@ -188,6 +189,8 @@
 
         //停止菊花
         [self.tableView.infiniteScrollingView stopAnimating];
+        
+        [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     });
 }
 

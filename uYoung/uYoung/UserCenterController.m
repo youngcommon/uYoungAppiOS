@@ -110,6 +110,7 @@
     //加载我的活动列表
     self.activityTableViewController = [[ActivityTableViewController alloc]init];
     self.activityTableViewController.userid = _userDetailModel.id;
+    self.activityTableViewController.showHeader = NO;
     [self addChildViewController:self.activityTableViewController];
     [self.view addSubview:self.activityTableViewController.view];
     

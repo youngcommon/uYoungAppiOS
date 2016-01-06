@@ -8,6 +8,7 @@
 
 #import "ActivityFilterViewController.h"
 #import "GlobalConfig.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface ActivityFilterViewController ()
 

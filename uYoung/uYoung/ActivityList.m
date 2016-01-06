@@ -10,7 +10,7 @@
 
 @implementation ActivityList
 
-+ (void)getActivityListWithParam:(NSDictionary*)param isTop:(BOOL)isTop{
++ (void)getActivityListWithParam:(NSDictionary*)param isTop:(BOOL)isTop delegate:(id<ActivityListDelegate>)delegate{
     //参数过滤
     NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
     NSInteger isFree = [[params objectForKey:@"feeType"]integerValue];
@@ -43,9 +43,9 @@
             if(resultData){
                 NSArray *a = (NSArray*)[resultData objectForKey:@"dataList"];
                 if (isTop) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"insertRowAtTop" object:a];
+                    [delegate insertRowAtTop:a];
                 }else{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"insertRowAtBottom" object:a];
+                    [delegate insertRowAtBottom:a];
                 }
             }
         }

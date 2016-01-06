@@ -10,9 +10,17 @@
 #import <AFNetworking.h>
 #import "GlobalConfig.h"
 
+@protocol ActivityListDelegate <NSObject>
+
+@optional
+- (void)insertRowAtTop:(NSArray*)data;
+- (void)insertRowAtBottom:(NSArray*)data;
+
+@end
+
 @interface ActivityList : NSObject
 
-+ (void)getActivityListWithParam:(NSDictionary*)param isTop:(BOOL)isTop;
++ (void)getActivityListWithParam:(NSDictionary*)param isTop:(BOOL)isTop delegate:(id<ActivityListDelegate>)delegate;
 //+ (void)getActivityListWithPageNum:(NSInteger)pageNum status:(NSInteger)status isTop:(BOOL)isTop;
 
 @end
