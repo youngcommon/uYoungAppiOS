@@ -60,6 +60,9 @@
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/free"];
     }
     
+    NSString *statusImgName = [NSString stringWithFormat:@"uyoung.bundle/status_%d", (int)model.status];
+    [_statusImg setImage:[UIImage imageNamed:statusImgName]];
+    
     if (!show) {
         [self.headerImg setHidden:YES];
     }

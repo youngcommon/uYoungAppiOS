@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroud;
 @property (weak, nonatomic) IBOutlet UILabel *actTypeLable;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImg;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImg;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekLabel;

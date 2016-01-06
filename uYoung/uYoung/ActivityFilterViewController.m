@@ -146,7 +146,7 @@
 
 - (IBAction)commit:(id)sender {
     NSString *sortColumn = _sortType==0?@"createTimeSort":@"beginTimeSort";
-    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),sortColumn, @"asc",@"sort", @(_isFree),@"feeType", @(_actTypeFilter),@"activityType", @(_actStatusFilter),@"status", nil];
+    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),sortColumn, @"desc",@"sort", @(_isFree),@"feeType", @(_actTypeFilter),@"activityType", @(_actStatusFilter),@"status", nil];
     [_delegate commitWithFilterData:data];
 }
 
