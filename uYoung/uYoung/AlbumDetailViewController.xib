@@ -10,6 +10,7 @@
                 <outlet property="albumName" destination="Lnw-Xh-pHg" id="8Yj-P9-QMJ"/>
                 <outlet property="allPics" destination="kXN-VZ-gu3" id="MTy-5J-Hol"/>
                 <outlet property="createDate" destination="n52-rB-nCK" id="7TA-Fp-oSv"/>
+                <outlet property="editButton" destination="kHE-fe-tha" id="OCo-pD-Iwh"/>
                 <outlet property="nickName" destination="pCx-x7-ybs" id="FK8-Co-nzp"/>
                 <outlet property="totalPics" destination="SLe-7M-sU5" id="OMG-IG-HrW"/>
                 <outlet property="uploadPicButton" destination="GqJ-Uv-Qc1" id="XbU-We-ObJ"/>
@@ -117,6 +118,17 @@
                         <action selector="selectPics:" destination="-1" eventType="touchUpInside" id="mGb-bc-oYl"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHE-fe-tha">
+                    <rect key="frame" x="259" y="21" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9gf-Ky-iIy"/>
+                        <constraint firstAttribute="width" constant="46" id="RjV-KI-rJc"/>
+                    </constraints>
+                    <state key="normal" title="Edit"/>
+                    <connections>
+                        <action selector="edit:" destination="-1" eventType="touchUpInside" id="G0e-xZ-PEx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -140,11 +152,14 @@
                 <constraint firstItem="SLe-7M-sU5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="X2a-ma-VgP"/>
                 <constraint firstItem="GqJ-Uv-Qc1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="X5r-J9-CdE"/>
                 <constraint firstItem="cIF-yn-c8m" firstAttribute="top" secondItem="KXt-rT-IrA" secondAttribute="bottom" constant="10" id="Z61-el-REl"/>
+                <constraint firstItem="kHE-fe-tha" firstAttribute="leading" secondItem="Lnw-Xh-pHg" secondAttribute="trailing" constant="7" id="b0B-o3-JD6"/>
                 <constraint firstItem="n52-rB-nCK" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" id="bL4-Lt-Jsp"/>
                 <constraint firstItem="tUr-Fa-IeY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="e9m-Op-MVg"/>
                 <constraint firstItem="pCx-x7-ybs" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" id="lfw-mA-JOa"/>
                 <constraint firstAttribute="trailing" secondItem="grC-SF-Sn3" secondAttribute="trailing" id="qDm-8v-8hb"/>
                 <constraint firstAttribute="trailing" secondItem="cIF-yn-c8m" secondAttribute="trailing" constant="16" id="ssq-jt-swc"/>
+                <constraint firstAttribute="trailing" secondItem="kHE-fe-tha" secondAttribute="trailing" constant="15" id="xfy-Kb-Q3q"/>
+                <constraint firstItem="kHE-fe-tha" firstAttribute="centerY" secondItem="Lnw-Xh-pHg" secondAttribute="centerY" id="zDn-Za-EBz"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

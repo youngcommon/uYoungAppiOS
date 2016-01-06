@@ -14,6 +14,7 @@
 @implementation AlbumPicCollectionCell
 
 - (void)awakeFromNib {
+//    [_selImg setHidden:YES];
 }
 
 - (void)hiddenLabels{
@@ -33,6 +34,15 @@
     [_img lazyInitSmallImageWithUrl:photoUrl suffix:@"pic621"];
     [_viewLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.viewCount]];
     [_likeLabel setText:[NSString stringWithFormat:@"%d", (int)photoDetail.likeCount]];
+    
+}
+
+- (void)changeSelectImg:(BOOL)isSel{
+    if (isSel) {
+        [_selImg setImage:[UIImage imageNamed:@"ZLPhotoLib.bundle/icon_image_yes"]];
+    }else{
+        [_selImg setImage:[UIImage imageNamed:@"ZLPhotoLib.bundle/icon_image_no"]];
+    }
 }
 
 @end

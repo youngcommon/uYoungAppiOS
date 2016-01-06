@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *totalPics;
 @property (strong, nonatomic) IBOutlet UICollectionView *allPics;
 @property (strong, nonatomic) IBOutlet UIButton *uploadPicButton;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 @property (strong, nonatomic) NSString *albumNameStr;
 @property (strong, nonatomic) NSString *nickNameStr;
@@ -24,9 +25,12 @@
 @property (assign, nonatomic) long ownerUid;
 @property (assign, nonatomic) long albumid;
 
+@property (assign, nonatomic) BOOL inEdit;//是否是编辑状态
 @property (strong, nonatomic) NSArray *pics;
+@property (strong, nonatomic) NSMutableArray *delList;
 
 - (IBAction)back:(id)sender;
 - (IBAction)selectPics:(id)sender;
+- (IBAction)edit:(id)sender;
 
 @end

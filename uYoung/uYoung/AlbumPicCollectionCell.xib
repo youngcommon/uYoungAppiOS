@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -50,6 +50,13 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZLPhotoLib.bundle/icon_image_no.png" translatesAutoresizingMaskIntoConstraints="NO" id="jfZ-5U-Aql">
+                        <rect key="frame" x="90" y="8" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="L1Q-Hb-MtS"/>
+                            <constraint firstAttribute="width" constant="26" id="cJh-AB-dqK"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -61,8 +68,10 @@
                 <constraint firstAttribute="trailing" secondItem="4qR-Qa-rrJ" secondAttribute="trailing" id="BV8-Ji-lgA"/>
                 <constraint firstAttribute="bottom" secondItem="4qR-Qa-rrJ" secondAttribute="bottom" id="CcU-JP-NQ2"/>
                 <constraint firstAttribute="bottom" secondItem="KA8-PS-A3a" secondAttribute="bottom" constant="8" id="DaC-N0-0gE"/>
+                <constraint firstItem="jfZ-5U-Aql" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="GXa-7n-NRW"/>
                 <constraint firstItem="C3J-yU-Lqy" firstAttribute="leading" secondItem="KA8-PS-A3a" secondAttribute="trailing" constant="2" id="Jx1-M8-RiY"/>
                 <constraint firstAttribute="trailing" secondItem="ug2-Vg-fxQ" secondAttribute="trailing" constant="4" id="Lll-GD-e3J"/>
+                <constraint firstAttribute="trailing" secondItem="jfZ-5U-Aql" secondAttribute="trailing" constant="8" id="RbV-08-J1d"/>
                 <constraint firstItem="zkD-KL-TrG" firstAttribute="leading" secondItem="C3J-yU-Lqy" secondAttribute="trailing" constant="8" id="k06-ee-wkd"/>
                 <constraint firstItem="zkD-KL-TrG" firstAttribute="centerY" secondItem="KA8-PS-A3a" secondAttribute="centerY" id="r06-XI-kiv"/>
                 <constraint firstItem="ug2-Vg-fxQ" firstAttribute="centerY" secondItem="KA8-PS-A3a" secondAttribute="centerY" id="t21-sz-VqA"/>
@@ -78,12 +87,14 @@
                 <outlet property="img" destination="4qR-Qa-rrJ" id="UiJ-H8-tUS"/>
                 <outlet property="likeImg" destination="KA8-PS-A3a" id="tgP-fR-hfb"/>
                 <outlet property="likeLabel" destination="C3J-yU-Lqy" id="MIk-ph-ffW"/>
+                <outlet property="selImg" destination="jfZ-5U-Aql" id="3OF-79-SGr"/>
                 <outlet property="viewImg" destination="zkD-KL-TrG" id="jFW-l1-rI3"/>
                 <outlet property="viewLabel" destination="ug2-Vg-fxQ" id="dKW-lM-WON"/>
             </connections>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ZLPhotoLib.bundle/icon_image_no.png" width="320" height="568"/>
         <image name="uyoung.bundle/like.png" width="320" height="568"/>
         <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
         <image name="uyoung.bundle/view.png" width="320" height="568"/>

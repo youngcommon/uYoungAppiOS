@@ -47,11 +47,12 @@ static NSString * const reuseIdentifier = @"Cell";
     if (_pics==nil||_pics==NULL) {
         _pics = [[NSArray alloc]init];
     }
+    _delList = [[NSMutableArray alloc]initWithCapacity:0];
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
-    if (loginUser.id!=_ownerUid) {
-        [_uploadPicButton setHidden:YES];
-    }
+    [_uploadPicButton setHidden:(loginUser.id!=_ownerUid)];
+    [_editButton setHidden:(loginUser.id!=_ownerUid)];
+    _inEdit = NO;
     
 }
 
@@ -92,11 +93,16 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //跳转到图片下载逻辑
-    JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
-    jzAlbumVC.currentIndex = indexPath.row;//这个参数表示当前图片的index，默认是0
-    jzAlbumVC.imgArr = [[NSMutableArray alloc]initWithArray:_pics];//图片数组，可以是url，也可以是UIImage
-    [self presentViewController:jzAlbumVC animated:YES completion:nil];
+    if (_inEdit) {
+        AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)[collectionView cellForItemAtIndexPath:indexPath];
+        [cell changeSelectImg:YES];
+    }else{
+        //跳转到图片下载逻辑
+        JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
+        jzAlbumVC.currentIndex = indexPath.row;//这个参数表示当前图片的index，默认是0
+        jzAlbumVC.imgArr = [[NSMutableArray alloc]initWithArray:_pics];//图片数组，可以是url，也可以是UIImage
+        [self presentViewController:jzAlbumVC animated:YES completion:nil];
+    }
 }
 
 - (IBAction)back:(id)sender {
@@ -108,5 +114,15 @@ static NSString * const reuseIdentifier = @"Cell";
     upload.albumid = _albumid;
     upload.owneruid = _ownerUid;
     [self presentViewController:upload animated:YES completion:nil];
+}
+
+- (IBAction)edit:(id)sender {
+    if (!_inEdit) {
+        [_editButton setTitle:@"删除" forState:UIControlStateNormal];
+        _inEdit = YES;
+    }else{
+        [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
+        _inEdit = NO;
+    }
 }
 @end
