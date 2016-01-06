@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headerImg;
 @property (weak, nonatomic) IBOutlet UIImageView *headerBackBlurImg;
 @property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 @property (strong, nonatomic) UIButton *myAlbumButton;
 @property (strong, nonatomic) UIButton *myActButton;
@@ -55,6 +56,7 @@
 @property (strong, nonatomic) ActivityTableViewController *activityTableViewController;
 
 @property (assign, nonatomic) long userId;
+@property (assign, nonatomic) BOOL isSelf;//标记是否为登陆用户自己的个人中心
 
 - (IBAction)editUser:(id)sender;
 - (IBAction)systemConfig:(id)sender;

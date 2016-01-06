@@ -20,4 +20,8 @@
 
 + (void)unsignedActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
 
++ (void)cancelActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
+
++ (void)signActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
+
 @end

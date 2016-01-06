@@ -602,6 +602,9 @@
     if (user==nil) {
         
     }
+    if(_actType==0){
+        _actType = 1;
+    }
     NSInteger uid = user.id;
     NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", fromTimeFormat,@"strBeginTime", endTimeFormat,@"strEndTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", @(1),@"realNum", nil];
     [ActivityPublish publishActWithDict:param delegate:self];

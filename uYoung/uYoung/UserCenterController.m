@@ -7,7 +7,7 @@
 //
 
 #import "UserCenterController.h"
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+WebCache.h"
 #import <UIImageView+LBBlurredImage.h>
 #import "EditUserViewController.h"
 #import "CreateActivityController.h"
@@ -35,8 +35,6 @@
 }
 
 - (void)viewDidLoad{
-    
-    _userDetailModel = [UserDetailModel currentUser];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
     //增加键盘事件监听
@@ -77,7 +75,7 @@
     CGFloat y = self.headerBackBlurImg.frame.size.height - buttonHeight;
     //增加我的相册和我的活动按钮
     _myAlbumButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, buttonWidth, buttonHeight)];
-    [_myAlbumButton setTitle:@"我的相册(5)" forState:UIControlStateNormal];
+    [_myAlbumButton setTitle:@"我的相册" forState:UIControlStateNormal];
     [_myAlbumButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_myAlbumButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
     [_myAlbumButton setAlpha:0.65];
@@ -86,7 +84,7 @@
     [self.view addSubview:_myAlbumButton];
     
     _myActButton = [[UIButton alloc]initWithFrame:CGRectMake(x+buttonWidth, y, buttonWidth, buttonHeight)];
-    [_myActButton setTitle:@"我的活动(10)" forState:UIControlStateNormal];
+    [_myActButton setTitle:@"我的活动" forState:UIControlStateNormal];
     [_myActButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_myActButton setBackgroundColor:UIColorFromRGB(0x027AFF)];
     [_myActButton setAlpha:0.3];
@@ -193,6 +191,18 @@
     [self addChildViewController:_sysCtl];
     [self.view addSubview:_sysCtl.view];
     
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser.id!=_userDetailModel.id) {//说明不是自己的详情
+        [_editButton setHidden:YES];
+        [_createAct setHidden:YES];
+        [_createAlbum setHidden:YES];
+        [_myAlbumButton setTitle:@"他的相册" forState:UIControlStateNormal];
+        [_myActButton setTitle:@"他的活动" forState:UIControlStateNormal];
+        _isSelf = NO;
+    }else{
+        _isSelf = YES;
+    }
+    
 }
 
 - (void)refreshViews:(NSNotification*)no{
@@ -218,13 +228,9 @@
         long timer = [[NSDate date]timeIntervalSince1970];
         avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
     }
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:avatarUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:2000.0];
-    [self.headerBackBlurImg setImageWithURLRequest:theRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-        [self.headerBackBlurImg setImageToBlur:image blurRadius:10. completionBlock:nil];
+    [self.headerImg sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:UserDefaultHeader] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+        [self.headerBackBlurImg setImageToBlur:image blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];
         [self.headerImg setImage:image];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-        [self.headerImg setImage:img];
     }];
     
     NSString *nick = self.userDetailModel.nickName;
@@ -252,23 +258,27 @@
             [_myAlbumButton setAlpha:0.65];
             [self.activityTableViewController.view setHidden:YES];
             [self.albumTableViewController.view setHidden:NO];
-            [_createAlbum setHidden:NO];
-            [_createAct setHidden:YES];
+            if (_isSelf) {
+                [_createAlbum setHidden:NO];
+                [_createAct setHidden:YES];
+            }
         }else if(tag==1){//点击我的活动
             [_myAlbumButton setAlpha:0.3];
             [_myActButton setAlpha:0.65];
             [self.activityTableViewController.view setHidden:NO];
             [self.albumTableViewController.view setHidden:YES];
-            [_createAlbum setHidden:YES];
-            [_createAlbumText setHidden:YES];
-            [_cancelCreate setHidden:YES];
-            CGPoint origin = _createAlbumView.frame.origin;
-            CGSize size = _createAlbumView.frame.size;
-            CGRect frame = CGRectMake(0-mScreenWidth, origin.y, size.width, size.height);
-            _createAlbumView.frame = frame;
-            [_createAct setHidden:NO];
-            [_doCreate setHidden:YES];
-            [_createAlbumView setHidden:YES];
+            if (_isSelf) {
+                [_createAlbum setHidden:YES];
+                [_createAlbumText setHidden:YES];
+                [_cancelCreate setHidden:YES];
+                CGPoint origin = _createAlbumView.frame.origin;
+                CGSize size = _createAlbumView.frame.size;
+                CGRect frame = CGRectMake(0-mScreenWidth, origin.y, size.width, size.height);
+                _createAlbumView.frame = frame;
+                [_createAct setHidden:NO];
+                [_doCreate setHidden:YES];
+                [_createAlbumView setHidden:YES];
+            }
         }
     }
 }

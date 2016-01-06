@@ -16,6 +16,7 @@
 #import "AlbumUploadViewController.h"
 #import "PhotoDetailViewController.h"
 #import "JZAlbumViewController.h"
+#import "UserDetailModel.h"
 
 @interface AlbumDetailViewController ()
 
@@ -45,6 +46,11 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if (_pics==nil||_pics==NULL) {
         _pics = [[NSArray alloc]init];
+    }
+    
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser.id!=_ownerUid) {
+        [_uploadPicButton setHidden:YES];
     }
     
 }

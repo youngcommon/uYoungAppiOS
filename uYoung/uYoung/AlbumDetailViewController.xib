@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumDetailViewController">
@@ -12,6 +12,7 @@
                 <outlet property="createDate" destination="n52-rB-nCK" id="7TA-Fp-oSv"/>
                 <outlet property="nickName" destination="pCx-x7-ybs" id="FK8-Co-nzp"/>
                 <outlet property="totalPics" destination="SLe-7M-sU5" id="OMG-IG-HrW"/>
+                <outlet property="uploadPicButton" destination="GqJ-Uv-Qc1" id="XbU-We-ObJ"/>
                 <outlet property="userHeader" destination="KXt-rT-IrA" id="Jfu-WC-mXA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="fz4-Ep-5Me"/>
             </connections>

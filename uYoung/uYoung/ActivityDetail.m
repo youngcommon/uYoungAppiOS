@@ -105,4 +105,48 @@
     }];
 }
 
++ (void)cancelActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/cal"];
+    
+    NSDictionary *parameters = @{@"uid":@(userId), @"activityId":@(actId)};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if(result==100){//说明获得正确结果
+            success(YES);
+        }else{
+            success(NO);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(NO);
+    }];
+}
+
++ (void)signActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/conSignUp"];
+    
+    NSDictionary *parameters = @{@"uid":@(userId), @"activityId":@(actId)};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if(result==100){//说明获得正确结果
+            success(YES);
+        }else{
+            success(NO);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(NO);
+    }];
+}
+
 @end

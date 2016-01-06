@@ -15,7 +15,7 @@
 #import "EnrollCollectionView.h"
 #import "LoginViewController.h"
 
-@interface ActivityDetailViewController : UIViewController
+@interface ActivityDetailViewController : UIViewController<EnrollCollectionViewDelegate>
 
 @property (strong, nonatomic) ActivityModel *model;
 @property (strong, nonatomic) ActivityDetailModel *detailModel;

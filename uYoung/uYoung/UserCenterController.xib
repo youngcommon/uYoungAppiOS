@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterController">
@@ -13,6 +13,7 @@
                 <outlet property="companyTitleLabel" destination="XWJ-xZ-sYk" id="x5U-iJ-sio"/>
                 <outlet property="currentTitleLabel" destination="rHM-IS-y78" id="fBw-bi-IHf"/>
                 <outlet property="currentTitleTitleLabel" destination="QDI-hn-xSR" id="yof-GN-DOc"/>
+                <outlet property="editButton" destination="2m4-Fk-3vs" id="T9H-Lq-zIq"/>
                 <outlet property="genderImageView" destination="Lnw-BL-N1F" id="E24-Zm-Wy1"/>
                 <outlet property="headerBackBlurImg" destination="2Hp-gd-Iv6" id="0He-OX-sbI"/>
                 <outlet property="headerBackgroundLabel" destination="ehe-RY-YeI" id="q4n-dI-DHw"/>

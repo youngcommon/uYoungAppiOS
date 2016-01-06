@@ -81,11 +81,11 @@
                                 <outlet property="delegate" destination="-1" id="fiB-rC-WOR"/>
                             </connections>
                         </scrollView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-WU-kXp">
-                            <rect key="frame" x="106" y="348" width="64" height="16"/>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-WU-kXp">
+                            <rect key="frame" x="81" y="348" width="130" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="aSi-A6-aD1"/>
-                                <constraint firstAttribute="width" constant="64" id="qsl-1r-Cjp"/>
+                                <constraint firstAttribute="width" constant="130" id="qsl-1r-Cjp"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         </button>
@@ -119,7 +119,7 @@
                         <constraint firstAttribute="bottom" secondItem="Kxc-WU-kXp" secondAttribute="bottom" constant="25" id="iVJ-dg-gyq"/>
                         <constraint firstItem="Kxc-WU-kXp" firstAttribute="top" secondItem="fp2-jm-7gV" secondAttribute="bottom" constant="12" id="kCd-cp-Xwl"/>
                         <constraint firstItem="fp2-jm-7gV" firstAttribute="leading" secondItem="hU9-mf-UmH" secondAttribute="leading" id="let-D3-1UK"/>
-                        <constraint firstItem="Kxc-WU-kXp" firstAttribute="centerX" secondItem="fp2-jm-7gV" secondAttribute="centerX" id="sNS-zj-ATe"/>
+                        <constraint firstItem="Kxc-WU-kXp" firstAttribute="centerX" secondItem="fp2-jm-7gV" secondAttribute="centerX" constant="8" id="sNS-zj-ATe"/>
                         <constraint firstAttribute="trailing" secondItem="Z9b-gJ-GoM" secondAttribute="trailing" constant="15" id="sfs-tV-6go"/>
                         <constraint firstItem="hU9-mf-UmH" firstAttribute="top" secondItem="lHj-4h-9Qk" secondAttribute="top" constant="160" id="vi6-SQ-bjU"/>
                     </constraints>

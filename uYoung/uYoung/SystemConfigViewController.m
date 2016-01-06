@@ -109,7 +109,7 @@
 - (void)loadCacheSize{
     UITableViewCell *cell = [_systable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     NSUInteger tmpSize = [[SDImageCache sharedImageCache]getSize];
-    NSLog(@"###################%ld###############", tmpSize);
+//    NSLog(@"###################%ld###############", tmpSize);
     float size = tmpSize / 1024;
     NSString *clearCacheName =
     size<=1024 ?

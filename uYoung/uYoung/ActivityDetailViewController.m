@@ -68,7 +68,7 @@ static NSString * const reuseIdentifier = @"Cell";
     CGFloat width = actDateTitleSize.width + 5;
         
     x = x + actDateTitleSize.width + 5;
-    NSString *actDateStr = [NSString stringWithFormat:@"%2d月%2d日", (int)self.model.month, (int)self.model.day];
+    NSString *actDateStr = [NSString stringWithFormat:@"%02d月%02d日", (int)self.model.month, (int)self.model.day];
     CGSize actDateSize = [actDateStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
     _actDate = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actDateSize.width, actDateSize.height)];
     [_actDate setText:actDateStr];
@@ -177,7 +177,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillActivityDetail:) name:@"fillActivityDetail" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
     
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
@@ -201,49 +201,91 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)initSignupButton{
     //判断当前活动状态
     NSInteger status = self.model.status;
+    
+    BOOL isSelf = (_detailModel.oriUserId==_loginUser.id);//活动是自己创建的
+    
     switch (status) {
         case 1://进行中
-            [_signupButton setTitle:@"活动进行中" forState:UIControlStateNormal];
-            [_signupButton setEnabled:NO];
+        {
+            if (!isSelf) {
+                //判断报名状态,进行签到
+                [ActivityDetail getSignStatusWithUser:_loginUser.id actId:self.model.activityId opts:^(NSInteger status) {
+                    [self initSignupButtonWithStatus:status actStatus:1];
+                }];
+            }else{
+                [_signupButton setTitle:@"活动进行中" forState:UIControlStateNormal];
+                [_signupButton setEnabled:NO];
+            }
             break;
+        }
         case 2://已完成
+        {
             [_signupButton setTitle:@"查看活动成果" forState:UIControlStateNormal];
             [_signupButton addTarget:self action:@selector(toActivityAlbum) forControlEvents:UIControlEventTouchUpInside];
             break;
+        }
         case 3://已取消
+        {
             [_signupButton setTitle:@"已取消" forState:UIControlStateNormal];
             [_signupButton setEnabled:NO];
             break;
+        }
         default://0报名中
-            if (_loginUser!=nil&&[NSString isBlankString:self.loginUser.avatarUrl]==NO){
+        {
+            if (!isSelf){
                 //判断报名状态
                 [ActivityDetail getSignStatusWithUser:_loginUser.id actId:self.model.activityId opts:^(NSInteger status) {
-                    [self initSignupButtonWithStatus:status];
+                    [self initSignupButtonWithStatus:status actStatus:0];
                 }];
+            }else{
+                [_signupButton setTitle:@"取消活动" forState:UIControlStateNormal];
+                [_signupButton addTarget:self action:@selector(cancelAct) forControlEvents:UIControlEventTouchUpInside];
             }
             break;
+        }
     }
     
 }
 
 //查看活动相册
 - (void)toActivityAlbum{
-    ActivityAlbumViewController *editUserViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:editUserViewCtl animated:YES];
+    ActivityAlbumViewController *actAlbumViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
+    actAlbumViewCtl.actTitleStr = _detailModel.title;
+    [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
 }
 
-- (void)initSignupButtonWithStatus:(NSInteger)status{
+- (void)initSignupButtonWithStatus:(NSInteger)status actStatus:(NSInteger)actStatus{
     switch (status) {
         case 1://已报名
-            [_signupButton removeTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
-            [_signupButton setTitle:@"取消报名" forState:UIControlStateNormal];
-            [_signupButton addTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
+        {
+            if (actStatus==0) {
+                [_signupButton removeTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
+                [_signupButton setTitle:@"取消报名" forState:UIControlStateNormal];
+                [_signupButton addTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
+            }else if(actStatus==1){
+                BOOL isSigned = NO;//判断是否签到
+                if (isSigned) {
+                    [_signupButton setTitle:@"已签到" forState:UIControlStateNormal];
+                    [_signupButton setEnabled:NO];
+                }else{
+                    [_signupButton setTitle:@"签 到" forState:UIControlStateNormal];
+                    [_signupButton addTarget:self action:@selector(signAct) forControlEvents:UIControlEventTouchUpInside];
+                }
+            }
             break;
+        }
         default://0与2都认为可以再报名
-            [_signupButton removeTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
-            [_signupButton setTitle:@"参加活动" forState:UIControlStateNormal];
-            [_signupButton addTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
+        {
+            if (actStatus==0) {
+                [_signupButton removeTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
+                [_signupButton setTitle:@"参加活动" forState:UIControlStateNormal];
+                [_signupButton addTarget:self action:@selector(signupAct) forControlEvents:UIControlEventTouchUpInside];
+            }else if(actStatus==1){
+                [_signupButton setTitle:@"活动进行中" forState:UIControlStateNormal];
+                [_signupButton setEnabled:NO];
+            }
             break;
+        }
     }
 }
 
@@ -251,7 +293,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)unsignedActivity{
     [ActivityDetail unsignedActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
-            [self initSignupButtonWithStatus:0];
+            [self initSignupButtonWithStatus:0 actStatus:0];
         }
     }];
 }
@@ -260,7 +302,27 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)signupAct{
     [ActivityDetail signupActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
-            [self initSignupButtonWithStatus:1];
+            [self initSignupButtonWithStatus:1 actStatus:0];
+        }
+    }];
+}
+
+//取消活动
+-(void)cancelAct{
+    [ActivityDetail cancelActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
+        if (success) {
+            [_signupButton setTitle:@"已取消" forState:UIControlStateNormal];
+            [_signupButton setEnabled:NO];
+        }
+    }];
+}
+
+//签到
+-(void)signAct{
+    [ActivityDetail signActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
+        if (success) {
+            [_signupButton setTitle:@"已签到" forState:UIControlStateNormal];
+            [_signupButton setEnabled:NO];
         }
     }];
 }
@@ -290,6 +352,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [enrollView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
     enrollView.delegate = enrollView;
     enrollView.dataSource = enrollView;
+    enrollView.enrollDelegate = self;
     enrollView.enrolls = [self.detailModel.enrolls copy];
     [enrollView setBackgroundColor:[UIColor clearColor]];
     [self.descScrollView addSubview:enrollView];
@@ -300,8 +363,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_pageControl setHidden:YES];
 }
 
-- (void)gotoEnrollDetail:(NSNotification*)notification{
-    NSInteger userId = [[notification object]integerValue];
+-(void)getEnrollUserId:(NSInteger)userId{
     [UserDetail getUserDetailWithId:userId success:^(UserDetailModel *userDetailModel) {
         UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
         userCenter.userDetailModel = userDetailModel;

@@ -94,7 +94,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{     //当在Cell上滑动时会调用此函数
     
     UserDetailModel *user = [UserDetailModel currentUser];
-    if (user==nil||[user isEqual:[NSNull null]]) {
+    if (user==nil||[user isEqual:[NSNull null]]||user.id!=_userId) {
         return UITableViewCellEditingStyleNone;
     }else{
         return  UITableViewCellEditingStyleDelete;  //返回此值时,Cell会做出响应显示Delete按键,点击Delete后会调用下面的函数,别给传递UITableViewCellEditingStyleDelete参数

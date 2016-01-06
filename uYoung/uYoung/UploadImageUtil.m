@@ -9,7 +9,7 @@
 #import "UploadImageUtil.h"
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
-#import <UIImageView+AFNetworking.h>
+#import <UIImageView+WebCache.h>
 
 @implementation UploadImageUtil
 
@@ -93,14 +93,10 @@
     if (range.length) {//说明是七牛云的头像
         long timer = [[NSDate date] timeIntervalSince1970];
         url = [NSString stringWithFormat:@"%@-%@?%ld", url, @"actdesc200", timer];
-    }
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [button.imageView setImageWithURLRequest:theRequest placeholderImage:[UIImage imageNamed:UserDefaultHeader] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+    }    [button.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:UserDefaultHeader] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
         [weakB setBackgroundImage:image forState:UIControlStateNormal];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-        UIImage *img = [UIImage imageNamed:UserDefaultHeader];
-        [weakB setBackgroundImage:img forState:UIControlStateNormal];
     }];
+    
 }
 
 @end
