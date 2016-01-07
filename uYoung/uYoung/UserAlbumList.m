@@ -47,7 +47,6 @@
     
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
-        NSLog(@"##deleteUserAlbum--->%@", responseObject);
         if (result==100) {
             success(YES);
         }else{
@@ -55,6 +54,33 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         success(NO);
+    }];
+}
+
++ (void)deleteAlbumPhoto:(NSArray*)ids success:(void(^)(BOOL success))success{
+    if (ids!=nil&&[ids count]>0) {
+        for (int i=0; i<[ids count]; i++) {
+            NSNumber *id = ids[i];
+            [self deletePhoto:id.longValue];
+        }
+        success(YES);
+    }
+}
+
++ (void)deletePhoto:(long)photoId{
+    NSString *url = [uyoung_host stringByAppendingString:@"photo/deleteById"];
+    
+    NSDictionary *parameters = @{@"id":@(photoId)};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        NSLog(@"##########%d##########", (int)result);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"##########%@##########", error);
     }];
 }
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UYoungAlertViewUtil.h"
 
-@interface AlbumDetailViewController : UIViewController
+@interface AlbumDetailViewController : UIViewController<UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;
@@ -28,8 +29,9 @@
 @property (assign, nonatomic) long albumid;
 
 @property (assign, nonatomic) BOOL inEdit;//是否是编辑状态
-@property (strong, nonatomic) NSArray *pics;
-@property (strong, nonatomic) NSMutableArray *delList;
+@property (strong, nonatomic) NSMutableArray *pics;
+@property (strong, nonatomic) NSMutableArray *delList;//保存要删除的照片id
+@property (strong, nonatomic) NSMutableArray *delPhotoList;//保存要删除的照片实体
 
 - (IBAction)back:(id)sender;
 - (IBAction)selectPics:(id)sender;

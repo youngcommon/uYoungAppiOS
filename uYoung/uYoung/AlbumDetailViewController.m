@@ -17,6 +17,7 @@
 #import "PhotoDetailViewController.h"
 #import "JZAlbumViewController.h"
 #import "UserDetailModel.h"
+#import "UserAlbumList.h"
 
 @interface AlbumDetailViewController ()
 
@@ -48,6 +49,7 @@ static NSString * const reuseIdentifier = @"Cell";
         _pics = [[NSArray alloc]init];
     }
     _delList = [[NSMutableArray alloc]initWithCapacity:0];
+    _delPhotoList = [[NSMutableArray alloc]initWithCapacity:0];
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     [_uploadPicButton setHidden:(loginUser.id!=_ownerUid)];
@@ -102,8 +104,10 @@ static NSString * const reuseIdentifier = @"Cell";
         BOOL isSel = [_delList containsObject:@(id)];
         if(isSel){
             [_delList removeObject:@(id)];
+            [_delPhotoList removeObject:cell.model];
         }else{
             [_delList addObject:@(id)];
+            [_delPhotoList addObject:cell.model];
         }
         [cell changeSelectImg:!isSel];
     }else{
@@ -134,8 +138,28 @@ static NSString * const reuseIdentifier = @"Cell";
     }else{
         [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
         _inEdit = NO;
+        //删除逻辑
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"是否要删除照片?" Message:@"删除的照片不可恢复" CancelTxt:@"再想想" OtherTxt:nil Tag:0 Delegate:self];
     }
     [self cellSelectButtonSwitch];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+    }else{
+        //删除所选照片
+        [UserAlbumList deleteAlbumPhoto:_delList success:^(BOOL success) {
+            [self cancelEdit:nil];
+            if ([_delList count]>0&&[_delPhotoList count]==[_delList count]) {
+                for (int i=0; i<[_delPhotoList count]; i++) {
+                    [_pics removeObject:_delPhotoList[i]];
+                }
+                [self.allPics reloadData];
+                [self.allPics reloadInputViews];
+            }
+        }];
+    }
 }
 
 - (IBAction)cancelEdit:(id)sender {
@@ -143,6 +167,15 @@ static NSString * const reuseIdentifier = @"Cell";
     _inEdit = NO;
     [_cancelButton setHidden:YES];
     [self cellSelectButtonSwitch];
+    [_delList removeAllObjects];
+    [_delPhotoList removeAllObjects];
+    NSArray *cells = [_allPics visibleCells];
+    if (cells&&[cells count]>0) {
+        for (int i=0; i<[cells count]; i++) {
+            AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)cells[i];
+            [cell changeSelectImg:NO];
+        }
+    }
 }
 
 -(void)cellSelectButtonSwitch{
