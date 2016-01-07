@@ -14,7 +14,7 @@
 @implementation AlbumPicCollectionCell
 
 - (void)awakeFromNib {
-//    [_selImg setHidden:YES];
+    [_selImg setHidden:YES];
 }
 
 - (void)hiddenLabels{
@@ -25,6 +25,7 @@
 }
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail{
+    _model = photoDetail;
     NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
     NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
     if ([NSString isBlankString:qiniuHost]) {
@@ -44,5 +45,6 @@
         [_selImg setImage:[UIImage imageNamed:@"ZLPhotoLib.bundle/icon_image_no"]];
     }
 }
+
 
 @end

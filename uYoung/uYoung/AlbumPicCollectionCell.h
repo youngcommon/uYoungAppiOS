@@ -21,6 +21,7 @@
 
 @property (assign, nonatomic) BOOL showLabels;//是否显示like和viewlabel
 @property (strong, nonatomic) NSDictionary *picData;
+@property (strong, nonatomic) PhotoDetailModel *model;
 
 - (void)initCellWithPhotoDetail:(PhotoDetailModel*)photoDetail;
 - (void)changeSelectImg:(BOOL)isSel;

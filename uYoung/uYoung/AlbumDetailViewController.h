@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *allPics;
 @property (strong, nonatomic) IBOutlet UIButton *uploadPicButton;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
 
 @property (strong, nonatomic) NSString *albumNameStr;
 @property (strong, nonatomic) NSString *nickNameStr;
@@ -32,5 +34,6 @@
 - (IBAction)back:(id)sender;
 - (IBAction)selectPics:(id)sender;
 - (IBAction)edit:(id)sender;
+- (IBAction)cancelEdit:(id)sender;
 
 @end

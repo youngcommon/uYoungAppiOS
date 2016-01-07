@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumDetailViewController">
             <connections>
                 <outlet property="albumName" destination="Lnw-Xh-pHg" id="8Yj-P9-QMJ"/>
                 <outlet property="allPics" destination="kXN-VZ-gu3" id="MTy-5J-Hol"/>
+                <outlet property="cancelButton" destination="bIk-H3-8A1" id="iBP-cF-ISZ"/>
                 <outlet property="createDate" destination="n52-rB-nCK" id="7TA-Fp-oSv"/>
                 <outlet property="editButton" destination="kHE-fe-tha" id="OCo-pD-Iwh"/>
                 <outlet property="nickName" destination="pCx-x7-ybs" id="FK8-Co-nzp"/>
@@ -118,7 +119,7 @@
                         <action selector="selectPics:" destination="-1" eventType="touchUpInside" id="mGb-bc-oYl"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHE-fe-tha">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHE-fe-tha">
                     <rect key="frame" x="259" y="21" width="46" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9gf-Ky-iIy"/>
@@ -129,11 +130,19 @@
                         <action selector="edit:" destination="-1" eventType="touchUpInside" id="G0e-xZ-PEx"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIk-H3-8A1">
+                    <rect key="frame" x="259" y="56" width="46" height="30"/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancelEdit:" destination="-1" eventType="touchUpInside" id="b8h-jm-2mt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="grC-SF-Sn3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="07E-HH-xse"/>
                 <constraint firstItem="cIF-yn-c8m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1Ht-PR-dvu"/>
+                <constraint firstItem="bIk-H3-8A1" firstAttribute="leading" secondItem="kHE-fe-tha" secondAttribute="leading" id="3k4-Vc-l2f"/>
                 <constraint firstItem="kXN-VZ-gu3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="3qR-RX-iNd"/>
                 <constraint firstAttribute="bottom" secondItem="GqJ-Uv-Qc1" secondAttribute="bottom" constant="22" id="49b-1C-kA2"/>
                 <constraint firstAttribute="bottom" secondItem="grC-SF-Sn3" secondAttribute="bottom" id="61x-0P-pXB"/>
@@ -141,6 +150,7 @@
                 <constraint firstAttribute="trailing" secondItem="kXN-VZ-gu3" secondAttribute="trailing" constant="10" id="BGY-On-9dX"/>
                 <constraint firstItem="grC-SF-Sn3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="D2U-kR-rE3"/>
                 <constraint firstItem="KXt-rT-IrA" firstAttribute="top" secondItem="Lnw-Xh-pHg" secondAttribute="bottom" constant="8" id="FiO-nY-7Vb"/>
+                <constraint firstItem="bIk-H3-8A1" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" constant="1" id="J5b-yU-gJb"/>
                 <constraint firstItem="n52-rB-nCK" firstAttribute="leading" secondItem="pCx-x7-ybs" secondAttribute="trailing" constant="4" id="LDF-Ww-Fqt"/>
                 <constraint firstAttribute="bottom" secondItem="SLe-7M-sU5" secondAttribute="bottom" constant="39" id="MYR-HQ-qRy"/>
                 <constraint firstItem="Lnw-Xh-pHg" firstAttribute="centerY" secondItem="tUr-Fa-IeY" secondAttribute="centerY" id="NqI-1W-Ohp"/>
@@ -155,6 +165,7 @@
                 <constraint firstItem="kHE-fe-tha" firstAttribute="leading" secondItem="Lnw-Xh-pHg" secondAttribute="trailing" constant="7" id="b0B-o3-JD6"/>
                 <constraint firstItem="n52-rB-nCK" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" id="bL4-Lt-Jsp"/>
                 <constraint firstItem="tUr-Fa-IeY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="e9m-Op-MVg"/>
+                <constraint firstItem="bIk-H3-8A1" firstAttribute="trailing" secondItem="kHE-fe-tha" secondAttribute="trailing" id="efe-fR-d7F"/>
                 <constraint firstItem="pCx-x7-ybs" firstAttribute="centerY" secondItem="KXt-rT-IrA" secondAttribute="centerY" id="lfw-mA-JOa"/>
                 <constraint firstAttribute="trailing" secondItem="grC-SF-Sn3" secondAttribute="trailing" id="qDm-8v-8hb"/>
                 <constraint firstAttribute="trailing" secondItem="cIF-yn-c8m" secondAttribute="trailing" constant="16" id="ssq-jt-swc"/>

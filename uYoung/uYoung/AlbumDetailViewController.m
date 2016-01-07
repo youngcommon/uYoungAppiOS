@@ -53,6 +53,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_uploadPicButton setHidden:(loginUser.id!=_ownerUid)];
     [_editButton setHidden:(loginUser.id!=_ownerUid)];
     _inEdit = NO;
+    [_cancelButton setHidden:YES];
     
 }
 
@@ -83,6 +84,8 @@ static NSString * const reuseIdentifier = @"Cell";
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.showLabels = YES;
     [cell initCellWithPhotoDetail:model];
+    BOOL isSel = [_delList containsObject:@(model.id)];
+    [cell changeSelectImg:isSel];
     return cell;
 }
 
@@ -95,7 +98,14 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (_inEdit) {
         AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)[collectionView cellForItemAtIndexPath:indexPath];
-        [cell changeSelectImg:YES];
+        long id = ((PhotoDetailModel*)cell.model).id;
+        BOOL isSel = [_delList containsObject:@(id)];
+        if(isSel){
+            [_delList removeObject:@(id)];
+        }else{
+            [_delList addObject:@(id)];
+        }
+        [cell changeSelectImg:!isSel];
     }else{
         //跳转到图片下载逻辑
         JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
@@ -120,9 +130,28 @@ static NSString * const reuseIdentifier = @"Cell";
     if (!_inEdit) {
         [_editButton setTitle:@"删除" forState:UIControlStateNormal];
         _inEdit = YES;
+        [_cancelButton setHidden:NO];
     }else{
         [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
         _inEdit = NO;
+    }
+    [self cellSelectButtonSwitch];
+}
+
+- (IBAction)cancelEdit:(id)sender {
+    [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
+    _inEdit = NO;
+    [_cancelButton setHidden:YES];
+    [self cellSelectButtonSwitch];
+}
+
+-(void)cellSelectButtonSwitch{
+    NSArray *cells = [_allPics visibleCells];
+    if (cells&&[cells count]>0) {
+        for (int i=0; i<[cells count]; i++) {
+            AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)cells[i];
+            [cell.selImg setHidden:!_inEdit];
+        }
     }
 }
 @end
