@@ -7,6 +7,7 @@
 //
 
 #import "ZLPhotoAssets.h"
+#import <ImageIO/ImageIO.h>
 
 @implementation ZLPhotoAssets
 

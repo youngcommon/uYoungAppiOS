@@ -115,6 +115,9 @@ static NSString * const reuseIdentifier = @"Cell";
     ZLPhotoAssets *asset = self.assets[indexPath.row];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
         image = asset.originImage;
+        NSDictionary *imageData = [[NSMutableDictionary alloc]initWithDictionary:asset.asset.defaultRepresentation.metadata];
+        NSDictionary *exifData = [imageData objectForKey:(NSString *)kCGImagePropertyExifDictionary];
+        NSLog(@"=============exif===========\n%@", exifData);
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
         image = cell.img.image;
@@ -123,6 +126,8 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
+    
+    
     [cell hiddenLabels];
     [_oriImage addObject:image];
 

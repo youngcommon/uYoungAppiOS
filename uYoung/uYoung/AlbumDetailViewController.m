@@ -136,10 +136,12 @@ static NSString * const reuseIdentifier = @"Cell";
         _inEdit = YES;
         [_cancelButton setHidden:NO];
     }else{
-        [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
-        _inEdit = NO;
-        //删除逻辑
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"是否要删除照片?" Message:@"删除的照片不可恢复" CancelTxt:@"再想想" OtherTxt:nil Tag:0 Delegate:self];
+        if ([_delPhotoList count]==0) {
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"请选择要删除的照片" Message:@"" CancelTxt:@"好的" OtherTxt:nil Tag:1 Delegate:self];
+        }else{
+            //删除逻辑
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"是否要删除照片?" Message:@"删除的照片不可恢复" CancelTxt:@"再想想" OtherTxt:@"删除" Tag:0 Delegate:self];
+        }
     }
     [self cellSelectButtonSwitch];
 }
@@ -155,6 +157,8 @@ static NSString * const reuseIdentifier = @"Cell";
                 for (int i=0; i<[_delPhotoList count]; i++) {
                     [_pics removeObject:_delPhotoList[i]];
                 }
+                [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
+                _inEdit = NO;
                 [self.allPics reloadData];
                 [self.allPics reloadInputViews];
             }
