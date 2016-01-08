@@ -47,6 +47,7 @@
 		48640EA31BD1361E0093B702 /* ActivityDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 48640EA21BD1361E0093B702 /* ActivityDetail.m */; };
 		4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */; };
 		4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */; };
+		488AE9851C3F8B0500FA9412 /* ActivityAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 488AE9841C3F8B0500FA9412 /* ActivityAlbumModel.m */; };
 		48ACA7161C3A688D00DCF2CC /* DoubanLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */; };
 		48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C8BFCE1C1B164A0060241C /* CreateAlbum.m */; };
 		48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC417A1BD91040006E44B3 /* AlbumModel.m */; };
@@ -190,6 +191,8 @@
 		4887F5F31BB93276009434A9 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		4887F5F41BB93276009434A9 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		4887F5F51BB93276009434A9 /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
+		488AE9831C3F8B0500FA9412 /* ActivityAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlbumModel.h; sourceTree = "<group>"; };
+		488AE9841C3F8B0500FA9412 /* ActivityAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlbumModel.m; sourceTree = "<group>"; };
 		48ACA7011C3A625800DCF2CC /* libDoubanApiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libDoubanApiEngine.framework; path = "../../Downloads/douban-objc-client-master/libDoubanApiEngine.framework"; sourceTree = "<group>"; };
 		48ACA7031C3A63EC00DCF2CC /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		48ACA7061C3A641E00DCF2CC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -434,6 +437,8 @@
 				84A2C65A1C1879950090E173 /* AlbumDetailModel.m */,
 				84A2C65C1C18803F0090E173 /* PhotoDetailModel.h */,
 				84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */,
+				488AE9831C3F8B0500FA9412 /* ActivityAlbumModel.h */,
+				488AE9841C3F8B0500FA9412 /* ActivityAlbumModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -864,6 +869,7 @@
 				84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				482E9ABA1C1523E400DEF737 /* AlbumPicCollectionCell.m in Sources */,
+				488AE9851C3F8B0500FA9412 /* ActivityAlbumModel.m in Sources */,
 				48640EA01BD1339D0093B702 /* ActivityDetailModel.m in Sources */,
 				48FC41821BDA6962006E44B3 /* LoginViewController.m in Sources */,
 				4820A4C31BB00667006AEC13 /* ActivityTableViewController.m in Sources */,

@@ -36,6 +36,30 @@
     }];
 }
 
++ (void)getUserAlbumListWithActId:(NSInteger)actId success:(void(^)(NSArray* arr))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"album/getByAid"];
+    
+    NSDictionary *parameters = @{@"activityId": @(actId)};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            NSArray *resultData = [responseObject objectForKey:@"resultData"];
+            if(resultData){
+                success(resultData);
+            }
+        }else{
+            success(nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(nil);
+    }];
+}
+
 + (void)deleteUserAlbum:(long)albumId uid:(long)uid success:(void(^)(BOOL success))success{
     NSString *url = [uyoung_host stringByAppendingString:@"album/deleteById"];
     

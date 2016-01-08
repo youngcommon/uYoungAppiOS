@@ -11,6 +11,8 @@
 #import "UploadImageUtil.h"
 #import "ActivityAlbumViewController.h"
 #import "NSString+StringUtil.h"
+#import "UserAlbumList.h"
+#import "ActivityAlbumModel.h"
 
 @interface ActivityDetailViewController ()
 
@@ -249,9 +251,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 //查看活动相册
 - (void)toActivityAlbum{
-    ActivityAlbumViewController *actAlbumViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
-    actAlbumViewCtl.actTitleStr = _detailModel.title;
-    [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
+    [UserAlbumList getUserAlbumListWithActId:_detailModel.activityId success:^(NSArray *arr) {
+        NSArray *albumList = [MTLJSONAdapter modelsOfClass:[ActivityAlbumModel class] fromJSONArray:arr error:nil];
+        if (albumList!=nil&&![albumList isEqual:[NSNull null]]) {
+            ActivityAlbumViewController *actAlbumViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
+            actAlbumViewCtl.actTitleStr = _detailModel.title;
+            actAlbumViewCtl.actAlbum = albumList;
+            [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
+        }
+    }];
 }
 
 - (void)initSignupButtonWithStatus:(NSInteger)status actStatus:(NSInteger)actStatus{
