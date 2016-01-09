@@ -117,7 +117,15 @@ static NSString * const reuseIdentifier = @"Cell";
         image = asset.originImage;
         NSDictionary *imageData = [[NSMutableDictionary alloc]initWithDictionary:asset.asset.defaultRepresentation.metadata];
         NSDictionary *exifData = [imageData objectForKey:(NSString *)kCGImagePropertyExifDictionary];
-        NSLog(@"=============exif===========\n%@", exifData);
+        NSDictionary *tiffData = [imageData objectForKey:(NSString *)kCGImagePropertyTIFFDictionary];
+        NSString *iso = exifData[(NSString *)kCGImagePropertyExifISOSpeedRatings];//iso
+        NSString *exposure = [@(1/([exifData[(NSString *)kCGImagePropertyExifExposureTime]doubleValue]))stringValue];//快门
+        NSString *f = exifData[(NSString *)kCGImagePropertyExifFNumber];//光圈
+        NSString *exposureBiasValue = exifData[(NSString *)kCGImagePropertyExifExposureBiasValue];//曝光补偿EV
+        NSString *focalLength = [NSString stringWithFormat:@"%.1f", [exifData[(NSString *)kCGImagePropertyExifFocalLength]floatValue]];//焦距
+        NSString *lensModel = exifData[(NSString *)kCGImagePropertyExifLensModel];//镜头信息
+        NSString *cameraModel = tiffData[(NSString *)kCGImagePropertyTIFFModel];//设备
+                 
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
         image = cell.img.image;

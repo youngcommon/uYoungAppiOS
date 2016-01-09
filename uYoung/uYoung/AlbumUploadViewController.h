@@ -12,6 +12,7 @@
 #import "ZLPhotoPickerBrowserViewController.h"
 #import "UploadImageUtil.h"
 #import "CreateAlbum.h"
+#import <ImageIO/ImageIO.h>
 
 @interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate, UploadImgDelegate, CreateAlbumDelegate>
 
