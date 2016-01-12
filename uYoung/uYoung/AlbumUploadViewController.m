@@ -34,6 +34,7 @@ static NSString * const reuseIdentifier = @"Cell";
     _assets = [[NSMutableArray alloc]initWithCapacity:0];
     _imgParams = [[NSMutableArray alloc]initWithCapacity:1];
     _oriImage = [[NSMutableArray alloc]initWithCapacity:1];
+    _exifArr = [[NSMutableArray alloc]initWithCapacity:1];
     
     [self selectPhotos];
 }
