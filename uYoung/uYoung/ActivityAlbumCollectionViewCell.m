@@ -33,13 +33,13 @@
     
 }
 
--(void)initCellData:(NSDictionary*)dict{
-    [self lazyInitImg:dict[@""] img:_userHeaderImg];
-    [self lazyInitImg:dict[@""] img:_albumCoverImg];
-    [_viewLabel setText:dict[@""]];
-    [_likeLabel setText:dict[@""]];
-    [_countLabel setText:dict[@""]];
-    [_dateLabel setText:dict[@""]];
+-(void)initCellData:(ActivityAlbumModel*)model{
+    [self lazyInitImg:model.oriUrl img:_userHeaderImg];
+    [self lazyInitImg:model.firstPhotoUrl img:_albumCoverImg];
+    [_viewLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalViewCount]];
+    [_likeLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalLikeCount]];
+    [_countLabel setText:[NSString stringWithFormat:@"%d", (int)model.totalPhotoCount]];
+    [_dateLabel setText:model.createTime];
 }
 
 -(void)lazyInitImg:(NSString*)url img:(UIImageView*)imgView{

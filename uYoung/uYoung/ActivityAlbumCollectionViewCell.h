@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityAlbumModel.h"
 
 @interface ActivityAlbumCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundCover;
@@ -21,5 +22,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *scrollImg;
 
--(void)initCellData:(NSDictionary*)dict;
+-(void)initCellData:(ActivityAlbumModel*)model;
 @end
