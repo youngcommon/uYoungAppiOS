@@ -415,7 +415,7 @@
     [_userHeaderButton setBackgroundImage:img forState:UIControlStateNormal];
     
     //上传图片至七牛云
-    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uyoung_header_%d", (int)_loginUser.id] delegate:self];
+    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uyoung_header_%d", (int)_loginUser.id] exif:nil delegate:self];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -555,7 +555,7 @@
 }
 
 //获得七牛云存储的头像的url
-- (void)getImgKey:(NSString*)key host:(NSString *)host{
+- (void)getImgKey:(NSString*)key host:(NSString *)host exif:(PicExif *)exif{
     if ([NSString isBlankString:host]) {
         host = QINIU_HOST;
     }

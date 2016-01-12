@@ -14,6 +14,8 @@
 #import "UserDetailModel.h"
 #import "NSString+StringUtil.h"
 #import "UIWindow+YoungHUD.h"
+#import "PicExifUtil.h"
+#import "PicExif.h"
 
 @interface AlbumUploadViewController ()
 
@@ -62,19 +64,26 @@ static NSString * const reuseIdentifier = @"Cell";
             NSString *t = [NSString stringWithFormat:@"%ld%d", timer, i];
             NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, t];
             UIImage *image = _oriImage[i];
-            [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key delegate:self];
+            [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key exif:_exifArr[i] delegate:self];
         }
     }
 }
 
 #pragma mark - 上传成功后回调
-- (void)getImgKey:(NSString*)key host:(NSString *)host{
+- (void)getImgKey:(NSString*)key host:(NSString *)host exif:(PicExif *)exif{
     if ([NSString isBlankString:host]) {
         host = QINIU_HOST;
     }
     //写入uYoung数据库
     if ([NSString isBlankString:key]==NO) {
-        NSMutableDictionary *param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", nil];
+        NSMutableDictionary *param;
+        if (exif) {
+            param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", exif.cameraModel,@"exifCamera", exif.f,@"exifAperture", exif.focalLength,@"exifFacus", exif.exposure,@"exifShutter", exif.iso,@"exifIso", exif.lensModel,@"exifOther", nil];
+            
+        }else{
+            param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", nil];
+            
+        }
         [_imgParams addObject:param];
     }
     if ([_assets count]==[_imgParams count]) {//说明图片已经全部上传完毕
@@ -115,17 +124,7 @@ static NSString * const reuseIdentifier = @"Cell";
     ZLPhotoAssets *asset = self.assets[indexPath.row];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
         image = asset.originImage;
-        NSDictionary *imageData = [[NSMutableDictionary alloc]initWithDictionary:asset.asset.defaultRepresentation.metadata];
-        NSDictionary *exifData = [imageData objectForKey:(NSString *)kCGImagePropertyExifDictionary];
-        NSDictionary *tiffData = [imageData objectForKey:(NSString *)kCGImagePropertyTIFFDictionary];
-        NSString *iso = exifData[(NSString *)kCGImagePropertyExifISOSpeedRatings];//iso
-        NSString *exposure = [@(1/([exifData[(NSString *)kCGImagePropertyExifExposureTime]doubleValue]))stringValue];//快门
-        NSString *f = exifData[(NSString *)kCGImagePropertyExifFNumber];//光圈
-        NSString *exposureBiasValue = exifData[(NSString *)kCGImagePropertyExifExposureBiasValue];//曝光补偿EV
-        NSString *focalLength = [NSString stringWithFormat:@"%.1f", [exifData[(NSString *)kCGImagePropertyExifFocalLength]floatValue]];//焦距
-        NSString *lensModel = exifData[(NSString *)kCGImagePropertyExifLensModel];//镜头信息
-        NSString *cameraModel = tiffData[(NSString *)kCGImagePropertyTIFFModel];//设备
-                 
+        
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
         image = cell.img.image;
@@ -135,7 +134,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
     
-    
+    PicExif *exif = [[PicExifUtil shareInstance]getWithALAsset:asset.asset];
+    [_exifArr addObject:exif];
     [cell hiddenLabels];
     [_oriImage addObject:image];
 

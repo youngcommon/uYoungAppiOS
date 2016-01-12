@@ -22,7 +22,7 @@
     return singleton;
 }
 
-- (void)uploadImage:(UIImage*)img withKey:(NSString*)key delegate:(id<UploadImgDelegate>)delegate{
+- (void)uploadImage:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate{
     
     NSString *url = [uyoung_host stringByAppendingString:@"/qn/qnUpToken"];
     
@@ -47,14 +47,14 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *data = [responseObject objectForKey:@"resultData"];
-            [self successGetQNToken:data withKey:key andImg:img delegate:delegate];
+            [self successGetQNToken:data withKey:key andImg:img exif:exif delegate:delegate];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
 }
 
--(void)successGetQNToken:(NSDictionary*)dict withKey:(NSString*)key andImg:(UIImage*)img delegate:(id<UploadImgDelegate>)delegate;{
+-(void)successGetQNToken:(NSDictionary*)dict withKey:(NSString*)key andImg:(UIImage*)img exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate;{
     NSString *token = dict[@"upToken"];
     NSString *qiniuHost = dict[@"url"];
     if ([NSString isBlankString:token]) {
@@ -76,7 +76,7 @@
     }];
 
     [upManager putData:data key:key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        [delegate getImgKey:key host:qiniuHost];
+        [delegate getImgKey:key host:qiniuHost exif:exif];
     } option:option];
     
 }

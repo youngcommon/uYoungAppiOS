@@ -65,7 +65,7 @@
     long times = [[NSDate date]timeIntervalSince1970];
     
     //上传图片至七牛云
-    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] delegate:self];
+    [[UploadImageUtil dispatchOnce]uploadImage:img withKey:[NSString stringWithFormat:@"uy_act_%d_%ld", (int)uid, times] exif:nil delegate:self];
     
     [self.view.window showHUDWithText:@"正在处理图片" Type:ShowLoading Enabled:YES];
     
@@ -78,7 +78,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)getImgKey:(NSString*)key host:(NSString *)host{
+- (void)getImgKey:(NSString*)key host:(NSString *)host exif:(PicExif *)exif{
     if([NSString isBlankString:key]){
         [self.view.window showHUDWithText:@"图片插入失败" Type:ShowPhotoNo Enabled:YES];
     }else{

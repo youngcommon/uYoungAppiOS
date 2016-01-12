@@ -12,7 +12,6 @@
 #import "ZLPhotoPickerBrowserViewController.h"
 #import "UploadImageUtil.h"
 #import "CreateAlbum.h"
-#import <ImageIO/ImageIO.h>
 
 @interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate, UploadImgDelegate, CreateAlbumDelegate>
 
@@ -21,6 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *assets;
 
 @property (strong, nonatomic) NSMutableArray *oriImage;//保存原图
+@property (strong, nonatomic) NSMutableArray *exifArr;//保存exif信息
 
 @property (assign, nonatomic) long albumid;
 @property (assign, nonatomic) long owneruid;
