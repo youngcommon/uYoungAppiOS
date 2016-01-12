@@ -13,6 +13,7 @@
 #import "CreateActivityController.h"
 #import "AlbumDetailViewController.h"
 #import "UIWindow+YoungHUD.h"
+#import "RegisterViewController.h"
 
 @implementation UserCenterController
 
@@ -20,9 +21,11 @@
 //    _userDetailModel = [UserDetailModel currentUser];
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
-        LoginViewController *loginViewCtl = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-        loginViewCtl.source = @"usercenter";
-        [self presentViewController:loginViewCtl animated:YES completion:nil];
+//        ThirdLoginViewController *loginViewCtl = [[ThirdLoginViewController alloc]initWithNibName:@"ThirdLoginViewController" bundle:[NSBundle mainBundle]];
+//        loginViewCtl.source = @"usercenter";
+//        [self presentViewController:loginViewCtl animated:YES completion:nil];
+        RegisterViewController *ctl = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:[NSBundle mainBundle]];
+        [self presentViewController:ctl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
     }

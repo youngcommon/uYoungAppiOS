@@ -1,22 +1,22 @@
 //
-//  LoginViewController.m
+//  ThirdLoginViewController.m
 //  uYoung
 //
 //  Created by CSDN on 15/10/23.
 //  Copyright © 2015年 uYoungCommon. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "ThirdLoginViewController.h"
 #import "AppDelegate.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "DoubanLoginViewController.h"
 #import "GlobalConfig.h"
 
-@interface LoginViewController ()
+@interface ThirdLoginViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation ThirdLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

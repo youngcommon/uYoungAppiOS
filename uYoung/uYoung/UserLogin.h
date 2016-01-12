@@ -20,4 +20,8 @@
 
 + (void)postThirdTypeLoginData:(NSDictionary*)dict delegate:(id<UserLoginDelegate>)delegate;
 
++ (void)loginWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd success:(void(^)(NSInteger uid))success;
+
++ (void)userRegisterWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd nickname:(NSString*)nickname success:(void(^)(NSInteger uid))success;
+
 @end

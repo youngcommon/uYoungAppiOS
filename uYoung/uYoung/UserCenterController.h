@@ -14,7 +14,7 @@
 #import "UserDetailModel.h"
 #import "NSString+StringUtil.h"
 #import "EditUserViewController.h"
-#import "LoginViewController.h"
+#import "ThirdLoginViewController.h"
 #import "SystemConfigViewController.h"
 #import "CreateAlbum.h"
 

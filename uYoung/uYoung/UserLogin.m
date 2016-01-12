@@ -32,4 +32,50 @@
     }];
 }
 
++ (void)loginWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd success:(void(^)(NSInteger uid))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"login"];
+    
+    NSDictionary *parameters = @{@"email":email, @"password":pwd};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
+            success(uid);
+        }else{
+            success(0);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(0);
+    }];
+}
+
++ (void)userRegisterWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd nickname:(NSString*)nickname success:(void(^)(NSInteger uid))success{
+    NSString *url = [uyoung_host stringByAppendingString:@"reg/reg"];
+    
+    NSDictionary *parameters = @{@"email":email, @"password":pwd, @"nickName":nickname};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
+            success(uid);
+        }else{
+            success(0);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(0);
+    }];
+}
+
 @end

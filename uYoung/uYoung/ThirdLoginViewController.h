@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  ThirdLoginViewController.h
 //  uYoung
 //
 //  Created by CSDN on 15/10/23.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface ThirdLoginViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *acctFrontImage;
 @property (strong, nonatomic) IBOutlet UIImageView *pwdFrontImage;
