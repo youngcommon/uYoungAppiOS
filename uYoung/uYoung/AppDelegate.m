@@ -52,7 +52,7 @@
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SinaWeiboAppKey];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fillUserDetail:) name:@"fillUserDetail" object:nil];
     
     //获得城市
     [GlobalNetwork getAllCityies:self];
@@ -61,14 +61,18 @@
     //获得所有状态
     [GlobalNetwork getAllActStatus:self];
     //判断当前是否处于审核中
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"global_config" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    BOOL isInreview = [data[@"inreview"]boolValue];
+    NSArray *arrPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *strDocBase = ([arrPaths count] > 0) ? [arrPaths objectAtIndex:0] : nil;
+    NSString *filename=[strDocBase stringByAppendingPathComponent:@"global_config.plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:filename];
+    BOOL isInreview = YES;
+    if (data!=nil) {
+        isInreview = [data[@"inreview"]boolValue];
+    }
     if (isInreview) {//如果当前是审核中，则需要再次获取审核状态
         [GlobalNetwork isInreview:^(BOOL inreview) {
             NSDictionary *reviewData = @{@"inreview":@(inreview)};
-            BOOL isSuccess = [reviewData writeToFile:plistPath atomically:YES];
-            NSLog(@"####%@####", isSuccess?@"success":@"NO");
+            [reviewData writeToFile:filename atomically:YES];
         }];
     }
     
