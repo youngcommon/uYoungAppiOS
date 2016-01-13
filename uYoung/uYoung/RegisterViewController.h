@@ -19,6 +19,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *repwdInput;
 @property (strong, nonatomic) IBOutlet UIButton *registerButton;
 
+@property (assign, nonatomic) CGFloat delta;
+@property (assign, nonatomic) CGFloat viewBottom;
+@property (assign, nonatomic) BOOL isRegister;
 
 - (IBAction)registerUser:(id)sender;
 - (IBAction)cancelRegister:(id)sender;

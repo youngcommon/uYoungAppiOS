@@ -60,6 +60,17 @@
     [GlobalNetwork getAllActTypes:self];
     //获得所有状态
     [GlobalNetwork getAllActStatus:self];
+    //判断当前是否处于审核中
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"global_config" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    BOOL isInreview = [data[@"inreview"]boolValue];
+    if (isInreview) {//如果当前是审核中，则需要再次获取审核状态
+        [GlobalNetwork isInreview:^(BOOL inreview) {
+            NSDictionary *reviewData = @{@"inreview":@(inreview)};
+            BOOL isSuccess = [reviewData writeToFile:plistPath atomically:YES];
+            NSLog(@"####%@####", isSuccess?@"success":@"NO");
+        }];
+    }
     
     //注册键盘跟随
 //    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];

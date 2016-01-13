@@ -55,7 +55,7 @@
     }];
 }
 
-+ (void)userRegisterWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd nickname:(NSString*)nickname success:(void(^)(NSInteger uid))success{
++ (void)userRegisterWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd nickname:(NSString*)nickname success:(void(^)(BOOL isSuccess, NSString *msg))success{
     NSString *url = [uyoung_host stringByAppendingString:@"reg/reg"];
     
     NSDictionary *parameters = @{@"email":email, @"password":pwd, @"nickName":nickname};
@@ -68,13 +68,13 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
-            success(uid);
+            success(uid, @"");
         }else{
-            success(0);
+            success(0, @"");
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        success(0);
+        success(0, @"网络错误，请稍后再试");
     }];
 }
 

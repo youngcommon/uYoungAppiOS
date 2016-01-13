@@ -100,4 +100,28 @@
     }];
 }
 
++ (void)isInreview:(void(^)(BOOL inreview))handle{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // app版本
+    NSString *app_version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    
+    NSDictionary *param = @{@"version":app_version};
+    NSString *url = [uyoung_host stringByAppendingString:@"common/feedBack"];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager GET:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            BOOL inreview = [[responseObject objectForKey:@"resultData"]boolValue];
+            handle(!inreview);
+        }else{
+            handle(NO);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        handle(NO);
+    }];
+}
+
 @end

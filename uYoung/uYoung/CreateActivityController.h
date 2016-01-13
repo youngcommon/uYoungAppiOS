@@ -86,6 +86,4 @@
 - (IBAction)createAct:(id)sender;
 
 
-- (void)toStep2;
-
 @end
