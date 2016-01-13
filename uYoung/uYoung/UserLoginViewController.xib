@@ -102,6 +102,18 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rC-zy-BMC">
+                    <rect key="frame" x="170" y="337" width="112" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="bqi-nI-4v8"/>
+                        <constraint firstAttribute="width" constant="112" id="x6z-4p-bui"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="12"/>
+                    <state key="normal" title="还没账号?注册一下"/>
+                    <connections>
+                        <action selector="toRegister:" destination="-1" eventType="touchUpInside" id="87O-d8-rHR"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -124,8 +136,10 @@
                 <constraint firstItem="vas-V3-SM5" firstAttribute="trailing" secondItem="EaE-EX-eYE" secondAttribute="trailing" id="Yix-T8-KEv"/>
                 <constraint firstItem="z7H-2Q-kkt" firstAttribute="leading" secondItem="bAK-L1-Oah" secondAttribute="leading" id="bPs-ua-Ljd"/>
                 <constraint firstItem="z7H-2Q-kkt" firstAttribute="trailing" secondItem="bAK-L1-Oah" secondAttribute="trailing" id="boE-e8-PkX"/>
+                <constraint firstItem="3rC-zy-BMC" firstAttribute="trailing" secondItem="vas-V3-SM5" secondAttribute="trailing" id="bpb-nm-Xf1"/>
                 <constraint firstItem="vas-V3-SM5" firstAttribute="leading" secondItem="EaE-EX-eYE" secondAttribute="leading" id="gxw-Sw-Dqb"/>
                 <constraint firstItem="SJp-vu-c4H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="mVJ-eq-3uZ"/>
+                <constraint firstItem="3rC-zy-BMC" firstAttribute="top" secondItem="UAS-x1-ehR" secondAttribute="bottom" constant="8" id="mgB-Jg-tHe"/>
                 <constraint firstItem="bnt-ci-3qx" firstAttribute="leading" secondItem="SJp-vu-c4H" secondAttribute="leading" id="q8o-WK-jwm"/>
                 <constraint firstItem="EaE-EX-eYE" firstAttribute="leading" secondItem="bAK-L1-Oah" secondAttribute="trailing" constant="20" id="qkR-Xo-s3e"/>
                 <constraint firstItem="EaE-EX-eYE" firstAttribute="leading" secondItem="SJp-vu-c4H" secondAttribute="trailing" id="shL-lm-Sgs"/>

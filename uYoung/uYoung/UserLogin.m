@@ -41,7 +41,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
@@ -67,14 +67,13 @@
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
-            success(uid, @"");
+            success(YES, @"");
         }else{
-            success(0, @"");
+            success(NO, @"");
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        success(0, @"网络错误，请稍后再试");
+        success(NO, @"网络错误，请稍后再试");
     }];
 }
 

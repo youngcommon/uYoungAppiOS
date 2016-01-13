@@ -16,5 +16,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView *pwdFront;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
+@property (assign, nonatomic) CGFloat delta;
+@property (assign, nonatomic) CGFloat viewBottom;
+@property (assign, nonatomic) BOOL isRegister;
+
+- (IBAction)toRegister:(id)sender;
 - (IBAction)login:(id)sender;
 @end

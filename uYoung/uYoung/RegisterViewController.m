@@ -12,6 +12,7 @@
 #import "GlobalConfig.h"
 #import "UserLogin.h"
 #import "UIWindow+YoungHUD.h"
+#import "PrivacyPolicyViewController.h"
 
 @interface RegisterViewController ()
 
@@ -80,6 +81,11 @@
 
 - (IBAction)cancelRegister:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)toPrivacyPolicy:(id)sender {
+    PrivacyPolicyViewController *ctl = [[PrivacyPolicyViewController alloc]initWithNibName:@"PrivacyPolicyViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:ctl animated:YES completion:nil];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name isFront:(BOOL)isFront{

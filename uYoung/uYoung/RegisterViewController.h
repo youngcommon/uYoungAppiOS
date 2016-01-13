@@ -25,4 +25,5 @@
 
 - (IBAction)registerUser:(id)sender;
 - (IBAction)cancelRegister:(id)sender;
+- (IBAction)toPrivacyPolicy:(id)sender;
 @end

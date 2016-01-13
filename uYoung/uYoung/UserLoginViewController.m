@@ -10,6 +10,8 @@
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
 #import "UYoungAlertViewUtil.h"
+#import "RegisterViewController.h"
+#import "UserLogin.h"
 
 @interface UserLoginViewController ()
 
@@ -35,10 +37,20 @@
     if (mScreenWidth<375) {
         [_tipsImg setHidden:YES];
     }
+    
+    //增加键盘事件监听
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)toRegister:(id)sender {
+    RegisterViewController *ctl = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:ctl animated:YES completion:nil];
 }
 
 - (IBAction)login:(id)sender {
@@ -54,6 +66,9 @@
     
     //登陆流程
     pwd = [pwd stringToMD5];
+    [UserLogin loginWithEmailAndPwd:email pwd:pwd success:^(NSInteger uid) {
+        
+    }];
     
 }
 
@@ -72,6 +87,63 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notify {
+    //sv为弹出键盘的视图，UITextField
+    CGFloat kbHeight = [[notify.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;//获取键盘高度。
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    //    CGFloat screenHeight = self.view.bounds.size.height;
+    CGFloat screenHeight = self.view.frame.size.height;
+    
+    if (_viewBottom + kbHeight < screenHeight) return;//若键盘没有遮挡住视图则不进行整个视图上移
+    
+    // 键盘会盖住输入框, 要移动整个view了
+    _delta = _viewBottom + kbHeight - screenHeight + 100;
+    
+    CGRect viewFrame = CGRectMake(0, 0-_delta, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHidden:(NSNotification *)notify {//键盘消失
+    // 键盘动画时间
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect viewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:duration];
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+    _delta = 0.0f;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    _isRegister = NO;
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (_isRegister==NO) {
+        _isRegister = YES;
+        _viewBottom = textField.frame.origin.y + textField.frame.size.height;
+    }
+    
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
