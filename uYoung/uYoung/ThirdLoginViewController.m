@@ -105,7 +105,7 @@
 - (void)loginSuccess:(NSNotification*)noti{
     UserDetailModel *detail = (UserDetailModel*)[noti object];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter]postNotificationName:_source object:detail];
+    [[NSNotificationCenter defaultCenter]postNotificationName:self.source object:detail];
 }
 
 @end

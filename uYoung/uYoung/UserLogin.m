@@ -44,7 +44,9 @@
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
+            NSDictionary *dict = [responseObject objectForKey:@"resultData"];
+            NSString *sessionid = dict[@"sessionId"];
+            NSInteger uid = [dict[@"uid"]integerValue];
             success(uid);
         }else{
             success(0);

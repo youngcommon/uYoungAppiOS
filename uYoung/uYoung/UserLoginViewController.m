@@ -13,6 +13,8 @@
 #import "RegisterViewController.h"
 #import "UserLogin.h"
 #import "NSString+StringUtil.h"
+#import "UserDetailModel.h"
+#import "UserDetail.h"
 
 @interface UserLoginViewController ()
 
@@ -43,7 +45,15 @@
     //增加键盘事件监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+    //登录成功事件
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
     
+}
+
+- (void)loginSuccess:(NSNotification*)noti{
+    UserDetailModel *detail = (UserDetailModel*)[noti object];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:self.source object:detail];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +87,14 @@
     //登陆流程
     pwd = [pwd stringToMD5];
     [UserLogin loginWithEmailAndPwd:email pwd:pwd success:^(NSInteger uid) {
-        
+        if (uid>0) {
+            [UserDetail getUserDetailWithId:uid success:^(UserDetailModel *userDetailModel) {
+                [userDetailModel save];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:userDetailModel];
+            }];
+        }else{
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"登录失败" Message:@"请您稍后再试" CancelTxt:@"好的" OtherTxt:@"" Tag:5 Delegate:self];
+        }
     }];
     
 }

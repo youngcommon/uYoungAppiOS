@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UserLoginViewController.h"
 #import "ThirdLoginViewController.h"
+#import "LoginViewController.h"
 
 @interface LoginFilterUtil : NSObject
 
 +(LoginFilterUtil *)shareInstance;
 
-- (UIViewController*)getLoginViewController;
+- (LoginViewController*)getLoginViewController;
 
 @end

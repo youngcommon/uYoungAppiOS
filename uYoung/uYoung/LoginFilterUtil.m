@@ -19,7 +19,7 @@
     return shared;
 }
 
-- (UIViewController*)getLoginViewController{
+- (LoginViewController*)getLoginViewController{
     UIViewController *ctl;
     //获取当前审核状态
     NSArray *arrPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

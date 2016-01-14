@@ -12,7 +12,7 @@
 
 + (void)updateUserWithDictionary:(NSDictionary*)dict delegate:(id<UpdateUserDelegate>)delegate{
     
-    NSString *url = [uyoung_host stringByAppendingString:@"/userInfo/updateById"];
+    NSString *url = [uyoung_host stringByAppendingString:@"userInfo/updateById"];
     
     NSDictionary *parameters = dict;
     

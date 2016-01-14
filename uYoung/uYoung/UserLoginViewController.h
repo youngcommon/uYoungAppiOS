@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
-@interface UserLoginViewController : UIViewController<UIAlertViewDelegate>
+@interface UserLoginViewController : LoginViewController<UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *tipsImg;
 @property (strong, nonatomic) IBOutlet UITextField *emailInput;
 @property (strong, nonatomic) IBOutlet UIImageView *emailFront;

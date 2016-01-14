@@ -23,7 +23,8 @@
     if (_userDetailModel==nil||_userDetailModel.id==0) {
 //        UserLoginViewController *ctl = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController" bundle:[NSBundle mainBundle]];
 //        [self presentViewController:ctl animated:YES completion:nil];
-        UIViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
+        LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
+        ctl.source = @"usercenter";
         [self presentViewController:ctl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
@@ -238,7 +239,9 @@
         avatarUrl = [NSString stringWithFormat:@"%@-%@?%ld", avatarUrl, @"actdesc200", timer];
     }
     [self.headerImg sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:UserDefaultHeader] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-        [self.headerBackBlurImg setImageToBlur:image blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];
+        if (image!=nil&&![image isEqual:[NSNull null]]) {
+            [self.headerBackBlurImg setImageToBlur:image blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];
+        }
         [self.headerImg setImage:image];
     }];
     

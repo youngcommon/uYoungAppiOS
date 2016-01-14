@@ -51,6 +51,7 @@
 		48ACA7161C3A688D00DCF2CC /* DoubanLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */; };
 		48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C8BFCE1C1B164A0060241C /* CreateAlbum.m */; };
 		48D432601C4782BC00FB1E93 /* LoginFilterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */; };
+		48D432631C478DB100FB1E93 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D432621C478DB100FB1E93 /* LoginViewController.m */; };
 		48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */; };
 		48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10C01C44DF2000D9D89F /* PicExif.m */; };
 		48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DC10C21C45F40F00D9D89F /* global_config.plist */; };
@@ -215,6 +216,8 @@
 		48C8BFCE1C1B164A0060241C /* CreateAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlbum.m; sourceTree = "<group>"; };
 		48D4325E1C4782BC00FB1E93 /* LoginFilterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFilterUtil.h; sourceTree = "<group>"; };
 		48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFilterUtil.m; sourceTree = "<group>"; };
+		48D432611C478DB100FB1E93 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		48D432621C478DB100FB1E93 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		48DC10BB1C44DEDE00D9D89F /* PicExifUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExifUtil.h; sourceTree = "<group>"; };
 		48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicExifUtil.m; sourceTree = "<group>"; };
 		48DC10BF1C44DF2000D9D89F /* PicExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExif.h; sourceTree = "<group>"; };
@@ -731,6 +734,8 @@
 				849B6A8A1C453AF800C91EF1 /* RegisterViewController.h */,
 				849B6A8B1C453AF800C91EF1 /* RegisterViewController.m */,
 				849B6A8D1C453B0700C91EF1 /* RegisterViewController.xib */,
+				48D432611C478DB100FB1E93 /* LoginViewController.h */,
+				48D432621C478DB100FB1E93 /* LoginViewController.m */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -938,6 +943,7 @@
 				84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */,
 				84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */,
 				8452A5231C0C84D300DB419C /* ActivityDescTextView.m in Sources */,
+				48D432631C478DB100FB1E93 /* LoginViewController.m in Sources */,
 				483AFDBF1BC817DF0054985D /* ActivityList.m in Sources */,
 				48FC417E1BD91157006E44B3 /* UserAlbumList.m in Sources */,
 				84993B581C2D808B00888FC7 /* JZAlbumViewController.m in Sources */,
