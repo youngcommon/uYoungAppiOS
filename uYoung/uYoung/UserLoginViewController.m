@@ -83,7 +83,7 @@
 }
 
 - (IBAction)cancelLogin:(id)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"toRootView" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"popLoginView" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

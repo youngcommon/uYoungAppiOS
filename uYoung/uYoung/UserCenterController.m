@@ -14,13 +14,16 @@
 #import "AlbumDetailViewController.h"
 #import "UIWindow+YoungHUD.h"
 #import "UserLoginViewController.h"
+#import "LoginFilterUtil.h"
 
 @implementation UserCenterController
 
 - (void)viewDidAppear:(BOOL)animated{
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
-        UserLoginViewController *ctl = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController" bundle:[NSBundle mainBundle]];
+//        UserLoginViewController *ctl = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController" bundle:[NSBundle mainBundle]];
+//        [self presentViewController:ctl animated:YES completion:nil];
+        UIViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
         [self presentViewController:ctl animated:YES completion:nil];
     }else{
         [self initViewWithUser];
@@ -28,8 +31,9 @@
 
 }
 
-- (void)toRootView{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (void)popLoginView{
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -44,7 +48,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     //取消登录监听
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(toRootView) name:@"toRootView" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(popLoginView) name:@"popLoginView" object:nil];
     
     //根据屏幕宽度，增加label字号，6增一，plus增二
     NSString *fontName = [self.positionTitleLabel.font fontName];

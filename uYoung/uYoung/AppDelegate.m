@@ -113,13 +113,6 @@
 -(void)successGetCities:(NSArray*)arr{
     NSArray * a =  [MTLJSONAdapter modelsOfClass:[CityModel class] fromJSONArray:arr error:nil];
     
-//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities_locations" ofType:@"plist"];
-//    NSMutableArray *data = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
-//    
-//    data = [[a arrayByAddingObjectsFromArray:data] mutableCopy];
-//
-//    BOOL success = [data writeToFile:plistPath atomically:YES];
-    
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:a];
     [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"citylist"];
     [[NSUserDefaults standardUserDefaults] synchronize];

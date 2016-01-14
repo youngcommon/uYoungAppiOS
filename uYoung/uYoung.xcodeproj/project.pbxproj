@@ -50,6 +50,7 @@
 		488AE9851C3F8B0500FA9412 /* ActivityAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 488AE9841C3F8B0500FA9412 /* ActivityAlbumModel.m */; };
 		48ACA7161C3A688D00DCF2CC /* DoubanLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACA7151C3A688D00DCF2CC /* DoubanLoginViewController.m */; };
 		48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C8BFCE1C1B164A0060241C /* CreateAlbum.m */; };
+		48D432601C4782BC00FB1E93 /* LoginFilterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */; };
 		48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */; };
 		48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10C01C44DF2000D9D89F /* PicExif.m */; };
 		48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DC10C21C45F40F00D9D89F /* global_config.plist */; };
@@ -118,7 +119,6 @@
 		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		84EF3A591C46913F004519DE /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF3A581C46913F004519DE /* PrivacyPolicyViewController.m */; };
 		84EF3A5B1C46914F004519DE /* PrivacyPolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EF3A5A1C46914F004519DE /* PrivacyPolicyViewController.xib */; };
-		84EF3A5F1C469679004519DE /* LoginFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF3A5E1C469679004519DE /* LoginFilter.m */; };
 		84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6216E1BE7A2C2004C3733 /* UserLogin.m */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +213,8 @@
 		48ACA71A1C3A6BFB00DCF2CC /* libDoubanApiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libDoubanApiEngine.framework; sourceTree = "<group>"; };
 		48C8BFCD1C1B164A0060241C /* CreateAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlbum.h; sourceTree = "<group>"; };
 		48C8BFCE1C1B164A0060241C /* CreateAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlbum.m; sourceTree = "<group>"; };
+		48D4325E1C4782BC00FB1E93 /* LoginFilterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFilterUtil.h; sourceTree = "<group>"; };
+		48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFilterUtil.m; sourceTree = "<group>"; };
 		48DC10BB1C44DEDE00D9D89F /* PicExifUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExifUtil.h; sourceTree = "<group>"; };
 		48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicExifUtil.m; sourceTree = "<group>"; };
 		48DC10BF1C44DF2000D9D89F /* PicExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExif.h; sourceTree = "<group>"; };
@@ -329,8 +331,6 @@
 		84EF3A571C46913F004519DE /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
 		84EF3A581C46913F004519DE /* PrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		84EF3A5A1C46914F004519DE /* PrivacyPolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyViewController.xib; sourceTree = "<group>"; };
-		84EF3A5D1C469679004519DE /* LoginFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFilter.h; sourceTree = "<group>"; };
-		84EF3A5E1C469679004519DE /* LoginFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFilter.m; sourceTree = "<group>"; };
 		84F6216D1BE7A2C2004C3733 /* UserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLogin.h; sourceTree = "<group>"; };
 		84F6216E1BE7A2C2004C3733 /* UserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLogin.m; sourceTree = "<group>"; };
 		9D08BBB1C24791104EE7BE92 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -516,8 +516,6 @@
 				84EF3A571C46913F004519DE /* PrivacyPolicyViewController.h */,
 				84EF3A581C46913F004519DE /* PrivacyPolicyViewController.m */,
 				84EF3A5A1C46914F004519DE /* PrivacyPolicyViewController.xib */,
-				84EF3A5D1C469679004519DE /* LoginFilter.h */,
-				84EF3A5E1C469679004519DE /* LoginFilter.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -637,6 +635,8 @@
 				482E9AC01C156E5500DEF737 /* UIImageView+LazyInit.m */,
 				484CAF251C28EA2400AFBC30 /* UIImage+scales.h */,
 				484CAF261C28EA2400AFBC30 /* UIImage+scales.m */,
+				48D4325E1C4782BC00FB1E93 /* LoginFilterUtil.h */,
+				48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -932,7 +932,6 @@
 				84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */,
 				48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */,
 				849506B11BFE042700119D8C /* CityModel.m in Sources */,
-				84EF3A5F1C469679004519DE /* LoginFilter.m in Sources */,
 				48FC417B1BD91040006E44B3 /* AlbumModel.m in Sources */,
 				84763F7E1BFA1FC7002BC70B /* YoungHUDBackgroundView.m in Sources */,
 				8497707B1C219D7000822BC4 /* AlbumUploadViewController.m in Sources */,
@@ -969,6 +968,7 @@
 				48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
 				482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */,
+				48D432601C4782BC00FB1E93 /* LoginFilterUtil.m in Sources */,
 				84A2A0611C29A131005061CE /* PhotoDownload.m in Sources */,
 				48C8BFCF1C1B164A0060241C /* CreateAlbum.m in Sources */,
 				8452A51E1C0C7C3F00DB419C /* CreateActivityStep2Controller.m in Sources */,
