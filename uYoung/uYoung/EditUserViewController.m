@@ -82,8 +82,8 @@
             if (_locationId==0) {
                 _locationId = _loginUser.locationId;
             }
-            NSString *cityName;
-            NSString *locationName;
+            NSString *cityName = @"城市";
+            NSString *locationName = @"区域";
             for (int i=0; i<[_cityarr count]; i++) {
                 CityModel *city = _cityarr[i];
                 if (city.id == _cityId) {

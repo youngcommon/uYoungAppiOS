@@ -241,6 +241,8 @@
     [self.headerImg sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:UserDefaultHeader] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
         if (image!=nil&&![image isEqual:[NSNull null]]) {
             [self.headerBackBlurImg setImageToBlur:image blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:nil];
+        }else{
+            image = [UIImage imageNamed:UserDefaultHeader];
         }
         [self.headerImg setImage:image];
     }];
