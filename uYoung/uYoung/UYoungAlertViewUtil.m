@@ -33,4 +33,16 @@
     [self.alert show];
 }
 
+- (void)createAlertViewWith:(NSString*)title Delegate:(id<UIAlertViewDelegate>)delegate{
+    [self dismissAlertView];
+    self.alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    self.alert.delegate = delegate;
+    [self.alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+    UITextField *nameField = [self.alert textFieldAtIndex:0];
+    nameField.placeholder = @"请输相册名称";
+    
+    [self.alert show];
+}
+
 @end

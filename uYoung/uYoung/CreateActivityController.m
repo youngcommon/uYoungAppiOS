@@ -388,6 +388,8 @@
     [self initActTypeSelectView];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHtmlData:) name:@"getHtmlData" object:nil];
+    
+    [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
 }
 
 -(void)dealloc{
