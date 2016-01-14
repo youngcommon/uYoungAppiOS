@@ -16,4 +16,10 @@
 
 - (NSString *) hmacSha1:(NSString*)sk;
 
+- (BOOL)isValidateEmail;
+
+- (BOOL)isValidatePassword;
+
+- (BOOL)isTelephone;
+
 @end

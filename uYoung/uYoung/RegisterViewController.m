@@ -37,6 +37,7 @@
     _registerButton.layer.masksToBounds = YES;
     _registerButton.layer.borderWidth = 1;
     _registerButton.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
+    _registerButton.enabled = NO;
     
     //增加键盘事件监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -77,6 +78,16 @@
             [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册失败" Message:msg CancelTxt:@"再试试" OtherTxt:@"" Tag:4 Delegate:self];
         }
     }];
+}
+
+- (IBAction)validateRegisterButton:(id)sender {
+    NSString *nick = _nickInput.text;
+    NSString *email = _emailInput.text;
+    NSString *pwd = _pwdInput.text;
+    NSString *repwd = _repwdInput.text;
+    if (![NSString isBlankString:nick]&&[email isValidateEmail]&&[pwd isValidatePassword]&&[repwd isEqualToString:pwd]) {
+        _registerButton.enabled = YES;
+    }
 }
 
 - (IBAction)cancelRegister:(id)sender {

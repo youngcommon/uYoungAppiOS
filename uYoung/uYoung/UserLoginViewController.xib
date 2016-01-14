@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserLoginViewController">
@@ -43,6 +43,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                     <connections>
+                        <action selector="loginButtonValidate:" destination="-1" eventType="editingChanged" id="N3N-kN-7Md"/>
                         <outlet property="delegate" destination="-1" id="v5m-NB-j0E"/>
                     </connections>
                 </textField>
@@ -60,6 +61,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                     <connections>
+                        <action selector="loginButtonValidate:" destination="-1" eventType="editingChanged" id="993-r8-cee"/>
                         <outlet property="delegate" destination="-1" id="dJP-zi-sFo"/>
                     </connections>
                 </textField>
@@ -114,6 +116,18 @@
                         <action selector="toRegister:" destination="-1" eventType="touchUpInside" id="87O-d8-rHR"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dy-eL-yTJ">
+                    <rect key="frame" x="40" y="337" width="61" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="FgP-KY-WB0"/>
+                        <constraint firstAttribute="height" constant="30" id="u4f-SH-omy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title="取消登录"/>
+                    <connections>
+                        <action selector="cancelLogin:" destination="-1" eventType="touchUpInside" id="OEv-AD-Axh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -140,9 +154,11 @@
                 <constraint firstItem="vas-V3-SM5" firstAttribute="leading" secondItem="EaE-EX-eYE" secondAttribute="leading" id="gxw-Sw-Dqb"/>
                 <constraint firstItem="SJp-vu-c4H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="mVJ-eq-3uZ"/>
                 <constraint firstItem="3rC-zy-BMC" firstAttribute="top" secondItem="UAS-x1-ehR" secondAttribute="bottom" constant="8" id="mgB-Jg-tHe"/>
+                <constraint firstItem="1Dy-eL-yTJ" firstAttribute="leading" secondItem="bnt-ci-3qx" secondAttribute="leading" id="nla-gQ-npo"/>
                 <constraint firstItem="bnt-ci-3qx" firstAttribute="leading" secondItem="SJp-vu-c4H" secondAttribute="leading" id="q8o-WK-jwm"/>
                 <constraint firstItem="EaE-EX-eYE" firstAttribute="leading" secondItem="bAK-L1-Oah" secondAttribute="trailing" constant="20" id="qkR-Xo-s3e"/>
                 <constraint firstItem="EaE-EX-eYE" firstAttribute="leading" secondItem="SJp-vu-c4H" secondAttribute="trailing" id="shL-lm-Sgs"/>
+                <constraint firstItem="3rC-zy-BMC" firstAttribute="centerY" secondItem="1Dy-eL-yTJ" secondAttribute="centerY" id="vKn-zS-g25"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

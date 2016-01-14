@@ -12,6 +12,7 @@
 #import "UYoungAlertViewUtil.h"
 #import "RegisterViewController.h"
 #import "UserLogin.h"
+#import "NSString+StringUtil.h"
 
 @interface UserLoginViewController ()
 
@@ -33,6 +34,7 @@
     _loginButton.layer.masksToBounds = YES;
     _loginButton.layer.borderWidth = 1;
     _loginButton.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
+    _loginButton.enabled = NO;
     
     if (mScreenWidth<375) {
         [_tipsImg setHidden:YES];
@@ -53,6 +55,14 @@
     [self presentViewController:ctl animated:YES completion:nil];
 }
 
+- (IBAction)loginButtonValidate:(id)sender {
+    NSString *email = _emailInput.text;
+    NSString *pwd = _pwdInput.text;
+    if (![NSString isBlankString:email]&&[email isValidateEmail]&&[pwd isValidatePassword]) {
+        _loginButton.enabled = YES;
+    }
+}
+
 - (IBAction)login:(id)sender {
     
     NSString *email = _emailInput.text;
@@ -70,6 +80,11 @@
         
     }];
     
+}
+
+- (IBAction)cancelLogin:(id)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"toRootView" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UIImage *)getScaleUIImage:(NSString*)name isFront:(BOOL)isFront{

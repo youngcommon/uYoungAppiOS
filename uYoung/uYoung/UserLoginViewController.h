@@ -21,5 +21,7 @@
 @property (assign, nonatomic) BOOL isRegister;
 
 - (IBAction)toRegister:(id)sender;
+- (IBAction)loginButtonValidate:(id)sender;
 - (IBAction)login:(id)sender;
+- (IBAction)cancelLogin:(id)sender;
 @end
