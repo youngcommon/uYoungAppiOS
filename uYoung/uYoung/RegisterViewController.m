@@ -54,37 +54,43 @@
     NSString *pwd = _pwdInput.text;
     NSString *repwd = _repwdInput.text;
     if ([NSString isBlankString:nickname]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"昵称不能为空" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:1 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"昵称不能为空" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:1 Delegate:self];
     }
     if ([NSString isBlankString:email]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入邮箱" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:1 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入邮箱" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:1 Delegate:self];
     }
     if ([NSString isBlankString:pwd]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入密码" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:2 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入密码" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:2 Delegate:self];
     }
     if ([NSString isBlankString:repwd]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入验证密码" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:2 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入验证密码" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:2 Delegate:self];
     }
     if (![pwd isEqualToString:repwd]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"密码输入错误" Message:@"两次输入的密码不一致，请确认" CancelTxt:@"知道了" OtherTxt:@"" Tag:2 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"密码输入错误" Message:@"两次输入的密码不一致，请确认" CancelTxt:@"知道了" OtherTxt:nil Tag:2 Delegate:self];
     }
     
     //注册流程
     pwd = [pwd stringToMD5];
     [UserLogin userRegisterWithEmailAndPwd:email pwd:pwd nickname:nickname success:^(BOOL isSuccess, NSString *msg) {
         if (isSuccess) {
-            [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册成功" Message:@"返回后请使用注册信息再次登陆" CancelTxt:@"好的" OtherTxt:@"" Tag:3 Delegate:self];
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册成功" Message:@"返回后请使用注册信息再次登陆" CancelTxt:@"好的" OtherTxt:nil Tag:3 Delegate:self];
         }else{
-            [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册失败" Message:msg CancelTxt:@"再试试" OtherTxt:@"" Tag:4 Delegate:self];
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册失败" Message:msg CancelTxt:@"再试试" OtherTxt:nil Tag:4 Delegate:self];
         }
     }];
 }
 
-- (IBAction)validateRegisterButton:(id)sender {
+- (IBAction)validateRegisterButton:(UITextField*)sender {
     NSString *nick = _nickInput.text;
     NSString *email = _emailInput.text;
     NSString *pwd = _pwdInput.text;
     NSString *repwd = _repwdInput.text;
+    
+    NSInteger tag = sender.tag;
+    NSInteger textLength = 10;
+    if (tag==10&&nick.length > textLength) {
+        sender.text = [sender.text substringToIndex:textLength];
+    }
     if (![NSString isBlankString:nick]&&[email isValidateEmail]&&[pwd isValidatePassword]&&[repwd isEqualToString:pwd]) {
         _registerButton.enabled = YES;
     }

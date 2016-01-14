@@ -130,6 +130,12 @@
         }
         
     }
+    
+    if ([self validateForm]) {
+        _editButton.enabled = YES;
+    }else{
+        _editButton.enabled = NO;
+    }
 
 }
 
@@ -394,13 +400,27 @@
     if (tag==1002||tag==1005) {
         textLength = 20;
     } else if(tag==1004){
-        textLength = 11;
+        textLength = 10;
     }
 
     if (sender.text.length > textLength) {
         sender.text = [sender.text substringToIndex:textLength];
     }
+    
+    if ([self validateForm]) {
+        _editButton.enabled = YES;
+    }
 
+}
+
+- (BOOL)validateForm{
+    NSString *nick = _nicknameInput.text;
+    NSString *company = _companyInput.text;
+    NSString *position = _positionInput.text;
+    NSString *mobile = _mobileInput.text;
+    NSString *email = _emailInput.text;
+    NSString *equipment = _equipmentInput.text;
+    return (![NSString isBlankString:nick]&&![NSString isBlankString:company]&&![NSString isBlankString:position]&&![NSString isBlankString:mobile]&&![NSString isBlankString:email]&&![NSString isBlankString:equipment]&&[mobile isTelephone]&&[email isValidateEmail]);
 }
 
 //点击相册中的图片或照相机照完后点击use后触发的方法

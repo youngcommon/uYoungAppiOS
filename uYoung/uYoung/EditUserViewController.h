@@ -58,6 +58,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *locationSelImage;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 - (IBAction)genderSel:(UIButton *)sender;
 

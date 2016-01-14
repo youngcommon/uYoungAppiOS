@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ActivityPublish.h"
 
-@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate, UIWebViewDelegate>
+@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate, UIWebViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;

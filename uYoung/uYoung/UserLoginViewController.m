@@ -78,10 +78,10 @@
     NSString *email = _emailInput.text;
     NSString *pwd = _pwdInput.text;
     if ([NSString isBlankString:email]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入邮箱" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:1 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入邮箱" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:1 Delegate:self];
     }
     if ([NSString isBlankString:pwd]) {
-        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入密码" Message:@"" CancelTxt:@"知道了" OtherTxt:@"" Tag:2 Delegate:self];
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请输入密码" Message:@"" CancelTxt:@"知道了" OtherTxt:nil Tag:2 Delegate:self];
     }
     
     //登陆流程
@@ -93,7 +93,7 @@
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:userDetailModel];
             }];
         }else{
-            [[UYoungAlertViewUtil shareInstance]createAlertView:@"登录失败" Message:@"请您稍后再试" CancelTxt:@"好的" OtherTxt:@"" Tag:5 Delegate:self];
+            [[UYoungAlertViewUtil shareInstance]createAlertView:@"登录失败" Message:@"请您稍后再试" CancelTxt:@"好的" OtherTxt:nil Tag:5 Delegate:self];
         }
     }];
     

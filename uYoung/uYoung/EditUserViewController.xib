@@ -12,6 +12,7 @@
                 <outlet property="companyImageW" destination="kJ8-ul-qXM" id="Bfo-dN-Esj"/>
                 <outlet property="companyInput" destination="Sa8-9K-ahd" id="ufx-cP-X7j"/>
                 <outlet property="contentView" destination="9nj-R5-gB7" id="hLK-3x-0Fy"/>
+                <outlet property="editButton" destination="o7K-56-kBK" id="KtQ-tG-Udh"/>
                 <outlet property="emailImage" destination="Rnx-bi-Y2L" id="cNy-SZ-ocQ"/>
                 <outlet property="emailImageW" destination="jgo-Np-LZP" id="3oL-Iz-WhL"/>
                 <outlet property="emailInput" destination="eLb-fh-ngr" id="hFS-SG-DsI"/>

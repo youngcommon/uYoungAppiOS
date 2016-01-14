@@ -13,16 +13,13 @@
 #import "CreateActivityController.h"
 #import "AlbumDetailViewController.h"
 #import "UIWindow+YoungHUD.h"
-#import "UserLoginViewController.h"
 #import "LoginFilterUtil.h"
 
 @implementation UserCenterController
 
-- (void)viewDidAppear:(BOOL)animated{
+/*- (void)viewDidAppear:(BOOL)animated{
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
-//        UserLoginViewController *ctl = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController" bundle:[NSBundle mainBundle]];
-//        [self presentViewController:ctl animated:YES completion:nil];
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
         ctl.source = @"usercenter";
         [self presentViewController:ctl animated:YES completion:nil];
@@ -30,10 +27,9 @@
         [self initViewWithUser];
     }
 
-}
+}*/
 
 - (void)popLoginView{
-//    [self.navigationController popToRootViewControllerAnimated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -43,6 +39,13 @@
 }
 
 - (void)viewDidLoad{
+    if (_userDetailModel==nil||_userDetailModel.id==0) {
+        LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
+        ctl.source = @"usercenter";
+        [self presentViewController:ctl animated:YES completion:nil];
+    }else{
+        [self initViewWithUser];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViews:) name:@"usercenter" object:nil];
     //增加键盘事件监听

@@ -13,6 +13,7 @@
 #import "NSString+StringUtil.h"
 #import "UIWindow+YoungHUD.h"
 #import "UserDetailModel.h"
+#import "UYoungAlertViewUtil.h"
 
 @interface CreateActivityController ()
 
@@ -405,12 +406,12 @@
     switch (_currentButton) {
         case 1001://结束时间
             [_actTimeEndButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
-            _to = date;
+//            _to = date;
             break;
         case 1002://开始时间
             [_actTimeStartButton setTitle:[self getSimpleTime:date] forState:UIControlStateNormal];
 //            _minTime = date;
-            _from = date;
+//            _from = date;
             break;
         default:
             [_actDateButton setTitle:[self getSimpleDate:date] forState:UIControlStateNormal];
@@ -547,13 +548,13 @@
         case 1001://结束时间
             _actDatePicker.datePickerMode = UIDatePickerModeTime;
             _actDatePicker.minuteInterval = 10;
-            _actDatePicker.minimumDate = _minTime;
-            _actDatePicker.date = _maxTime;
+//            _actDatePicker.minimumDate = _minTime;
+//            _actDatePicker.date = _maxTime;
             break;
         case 1002://开始时间
             _actDatePicker.datePickerMode = UIDatePickerModeTime;
             _actDatePicker.minuteInterval = 10;
-            _actDatePicker.date = _minTime;
+//            _actDatePicker.date = _minTime;
             break;
         default:
             _actDatePicker.datePickerMode = UIDatePickerModeDate;
@@ -592,16 +593,44 @@
     NSString *address = _actAddrInput.text;
     NSString *actDescHtml = _descHtml;
     
+    BOOL invalidate = NO;
+    NSString *msg = @"";
+    NSInteger tag = 0;
+    if ([NSString isBlankString:title]) {
+        msg = @"活动名称不能为空";
+        tag = 1;
+        invalidate = YES;
+    }
+    if (!invalidate&&[NSString isBlankString:address]) {
+        msg = @"活动地址不能为空";
+        tag = 2;
+        invalidate = YES;
+    }
+    if (!invalidate&&[NSString isBlankString:actDescHtml]) {
+        msg = @"还得需要填一些内容的";
+        tag = 3;
+        invalidate = YES;
+    }
+    if (invalidate) {
+        [[UYoungAlertViewUtil shareInstance]createAlertView:msg Message:@"" CancelTxt:@"好的" OtherTxt:nil Tag:tag Delegate:self];
+        return;
+    }
+    
     NSString *actDate = _actDateButton.titleLabel.text;
     NSString *fromTime = _actTimeStartButton.titleLabel.text;
     NSString *toTime = _actTimeEndButton.titleLabel.text;
     NSString *fromTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, fromTime];
     NSString *endTimeFormat = [NSString stringWithFormat:@"%@ %@:00", actDate, toTime];
     
-    UserDetailModel *user = [UserDetailModel currentUser];
-    if (user==nil) {
-        
+    NSDate *from = [self getDateFromFullDateFormat:fromTimeFormat];
+    NSDate *to = [self getDateFromFullDateFormat:endTimeFormat];
+    NSDate *earlierOne = [from earlierDate:to];
+    if ([to isEqualToDate:earlierOne]) {//说明结束时间早于开始时间
+        [[UYoungAlertViewUtil shareInstance]createAlertView:@"请确认活动时间" Message:@"活动结束时间不能早于开始时间" CancelTxt:@"再查查" OtherTxt:nil Tag:4 Delegate:self];
+        return;
     }
+    
+    UserDetailModel *user = [UserDetailModel currentUser];
     if(_actType==0){
         _actType = 1;
     }
@@ -777,6 +806,10 @@
     [self.view setFrame:viewFrame];
     [UIView commitAnimations];
     _delta = 0.0f;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [[UYoungAlertViewUtil shareInstance]dismissAlertView];
 }
 
 @end

@@ -24,7 +24,7 @@
 @property (assign, nonatomic) BOOL isRegister;
 
 - (IBAction)registerUser:(id)sender;
-- (IBAction)validateRegisterButton:(id)sender;
+- (IBAction)validateRegisterButton:(UITextField*)sender;
 - (IBAction)cancelRegister:(id)sender;
 - (IBAction)toPrivacyPolicy:(id)sender;
 @end
