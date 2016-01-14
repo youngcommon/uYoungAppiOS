@@ -37,6 +37,7 @@
     [self dismissAlertView];
     self.alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     self.alert.delegate = delegate;
+    self.alert.tag = 1001;
     [self.alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
     UITextField *nameField = [self.alert textFieldAtIndex:0];

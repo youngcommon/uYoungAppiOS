@@ -18,6 +18,8 @@
 #import "JZAlbumViewController.h"
 #import "UserDetailModel.h"
 #import "UserAlbumList.h"
+#import "NSString+StringUtil.h"
+#import "UYoungAlertViewUtil.h"
 
 @interface AlbumDetailViewController ()
 
@@ -35,7 +37,6 @@ static NSString * const reuseIdentifier = @"Cell";
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     
-    
     [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl suffix:@"actdesc200"];
     [_nickName setText:_nickNameStr];
     [_albumName setText:_albumNameStr];
@@ -46,7 +47,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
     if (_pics==nil||_pics==NULL) {
-        _pics = [[NSArray alloc]init];
+        _pics = [[NSMutableArray alloc]init];
     }
     _delList = [[NSMutableArray alloc]initWithCapacity:0];
     _delPhotoList = [[NSMutableArray alloc]initWithCapacity:0];
@@ -57,6 +58,12 @@ static NSString * const reuseIdentifier = @"Cell";
     _inEdit = NO;
     [_cancelButton setHidden:YES];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if ([NSString isBlankString:_albumNameStr]) {
+        [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
+    }
 }
 
 - (void)refresh:(NSNotification*)notification{
@@ -147,22 +154,35 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==0) {
-        [[UYoungAlertViewUtil shareInstance]dismissAlertView];
-    }else{
-        //删除所选照片
-        [UserAlbumList deleteAlbumPhoto:_delList success:^(BOOL success) {
-            [self cancelEdit:nil];
-            if ([_delList count]>0&&[_delPhotoList count]==[_delList count]) {
-                for (int i=0; i<[_delPhotoList count]; i++) {
-                    [_pics removeObject:_delPhotoList[i]];
-                }
-                [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
-                _inEdit = NO;
-                [self.allPics reloadData];
-                [self.allPics reloadInputViews];
+    NSInteger tag = alertView.tag;
+    if (tag==1001) {
+        if (buttonIndex == alertView.firstOtherButtonIndex) {
+            UITextField *nameField = [alertView textFieldAtIndex:0];
+            NSString *name = nameField.text;
+            if (![NSString isBlankString:name]) {
+                _albumNameStr = name;
+                [_albumName setText:_albumNameStr];
+                [[UYoungAlertViewUtil shareInstance]dismissAlertView];
             }
-        }];
+        }
+    }else{
+        if (buttonIndex==0) {
+            [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+        }else{
+            //删除所选照片
+            [UserAlbumList deleteAlbumPhoto:_delList success:^(BOOL success) {
+                [self cancelEdit:nil];
+                if ([_delList count]>0&&[_delPhotoList count]==[_delList count]) {
+                    for (int i=0; i<[_delPhotoList count]; i++) {
+                        [_pics removeObject:_delPhotoList[i]];
+                    }
+                    [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
+                    _inEdit = NO;
+                    [self.allPics reloadData];
+                    [self.allPics reloadInputViews];
+                }
+            }];
+        }
     }
 }
 
