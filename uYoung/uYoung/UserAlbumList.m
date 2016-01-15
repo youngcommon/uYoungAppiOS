@@ -26,13 +26,15 @@
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
                 NSArray *arr = resultData[@"dataList"];
-                if (arr!=nil&&![arr isEqual:[NSNull null]]&&arr!=NULL&&[arr count]>0) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:arr];
-                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:arr];
+            }else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:nil];
             }
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:nil];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"userAlbumList" object:nil];
     }];
 }
 

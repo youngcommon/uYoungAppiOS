@@ -22,11 +22,26 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAlbumList:) name:@"userAlbumList" object:nil];
     
-    [self refreshData];
+    //注册下拉刷新功能
+    __weak AlbumTableViewController *weakself = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakself refreshData];
+    }];
+    [self.tableView.pullToRefreshView setTitle:@"下拉更新" forState:SVPullToRefreshStateStopped];
+    [self.tableView.pullToRefreshView setTitle:@"释放更新" forState:SVPullToRefreshStateTriggered];
+    [self.tableView.pullToRefreshView setTitle:@"卖力加载中..." forState:SVPullToRefreshStateLoading];
+    self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
+    [self.tableView triggerPullToRefresh];
+    
 }
 
 - (void)refreshData{
     [UserAlbumList getUserAlbumListWithUid:_userId];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    //停止菊花
+    [self.tableView.pullToRefreshView stopAnimating];
 }
 
 -(void)dealloc{
@@ -37,10 +52,19 @@
 {
     NSArray *arr = (NSArray*)[notification object];
     NSArray *data = [MTLJSONAdapter modelsOfClass:[AlbumModel class] fromJSONArray:arr error:nil];
-    [_albumListData removeAllObjects];
-     _albumListData = [[NSMutableArray alloc] initWithArray:data];
-    [self.tableView reloadData];
-    [self.tableView reloadInputViews];
+    NSLog(@"data length--->%@", data);
+    if ((data==nil||[data isEqual:[NSNull null]])&&[_albumListData count]==0) {//需要添加说明button
+        UIImageView *nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
+        CGFloat height = (self.view.frame.size.height-nodata.frame.size.height)/2;
+        [nodata setFrame:CGRectMake((self.view.frame.size.width-nodata.frame.size.width)/2, height, nodata.frame.size.width, nodata.frame.size.height)];
+        [self.view addSubview:nodata];
+    }else{
+        [_albumListData removeAllObjects];
+        _albumListData = [[NSMutableArray alloc] initWithArray:data];
+        [self.tableView reloadData];
+        [self.tableView reloadInputViews];
+    }
+    [self.tableView.pullToRefreshView stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning {

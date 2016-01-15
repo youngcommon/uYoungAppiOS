@@ -11,6 +11,7 @@
 #import "GlobalConfig.h"
 #import "AlbumModel.h"
 #import "AlbumDetail.h"
+#import "SVPullToRefresh.h"
 
 @interface AlbumTableViewController : UITableViewController<AlbumDetailDelegate>
 

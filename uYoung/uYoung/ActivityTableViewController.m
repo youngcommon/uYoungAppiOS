@@ -125,6 +125,11 @@
         self.activityListData = [[NSMutableArray alloc] initWithArray:data];
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
+    }else{
+        UIImageView *nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
+        CGFloat height = (self.view.frame.size.height-nodata.frame.size.height)/2;
+        [nodata setFrame:CGRectMake((self.view.frame.size.width-nodata.frame.size.width)/2, height, nodata.frame.size.width, nodata.frame.size.height)];
+        [self.view addSubview:nodata];
     }
 }
 
