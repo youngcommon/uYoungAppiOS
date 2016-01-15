@@ -172,7 +172,9 @@
         
         [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
         
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if(self.activityListData!=nil&&[self.activityListData count]>0){
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     });
 }
 
