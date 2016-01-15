@@ -35,7 +35,7 @@
 
 - (void)createAlertViewWith:(NSString*)title Delegate:(id<UIAlertViewDelegate>)delegate{
     [self dismissAlertView];
-    self.alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    self.alert = [[UIAlertView alloc] initWithTitle:nil message:title delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     self.alert.delegate = delegate;
     self.alert.tag = 1001;
     [self.alert setAlertViewStyle:UIAlertViewStylePlainTextInput];

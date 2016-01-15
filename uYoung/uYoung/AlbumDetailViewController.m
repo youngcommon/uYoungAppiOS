@@ -20,6 +20,7 @@
 #import "UserAlbumList.h"
 #import "NSString+StringUtil.h"
 #import "UYoungAlertViewUtil.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface AlbumDetailViewController ()
 
@@ -39,7 +40,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl suffix:@"actdesc200"];
     [_nickName setText:_nickNameStr];
-    [_albumName setText:_albumNameStr];
+    [_albumName setText:_albumNameStr==nil?@"未命名":_albumNameStr];
     [_createDate setText:[NSString stringWithFormat:@"创建于%@", _createDateStr]];
     [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
     
@@ -58,10 +59,17 @@ static NSString * const reuseIdentifier = @"Cell";
     _inEdit = NO;
     [_cancelButton setHidden:YES];
     
+    _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    _cover.backgroundColor = [UIColor lightGrayColor];
+    _cover.alpha = 0.5;
+    [self.view addSubview:_cover];
+    [_cover setHidden:YES];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    if ([NSString isBlankString:_albumNameStr]) {
+    if (_isNew) {
+        [_cover setHidden:NO];
         [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
     }
 }
@@ -74,6 +82,17 @@ static NSString * const reuseIdentifier = @"Cell";
     [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
     [_allPics reloadData];
     [_allPics reloadInputViews];
+}
+
+- (void)successCreateAlbum:(AlbumModel*)detail{
+    if (detail!=nil) {
+        [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
+        self.albumid = detail.id;
+        [_cover setHidden:YES];
+    }else{
+        [self.view.window showHUDWithText:@"创建失败" Type:ShowPhotoNo Enabled:YES];
+        [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,14 +175,22 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSInteger tag = alertView.tag;
     if (tag==1001) {
-        if (buttonIndex == alertView.firstOtherButtonIndex) {
-            UITextField *nameField = [alertView textFieldAtIndex:0];
-            NSString *name = nameField.text;
-            if (![NSString isBlankString:name]) {
-                _albumNameStr = name;
-                [_albumName setText:_albumNameStr];
-                [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+        UITextField *nameField = [alertView textFieldAtIndex:0];
+        NSString *name = nameField.text;
+        if (buttonIndex==1&&![NSString isBlankString:name]) {
+            _albumNameStr = name;
+            [_albumName setText:_albumNameStr];
+            [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+            UserDetailModel *user = [UserDetailModel currentUser];
+            if (user!=nil&&user!=NULL) {
+                [self.view.window showHUDWithText:@"正在创建相册" Type:ShowLoading Enabled:YES];
+                NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@(user.id),@"createUserId",_albumNameStr,@"albumName",_albumNameStr,@"title",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", nil];
+                [CreateAlbum createAlbum:dict delegate:self];
             }
+        }else if(buttonIndex==0){
+            _albumNameStr = @"未命名";
+            [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }else{
         if (buttonIndex==0) {
@@ -183,6 +210,12 @@ static NSString * const reuseIdentifier = @"Cell";
                 }
             }];
         }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if ([NSString isBlankString:_albumNameStr]) {
+        [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
     }
 }
 

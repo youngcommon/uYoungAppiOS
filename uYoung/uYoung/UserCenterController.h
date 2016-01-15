@@ -16,9 +16,8 @@
 #import "EditUserViewController.h"
 #import "ThirdLoginViewController.h"
 #import "SystemConfigViewController.h"
-#import "CreateAlbum.h"
 
-@interface UserCenterController : UIViewController<UITextFieldDelegate, CreateAlbumDelegate>
+@interface UserCenterController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *positionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyTitleLabel;
@@ -37,12 +36,7 @@
 
 @property (strong, nonatomic) UIButton *myAlbumButton;
 @property (strong, nonatomic) UIButton *myActButton;
-@property (strong, nonatomic) UIButton *createAlbum;
-@property (strong, nonatomic) UIView *createAlbumView;
-@property (strong, nonatomic) UITextField *createAlbumText;
-@property (strong, nonatomic) UIButton *cancelCreate;
-@property (strong, nonatomic) UIButton *doCreate;
-@property (strong, nonatomic) UIButton *createAct;
+@property (assign, nonatomic) NSInteger tag;//标记那个button当前被选中
 
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) SystemConfigViewController *sysCtl;

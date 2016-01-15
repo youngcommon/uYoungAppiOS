@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UYoungAlertViewUtil.h"
+#import "CreateAlbum.h"
 
-@interface AlbumDetailViewController : UIViewController<UIAlertViewDelegate>
+@interface AlbumDetailViewController : UIViewController<UIAlertViewDelegate, CreateAlbumDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
+@property (strong, nonatomic) UIView *cover;
 
 @property (strong, nonatomic) NSString *albumNameStr;
 @property (strong, nonatomic) NSString *nickNameStr;
@@ -28,6 +30,7 @@
 @property (assign, nonatomic) long ownerUid;
 @property (assign, nonatomic) long albumid;
 
+@property (assign, nonatomic) BOOL isNew;//是否是新创建相册
 @property (assign, nonatomic) BOOL inEdit;//是否是编辑状态
 @property (strong, nonatomic) NSMutableArray *pics;
 @property (strong, nonatomic) NSMutableArray *delList;//保存要删除的照片id
