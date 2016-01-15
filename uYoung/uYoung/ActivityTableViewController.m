@@ -90,7 +90,8 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakself getDataFromNet:YES];
+//        [weakself getDataFromNet:YES];
+        [weakself resetActivityList:[[NSDictionary alloc]init]];
     }];
     
     //注册上拉刷新功能
@@ -125,6 +126,7 @@
         self.activityListData = [[NSMutableArray alloc] initWithArray:data];
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
+        self.currentPage = self.currentPage + 1;
     }else{
         UIImageView *nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
         CGFloat height = (self.view.frame.size.height-nodata.frame.size.height)/2;
@@ -147,7 +149,6 @@
             //停止菊花
             [self.tableView.infiniteScrollingView stopAnimating];
         }else{
-            self.currentPage = self.currentPage + 1;
             [params setObject:@(self.currentPage) forKey:@"pageNum"];
             [ActivityList getActivityListWithParam:params isTop:isTop delegate:self];
         }
@@ -170,10 +171,12 @@
         [self.tableView.pullToRefreshView stopAnimating];
         
         [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+        
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     });
 }
 
-- (void)insertRowAtBottom:(NSArray*)arr{
+- (void)insertRowAtBottom:(NSArray*)arr hasError:(BOOL)error{
     int64_t delayinseconds = 2.0;
     dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayinseconds * NSEC_PER_SEC);
     dispatch_after(poptime, dispatch_get_main_queue(), ^(void){
@@ -185,8 +188,10 @@
             [self.activityListData addObject:model];
             [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([self.activityListData count]-1) inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
         }
-        if ([arr count]<pageSize) {//如果小于pageSize，说明是最后一页了
+        if ([arr count]<pageSize&&!error) {//如果小于pageSize，说明是最后一页了
             self.noMorePage = YES;
+        }else{
+            self.currentPage = self.currentPage + 1;
         }
 
         //结束更新

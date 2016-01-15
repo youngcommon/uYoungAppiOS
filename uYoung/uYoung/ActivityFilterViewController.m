@@ -67,23 +67,6 @@
     _actTypeTable.tag = 2;
     _actTypeTable.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:_actTypeTable];
-//    NSLayoutConstraint *actTypeTableLeadingContraint=[NSLayoutConstraint
-//                                          constraintWithItem:_actTypeTable
-//                                          attribute:NSLayoutAttributeLeading
-//                                          relatedBy:NSLayoutRelationEqual
-//                                          toItem:_actTypeButton
-//                                          attribute:NSLayoutAttributeLeading
-//                                          multiplier:1.0f
-//                                          constant:0.0];
-//    NSLayoutConstraint *actTypeTableTrailingContraint=[NSLayoutConstraint
-//                                                      constraintWithItem:_actTypeTable
-//                                                      attribute:NSLayoutAttributeTrailing
-//                                                      relatedBy:NSLayoutRelationEqual
-//                                                      toItem:_actTypeButton
-//                                                      attribute:NSLayoutAttributeTrailing
-//                                                      multiplier:1.0f
-//                                                      constant:0.0];
-//    [self.view addConstraints:@[actTypeTableLeadingContraint,actTypeTableTrailingContraint]];
     
     //初始化活动状态类型数据
     NSData *actstatuslistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"actstatus"];

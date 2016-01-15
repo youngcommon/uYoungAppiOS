@@ -14,7 +14,7 @@
 
 @optional
 - (void)insertRowAtTop:(NSArray*)data;
-- (void)insertRowAtBottom:(NSArray*)data;
+- (void)insertRowAtBottom:(NSArray*)data hasError:(BOOL)error;
 
 @end
 

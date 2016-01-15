@@ -44,8 +44,8 @@
     [self.toggle setHidden:YES];
     /*[self.toggle addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];*/
     
-    NSDictionary *defaultParam = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"desc",@"sort", nil];
-    [self.activityTabViewController resetActivityList:defaultParam];
+//    NSDictionary *defaultParam = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"desc",@"sort", nil];
+//    [self.activityTabViewController resetActivityList:defaultParam];
     
     _userHeaderBackground = [[UILabel alloc]initWithFrame:CGRectMake(mScreenWidth/2-33, mScreenHeight-10-66, 66, 66)];
     _userHeaderBackground.backgroundColor = UIColorFromRGB(0x85b200);

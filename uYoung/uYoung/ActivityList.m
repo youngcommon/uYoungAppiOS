@@ -45,13 +45,29 @@
                 if (isTop) {
                     [delegate insertRowAtTop:a];
                 }else{
-                    [delegate insertRowAtBottom:a];
+                    [delegate insertRowAtBottom:a hasError:NO];
                 }
+            }else{
+                if (isTop) {
+                    [delegate insertRowAtTop:nil];
+                }else{
+                    [delegate insertRowAtBottom:nil hasError:YES];
+                }
+            }
+        }else{
+            if (isTop) {
+                [delegate insertRowAtTop:nil];
+            }else{
+                [delegate insertRowAtBottom:nil hasError:YES];
             }
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        if (isTop) {
+            [delegate insertRowAtTop:nil];
+        }else{
+            [delegate insertRowAtBottom:nil hasError:YES];
+        }
     }];
     
 }
