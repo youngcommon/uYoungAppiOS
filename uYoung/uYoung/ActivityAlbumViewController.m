@@ -27,6 +27,18 @@ static NSString * const reuseIdentifier = @"Cell";
     [_albums registerNib:nib forCellWithReuseIdentifier:@"Cell"];
     
     [_actTitle setText:[NSString stringWithFormat:@"%@相册", _actTitleStr]];
+    
+    _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
+    CGFloat height = (self.view.frame.size.height-_nodata.frame.size.height)/2;
+    [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    [self.view addSubview:_nodata];
+    [_nodata setHidden:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if (_actAlbum==nil||[_actAlbum count]==0) {
+        [_nodata setHidden:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +53,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [_actAlbum count];
-//    return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +73,7 @@ static NSString * const reuseIdentifier = @"Cell";
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
         viewCtl.createDateStr = [self getDateStrByTimeInterval:model.createTime];
-        viewCtl.pics = model.photos;
+        viewCtl.pics = [[NSMutableArray alloc]initWithArray:model.photos];
         [self.navigationController pushViewController:viewCtl animated:YES];
     }
 }

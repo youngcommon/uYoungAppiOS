@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString *actTitleStr;
 
+@property (strong, nonatomic) UIImageView *nodata;
 @property (strong, nonatomic) IBOutlet UILabel *actTitle;
 
 @property (strong, nonatomic) NSArray *actAlbum;

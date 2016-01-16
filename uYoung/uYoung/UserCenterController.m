@@ -94,9 +94,12 @@
     [self.view addSubview:self.albumTableViewController.view];
     
     CGFloat indexY = self.headerBackBlurImg.frame.origin.y + self.headerBackBlurImg.frame.size.height;
-    self.albumTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    CGRect frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    
+    self.albumTableViewController.tableView.frame = frame;
     [self.albumTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.albumTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     
     //加载我的活动列表
     self.activityTableViewController = [[ActivityTableViewController alloc]init];
@@ -105,7 +108,7 @@
     [self addChildViewController:self.activityTableViewController];
     [self.view addSubview:self.activityTableViewController.view];
     
-    self.activityTableViewController.tableView.frame = CGRectMake(0, indexY, self.view.frame.size.width, self.view.frame.size.height - indexY);
+    self.activityTableViewController.tableView.frame = frame;
     [self.activityTableViewController.tableView setBackgroundColor:[UIColor clearColor]];
     self.activityTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.activityTableViewController.view setHidden:YES];

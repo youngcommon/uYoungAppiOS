@@ -34,11 +34,17 @@
     [self.tableView triggerPullToRefresh];
     
     _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
-    CGFloat height = (self.view.frame.size.height-_nodata.frame.size.height)/2;
-    [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    CGFloat height = (self.tableView.frame.size.height-_nodata.frame.size.height)/2;
+    [_nodata setFrame:CGRectMake((self.tableView.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
     [self.view addSubview:_nodata];
     [_nodata setHidden:YES];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    CGRect frame = self.tableView.frame;
+    CGFloat height = (frame.size.height-_nodata.frame.size.height)/2;
+    [_nodata setFrame:CGRectMake((frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
 }
 
 - (void)refreshData{
