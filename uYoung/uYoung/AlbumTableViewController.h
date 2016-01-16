@@ -19,6 +19,8 @@
 
 @property (assign, nonatomic) NSInteger userId;
 
+@property (strong, nonatomic) UIImageView *nodata;
+
 - (void)refreshData;
 
 @end

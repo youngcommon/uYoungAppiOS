@@ -34,7 +34,7 @@
 @property (assign, nonatomic) BOOL inEdit;//是否是编辑状态
 @property (strong, nonatomic) NSMutableArray *pics;
 @property (strong, nonatomic) NSMutableArray *delList;//保存要删除的照片id
-@property (strong, nonatomic) NSMutableArray *delPhotoList;//保存要删除的照片实体
+@property (strong, nonatomic) NSMutableString *delPhotoList;//保存要删除的照片ID,用逗号分隔
 
 - (IBAction)back:(id)sender;
 - (IBAction)selectPics:(id)sender;

@@ -23,12 +23,16 @@
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
+//            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
+            NSDictionary *dict = [responseObject objectForKey:@"resultData"];
+            NSString *sessionid = dict[@"sessionId"];
+            NSInteger uid = [dict[@"uid"]integerValue];
             [delegate postThirdData:uid];
+        }else{
+            [delegate postThirdData:0];
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        [delegate postThirdData:0];
     }];
 }
 

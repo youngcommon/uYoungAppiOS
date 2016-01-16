@@ -24,6 +24,12 @@
     
     [self initPullAndPushView];
     
+    _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
+    CGFloat height = (self.view.frame.size.height-_nodata.frame.size.height)/2;
+    [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    [self.view addSubview:_nodata];
+    [_nodata setHidden:YES];
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
@@ -127,11 +133,16 @@
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
         self.currentPage = self.currentPage + 1;
+        if (self.activityListData==nil||[self.activityListData count]==0) {
+            [_nodata setHidden:YES];
+        }
+        [_nodata setHidden:YES];
     }else{
-        UIImageView *nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
-        CGFloat height = (self.view.frame.size.height-nodata.frame.size.height)/2;
-        [nodata setFrame:CGRectMake((self.view.frame.size.width-nodata.frame.size.width)/2, height, nodata.frame.size.width, nodata.frame.size.height)];
-        [self.view addSubview:nodata];
+        if (self.activityListData==nil||[self.activityListData count]==0) {
+            [_nodata setHidden:NO];
+        }else{
+            [_nodata setHidden:YES];
+        }
     }
 }
 

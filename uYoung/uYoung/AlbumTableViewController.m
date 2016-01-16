@@ -33,6 +33,12 @@
     self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
     [self.tableView triggerPullToRefresh];
     
+    _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
+    CGFloat height = (self.view.frame.size.height-_nodata.frame.size.height)/2;
+    [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    [self.view addSubview:_nodata];
+    [_nodata setHidden:YES];
+    
 }
 
 - (void)refreshData{
@@ -52,17 +58,14 @@
 {
     NSArray *arr = (NSArray*)[notification object];
     NSArray *data = [MTLJSONAdapter modelsOfClass:[AlbumModel class] fromJSONArray:arr error:nil];
-    NSLog(@"data length--->%@", data);
     if ((data==nil||[data isEqual:[NSNull null]])&&[_albumListData count]==0) {//需要添加说明button
-        UIImageView *nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
-        CGFloat height = (self.view.frame.size.height-nodata.frame.size.height)/2;
-        [nodata setFrame:CGRectMake((self.view.frame.size.width-nodata.frame.size.width)/2, height, nodata.frame.size.width, nodata.frame.size.height)];
-        [self.view addSubview:nodata];
+        [_nodata setHidden:NO];
     }else{
         [_albumListData removeAllObjects];
         _albumListData = [[NSMutableArray alloc] initWithArray:data];
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
+        [_nodata setHidden:YES];
     }
     [self.tableView.pullToRefreshView stopAnimating];
 }
@@ -155,7 +158,7 @@
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
         viewCtl.createDateStr = [self getDateStrByTimeInterval:model.createTime];
-        viewCtl.pics = model.photos;
+        viewCtl.pics = [[NSMutableArray alloc]initWithArray:model.photos];
         [self.navigationController pushViewController:viewCtl animated:YES];
     }
 }

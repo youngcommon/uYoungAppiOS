@@ -23,6 +23,8 @@
 @property (nonatomic, assign) long userid;
 @property (nonatomic, assign) BOOL showHeader;
 
+@property (strong, nonatomic) UIImageView *nodata;
+
 @property (nonatomic, strong) NSDictionary *params;
 
 - (void)resetActivityList:(NSDictionary*)param;

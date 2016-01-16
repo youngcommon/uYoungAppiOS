@@ -47,11 +47,11 @@ static NSString * const reuseIdentifier = @"Cell";
     UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
-    if (_pics==nil||_pics==NULL) {
+    /*if (_pics==nil||_pics==NULL) {
         _pics = [[NSMutableArray alloc]init];
-    }
+    }*/
     _delList = [[NSMutableArray alloc]initWithCapacity:0];
-    _delPhotoList = [[NSMutableArray alloc]initWithCapacity:0];
+    _delPhotoList = [[NSMutableString alloc]initWithString:@","];
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     [_uploadPicButton setHidden:(loginUser.id!=_ownerUid)];
@@ -130,10 +130,11 @@ static NSString * const reuseIdentifier = @"Cell";
         BOOL isSel = [_delList containsObject:@(id)];
         if(isSel){
             [_delList removeObject:@(id)];
-            [_delPhotoList removeObject:cell.model];
+            NSRange range = [_delPhotoList rangeOfString:[NSString stringWithFormat:@"%d,", (int)id]];
+            [_delPhotoList deleteCharactersInRange:range];
         }else{
             [_delList addObject:@(id)];
-            [_delPhotoList addObject:cell.model];
+            [_delPhotoList appendString:[NSString stringWithFormat:@"%d,", (int)id]];
         }
         [cell changeSelectImg:!isSel];
     }else{
@@ -162,7 +163,7 @@ static NSString * const reuseIdentifier = @"Cell";
         _inEdit = YES;
         [_cancelButton setHidden:NO];
     }else{
-        if ([_delPhotoList count]==0) {
+        if (_delPhotoList.length==1) {
             [[UYoungAlertViewUtil shareInstance]createAlertView:@"请选择要删除的照片" Message:@"" CancelTxt:@"好的" OtherTxt:nil Tag:1 Delegate:self];
         }else{
             //删除逻辑
@@ -198,16 +199,23 @@ static NSString * const reuseIdentifier = @"Cell";
         }else{
             //删除所选照片
             [UserAlbumList deleteAlbumPhoto:_delList success:^(BOOL success) {
-                [self cancelEdit:nil];
-                if ([_delList count]>0&&[_delPhotoList count]==[_delList count]) {
-                    for (int i=0; i<[_delPhotoList count]; i++) {
-                        [_pics removeObject:_delPhotoList[i]];
+                if ([_delList count]>0&&[_pics count]>0) {
+                    NSMutableIndexSet *indexSets = [[NSMutableIndexSet alloc]init];
+                    for(int i=0;i<[_pics count];i++){
+                        PhotoDetailModel *model =  _pics[i];
+                        long id = model.id;
+                        NSRange range = [_delPhotoList rangeOfString:[NSString stringWithFormat:@"%d,", (int)id]];
+                        if (range.length>0) {
+                            [indexSets addIndex:i];
+                        }
                     }
-                    [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
-                    _inEdit = NO;
+                    if ([indexSets count]>0) {
+                        [_pics removeObjectsAtIndexes:indexSets];
+                    }
                     [self.allPics reloadData];
                     [self.allPics reloadInputViews];
                 }
+                _delPhotoList = [[NSMutableString alloc]initWithString:@","];
             }];
         }
     }
@@ -225,7 +233,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_cancelButton setHidden:YES];
     [self cellSelectButtonSwitch];
     [_delList removeAllObjects];
-    [_delPhotoList removeAllObjects];
+    _delPhotoList = [[NSMutableString alloc]initWithString:@","];
     NSArray *cells = [_allPics visibleCells];
     if (cells&&[cells count]>0) {
         for (int i=0; i<[cells count]; i++) {
