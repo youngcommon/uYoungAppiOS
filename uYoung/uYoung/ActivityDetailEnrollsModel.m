@@ -14,7 +14,8 @@
     return @{
              @"uid": @"uid",
              @"avatar": @"avatar",
-             @"nickName": @"nickName"
+             @"nickName": @"nickName",
+             @"isConfirm":@"isConfirm"
              };
 }
 

@@ -13,5 +13,6 @@
 @property (nonatomic, assign) NSInteger uid;
 @property (nonatomic, strong) NSString *nickName;
 @property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, assign) BOOL isConfirm;
 
 @end

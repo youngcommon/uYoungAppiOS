@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *enrollUserHeader;
 @property (weak, nonatomic) IBOutlet UILabel *enrollUserNick;
 @property (strong, nonatomic) ActivityDetailEnrollsModel *enrollUser;
+@property (weak, nonatomic) IBOutlet UILabel *isConfirmLabel;
 
 - (void)updateFrameWithModel:(ActivityDetailEnrollsModel*)model;
 

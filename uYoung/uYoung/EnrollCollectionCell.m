@@ -31,6 +31,8 @@
         nickName = @"这里是昵称";
     }
     [_enrollUserNick setText:nickName];
+    
+    [_isConfirmLabel setHidden:model.isConfirm];
 }
 
 @end
