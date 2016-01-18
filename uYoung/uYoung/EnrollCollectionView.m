@@ -7,6 +7,7 @@
 //
 
 #import "EnrollCollectionView.h"
+#import "ActivityDetail.h"
 
 @implementation EnrollCollectionView
 
@@ -38,13 +39,37 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger selectedUser = [indexPath row];
-    NSInteger uid = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]).uid;
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@(uid)];
-    [_enrollDelegate getEnrollUserId:uid];
+    _selUid = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]).uid;
+    if (_canSignup) {
+        UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"确定要给他签到吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"查看用户", nil];
+        sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [sheet showInView:self];
+    }else{
+        //    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@(uid)];
+        [_enrollDelegate getEnrollUserId:_selUid];
+    }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        [self signActWithUid:_selUid actId:_actId];
+    }else if (buttonIndex == 1) {
+        [_enrollDelegate getEnrollUserId:_selUid];
+    }else if(buttonIndex == 2) {
+        return;
+    }
+}
+
+//签到
+-(void)signActWithUid:(long)uid actId:(long)actId{
+    [ActivityDetail signActivity:uid actId:actId opts:^(BOOL success) {
+        if (success) {
+        }
+    }];
 }
 
 /*-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event

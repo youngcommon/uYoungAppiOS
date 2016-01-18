@@ -215,8 +215,9 @@ static NSString * const reuseIdentifier = @"Cell";
                     [self initSignupButtonWithStatus:status actStatus:1];
                 }];
             }else{
-                [_signupButton setTitle:@"活动进行中" forState:UIControlStateNormal];
+                [_signupButton setTitle:@"点击报名用户进行签到" forState:UIControlStateNormal];
                 [_signupButton setEnabled:NO];
+                _enrollView.canSignup = YES;
             }
             break;
         }
@@ -272,12 +273,11 @@ static NSString * const reuseIdentifier = @"Cell";
                 [_signupButton addTarget:self action:@selector(unsignedActivity) forControlEvents:UIControlEventTouchUpInside];
             }else if(actStatus==1){
                 BOOL isSigned = NO;//判断是否签到
+                [_signupButton setEnabled:NO];
                 if (isSigned) {
                     [_signupButton setTitle:@"已签到" forState:UIControlStateNormal];
-                    [_signupButton setEnabled:NO];
                 }else{
-                    [_signupButton setTitle:@"签 到" forState:UIControlStateNormal];
-                    [_signupButton addTarget:self action:@selector(signAct) forControlEvents:UIControlEventTouchUpInside];
+                    [_signupButton setTitle:@"未签到" forState:UIControlStateNormal];
                 }
             }
             break;
@@ -325,16 +325,6 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
 }
 
-//签到
--(void)signAct{
-    [ActivityDetail signActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
-        if (success) {
-            [_signupButton setTitle:@"已签到" forState:UIControlStateNormal];
-            [_signupButton setEnabled:NO];
-        }
-    }];
-}
-
 - (void)fillActivityDetail:(NSNotification*)notification{
     NSDictionary *dic = (NSDictionary*)[notification object];
     self.detailModel = [MTLJSONAdapter modelOfClass:[ActivityDetailModel class] fromJSONDictionary:dic error:nil];
@@ -354,16 +344,17 @@ static NSString * const reuseIdentifier = @"Cell";
     //设置报名详情
     UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    EnrollCollectionView *enrollView = [[EnrollCollectionView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height) collectionViewLayout:flowLayout];
+    _enrollView = [[EnrollCollectionView alloc]initWithFrame:CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height) collectionViewLayout:flowLayout];
     
     UINib * nib = [UINib nibWithNibName:@"EnrollCollectionCell" bundle:nil];
-    [enrollView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
-    enrollView.delegate = enrollView;
-    enrollView.dataSource = enrollView;
-    enrollView.enrollDelegate = self;
-    enrollView.enrolls = [self.detailModel.enrolls copy];
-    [enrollView setBackgroundColor:[UIColor clearColor]];
-    [self.descScrollView addSubview:enrollView];
+    [_enrollView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
+    _enrollView.delegate = _enrollView;
+    _enrollView.dataSource = _enrollView;
+    _enrollView.enrollDelegate = self;
+    _enrollView.enrolls = [self.detailModel.enrolls copy];
+    _enrollView.actId = self.model.activityId;
+    [_enrollView setBackgroundColor:[UIColor clearColor]];
+    [self.descScrollView addSubview:_enrollView];
     
     [self.descScrollView setContentSize:CGSizeMake(self.descScrollView.frame.size.width*2, self.descScrollView.frame.size.height)];
     
