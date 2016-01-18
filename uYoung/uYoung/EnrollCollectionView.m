@@ -39,8 +39,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger selectedUser = [indexPath row];
-    _selUid = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]).uid;
-    if (_canSignup) {
+    ActivityDetailEnrollsModel *model = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]);
+    _selUid = model.uid;
+    if (_canSignup&&model.confirm==NO) {
         UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"确定要给他签到吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"查看用户", nil];
         sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [sheet showInView:self];
