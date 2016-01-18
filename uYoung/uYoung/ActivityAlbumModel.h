@@ -12,6 +12,7 @@
 
 @property (nonatomic,assign) NSInteger activityId;
 @property (nonatomic,assign) NSInteger albumId;
+@property (nonatomic,assign) NSInteger oriUid;
 @property (nonatomic,strong) NSString *oriUrl;
 @property (nonatomic,strong) NSString *firstPhotoUrl;
 @property (nonatomic,assign) NSInteger totalPhotoCount;

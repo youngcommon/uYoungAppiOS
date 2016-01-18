@@ -10,6 +10,8 @@
 #import "ActivityAlbumCollectionViewCell.h"
 #import "AlbumDetailModel.h"
 #import "AlbumDetailViewController.h"
+#import "UserDetailModel.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface ActivityAlbumViewController ()
 
@@ -33,6 +35,12 @@ static NSString * const reuseIdentifier = @"Cell";
     [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
     [self.view addSubview:_nodata];
     [_nodata setHidden:YES];
+    
+    if(_hadSigned&&!_hadAlbum){
+        [_uploadAlbumView setHidden:NO];
+    }else{
+        [_uploadAlbumView setHidden:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -62,13 +70,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [AlbumDetail getAlbumDetailByAlbumId:1 delegate:self];
+    ActivityAlbumModel *model = _actAlbum[indexPath.row];
+    [AlbumDetail getAlbumDetailByAlbumId:model.albumId delegate:self];
 }
 
 -(void)successGetAlbumDetail:(AlbumDetailModel*)model{
     if (model!=nil) {
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
-        viewCtl.albumNameStr = [NSString stringWithFormat:@"%@的相册", model.oriNickName];
+        viewCtl.albumNameStr = [NSString stringWithFormat:@"%@相册", model.oriNickName];
         viewCtl.ownerUid = model.oriUserId;
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
@@ -90,4 +99,19 @@ static NSString * const reuseIdentifier = @"Cell";
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)uploadMyActAlbum:(id)sender {
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if (user!=nil&&user!=NULL) {
+        [self.view.window showHUDWithText:@"正在创建相册" Type:ShowLoading Enabled:YES];
+        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@(user.id),@"createUserId",_actTitleStr,@"albumName",_actTitleStr,@"title",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", @(_actId),@"activityId", nil];
+        [CreateAlbum createAlbum:dict delegate:self];
+    }
+}
+
+- (void)successCreateAlbum:(AlbumModel*)detail{
+    [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
+    [AlbumDetail getAlbumDetailByAlbumId:detail.id delegate:self];
+}
+
 @end

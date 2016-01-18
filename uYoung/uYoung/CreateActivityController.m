@@ -38,7 +38,7 @@
     
     _from = _minDate;
     _to = _maxDate;
-    
+    _actNum = 4;
     _priceType = 0;
     
     _sep = 14;//默认行距

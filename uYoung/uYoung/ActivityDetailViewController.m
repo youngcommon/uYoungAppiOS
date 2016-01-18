@@ -254,10 +254,24 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)toActivityAlbum{
     [UserAlbumList getUserAlbumListWithActId:_detailModel.activityId success:^(NSArray *arr) {
         NSArray *albumList = [MTLJSONAdapter modelsOfClass:[ActivityAlbumModel class] fromJSONArray:arr error:nil];
+        //判断自己是否签到过及是否已经上传照片
+        BOOL hadSigned = NO;
+        BOOL hadAlbum = NO;
         if (albumList!=nil&&![albumList isEqual:[NSNull null]]) {
+            UserDetailModel *user = [UserDetailModel currentUser];
+            if (user!=nil&&user.id>0) {
+                for (int i=0; i<[albumList count]; i++) {
+                    ActivityAlbumModel *actModel = albumList[i];
+                    if (actModel.oriUid==user.id) {
+                        hadAlbum = YES;
+                        break;
+                    }
+                }
+            }
             ActivityAlbumViewController *actAlbumViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
             actAlbumViewCtl.actTitleStr = _detailModel.title;
             actAlbumViewCtl.actAlbum = albumList;
+            actAlbumViewCtl.actId = self.model.activityId;
             [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
         }
     }];

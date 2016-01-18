@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="actTitle" destination="qia-9C-nRv" id="KyF-DX-hMz"/>
                 <outlet property="albums" destination="JoG-qX-8dY" id="MND-hk-wPQ"/>
+                <outlet property="uploadAlbumView" destination="Jpg-L5-osw" id="WPC-dK-Ev3"/>
                 <outlet property="view" destination="iN0-l3-epB" id="f16-mu-76B"/>
             </connections>
         </placeholder>
@@ -53,14 +54,37 @@
                         <outlet property="delegate" destination="-1" id="cN9-Z3-aPD"/>
                     </connections>
                 </collectionView>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-L5-osw">
+                    <rect key="frame" x="0.0" y="438" width="320" height="42"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isf-GA-Nc8">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                            <state key="normal" title="上传我的活动相册"/>
+                            <connections>
+                                <action selector="uploadMyActAlbum:" destination="-1" eventType="touchUpInside" id="Shm-tX-GQ0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="isf-GA-Nc8" secondAttribute="trailing" id="Q4H-AJ-bAX"/>
+                        <constraint firstAttribute="bottom" secondItem="isf-GA-Nc8" secondAttribute="bottom" id="QwG-dD-RB3"/>
+                        <constraint firstItem="isf-GA-Nc8" firstAttribute="leading" secondItem="Jpg-L5-osw" secondAttribute="leading" id="YZL-Qr-1gT"/>
+                        <constraint firstAttribute="height" constant="42" id="acm-lm-Sbu"/>
+                        <constraint firstItem="isf-GA-Nc8" firstAttribute="top" secondItem="Jpg-L5-osw" secondAttribute="top" id="pf4-BA-UYk"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Jpg-L5-osw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4yy-tT-xUD"/>
                 <constraint firstItem="UKL-a6-Qsc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="5Lw-2w-1cb"/>
                 <constraint firstAttribute="bottom" secondItem="T6G-by-y1p" secondAttribute="bottom" id="5Sc-Px-OZ0"/>
                 <constraint firstItem="JoG-qX-8dY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="F24-y9-oqR"/>
                 <constraint firstAttribute="trailing" secondItem="JoG-qX-8dY" secondAttribute="trailing" constant="22" id="JhA-gZ-aIT"/>
                 <constraint firstItem="JoG-qX-8dY" firstAttribute="top" secondItem="qia-9C-nRv" secondAttribute="bottom" constant="18" id="MR7-ff-eQG"/>
+                <constraint firstAttribute="trailing" secondItem="Jpg-L5-osw" secondAttribute="trailing" id="P2o-Fu-PFT"/>
+                <constraint firstAttribute="bottom" secondItem="Jpg-L5-osw" secondAttribute="bottom" id="VcK-5E-EGC"/>
                 <constraint firstItem="qia-9C-nRv" firstAttribute="leading" relation="lessThanOrEqual" secondItem="UKL-a6-Qsc" secondAttribute="trailing" constant="15" id="cHb-QV-cQU"/>
                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qia-9C-nRv" secondAttribute="trailing" constant="47" id="eaH-fp-Ae3"/>
                 <constraint firstItem="T6G-by-y1p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="erC-9h-XeF"/>

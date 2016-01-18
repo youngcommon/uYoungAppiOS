@@ -15,6 +15,7 @@
              
              @"activityId": @"activityId",
              @"albumId": @"albumId",
+             @"oriUid":@"oriUid",
              @"oriUrl": @"oriUrl",
              @"firstPhotoUrl": @"firstPhotoUrl",
              @"totalPhotoCount": @"totalPhotoCount",
