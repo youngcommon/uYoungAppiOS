@@ -16,6 +16,7 @@
 
 #import "CityModel.h"
 #import "UploadImageUtil.h"
+#import "WeiboUser.h"
 
 @interface AppDelegate () <TencentSessionDelegate>
 
@@ -25,7 +26,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [NSThread sleepForTimeInterval:3];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -35,15 +35,16 @@
     [self.root.view setFrame:CGRectMake(0, -100, mScreenWidth, mScreenHeight)];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.root];
-//    self.navController.delegate = self;
     self.navController.navigationBar.translucent = NO;
     self.navController.navigationBarHidden = YES;
     
-//    self.window.rootViewController = self.root;
     self.window.rootViewController = self.navController;
     
-//    [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
+    
+    _userLoginInfoDic = [[NSDictionary alloc]init];
+    _sinaInfoDic = [[NSMutableDictionary alloc]init];
+    _doubanDic = [[NSDictionary alloc]init];
     
     //注册QQ SSO
     self.tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQAppKey andDelegate:self];
@@ -75,13 +76,6 @@
             [reviewData writeToFile:filename atomically:YES];
         }];
     }
-    
-    //注册键盘跟随
-//    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-//    manager.enable = YES;
-//    manager.shouldResignOnTouchOutside = YES;
-//    manager.shouldToolbarUsesTextFieldTintColor = YES;
-//    manager.enableAutoToolbar = NO;
     
     return YES;
 }
@@ -148,11 +142,14 @@
 #pragma mark 微博及微信
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
+    
     if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
         if(response.statusCode !=-1) {//-1的时候，表明用户取消了
             self.sinaInfoDic = response.userInfo;
-            [self loginSuccess];
+//            [self loginSuccess];
+            
+            [self getWeiboUserInfo];
         }
     }
 }
@@ -186,6 +183,21 @@
     }
 }
 
+- (void)getWeiboUserInfo{
+    NSString *uid = _sinaInfoDic[@"uid"];
+    NSString *token = _sinaInfoDic[@"access_token"];
+    [WBHttpRequest requestForUserProfile:uid withAccessToken:token andOtherProperties:nil queue:nil withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+        if ([result isKindOfClass:WeiboUser.class]) {
+            WeiboUser *user = (WeiboUser*)result;
+            NSInteger gender = [user.gender isEqualToString:@"m"]?1:0;
+            [_sinaInfoDic setObject:user.name forKey:@"nickName"];
+            [_sinaInfoDic setObject:user.avatarLargeUrl forKey:@"avatar"];
+            [_sinaInfoDic setObject:@(gender) forKey:@"gender"];
+            [self loginSuccess];
+        }
+    }];
+}
+
 - (void)loginSuccess{
     NSString *thirdUid;
     NSString *accessToken;
@@ -203,7 +215,7 @@
         accessToken = self.userLoginInfoDic[@"access_token"];
         nickName = self.userLoginInfoDic[@"nickname"];
         gender = self.userLoginInfoDic[@"gender"];
-        NSInteger genderVal = 2;
+        NSInteger genderVal = 0;
         if (gender&&[gender isKindOfClass:[NSString class]]&&gender.length>0&&[gender isEqualToString:@"男"]) {
             genderVal = 1;
         }
@@ -224,11 +236,12 @@
         thirdUid = self.sinaInfoDic[@"uid"];
         accessToken = self.sinaInfoDic[@"access_token"];
         refreshToken = self.sinaInfoDic[@"refresh_token"];
-        nickName = self.sinaInfoDic[@"app"][@"name"];
+        nickName = self.sinaInfoDic[@"nickName"];
         userType = 3;
-        avaterUrl = self.sinaInfoDic[@"app"][@"logo"];
+        avaterUrl = self.sinaInfoDic[@"avatar"];
         expireIn = self.sinaInfoDic[@"expires_in"];
-        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", expireIn, @"expireIn", nil];
+        NSInteger genderVal = [self.sinaInfoDic[@"gender"]integerValue];
+        dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", expireIn, @"expireIn", @(genderVal), @"gender", nil];
     }
     
     //保存登陆成功数据
