@@ -44,6 +44,7 @@ static NSString * const reuseIdentifier = @"Cell";
         UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"确定要给他签到吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"查看用户", nil];
         sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [sheet showInView:self];
+        _selIndex = selectedUser;
     }else{
         //    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoEnrollDetail" object:@(uid)];
         [_enrollDelegate getEnrollUserId:_selUid];
@@ -68,6 +69,10 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)signActWithUid:(long)uid actId:(long)actId{
     [ActivityDetail signActivity:uid actId:actId opts:^(BOOL success) {
         if (success) {
+            ActivityDetailEnrollsModel *model = ((ActivityDetailEnrollsModel*)_enrolls[_selIndex]);
+            model.confirm = YES;
+            [self reloadData];
+            [self reloadInputViews];
         }
     }];
 }

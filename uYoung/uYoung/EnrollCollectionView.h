@@ -21,6 +21,7 @@
 @property (weak, nonatomic) id<EnrollCollectionViewDelegate> enrollDelegate;
 @property (strong, nonatomic) NSMutableArray *enrolls;
 @property (assign, nonatomic) long selUid;
+@property (assign, nonatomic) NSInteger selIndex;
 @property (assign, nonatomic) long actId;
 @property (assign, nonatomic) BOOL canSignup;
 
