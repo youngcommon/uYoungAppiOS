@@ -260,6 +260,7 @@ static NSString * const reuseIdentifier = @"Cell";
         if (albumList!=nil&&![albumList isEqual:[NSNull null]]) {
             UserDetailModel *user = [UserDetailModel currentUser];
             if (user!=nil&&user.id>0) {
+                //判断是否上传过照片
                 for (int i=0; i<[albumList count]; i++) {
                     ActivityAlbumModel *actModel = albumList[i];
                     if (actModel.oriUid==user.id) {
@@ -267,11 +268,24 @@ static NSString * const reuseIdentifier = @"Cell";
                         break;
                     }
                 }
+                //判断是否签到确认
+                NSArray *enrolls = _detailModel.enrolls;
+                if (enrolls!=nil&&[enrolls count]>0) {
+                    for (int i=0; i<[enrolls count]; i++) {
+                        ActivityDetailEnrollsModel *enrollModel = enrolls[i];
+                        if (enrollModel.uid==user.id&&enrollModel.confirm) {
+                            hadSigned = YES;
+                            break;
+                        }
+                    }
+                }
             }
             ActivityAlbumViewController *actAlbumViewCtl = [[ActivityAlbumViewController alloc] initWithNibName:@"ActivityAlbumViewController" bundle:[NSBundle mainBundle]];
             actAlbumViewCtl.actTitleStr = _detailModel.title;
             actAlbumViewCtl.actAlbum = albumList;
             actAlbumViewCtl.actId = self.model.activityId;
+            actAlbumViewCtl.hadAlbum = hadAlbum;
+            actAlbumViewCtl.hadSigned = hadSigned;
             [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
         }
     }];

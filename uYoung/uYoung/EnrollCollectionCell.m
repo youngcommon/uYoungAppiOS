@@ -32,7 +32,7 @@
     }
     [_enrollUserNick setText:nickName];
     
-    [_isConfirmLabel setHidden:model.isConfirm];
+    [_isConfirmLabel setHidden:!model.confirm];
 }
 
 @end

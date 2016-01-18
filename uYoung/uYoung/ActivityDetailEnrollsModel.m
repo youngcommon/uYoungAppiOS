@@ -15,7 +15,7 @@
              @"uid": @"uid",
              @"avatar": @"avatar",
              @"nickName": @"nickName",
-             @"isConfirm":@"isConfirm"
+             @"confirm":@"confirm"
              };
 }
 
