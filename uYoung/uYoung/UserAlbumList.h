@@ -18,6 +18,6 @@
 
 + (void)deleteUserAlbum:(long)albumId uid:(long)uid success:(void(^)(BOOL success))success;
 
-+ (void)deleteAlbumPhoto:(NSArray*)ids success:(void(^)(BOOL success))success;
++ (void)deleteAlbumPhoto:(NSMutableString*)ids success:(void(^)(BOOL success))success;
 
 @end

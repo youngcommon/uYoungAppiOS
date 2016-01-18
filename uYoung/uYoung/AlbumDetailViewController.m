@@ -198,7 +198,7 @@ static NSString * const reuseIdentifier = @"Cell";
             [[UYoungAlertViewUtil shareInstance]dismissAlertView];
         }else{
             //删除所选照片
-            [UserAlbumList deleteAlbumPhoto:_delList success:^(BOOL success) {
+            [UserAlbumList deleteAlbumPhoto:_delPhotoList success:^(BOOL success) {
                 if ([_delList count]>0&&[_pics count]>0) {
                     NSMutableIndexSet *indexSets = [[NSMutableIndexSet alloc]init];
                     for(int i=0;i<[_pics count];i++){
