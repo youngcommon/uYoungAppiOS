@@ -136,6 +136,7 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="TQ7-zR-GYh"/>
                             <exclude reference="iVJ-dg-gyq"/>
                             <exclude reference="sNS-zj-ATe"/>
                         </mask>

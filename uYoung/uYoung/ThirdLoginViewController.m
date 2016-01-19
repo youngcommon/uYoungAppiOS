@@ -21,16 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_acctFrontImage setImage:[self getScaleUIImage:@"uyoung.bundle/input_top.png" isFront:YES]];
-    [_pwdFrontImage setImage:[self getScaleUIImage:@"uyoung.bundle/input_bottom.png" isFront:YES]];
-    _acctBackInput.background = [self getScaleUIImage:@"uyoung.bundle/input_end_top.png" isFront:NO];
-    _pwdBackInput.background = [self getScaleUIImage:@"uyoung.bundle/input_end_bottom.png" isFront:NO];
-    
-    _loginButton.layer.cornerRadius = 6.f;
-    _loginButton.layer.masksToBounds = YES;
-    _loginButton.layer.borderWidth = 1;
-    _loginButton.layer.borderColor = [UIColorFromRGB(0x85b200)CGColor];
-    
     if (mScreenWidth<375) {
         [_coverMsgImage setHidden:YES];
     }
@@ -87,19 +77,6 @@
     request.redirectURI = SinaWeiboRedirectURI;
     request.scope = @"all";
     [WeiboSDK sendRequest:request];
-}
-
-- (UIImage *)getScaleUIImage:(NSString*)name isFront:(BOOL)isFront{
-    UIImage *bubble = [UIImage imageNamed:name];
-    
-    UIEdgeInsets capInsets;
-    if (isFront) {
-        capInsets = UIEdgeInsetsMake(0, 10, 0, 6);
-    }else{
-        capInsets = UIEdgeInsetsMake(0, 0, 0, 10);
-    }
-    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
-    
 }
 
 - (void)loginSuccess:(NSNotification*)noti{

@@ -11,11 +11,6 @@
 
 @interface ThirdLoginViewController : LoginViewController
 
-@property (strong, nonatomic) IBOutlet UIImageView *acctFrontImage;
-@property (strong, nonatomic) IBOutlet UIImageView *pwdFrontImage;
-@property (strong, nonatomic) IBOutlet UITextField *acctBackInput;
-@property (strong, nonatomic) IBOutlet UITextField *pwdBackInput;
-@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIImageView *coverMsgImage;
 
 

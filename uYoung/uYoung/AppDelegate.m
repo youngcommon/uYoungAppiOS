@@ -146,7 +146,8 @@
     if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
         if(response.statusCode !=-1) {//-1的时候，表明用户取消了
-            self.sinaInfoDic = response.userInfo;
+            [self.sinaInfoDic setDictionary:response.userInfo];
+//            self.sinaInfoDic = response.userInfo;
 //            [self loginSuccess];
             
             [self getWeiboUserInfo];

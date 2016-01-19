@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwipeBack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ZLPhotoLib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,7 +72,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B13608FE07E7D6176C4CDA63F246837</key>
+		<key>053098BC2478A3BF22402E9D1B5E5CB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>058E44539DE341A6154BD80CAC5D8BE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1B5E718A648DF6A1AA62ED7DE3B683BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C1716F1BADCA80DF546D47380D4076C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3548D931078A450D97EDAEFA1CEA09B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,32 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F92239094F63BB0D05B197CE627E8BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6FB014858CC2135A83A9B08D0C517E85</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8FF8D14C21BED3AE29F8D70DF66897DE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>976944FF40425D91F86AEC30BA4DE364</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7760227B1CB05871F8CD042C18A2253</key>
+		<key>C3A1FD6F3C67213062A5C17E957AAB7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2B4F66B20F6BD59A184240835139964</key>
+		<key>CBDDEE7273088D6B64D238B3CC151C82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D490F13B4BC17B47E8F354FE80D07C90</key>
+		<key>E74177CB2073F1D2F2FFE6118F84DB9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC542A18D746EE09CCA71FE17AC40A52</key>
+		<key>F813EA7E71B57054BE02B0D13FEFFAC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
