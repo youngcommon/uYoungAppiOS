@@ -477,4 +477,5 @@ static NSString * const reuseIdentifier = @"Cell";
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
 }
 
+
 @end

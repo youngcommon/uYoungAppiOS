@@ -25,7 +25,11 @@
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
         ctl.source = @"usercenter";
-        [self presentViewController:ctl animated:YES completion:nil];
+        BOOL ani = YES;
+        if (mScreenWidth==320) {
+            ani = NO;
+        }
+        [self presentViewController:ctl animated:ani completion:nil];
     }else{
         [self initViewWithUser];
     }

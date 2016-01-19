@@ -13,9 +13,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverMsgImage;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topCons;
 
 - (IBAction)doubanLogin:(UIButton *)sender;
 - (IBAction)qqLogin:(UIButton *)sender;
 - (IBAction)sinaWeiboLogin:(UIButton *)sender;
+- (IBAction)cancelLogin:(id)sender;
 
 @end

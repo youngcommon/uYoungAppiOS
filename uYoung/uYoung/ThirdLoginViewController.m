@@ -21,10 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (mScreenWidth<375) {
-        [_coverMsgImage setHidden:YES];
+    if (mScreenWidth==375) {
+//        [_coverMsgImage setHidden:YES];
     }
     
+    [_topCons setConstant:mScreenWidth/4];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
 }
 
@@ -77,6 +79,11 @@
     request.redirectURI = SinaWeiboRedirectURI;
     request.scope = @"all";
     [WeiboSDK sendRequest:request];
+}
+
+- (IBAction)cancelLogin:(id)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"popLoginView" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)loginSuccess:(NSNotification*)noti{

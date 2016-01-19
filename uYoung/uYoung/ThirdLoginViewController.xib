@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThirdLoginViewController">
             <connections>
                 <outlet property="coverMsgImage" destination="aLV-14-cxZ" id="ghh-5O-IT8"/>
+                <outlet property="topCons" destination="Q6n-Gu-6kT" id="hvE-cZ-eUz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="hXc-5r-Ok0"/>
             </connections>
         </placeholder>
@@ -55,13 +56,14 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/cover_msg.png" translatesAutoresizingMaskIntoConstraints="NO" id="aLV-14-cxZ">
-                    <rect key="frame" x="58" y="173" width="205" height="60"/>
+                    <rect key="frame" x="58" y="198" width="205" height="60"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="205" id="8CR-4w-lZA"/>
                         <constraint firstAttribute="height" constant="60" id="f6V-vW-BD7"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oJx-Xv-qx3">
-                    <rect key="frame" x="125" y="55" width="70" height="70"/>
+                    <rect key="frame" x="125" y="80" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="rFG-rX-MPW"/>
                         <constraint firstAttribute="height" constant="70" id="xTi-1i-kG9"/>
@@ -94,37 +96,28 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <state key="normal" title="取消登录"/>
+                    <connections>
+                        <action selector="cancelLogin:" destination="-1" eventType="touchUpInside" id="MRu-Ed-png"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="aLV-14-cxZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="2l2-WF-ecd"/>
                 <constraint firstItem="oJx-Xv-qx3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3lg-jG-A6j"/>
                 <constraint firstAttribute="bottom" secondItem="IdW-9N-uJR" secondAttribute="bottom" constant="88" id="6VD-9n-qXB"/>
-                <constraint firstAttribute="trailing" secondItem="T5Y-BT-Wos" secondAttribute="trailing" constant="30" id="Edq-v7-zTx"/>
                 <constraint firstItem="IdW-9N-uJR" firstAttribute="centerY" secondItem="lhK-Sh-DSI" secondAttribute="centerY" id="F5O-Dz-BqQ"/>
                 <constraint firstItem="RfY-y9-rZL" firstAttribute="top" secondItem="T5Y-BT-Wos" secondAttribute="bottom" constant="33" id="KzH-Ue-lZz"/>
                 <constraint firstItem="aLV-14-cxZ" firstAttribute="top" secondItem="oJx-Xv-qx3" secondAttribute="bottom" constant="48" id="O3G-vR-MTm"/>
-                <constraint firstItem="oJx-Xv-qx3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="55" id="Q6n-Gu-6kT"/>
-                <constraint firstItem="IdW-9N-uJR" firstAttribute="top" secondItem="aLV-14-cxZ" secondAttribute="bottom" constant="99" id="TBH-3c-rL0"/>
+                <constraint firstItem="oJx-Xv-qx3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Q6n-Gu-6kT"/>
                 <constraint firstItem="T5Y-BT-Wos" firstAttribute="centerY" secondItem="lhK-Sh-DSI" secondAttribute="centerY" id="YO3-0d-xkh"/>
-                <constraint firstAttribute="trailing" secondItem="aLV-14-cxZ" secondAttribute="trailing" constant="57" id="axc-m4-cRA"/>
-                <constraint firstAttribute="bottom" secondItem="IdW-9N-uJR" secondAttribute="bottom" constant="88" id="iGf-JO-eXQ"/>
                 <constraint firstItem="IdW-9N-uJR" firstAttribute="leading" secondItem="lhK-Sh-DSI" secondAttribute="trailing" constant="40" id="j6R-ti-RYg"/>
                 <constraint firstItem="T5Y-BT-Wos" firstAttribute="leading" secondItem="IdW-9N-uJR" secondAttribute="trailing" constant="40" id="kGk-bU-WHe"/>
                 <constraint firstAttribute="trailing" secondItem="RfY-y9-rZL" secondAttribute="trailing" constant="29" id="pcf-UL-saX"/>
                 <constraint firstItem="aLV-14-cxZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sOB-jY-ohM"/>
-                <constraint firstItem="lhK-Sh-DSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="tfa-EL-MoZ"/>
                 <constraint firstItem="IdW-9N-uJR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xrA-2X-2SP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="TBH-3c-rL0"/>
-                    <exclude reference="iGf-JO-eXQ"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>
