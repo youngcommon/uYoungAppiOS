@@ -24,5 +24,6 @@
 + (void)getAllActStatus:(id<GlobalNetworkDelegate>)delegate;
 + (void)submitFeedback:(NSString*)email content:(NSString*)content handle:(void(^)(BOOL isSuccess))handle;
 + (void)isInreview:(void(^)(BOOL inreview))handle;
++ (void)checkNewVersion:(void(^)(NSDictionary *dict))handle;
 
 @end

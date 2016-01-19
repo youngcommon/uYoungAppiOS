@@ -14,6 +14,7 @@
 #import "ActivityAlbumViewController.h"
 #import "UIImageView+LazyInit.h"
 #import "UIWindow+YoungHUD.h"
+#import "UYoungAlertViewUtil.h"
 
 @interface RootViewController ()
 
@@ -74,10 +75,48 @@
     
     _isFilter = NO;
     
+    [self checkUpdate];
+    
+}
+
+- (void)checkUpdate{
+    //查看是否有新版本客户端
+    [GlobalNetwork checkNewVersion:^(NSDictionary *dict) {
+        if (dict!=nil&&![dict isEqual:[NSNull null]]) {
+            NSString *version = dict[@"version"];//最新版本
+            BOOL inReview = [dict[@"status"]boolValue];//审核状态, YES代表审核通过
+            // app版本
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *app_version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            if (![app_version isEqualToString:version]&&inReview) {//如果当前客户端版本同最新版本不同且最新版本已通过审核
+                _forceUpdate = [dict[@"isUpdate"]boolValue];//是否强制更新
+                NSString *updateContent = dict[@"updateContent"];
+                if ([NSString isBlankString:updateContent]) {
+                    updateContent = nil;
+                }
+                NSString *cancelTxt = @"再说吧";
+                if(_forceUpdate){
+                    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+                    view.backgroundColor = [UIColor lightGrayColor];
+                    view.alpha = 0.8;
+                    [self.view addSubview:view];
+                    cancelTxt = nil;
+                }
+                [[UYoungAlertViewUtil shareInstance]createAlertView:@"有更新啦~~" Message:updateContent CancelTxt:cancelTxt OtherTxt:@"去更新" Tag:0 Delegate:self];
+            }
+        }
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [self initUserAvater];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (_forceUpdate||buttonIndex==1) {
+        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1050432865";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
 }
 
 - (void)gotoUserCenter{

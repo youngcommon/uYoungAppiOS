@@ -48,6 +48,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weibosdk</string>
+		<string>itms-apps</string>
 		<string>weibosdk2.5</string>
 		<string>wtloginmqq2</string>
 		<string>weixin</string>

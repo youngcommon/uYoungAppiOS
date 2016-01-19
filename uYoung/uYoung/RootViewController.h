@@ -12,7 +12,7 @@
 #import "mantle.h"
 #import "ActivityFilterViewController.h"
 
-@interface RootViewController : UIViewController<ActivityFilterDelegate>
+@interface RootViewController : UIViewController<ActivityFilterDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggle;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
@@ -24,6 +24,8 @@
 @property (strong, nonatomic) ActivityTableViewController *activityTabViewController;
 
 @property (strong, nonatomic) UIView *cover;
+
+@property (assign, nonatomic) BOOL forceUpdate;
 
 - (IBAction)showFilter:(id)sender;
 
