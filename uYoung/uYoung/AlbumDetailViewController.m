@@ -89,6 +89,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
         self.albumid = detail.id;
         [_cover setHidden:YES];
+        _isNew = NO;
     }else{
         [self.view.window showHUDWithText:@"创建失败" Type:ShowPhotoNo Enabled:YES];
         [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
