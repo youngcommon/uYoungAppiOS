@@ -8,6 +8,7 @@
 
 #import "EnrollCollectionView.h"
 #import "ActivityDetail.h"
+#import "UserDetailModel.h"
 
 @implementation EnrollCollectionView
 
@@ -41,7 +42,8 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger selectedUser = [indexPath row];
     ActivityDetailEnrollsModel *model = ((ActivityDetailEnrollsModel*)_enrolls[selectedUser]);
     _selUid = model.uid;
-    if (_canSignup&&model.confirm==NO) {
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser.id>0&&loginUser.id!=_selUid&&_canSignup&&model.confirm==NO) {
         UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"确定要给他签到吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"查看用户", nil];
         sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [sheet showInView:self];

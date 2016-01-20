@@ -30,6 +30,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initSignupButton) name:@"actdetail" object:nil];
+    
     self.view.backgroundColor = [UIColor clearColor];
     self.headerBackground.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
     
@@ -203,6 +206,13 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)initSignupButton{
     //判断当前活动状态
     NSInteger status = self.model.status;
+    
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser.id==0) {//说明未登录
+        [_signupButton setTitle:@"登陆后报名" forState:UIControlStateNormal];
+        [_signupButton addTarget:self action:@selector(toLogin) forControlEvents:UIControlEventTouchUpInside];
+        return;
+    }
     
     BOOL isSelf = (_detailModel.oriUserId==_loginUser.id);//活动是自己创建的
     
@@ -477,5 +487,14 @@ static NSString * const reuseIdentifier = @"Cell";
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
 }
 
+- (void)toLogin{
+    LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
+    ctl.source = @"actdetail";
+    BOOL ani = YES;
+    if (mScreenWidth==320) {
+        ani = NO;
+    }
+    [self presentViewController:ctl animated:ani completion:nil];
+}
 
 @end

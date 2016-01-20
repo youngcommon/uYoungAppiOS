@@ -163,7 +163,8 @@
 - (void)initViewWithUser{
     
     //判断，如果用户资料未填写，则弹出完善资料页面
-    if ([NSString isBlankString:self.userDetailModel.nickName]||[NSString isBlankString:self.userDetailModel.avatarUrl]||[NSString isBlankString:self.userDetailModel.company]||[NSString isBlankString:self.userDetailModel.position]) {
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    if (loginUser.id==self.userDetailModel.id&&([NSString isBlankString:loginUser.company]||[NSString isBlankString:loginUser.position])) {
         EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
         [self.navigationController pushViewController:editUserViewCtl animated:YES];
     }

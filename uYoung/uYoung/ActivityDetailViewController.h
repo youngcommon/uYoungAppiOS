@@ -14,6 +14,7 @@
 #import "ActivityDetail.h"
 #import "EnrollCollectionView.h"
 #import "ThirdLoginViewController.h"
+#import "LoginFilterUtil.h"
 
 @interface ActivityDetailViewController : UIViewController<EnrollCollectionViewDelegate>
 

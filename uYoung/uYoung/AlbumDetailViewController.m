@@ -112,6 +112,11 @@ static NSString * const reuseIdentifier = @"Cell";
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.showLabels = YES;
     [cell initCellWithPhotoDetail:model];
+    if(_inEdit){
+        [cell.selImg setHidden:NO];
+    }else{
+        [cell.selImg setHidden:YES];
+    }
     BOOL isSel = [_delList containsObject:@(model.id)];
     [cell changeSelectImg:isSel];
     return cell;
