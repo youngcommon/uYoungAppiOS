@@ -51,13 +51,6 @@
     //价格选择开关
     [_priceSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     
-    //初始化活动类型数据
-    NSData *acttypelistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"acttype"];
-    if (acttypelistdata) {
-        _actTypeData = [NSKeyedUnarchiver unarchiveObjectWithData:acttypelistdata];
-    } else {
-        _actTypeData = [[NSArray alloc]init];
-    }
     //初始化活动类型筛选列表
     _actTypeTable = [[UITableView alloc]initWithFrame:CGRectMake(_actTypeButton.frame.origin.x, _actTypeButton.frame.origin.y+_actTypeButton.frame.size.height, _actTypeButton.frame.size.width, 0)];
     _actTypeTable.delegate = self;
@@ -68,13 +61,6 @@
     _actTypeTable.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:_actTypeTable];
     
-    //初始化活动状态类型数据
-    NSData *actstatuslistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"actstatus"];
-    if (actstatuslistdata) {
-        _actStatusData = [NSKeyedUnarchiver unarchiveObjectWithData:actstatuslistdata];
-    } else {
-        _actStatusData = [[NSArray alloc]init];
-    }
     //初始化活动状态筛选列表
     _actStatusTable = [[UITableView alloc]initWithFrame:CGRectMake(_actStatusButton.frame.origin.x, _actStatusButton.frame.origin.y+_actStatusButton.frame.size.height, _actStatusButton.frame.size.width, 0)];
     _actStatusTable.delegate = self;
@@ -114,6 +100,15 @@
 }
 
 - (IBAction)actTypeFilter:(id)sender {
+    //初始化活动类型数据
+    NSData *acttypelistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"acttype"];
+    if (acttypelistdata) {
+        _actTypeData = [NSKeyedUnarchiver unarchiveObjectWithData:acttypelistdata];
+        [_actTypeTable reloadData];
+        [_actTypeTable reloadInputViews];
+    } else {
+        _actTypeData = [[NSArray alloc]init];
+    }
     if (_actStatusTable.frame.size.height>0) {
         [self selectActType:3];
     }
@@ -121,6 +116,15 @@
 }
 
 - (IBAction)actStatusFilter:(id)sender {
+    //初始化活动状态类型数据
+    NSData *actstatuslistdata = [[NSUserDefaults standardUserDefaults]objectForKey:@"actstatus"];
+    if (actstatuslistdata) {
+        _actStatusData = [NSKeyedUnarchiver unarchiveObjectWithData:actstatuslistdata];
+        [_actStatusTable reloadData];
+        [_actStatusTable reloadInputViews];
+    } else {
+        _actStatusData = [[NSArray alloc]init];
+    }
     if (_actTypeTable.frame.size.height>0) {
         [self selectActType:2];
     }

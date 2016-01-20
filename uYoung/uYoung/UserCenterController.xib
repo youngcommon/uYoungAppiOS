@@ -65,8 +65,8 @@
                         <constraint firstAttribute="width" constant="46" id="Roe-6m-MOg"/>
                         <constraint firstAttribute="height" constant="30" id="TfI-YK-6RU"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="Edit">
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="编辑">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>

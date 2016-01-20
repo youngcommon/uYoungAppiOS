@@ -568,6 +568,7 @@
             [userDetailModel save];
             _loginUser = [userDetailModel copy];
             [self initUser];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"usercenter" object:_loginUser];
         }];
     } else{
         [self.view.window showHUDWithText:@"保存失败" Type:ShowPhotoNo Enabled:YES];
