@@ -33,18 +33,20 @@
     self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 40, 0);
     [self.tableView triggerPullToRefresh];
     
-    _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
-    CGFloat height = (self.tableView.frame.size.height-_nodata.frame.size.height)/2;
-    [_nodata setFrame:CGRectMake((self.tableView.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
-    [self.view addSubview:_nodata];
+    _nodata = [[UIImageView alloc]init];
     [_nodata setHidden:YES];
+    [self.tableView addSubview:_nodata];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    UIImage *img = [UIImage imageNamed:@"uyoung.bundle/nodata"];
+    [_nodata setImage:img];
     CGRect frame = self.tableView.frame;
-    CGFloat height = (frame.size.height-_nodata.frame.size.height)/2;
-    [_nodata setFrame:CGRectMake((frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    CGFloat x = (frame.size.width-img.size.width)/2;
+    CGFloat y = (frame.size.height-img.size.height)/2;
+    CGRect newFrame = CGRectMake(x, y, img.size.width, img.size.height);
+    [_nodata setFrame:newFrame];
 }
 
 - (void)refreshData{

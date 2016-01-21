@@ -24,22 +24,20 @@
     
     [self initPullAndPushView];
     
-    _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
-    CGFloat height = (self.tableView.frame.size.height-_nodata.frame.size.height)/2;
-    [_nodata setFrame:CGRectMake((self.tableView.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
-    [self.view addSubview:_nodata];
+    _nodata = [[UIImageView alloc]init];
     [_nodata setHidden:YES];
+    [self.view addSubview:_nodata];
     
-    _params = [[NSMutableArray alloc]init];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    UIImage *img = [UIImage imageNamed:@"uyoung.bundle/nodata"];
+    [_nodata setImage:img];
     CGRect frame = self.tableView.frame;
-    CGFloat height = (frame.size.height-_nodata.frame.size.height)/2;
-    [_nodata setFrame:CGRectMake((frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
+    CGFloat x = (frame.size.width-img.size.width)/2;
+    CGFloat y = (frame.size.height-img.size.height)/2;
+    CGRect newFrame = CGRectMake(x, y, img.size.width, img.size.height);
+    [_nodata setFrame:newFrame];
 }
 
 -(void)dealloc{
@@ -157,21 +155,23 @@
 }
 
 - (void)getDataFromNet:(BOOL)isTop{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:_params];
-    [params setObject:@(pageSize) forKey:@"pageSize"];
+    if (_params==nil||[_params isEqual:[NSNull null]]) {
+        _params = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"desc",@"sort", nil];
+    }
+    [_params setObject:@(pageSize) forKey:@"pageSize"];
     if (_userid>0) {
-        [params setObject:@(_userid) forKey:@"creatorUid"];
+        [_params setObject:@(_userid) forKey:@"creatorUid"];
     }
     if (isTop) {
-        [params setObject:@(1) forKey:@"pageNum"];
-        [ActivityList getActivityListWithParam:params isTop:isTop delegate:self];
+        [_params setObject:@(1) forKey:@"pageNum"];
+        [ActivityList getActivityListWithParam:_params isTop:isTop delegate:self];
     }else{
         if (self.noMorePage){
             //停止菊花
             [self.tableView.infiniteScrollingView stopAnimating];
         }else{
-            [params setObject:@(self.currentPage) forKey:@"pageNum"];
-            [ActivityList getActivityListWithParam:params isTop:isTop delegate:self];
+            [_params setObject:@(self.currentPage) forKey:@"pageNum"];
+            [ActivityList getActivityListWithParam:_params isTop:isTop delegate:self];
         }
     }
 }

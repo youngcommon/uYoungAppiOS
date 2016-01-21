@@ -10,8 +10,6 @@
 #import "ActivityModel.h"
 #import "UserCenterController.h"
 #import <UIImageView+AFNetworking.h>
-#import "CreateActivityController.h"
-#import "ActivityAlbumViewController.h"
 #import "UIImageView+LazyInit.h"
 #import "UIWindow+YoungHUD.h"
 #import "UYoungAlertViewUtil.h"

@@ -33,7 +33,7 @@ static NSString * const reuseIdentifier = @"Cell";
     _nodata = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/nodata"]];
     CGFloat height = (self.view.frame.size.height-_nodata.frame.size.height)/2;
     [_nodata setFrame:CGRectMake((self.view.frame.size.width-_nodata.frame.size.width)/2, height, _nodata.frame.size.width, _nodata.frame.size.height)];
-    [self.view addSubview:_nodata];
+    [self.albums addSubview:_nodata];
     [_nodata setHidden:YES];
     
     if(_hadSigned&&!_hadAlbum){

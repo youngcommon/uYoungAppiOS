@@ -220,7 +220,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger status = self.model.status;
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
-    if (loginUser.id==0) {//说明未登录
+    if (loginUser.id==0&&(status!=1&&status!=2&&status!=3)) {//说明未登录
         [_signupButton setTitle:@"登陆后报名" forState:UIControlStateNormal];
         [_signupButton addTarget:self action:@selector(toLogin) forControlEvents:UIControlEventTouchUpInside];
         return;
