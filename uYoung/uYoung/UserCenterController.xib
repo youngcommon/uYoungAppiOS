@@ -21,6 +21,7 @@
                 <outlet property="nicknameLabel" destination="WEV-aX-DwT" id="sFf-RW-hPM"/>
                 <outlet property="positionLabel" destination="jq2-Uj-yAn" id="PQN-LJ-dgx"/>
                 <outlet property="positionTitleLabel" destination="k74-Sp-x4N" id="pmy-4h-1ig"/>
+                <outlet property="sysconfigButton" destination="oh9-Lb-Ych" id="y7n-7Z-5Pt"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Exz-86-13T"/>
             </connections>
         </placeholder>

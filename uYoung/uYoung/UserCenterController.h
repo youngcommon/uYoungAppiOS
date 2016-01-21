@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headerBackBlurImg;
 @property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *sysconfigButton;
 
 @property (strong, nonatomic) UIButton *myAlbumButton;
 @property (strong, nonatomic) UIButton *myActButton;

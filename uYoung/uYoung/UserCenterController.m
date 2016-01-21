@@ -140,6 +140,7 @@
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if (loginUser.id!=_userDetailModel.id) {//说明不是自己的详情
         [_editButton setHidden:YES];
+        [_sysconfigButton setHidden:YES];
         [_myAlbumButton setTitle:@"他的相册" forState:UIControlStateNormal];
         [_myActButton setTitle:@"他的活动" forState:UIControlStateNormal];
         _isSelf = NO;

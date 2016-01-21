@@ -172,6 +172,10 @@
     [self showFilter:nil];
 }
 
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
+    [self showFilter:nil];
+}
+
 @end
 
 
