@@ -28,6 +28,11 @@
     [self updateConstraints];
     _isKeyboardHidden = YES;
     
+    if (_isNew) {
+        [_backButton setHidden:YES];
+        [_titileLebel setText:@"请完善资料"];
+    }
+    
     [_nicknameImage setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_top" isFront:YES]];
     _nicknameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_top" isFront:NO];
     [_genderImage setImage:[self getScaleBackUIImage:@"uyoung.bundle/input_bottom" isFront:YES]];
@@ -400,7 +405,7 @@
     if (tag==1002||tag==1005) {
         textLength = 20;
     } else if(tag==1004){
-        textLength = 10;
+        textLength = 11;
     }
 
     if (sender.text.length > textLength) {
@@ -419,8 +424,13 @@
     NSString *position = _positionInput.text;
     NSString *mobile = _mobileInput.text;
     NSString *email = _emailInput.text;
-    NSString *equipment = _equipmentInput.text;
-    return (![NSString isBlankString:nick]&&![NSString isBlankString:company]&&![NSString isBlankString:position]&&![NSString isBlankString:mobile]&&![NSString isBlankString:email]&&![NSString isBlankString:equipment]&&[mobile isTelephone]&&[email isValidateEmail]);
+
+    BOOL validateNick = ![NSString isBlankString:nick];
+    BOOL validateCom = ![NSString isBlankString:company];
+    BOOL validatePosition = ![NSString isBlankString:position];
+    BOOL validateMobile = ![NSString isBlankString:mobile]&&[mobile isTelephone];
+    BOOL validateEmail = ![NSString isBlankString:email]&&[email isValidateEmail];
+    return (validateNick&&validateCom&&validateMobile&&validateEmail&&validatePosition);
 }
 
 //点击相册中的图片或照相机照完后点击use后触发的方法
@@ -569,6 +579,9 @@
             _loginUser = [userDetailModel copy];
             [self initUser];
             [[NSNotificationCenter defaultCenter]postNotificationName:@"usercenter" object:_loginUser];
+            if (_isNew) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }];
     } else{
         [self.view.window showHUDWithText:@"保存失败" Type:ShowPhotoNo Enabled:YES];

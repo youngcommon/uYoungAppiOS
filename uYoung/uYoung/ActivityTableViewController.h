@@ -25,7 +25,7 @@
 
 @property (strong, nonatomic) UIImageView *nodata;
 
-@property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic, strong) NSMutableDictionary *params;
 
 - (void)resetActivityList:(NSDictionary*)param;
 

@@ -16,6 +16,7 @@
 
 @interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate, UploadImgDelegate>
 
+@property (assign, nonatomic) BOOL isNew;//是否是新用户尚未完善信息
 @property (assign, nonatomic) NSInteger gender;
 @property (assign, nonatomic) BOOL locationIsDown;
 @property (strong, nonatomic) UIPickerView *citySelector;
@@ -34,6 +35,8 @@
 @property (assign, nonatomic) CGFloat offset;//键盘偏移量
 
 - (IBAction)updateUser:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *titileLebel;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *maleButton;
 @property (weak, nonatomic) IBOutlet UIButton *femaleButton;
 @property (strong, nonatomic) IBOutlet UIImageView *backCoverImageView;

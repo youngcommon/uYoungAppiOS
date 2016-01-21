@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditUserViewController">
             <connections>
+                <outlet property="backButton" destination="0Jf-LS-MsQ" id="skE-Ku-kn1"/>
                 <outlet property="backCoverImageView" destination="UGL-4Z-c4r" id="DUj-mn-SMW"/>
                 <outlet property="companyImage" destination="yU9-1m-NVt" id="OnZ-i6-sS7"/>
                 <outlet property="companyImageW" destination="kJ8-ul-qXM" id="Bfo-dN-Esj"/>
@@ -47,6 +48,7 @@
                 <outlet property="secondSepCons" destination="TLz-Ac-OVI" id="dg7-xD-Z0e"/>
                 <outlet property="thirdDistanceCons" destination="dWl-xX-B6Q" id="t7Z-kx-4jr"/>
                 <outlet property="thirdSepCons" destination="jdx-Bq-Hzx" id="j3x-4Y-WvL"/>
+                <outlet property="titileLebel" destination="ldf-NB-M5Z" id="dON-r9-PCE"/>
                 <outlet property="topCons" destination="In2-7K-qJj" id="Dmz-0F-C80"/>
                 <outlet property="userHeaderButton" destination="t5t-HM-JOE" id="kDz-2p-RaY"/>
                 <outlet property="userHeaderButtonH" destination="SFx-9O-ogz" id="AsF-FH-K3f"/>
@@ -76,9 +78,9 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑资料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-NB-M5Z">
-                    <rect key="frame" x="128" y="25" width="64" height="22"/>
+                    <rect key="frame" x="94" y="25" width="135" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="64" id="InA-xe-Pyw"/>
+                        <constraint firstAttribute="width" constant="135" id="InA-xe-Pyw"/>
                         <constraint firstAttribute="height" constant="22" id="Prt-3e-ITz"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
@@ -446,7 +448,7 @@
                 <constraint firstAttribute="trailing" secondItem="0Ch-QU-Rk7" secondAttribute="trailing" id="58h-PK-kJ2"/>
                 <constraint firstAttribute="bottom" secondItem="9nj-R5-gB7" secondAttribute="bottom" constant="20" id="7Qg-ui-ZJT"/>
                 <constraint firstAttribute="trailing" secondItem="9nj-R5-gB7" secondAttribute="trailing" constant="22" id="BeH-PD-D8A"/>
-                <constraint firstItem="ldf-NB-M5Z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Epq-aQ-QEw"/>
+                <constraint firstItem="ldf-NB-M5Z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="1.5" id="Epq-aQ-QEw"/>
                 <constraint firstItem="9nj-R5-gB7" firstAttribute="top" secondItem="o7K-56-kBK" secondAttribute="bottom" constant="8" id="Ix6-vH-058"/>
                 <constraint firstAttribute="trailing" secondItem="o7K-56-kBK" secondAttribute="trailing" constant="22" id="P11-8Q-kta"/>
                 <constraint firstItem="0Ch-QU-Rk7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UYF-5Z-ajZ"/>

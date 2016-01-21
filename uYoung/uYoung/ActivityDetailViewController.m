@@ -31,7 +31,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initSignupButton) name:@"actdetail" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"actdetail" object:nil];
     
     self.view.backgroundColor = [UIColor clearColor];
     self.headerBackground.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];
@@ -203,6 +203,18 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+- (void)loginSuccess{
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    //判断，如果用户资料未填写，则弹出完善资料页面
+    if (([NSString isBlankString:loginUser.company]||[NSString isBlankString:loginUser.position])) {
+        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+        editUserViewCtl.isNew = YES;
+        [self.navigationController pushViewController:editUserViewCtl animated:YES];
+    }else{
+        [self initSignupButton];
+    }
+}
+
 - (void)initSignupButton{
     //判断当前活动状态
     NSInteger status = self.model.status;
@@ -346,6 +358,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 //报名参加活动
 - (void)signupAct{
+    UserDetailModel *loginUser = [UserDetailModel currentUser];
+    //判断，如果用户资料未填写，则弹出完善资料页面
+    if (([NSString isBlankString:loginUser.company]||[NSString isBlankString:loginUser.position])) {
+        EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+        editUserViewCtl.isNew = YES;
+        [self.navigationController pushViewController:editUserViewCtl animated:YES];
+        return;
+    }
+    
     [ActivityDetail signupActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
             [self initSignupButtonWithStatus:1 actStatus:0];

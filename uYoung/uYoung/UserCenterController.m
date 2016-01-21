@@ -167,6 +167,7 @@
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     if (loginUser.id==self.userDetailModel.id&&([NSString isBlankString:loginUser.company]||[NSString isBlankString:loginUser.position])) {
         EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
+        editUserViewCtl.isNew = YES;
         [self.navigationController pushViewController:editUserViewCtl animated:YES];
     }
     

@@ -30,6 +30,8 @@
     [self.view addSubview:_nodata];
     [_nodata setHidden:YES];
     
+    _params = [[NSMutableArray alloc]init];
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtTop:) name:@"insertRowAtTop" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertRowAtBottom:) name:@"insertRowAtBottom" object:nil];
 }
@@ -102,7 +104,6 @@
     //注册下拉刷新功能
     __weak ActivityTableViewController *weakself = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-//        [weakself getDataFromNet:YES];
         [weakself resetActivityList:[[NSDictionary alloc]init]];
     }];
     
@@ -119,16 +120,19 @@
 }
 
 - (void)resetActivityList:(NSDictionary*)param{
-    _params = param;
+    if(param!=nil&&[param count]>0){
+        _params = [[NSMutableDictionary alloc]initWithDictionary:param];
+    }else if(_params==nil||[_params isEqual:[NSNull null]]||[_params count]==0){
+        _params = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"desc",@"sort", nil];
+    }
     self.noMorePage = NO;
     //根据参数请求网络，获得数据
-    NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithDictionary:param];
-    [params setObject:@(pageSize) forKey:@"pageSize"];
-    [params setObject:@(1) forKey:@"pageNum"];
+    [_params setObject:@(pageSize) forKey:@"pageSize"];
+    [_params setObject:@(1) forKey:@"pageNum"];
     if (_userid>0) {
-        [params setObject:@(_userid) forKey:@"creatorUid"];
+        [_params setObject:@(_userid) forKey:@"creatorUid"];
     }
-    [ActivityList getActivityListWithParam:params isTop:YES delegate:self];
+    [ActivityList getActivityListWithParam:_params isTop:YES delegate:self];
 }
 
 - (void)reloadDataWithArray:(NSArray*)arr{
