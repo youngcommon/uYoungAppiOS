@@ -182,4 +182,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+}
+
 @end

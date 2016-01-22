@@ -110,8 +110,16 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)successCreateAlbum:(AlbumModel*)detail{
-    [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
-    [AlbumDetail getAlbumDetailByAlbumId:detail.id delegate:self];
+    if (detail!=nil) {
+        [self.view.window showHUDWithText:@"创建成功" Type:ShowPhotoYes Enabled:YES];
+        [AlbumDetail getAlbumDetailByAlbumId:detail.id delegate:self];
+    }else{
+        [self.view.window showHUDWithText:@"创建失败，请稍后重试" Type:ShowPhotoNo Enabled:YES];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
 }
 
 @end

@@ -92,4 +92,8 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:self.source object:detail];
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

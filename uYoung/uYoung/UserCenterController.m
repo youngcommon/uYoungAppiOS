@@ -288,4 +288,9 @@
     NSString * na = [df stringFromDate:date];
     return na;
 }
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

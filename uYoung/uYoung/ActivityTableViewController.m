@@ -227,4 +227,8 @@
     });
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+}
+
 @end

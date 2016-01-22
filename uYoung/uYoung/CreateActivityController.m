@@ -813,4 +813,9 @@
     [[UYoungAlertViewUtil shareInstance]dismissAlertView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+        [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+}
+
 @end

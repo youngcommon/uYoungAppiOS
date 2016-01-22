@@ -47,9 +47,9 @@
     _likeDict = [[NSMutableDictionary alloc]initWithCapacity:0];
     [self initScrollView];
     [self addLabels];
-    [self setPicCurrentIndex:self.currentIndex];
     [self addLikeButton];
     [self addExifInfoView];
+    [self setPicCurrentIndex:self.currentIndex];
     
     UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 25, 45, 22)];
     [backButton setImage:[UIImage imageNamed:@"uyoung.bundle/back_btn"] forState:UIControlStateNormal];
@@ -83,20 +83,20 @@
 
 - (void)addExifInfoView{
     UIFont *font = [UIFont systemFontOfSize:14];
-    exifButton = [[UIButton alloc]initWithFrame:CGRectMake(10, mScreenHeight-30, 35, 20)];
+    exifButton = [[UIButton alloc]initWithFrame:CGRectMake(10, self.sliderLabel.frame.origin.y, 40, 24)];
     [exifButton.titleLabel setFont:font];
     [exifButton setTitle:@"exif" forState:UIControlStateNormal];
     [exifButton setTitleColor:UIColorFromRGB(0x4A90E2) forState:UIControlStateNormal];
     exifButton.layer.borderColor = lableTextColor;
     exifButton.layer.borderWidth = 1;
-    exifButton.layer.cornerRadius = 4;
+    exifButton.layer.cornerRadius = 3;
     exifButton.layer.masksToBounds = YES;
     [exifButton addTarget:self action:@selector(showExif) forControlEvents:UIControlEventTouchUpInside];
     [exifButton setHidden:YES];
     [self.view addSubview:exifButton];
     
     exifView = [[[NSBundle mainBundle]loadNibNamed:@"ExifView" owner:self options:nil]lastObject];
-    CGRect newFrame = CGRectMake(exifButton.frame.origin.x, exifButton.frame.origin.y-exifView.frame.size.height, exifView.frame.size.width, exifView.frame.size.height);
+    CGRect newFrame = CGRectMake(exifButton.frame.origin.x, exifButton.frame.origin.y-exifView.frame.size.height, self.view.frame.size.width-exifButton.frame.origin.x*2, exifView.frame.size.height);
     [exifView setFrame:newFrame];
     [exifView setHidden:YES];
     [self.view addSubview:exifView];
@@ -233,7 +233,7 @@
 }
 
 - (void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

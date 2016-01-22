@@ -628,4 +628,8 @@
     [UploadImageUtil lazyInitAvatarOfButton:_loginUser.avatarUrl button:_userHeaderButton];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+}
+
 @end
