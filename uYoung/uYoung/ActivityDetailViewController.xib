@@ -63,7 +63,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="276" height="389"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/free_signet.png" translatesAutoresizingMaskIntoConstraints="NO" id="05b-Gf-d3f">
-                            <rect key="frame" x="56" y="24" width="164" height="125"/>
+                            <rect key="frame" x="56" y="19" width="164" height="125"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="164" id="6t7-IE-f59"/>
                                 <constraint firstAttribute="height" constant="125" id="NRw-2C-ybO"/>
@@ -119,7 +119,7 @@
                         <constraint firstItem="05b-Gf-d3f" firstAttribute="centerX" secondItem="lHj-4h-9Qk" secondAttribute="centerX" id="N4R-18-UkK"/>
                         <constraint firstItem="Kxc-WU-kXp" firstAttribute="top" secondItem="h0f-mB-H7I" secondAttribute="bottom" constant="12" id="Nnq-BC-40A"/>
                         <constraint firstItem="Kxc-WU-kXp" firstAttribute="leading" secondItem="lHj-4h-9Qk" secondAttribute="leading" constant="15" id="QhQ-Jm-Yr9"/>
-                        <constraint firstItem="05b-Gf-d3f" firstAttribute="top" secondItem="lHj-4h-9Qk" secondAttribute="top" constant="24" id="SOr-4d-7yL"/>
+                        <constraint firstItem="05b-Gf-d3f" firstAttribute="top" secondItem="lHj-4h-9Qk" secondAttribute="top" constant="19" id="SOr-4d-7yL"/>
                         <constraint firstAttribute="width" constant="276" id="TQ7-zR-GYh"/>
                         <constraint firstItem="nbO-EU-H4f" firstAttribute="leading" secondItem="lHj-4h-9Qk" secondAttribute="leading" id="VNv-r8-0Xb"/>
                         <constraint firstAttribute="trailing" secondItem="hU9-mf-UmH" secondAttribute="trailing" constant="10" id="WcG-oU-edi"/>

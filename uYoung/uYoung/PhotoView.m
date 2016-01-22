@@ -20,7 +20,7 @@
 
 @implementation PhotoView
 
--(id)initWithFrame:(CGRect)frame withPhotoUrl:(NSString *)photoUrl{
+-(id)initWithFrame:(CGRect)frame withPhotoUrl:(NSString *)photoUrl defaultImg:(UIImage*)defaultImg{
     self = [super initWithFrame:frame];
     if (self) {
         //添加scrollView
@@ -43,7 +43,11 @@
             hud.mode = MBProgressHUDModeDeterminate;
         }
         
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:photoUrl] placeholderImage:[UIImage imageNamed:@"comment_empty_img"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){
+        if (defaultImg==nil) {
+            defaultImg = [UIImage imageNamed:@"uyoung.bundle/logo_icon"];
+        }
+        
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:photoUrl] placeholderImage:defaultImg options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){
             hud.progress = ((float)receivedSize)/expectedSize;
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
 //            NSLog(@"图片加载完成");

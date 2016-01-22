@@ -14,12 +14,16 @@
 #import "PhotoDetailModel.h"
 #import "NSString+StringUtil.h"
 #import "UserDetailModel.h"
+#import "ExifView.h"
 
 @interface JZAlbumViewController ()<UIScrollViewDelegate,PhotoViewDelegate>
 {
     CGFloat lastScale;
     MBProgressHUD *HUD;
     NSMutableArray *_subViewList;
+    
+    UIButton *exifButton;
+    ExifView *exifView;
 }
 
 @end
@@ -45,15 +49,20 @@
     [self addLabels];
     [self setPicCurrentIndex:self.currentIndex];
     [self addLikeButton];
+    [self addExifInfoView];
+    
+    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 25, 45, 22)];
+    [backButton setImage:[UIImage imageNamed:@"uyoung.bundle/back_btn"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)addLikeButton{
-    _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth-70-20, 40+20, 70, 34)];
+    _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth-70-20, 25, 70, 34)];
     [_likeButton setImage:[UIImage imageNamed:@"uyoung.bundle/no_like"] forState:UIControlStateNormal];//默认都为非选中状态
     [_likeButton addTarget:self action:@selector(likePhoto) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_likeButton];
@@ -70,6 +79,33 @@
     NSString *likeimg = _isLike ? @"uyoung.bundle/no_like" : @"uyoung.bundle/had_like";
     [_likeButton setImage:[UIImage imageNamed:likeimg] forState:UIControlStateNormal];
     [_likeDict setObject:@(!_isLike) forKey:key];
+}
+
+- (void)addExifInfoView{
+    UIFont *font = [UIFont systemFontOfSize:14];
+    exifButton = [[UIButton alloc]initWithFrame:CGRectMake(10, mScreenHeight-30, 35, 20)];
+    [exifButton.titleLabel setFont:font];
+    [exifButton setTitle:@"exif" forState:UIControlStateNormal];
+    [exifButton setTitleColor:UIColorFromRGB(0x4A90E2) forState:UIControlStateNormal];
+    exifButton.layer.borderColor = lableTextColor;
+    exifButton.layer.borderWidth = 1;
+    exifButton.layer.cornerRadius = 4;
+    exifButton.layer.masksToBounds = YES;
+    [exifButton addTarget:self action:@selector(showExif) forControlEvents:UIControlEventTouchUpInside];
+    [exifButton setHidden:YES];
+    [self.view addSubview:exifButton];
+    
+    exifView = [[[NSBundle mainBundle]loadNibNamed:@"ExifView" owner:self options:nil]lastObject];
+    CGRect newFrame = CGRectMake(exifButton.frame.origin.x, exifButton.frame.origin.y-exifView.frame.size.height, exifView.frame.size.width, exifView.frame.size.height);
+    [exifView setFrame:newFrame];
+    [exifView setHidden:YES];
+    [self.view addSubview:exifView];
+    
+}
+
+-(void)showExif{
+    BOOL state = [exifView isHidden];
+    [exifView setHidden:!state];
 }
 
 -(void)initScrollView{
@@ -93,7 +129,7 @@
 }
 
 -(void)addLabels{
-    self.sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake((mScreenWidth-60)/2, mScreenHeight-30-60, 60, 30)];
+    self.sliderLabel = [[UILabel alloc] initWithFrame:CGRectMake((mScreenWidth-60)/2, mScreenHeight-30-20, 60, 30)];
     self.sliderLabel.backgroundColor = [UIColor clearColor];
     self.sliderLabel.textColor = [UIColor whiteColor];
     self.sliderLabel.text = [NSString stringWithFormat:@"%ld / %lu", (long)(self.currentIndex+1), (unsigned long)self.imgArr.count];
@@ -104,16 +140,15 @@
     _currentIndex = currentIndex;
     self.scrollView.contentOffset = CGPointMake(mScreenWidth*currentIndex, 0);
     [self getDownLoadUrl:_currentIndex];
-//    [self getDownLoadUrl:_currentIndex+1];
-//    [self getDownLoadUrl:_currentIndex-1];
 }
 
 -(void)loadPhote:(NSString*)url atIndex:(NSInteger)index{
     if ([NSString isBlankString:url]) {
         return;
     }
+    UIImage *defaultImg = nil;
     CGRect frame = CGRectMake(index*_scrollView.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    PhotoView *photoV = [[PhotoView alloc] initWithFrame:frame withPhotoUrl:url];
+    PhotoView *photoV = [[PhotoView alloc] initWithFrame:frame withPhotoUrl:url defaultImg:defaultImg];
     photoV.delegate = self;
     [self.scrollView insertSubview:photoV atIndex:0];
     [_subViewList replaceObjectAtIndex:index withObject:photoV];
@@ -139,14 +174,19 @@
     
     UserDetailModel *user = [UserDetailModel currentUser];
     PhotoDetailModel *model = (PhotoDetailModel*)self.imgArr[atIndex];
+    
+    [exifView updateExifInfo:model];
+    if (model!=nil&&![NSString isBlankString:model.exifCamera]) {
+        [exifButton setHidden:NO];
+    }else{
+        [exifButton setHidden:YES];
+    }
+    
     //获得下载url
     [PhotoDownload getDownloadUrl:model.id finish:^(NSString *downloadUrl, NSString *exifUrl) {
         if ([NSString isBlankString:downloadUrl]==NO) {
             //图片
             [self loadPhote:downloadUrl atIndex:atIndex];
-        }
-        if ([NSString isBlankString:exifUrl]) {
-//            [PhotoDownload downloadPhotoExif:exifUrl delegate:self];
         }
     }];
     
@@ -185,10 +225,15 @@
 
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"scrollViewDidEndDecelerating");
+    [exifView setHidden:YES];
+    [exifButton setHidden:YES];
     int i = scrollView.contentOffset.x/mScreenWidth+1;
     [self getDownLoadUrl:i-1];
     self.sliderLabel.text = [NSString stringWithFormat:@"%d/%lu",i,(unsigned long)self.imgArr.count];
+}
+
+- (void)back{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

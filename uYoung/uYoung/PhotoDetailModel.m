@@ -18,7 +18,13 @@
              @"createUserId" : @"createUserId",
              @"albumId" : @"albumId",
              @"viewCount" : @"viewCount",
-             @"likeCount" : @"likeCount"
+             @"likeCount" : @"likeCount",
+             @"exifCamera": @"exifCamera",
+             @"exifAperture": @"exifAperture",
+             @"exifFacus": @"exifFacus",
+             @"exifShutter": @"exifShutter",
+             @"exifIso": @"exifIso",
+             @"exifOther": @"exifOther"
              };
 }
 

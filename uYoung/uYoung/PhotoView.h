@@ -26,9 +26,9 @@
  */
 @property(nonatomic, assign) id<PhotoViewDelegate> delegate;
 
--(id)initWithFrame:(CGRect)frame withPhotoUrl:(NSString *)photoUrl;
+-(id)initWithFrame:(CGRect)frame withPhotoUrl:(NSString *)photoUrl defaultImg:(UIImage*)img;
 
--(id)initWithFrame:(CGRect)frame withPhotoImage:(UIImage *)image;
+//-(id)initWithFrame:(CGRect)frame withPhotoImage:(UIImage *)image;
 
 
 

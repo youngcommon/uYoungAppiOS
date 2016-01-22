@@ -53,6 +53,8 @@
 		48D432601C4782BC00FB1E93 /* LoginFilterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */; };
 		48D432631C478DB100FB1E93 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D432621C478DB100FB1E93 /* LoginViewController.m */; };
 		48D432661C4F563E00FB1E93 /* PlistUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D432651C4F563E00FB1E93 /* PlistUtil.m */; };
+		48D4326F1C51CA3600FB1E93 /* ExifView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4326E1C51CA3600FB1E93 /* ExifView.m */; };
+		48D432711C51CA4800FB1E93 /* ExifView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D432701C51CA4800FB1E93 /* ExifView.xib */; };
 		48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */; };
 		48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10C01C44DF2000D9D89F /* PicExif.m */; };
 		48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DC10C21C45F40F00D9D89F /* global_config.plist */; };
@@ -221,6 +223,9 @@
 		48D432621C478DB100FB1E93 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		48D432641C4F563E00FB1E93 /* PlistUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistUtil.h; sourceTree = "<group>"; };
 		48D432651C4F563E00FB1E93 /* PlistUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistUtil.m; sourceTree = "<group>"; };
+		48D4326D1C51CA3600FB1E93 /* ExifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExifView.h; sourceTree = "<group>"; };
+		48D4326E1C51CA3600FB1E93 /* ExifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExifView.m; sourceTree = "<group>"; };
+		48D432701C51CA4800FB1E93 /* ExifView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExifView.xib; sourceTree = "<group>"; };
 		48DC10BB1C44DEDE00D9D89F /* PicExifUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExifUtil.h; sourceTree = "<group>"; };
 		48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicExifUtil.m; sourceTree = "<group>"; };
 		48DC10BF1C44DF2000D9D89F /* PicExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExif.h; sourceTree = "<group>"; };
@@ -453,6 +458,8 @@
 		4820A4BC1BB00583006AEC13 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				84993B561C2D808B00888FC7 /* PhotoView.h */,
+				84993B571C2D808B00888FC7 /* PhotoView.m */,
 				4820A4D91BB2D352006AEC13 /* ActivityModel.h */,
 				4820A4DA1BB2D352006AEC13 /* ActivityModel.m */,
 				48640E9E1BD1339D0093B702 /* ActivityDetailModel.h */,
@@ -500,6 +507,9 @@
 				482E9AC71C18193400DEF737 /* AddPicCollectionViewCell.h */,
 				482E9AC81C18193400DEF737 /* AddPicCollectionViewCell.m */,
 				482E9AC91C18193400DEF737 /* AddPicCollectionViewCell.xib */,
+				48D4326D1C51CA3600FB1E93 /* ExifView.h */,
+				48D4326E1C51CA3600FB1E93 /* ExifView.m */,
+				48D432701C51CA4800FB1E93 /* ExifView.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -629,7 +639,6 @@
 			isa = PBXGroup;
 			children = (
 				48DC10BE1C44DF0900D9D89F /* exifutil */,
-				84993B531C2D806900888FC7 /* pageimgutil */,
 				84763F721BFA1F89002BC70B /* indicator */,
 				8457EE091BEA525000C00176 /* NSString+StringUtil.h */,
 				8457EE0A1BEA525000C00176 /* NSString+StringUtil.m */,
@@ -685,17 +694,6 @@
 			name = indicator;
 			sourceTree = "<group>";
 		};
-		84993B531C2D806900888FC7 /* pageimgutil */ = {
-			isa = PBXGroup;
-			children = (
-				84993B541C2D808B00888FC7 /* JZAlbumViewController.h */,
-				84993B551C2D808B00888FC7 /* JZAlbumViewController.m */,
-				84993B561C2D808B00888FC7 /* PhotoView.h */,
-				84993B571C2D808B00888FC7 /* PhotoView.m */,
-			);
-			name = pageimgutil;
-			sourceTree = "<group>";
-		};
 		84A8A3C11C22F28500B69EC2 /* activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +746,8 @@
 		84A8A3C31C22F2D400B69EC2 /* album */ = {
 			isa = PBXGroup;
 			children = (
+				84993B541C2D808B00888FC7 /* JZAlbumViewController.h */,
+				84993B551C2D808B00888FC7 /* JZAlbumViewController.m */,
 				48640E911BCFEB220093B702 /* AlbumTableViewController.h */,
 				48640E921BCFEB220093B702 /* AlbumTableViewController.m */,
 				84628FB51C1330F600683C13 /* AlbumDetailViewController.h */,
@@ -852,6 +852,7 @@
 				482E9AAD1C0DCAB100DEF737 /* editor.html in Resources */,
 				482E9AA71C0D8A6E00DEF737 /* ZSSRichTextEditor.js in Resources */,
 				482E9AC61C15772A00DEF737 /* ActivityFilterViewController.xib in Resources */,
+				48D432711C51CA4800FB1E93 /* ExifView.xib in Resources */,
 				482E9ABB1C1523E400DEF737 /* AlbumPicCollectionCell.xib in Resources */,
 				48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */,
 				4887F5F71BB93276009434A9 /* ActivityDetailViewController.xib in Resources */,
@@ -1004,6 +1005,7 @@
 				84763F801BFA1FC7002BC70B /* YoungHUDIndicator.m in Sources */,
 				48039FD31BD145EC00CF147A /* UserDetailModel.m in Sources */,
 				84A2C65B1C1879950090E173 /* AlbumDetailModel.m in Sources */,
+				48D4326F1C51CA3600FB1E93 /* ExifView.m in Sources */,
 				483E17D91BAC548E00CDDBD3 /* main.m in Sources */,
 				84993B591C2D808B00888FC7 /* PhotoView.m in Sources */,
 				4820A4C71BB0069F006AEC13 /* ActivityTableViewCell.m in Sources */,

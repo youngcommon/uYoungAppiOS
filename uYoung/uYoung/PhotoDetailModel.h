@@ -18,4 +18,11 @@
 @property (assign, nonatomic) NSInteger viewCount;
 @property (assign, nonatomic) NSInteger likeCount;
 
+@property (strong, nonatomic) NSString *exifCamera;
+@property (strong, nonatomic) NSString *exifAperture;
+@property (strong, nonatomic) NSString *exifFacus;
+@property (strong, nonatomic) NSString *exifShutter;
+@property (strong, nonatomic) NSString *exifIso;
+@property (strong, nonatomic) NSString *exifOther;
+
 @end
