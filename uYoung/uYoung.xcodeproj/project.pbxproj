@@ -119,6 +119,8 @@
 		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
 		84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C6601C1881C10090E173 /* AlbumDetail.m */; };
 		84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */; };
+		84B1CD071C532FF80000189F /* Des3Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1CD061C532FF80000189F /* Des3Encrypt.m */; };
+		84B1CD0B1C533E070000189F /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1CD091C533E070000189F /* GTMBase64.m */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
 		84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		84EF3A591C46913F004519DE /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF3A581C46913F004519DE /* PrivacyPolicyViewController.m */; };
@@ -337,6 +339,11 @@
 		84A2C6601C1881C10090E173 /* AlbumDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetail.m; sourceTree = "<group>"; };
 		84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalNetwork.h; sourceTree = "<group>"; };
 		84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalNetwork.m; sourceTree = "<group>"; };
+		84B1CD051C532FF80000189F /* Des3Encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Des3Encrypt.h; sourceTree = "<group>"; };
+		84B1CD061C532FF80000189F /* Des3Encrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Des3Encrypt.m; sourceTree = "<group>"; };
+		84B1CD081C533E070000189F /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		84B1CD091C533E070000189F /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		84B1CD0A1C533E070000189F /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		84EF3A571C46913F004519DE /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
@@ -638,6 +645,9 @@
 		8457EE061BEA518C00C00176 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				84B1CD081C533E070000189F /* GTMBase64.h */,
+				84B1CD091C533E070000189F /* GTMBase64.m */,
+				84B1CD0A1C533E070000189F /* GTMDefines.h */,
 				48DC10BE1C44DF0900D9D89F /* exifutil */,
 				84763F721BFA1F89002BC70B /* indicator */,
 				8457EE091BEA525000C00176 /* NSString+StringUtil.h */,
@@ -654,6 +664,8 @@
 				48D4325F1C4782BC00FB1E93 /* LoginFilterUtil.m */,
 				48D432641C4F563E00FB1E93 /* PlistUtil.h */,
 				48D432651C4F563E00FB1E93 /* PlistUtil.m */,
+				84B1CD051C532FF80000189F /* Des3Encrypt.h */,
+				84B1CD061C532FF80000189F /* Des3Encrypt.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -986,6 +998,7 @@
 				48640E9B1BCFFF930093B702 /* AlbumCoverTableViewCell.m in Sources */,
 				48308DBE1BFB0A4E0014EFA5 /* UploadImageUtil.m in Sources */,
 				483E17DC1BAC548E00CDDBD3 /* AppDelegate.m in Sources */,
+				84B1CD0B1C533E070000189F /* GTMBase64.m in Sources */,
 				8457EE031BEA478200C00176 /* EditUserViewController.m in Sources */,
 				8469F3761C088F0B00DF5058 /* ActivityAlbumCollectionViewCell.m in Sources */,
 				84763F6D1BFA1894002BC70B /* UpdateUser.m in Sources */,
@@ -995,6 +1008,7 @@
 				849B6A871C45323900C91EF1 /* UserLoginViewController.m in Sources */,
 				84763F7D1BFA1FC7002BC70B /* UIWindow+YoungHUD.m in Sources */,
 				48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */,
+				84B1CD071C532FF80000189F /* Des3Encrypt.m in Sources */,
 				843C43FE1C075A8E00D53820 /* ActivityAlbumViewController.m in Sources */,
 				482E9AB31C11446F00DEF737 /* ActivityPublish.m in Sources */,
 				48D432601C4782BC00FB1E93 /* LoginFilterUtil.m in Sources */,
@@ -1147,6 +1161,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = uYoung/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1213,6 +1228,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = uYoung/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
