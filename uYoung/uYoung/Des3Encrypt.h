@@ -12,6 +12,6 @@
 
 @interface Des3Encrypt : NSObject
 
-+(NSString*)TripleDES:(NSString*)plainText withRandom:(NSString*)random;
++(NSDictionary*)getEncryptParams:(NSDictionary*)dict stamp:(NSString*)stamp;
 
 @end

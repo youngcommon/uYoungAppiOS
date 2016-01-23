@@ -7,6 +7,7 @@
 //
 
 #import "ActivityList.h"
+#import "Des3Encrypt.h"
 
 @implementation ActivityList
 
@@ -30,13 +31,16 @@
         [params removeObjectForKey:@"creatorUid"];
     }
     
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:params stamp:stamp];
+    
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getPageByCondition"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
@@ -83,11 +87,14 @@
                                  @"pageSize":[NSString stringWithFormat:@"%d", (int)pageSize],
                                  @"status": [NSString stringWithFormat:@"%d", (int)status]};
     
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:parameters stamp:stamp];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];

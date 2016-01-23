@@ -8,6 +8,7 @@
 
 #import "CreateAlbum.h"
 #import "GlobalConfig.h"
+#import "Des3Encrypt.h"
 
 @implementation CreateAlbum
 
@@ -15,11 +16,14 @@
     
     NSString *url = [uyoung_host stringByAppendingString:@"album/add"];
     
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:dict stamp:stamp];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
@@ -45,7 +49,9 @@
     if (arr!=nil&&[arr count]>0) {
         for (int i=0; i<[arr count]; i++) {
             NSMutableDictionary *param = arr[i];
-            [manager POST:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+            NSDictionary *encrypt = [Des3Encrypt getEncryptParams:param stamp:stamp];
+            [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
                 if (result==100) {
                     long id = [[responseObject objectForKey:@"resultData"] longValue];
@@ -69,7 +75,10 @@
     
     NSDictionary *dict = @{@"id":@(albumId), @"url":coverUrl};
     
-    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:dict stamp:stamp];
+    
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         /*NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
         }else{

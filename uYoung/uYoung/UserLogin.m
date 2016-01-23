@@ -7,6 +7,7 @@
 //
 
 #import "UserLogin.h"
+#import "Des3Encrypt.h"
 
 @implementation UserLogin
 
@@ -14,13 +15,14 @@
     
     NSString *url = [uyoung_host stringByAppendingString:@"/third/login"];
     
-    NSDictionary *parameters = dict;
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:dict stamp:stamp];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
 //            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
@@ -41,11 +43,14 @@
     
     NSDictionary *parameters = @{@"email":email, @"password":pwd};
     
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:parameters stamp:stamp];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *dict = [responseObject objectForKey:@"resultData"];
@@ -66,11 +71,14 @@
     
     NSDictionary *parameters = @{@"email":email, @"password":pwd, @"nickName":nickname};
     
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:parameters stamp:stamp];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             success(YES, @"");

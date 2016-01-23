@@ -11,12 +11,44 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <Security/Security.h>
 #import "GTMBase64.h"
+#import "NSString+StringUtil.h"
 
 static char ENCODE_STR[] =  {0xef, 0x2b, 0xcc, 0xdc, 0x9b, 0x3b, 0xf7, 0x2a, 0x68, 0xad, 0xeb, 0x72, 0xe3, 0x78, 0x2f, 0x5e, 0x7, 0x77, 0xd5, 0xc1, 0x7d, 0x40, 0x66, 0xb8, '\0'};
 
 @implementation Des3Encrypt
 
-+(NSString*)TripleDES:(NSString*)plainText withRandom:(NSString*)random{
++(NSDictionary*)getEncryptParams:(NSDictionary*)dict stamp:(NSString*)stamp{
+    NSString *data = [self TripleDES:dict stamp:stamp];
+    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:data,@"data", stamp,@"stamp", nil];
+    return param;
+}
+
++(NSString*)TripleDES:(NSDictionary*)dict stamp:(NSString*)stamp{
+    
+//    clientType=2&sessionId=&apiVer=1.0&业务参数
+    NSMutableString *plainText = [[NSMutableString alloc]initWithString:@"clientType=2"];
+    
+    NSString *sessionid;
+    NSData *sessiondata = [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionid"];
+    if (sessiondata) {
+        sessionid = [NSKeyedUnarchiver unarchiveObjectWithData:sessiondata];
+    }
+    if ([NSString isBlankString:sessionid]) {
+        sessionid = @"";
+    }
+    [plainText appendFormat:@"&sessionid=%@", sessionid];
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *apiVer = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    [plainText appendFormat:@"&apiVer=%@", apiVer];
+    
+    if (dict!=nil&&![dict isEqual:[NSNull null]]&&[dict count]>0) {
+        NSArray *keys = [dict allKeys];
+        for (int i=0; i<[keys count]; i++) {
+            NSString *key = keys[i];
+            [plainText appendFormat:@"&%@=%@", key, dict[key]];
+        }
+    }
     
     const void *vplainText;
     size_t plainTextBufferSize;
@@ -34,7 +66,7 @@ static char ENCODE_STR[] =  {0xef, 0x2b, 0xcc, 0xdc, 0x9b, 0x3b, 0xf7, 0x2a, 0x6
     memset((void *)bufferPtr, 0x0, bufferPtrSize);
     
     char key[24];
-    genCroptyKey(ENCODE_STR, [random UTF8String], key);
+    genCroptyKey(ENCODE_STR, [stamp UTF8String], key);
     
     NSString *initIv = @"12345678";
     const void *iv = (const void *)[initIv UTF8String];
