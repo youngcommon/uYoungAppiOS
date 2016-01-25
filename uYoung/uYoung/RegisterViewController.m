@@ -70,7 +70,6 @@
     }
     
     //注册流程
-    pwd = [pwd stringToMD5];
     [UserLogin userRegisterWithEmailAndPwd:email pwd:pwd nickname:nickname success:^(BOOL isSuccess, NSString *msg) {
         if (isSuccess) {
             [[UYoungAlertViewUtil shareInstance]createAlertView:@"注册成功" Message:@"返回后请使用注册信息再次登陆" CancelTxt:@"好的" OtherTxt:nil Tag:3 Delegate:self];

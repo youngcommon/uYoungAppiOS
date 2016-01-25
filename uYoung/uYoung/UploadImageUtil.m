@@ -10,6 +10,7 @@
 #import "GlobalConfig.h"
 #import "NSString+StringUtil.h"
 #import <UIImageView+WebCache.h>
+#import "Des3Encrypt.h"
 
 @implementation UploadImageUtil
 
@@ -26,24 +27,17 @@
     
     NSString *url = [uyoung_host stringByAppendingString:@"/qn/qnUpToken"];
     
-    NSString *md5Format = @"%@uYoungSign_QNToken%d";
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]initWithCapacity:3];
-    
     //imei
     NSString *imei = [[[UIDevice currentDevice]identifierForVendor]UUIDString];
-    //timestamp
-    long timestamp = [[NSDate date] timeIntervalSince1970];
-    NSString *sign = [[NSString stringWithFormat:md5Format, imei, timestamp] stringToMD5];
-    [parameters setValue:sign forKey:@"sign"];
-    [parameters setValue:imei forKey:@"deviceId"];
-    [parameters setValue:@(timestamp) forKey:@"timestamp"];
-    [parameters setValue:key forKey:@"key"];
+    
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:@{@"deviceId":imei, @"key":key} stamp:stamp];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     
-    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *data = [responseObject objectForKey:@"resultData"];
@@ -71,8 +65,13 @@
         data = UIImageJPEGRepresentation(img, 0.8);
     }
     
-    QNUploadOption *option = [[QNUploadOption alloc]initWithProgressHandler:^(NSString *key, float percent) {
+    /*QNUploadOption *option = [[QNUploadOption alloc]initWithProgressHandler:^(NSString *key, float percent) {
         NSLog(@"##UploadImg-->key:%@; percent:%f", key, percent);
+    }];*/
+    
+    __block BOOL flag = NO;
+    QNUploadOption *option = [[QNUploadOption alloc]initWithMime:nil progressHandler:nil params:nil checkCrc:YES cancellationSignal:^BOOL{
+        return flag;
     }];
 
     [upManager putData:data key:key token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {

@@ -55,6 +55,7 @@
 		48D432661C4F563E00FB1E93 /* PlistUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D432651C4F563E00FB1E93 /* PlistUtil.m */; };
 		48D4326F1C51CA3600FB1E93 /* ExifView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4326E1C51CA3600FB1E93 /* ExifView.m */; };
 		48D432711C51CA4800FB1E93 /* ExifView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D432701C51CA4800FB1E93 /* ExifView.xib */; };
+		48D432751C55FAF800FB1E93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D432741C55FAF800FB1E93 /* Default-568h@2x.png */; };
 		48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */; };
 		48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10C01C44DF2000D9D89F /* PicExif.m */; };
 		48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DC10C21C45F40F00D9D89F /* global_config.plist */; };
@@ -228,6 +229,7 @@
 		48D4326D1C51CA3600FB1E93 /* ExifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExifView.h; sourceTree = "<group>"; };
 		48D4326E1C51CA3600FB1E93 /* ExifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExifView.m; sourceTree = "<group>"; };
 		48D432701C51CA4800FB1E93 /* ExifView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExifView.xib; sourceTree = "<group>"; };
+		48D432741C55FAF800FB1E93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Desktop/Default-568h@2x.png"; sourceTree = "<group>"; };
 		48DC10BB1C44DEDE00D9D89F /* PicExifUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExifUtil.h; sourceTree = "<group>"; };
 		48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicExifUtil.m; sourceTree = "<group>"; };
 		48DC10BF1C44DF2000D9D89F /* PicExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExif.h; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 		483E17CA1BAC548E00CDDBD3 = {
 			isa = PBXGroup;
 			children = (
+				48D432741C55FAF800FB1E93 /* Default-568h@2x.png */,
 				4820A4DC1BB3D10F006AEC13 /* libs */,
 				4820A4D41BB280DD006AEC13 /* uyoung.bundle */,
 				483E17D51BAC548E00CDDBD3 /* uYoung */,
@@ -882,6 +885,7 @@
 				482E9ACB1C18193400DEF737 /* AddPicCollectionViewCell.xib in Resources */,
 				8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
+				48D432751C55FAF800FB1E93 /* Default-568h@2x.png in Resources */,
 				84628FB91C13313700683C13 /* AlbumDetailViewController.xib in Resources */,
 				84DAC3721BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				846F17AE1BE107D700EB2DB4 /* WeiboSDK.bundle in Resources */,
@@ -1163,7 +1167,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = uYoung/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1230,7 +1234,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = uYoung/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

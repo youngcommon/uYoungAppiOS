@@ -25,10 +25,12 @@
     [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-//            NSInteger uid = [[responseObject objectForKey:@"resultData"] integerValue];
             NSDictionary *dict = [responseObject objectForKey:@"resultData"];
             NSString *sessionid = dict[@"sessionId"];
             NSInteger uid = [dict[@"uid"]integerValue];
+            NSData *sessiondata = [NSKeyedArchiver archivedDataWithRootObject:sessionid];
+            [[NSUserDefaults standardUserDefaults] setObject:sessiondata forKey:@"sessionid"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [delegate postThirdData:uid];
         }else{
             [delegate postThirdData:0];
@@ -56,6 +58,10 @@
             NSDictionary *dict = [responseObject objectForKey:@"resultData"];
             NSString *sessionid = dict[@"sessionId"];
             NSInteger uid = [dict[@"uid"]integerValue];
+            
+            NSData *sessiondata = [NSKeyedArchiver archivedDataWithRootObject:sessionid];
+            [[NSUserDefaults standardUserDefaults] setObject:sessiondata forKey:@"sessionid"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             success(uid);
         }else{
             success(0);

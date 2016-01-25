@@ -85,7 +85,6 @@
     }
     
     //登陆流程
-    pwd = [pwd stringToMD5];
     [UserLogin loginWithEmailAndPwd:email pwd:pwd success:^(NSInteger uid) {
         if (uid>0) {
             [UserDetail getUserDetailWithId:uid success:^(UserDetailModel *userDetailModel) {
