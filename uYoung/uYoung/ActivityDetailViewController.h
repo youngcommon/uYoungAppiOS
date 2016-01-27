@@ -15,8 +15,9 @@
 #import "EnrollCollectionView.h"
 #import "ThirdLoginViewController.h"
 #import "LoginFilterUtil.h"
+#import "ShareView.h"
 
-@interface ActivityDetailViewController : UIViewController<EnrollCollectionViewDelegate>
+@interface ActivityDetailViewController : UIViewController<EnrollCollectionViewDelegate, ShareViewDelegate>
 
 @property (strong, nonatomic) ActivityModel *model;
 @property (strong, nonatomic) ActivityDetailModel *detailModel;
@@ -42,6 +43,11 @@
 @property (strong, nonatomic) UILabel *organizerTitle;
 @property (strong, nonatomic) UILabel *addr;
 @property (strong, nonatomic) UILabel *addrTitle;
+
+@property (strong, nonatomic) UIView *backcover;
+@property (strong, nonatomic) ShareView *share;
+@property (assign, nonatomic) CGRect oriFrame;
+@property (assign, nonatomic) CGRect newFrame;
 
 @property (weak, nonatomic) IBOutlet UIImageView *freeSignetImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *descScrollView;

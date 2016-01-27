@@ -75,7 +75,7 @@ static NSString * const reuseIdentifier = @"Cell";
     x = x + actDateTitleSize.width + 5;
     NSString *actDateStr = [NSString stringWithFormat:@"%02d月%02d日", (int)self.model.month, (int)self.model.day];
     CGSize actDateSize = [actDateStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
-    _actDate = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actDateSize.width, actDateSize.height)];
+    _actDate = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actDateSize.width+2, actDateSize.height)];
     [_actDate setText:actDateStr];
     [_actDate setFont:font];
     [_actDate setTextColor:UIColorFromRGB(0x85b200)];
@@ -114,7 +114,7 @@ static NSString * const reuseIdentifier = @"Cell";
     x = x + actDateTitleSize.width + 5;
     NSString *actTypeStr = [NSString stringWithFormat:@"%@摄影", [NSString isBlankString:self.model.actType]?@"":self.model.actType];
     CGSize actTypeSize = [actTypeStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
-    _actType = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actTypeSize.width, actTypeSize.height)];
+    _actType = [[UILabel alloc]initWithFrame:CGRectMake(x, y, actTypeSize.width+2, actTypeSize.height)];
     [_actType setText:actTypeStr];
     [_actType setFont:font];
     [_actType setTextColor:UIColorFromRGB(0x85b200)];
@@ -151,12 +151,18 @@ static NSString * const reuseIdentifier = @"Cell";
     x = _actType.frame.origin.x;
     NSString *orgStr = @"abcabcabcabcabcabc";
     CGSize orgStrSize = [orgStr sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:NSLineBreakByClipping];
-    _organizer = [[UILabel alloc]initWithFrame:CGRectMake(x, y, orgStrSize.width, orgStrSize.height)];
+    _organizer = [[UILabel alloc]initWithFrame:CGRectMake(x, y, width-50-5, orgStrSize.height)];//分享按钮长度50，相距5
     [_organizer setText:orgStr];
     [_organizer setFont:font];
     [_organizer setTextColor:UIColorFromRGB(0x85b200)];
     [_organizer setLineBreakMode:NSLineBreakByClipping];
     [_contentView addSubview:_organizer];
+    
+    //分享按钮
+    UIButton *shareButton = [[UIButton alloc]initWithFrame:CGRectMake(_organizer.frame.origin.x+_organizer.frame.size.width+5, _organizer.frame.origin.y+_organizer.frame.size.height/2-25, 50, 50)];
+    [shareButton setImage:[UIImage imageNamed:@"uyoung.bundle/share"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(shareActivity) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView addSubview:shareButton];
         
     //第四行标签
     x = 20;
@@ -186,6 +192,20 @@ static NSString * const reuseIdentifier = @"Cell";
     
     //获取数据
     [ActivityDetail getActivityDetailWithId:self.model.activityId];
+    
+    //添加分享组件
+    _backcover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [_backcover setBackgroundColor:[UIColor lightGrayColor]];
+    _backcover.alpha = 0.6;
+    [_backcover setHidden:YES];
+    [self.view addSubview:_backcover];
+    
+    _share = [[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]lastObject];
+    _newFrame = CGRectMake(0, mScreenHeight-_share.frame.size.height, mScreenWidth, _share.frame.size.height);
+    _oriFrame = CGRectMake(0, mScreenHeight, mScreenWidth, _share.frame.size.height);
+    [_share setFrame:_oriFrame];
+    _share.delegate = self;
+    [self.view addSubview:_share];
     
 }
 
@@ -516,6 +536,31 @@ static NSString * const reuseIdentifier = @"Cell";
         ani = NO;
     }
     [self presentViewController:ctl animated:ani completion:nil];
+}
+
+- (void)shareActivity{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.2];
+    [_share setFrame:_newFrame];
+    [UIView commitAnimations];
+    
+    [_backcover setHidden:NO];
+    
+}
+
+- (void)cancelShare{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.2];
+    [_share setFrame:_oriFrame];
+    [UIView commitAnimations];
+    
+    [_backcover setHidden:YES];
+}
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
+    [self cancelShare];
 }
 
 @end
