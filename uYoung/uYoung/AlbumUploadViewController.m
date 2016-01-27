@@ -123,8 +123,10 @@ static NSString * const reuseIdentifier = @"Cell";
     UIImage *image;
     AlbumPicCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     ZLPhotoAssets *asset = self.assets[indexPath.row];
+    PicExif *exif = [[PicExif alloc]init];
     if ([asset isKindOfClass:[ZLPhotoAssets class]]) {
         image = asset.originImage;
+        exif = [[PicExifUtil shareInstance]getWithALAsset:asset.asset];
     }else if ([asset isKindOfClass:[NSString class]]){
         [cell.img sd_setImageWithURL:[NSURL URLWithString:(NSString *)asset] placeholderImage:[UIImage imageNamed:@"pc_circle_placeholder"]];
         image = cell.img.image;
@@ -134,7 +136,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
     
-    PicExif *exif = [[PicExifUtil shareInstance]getWithALAsset:asset.asset];
     [_exifArr addObject:exif];
     [cell hiddenLabels];
     [_oriImage addObject:image];

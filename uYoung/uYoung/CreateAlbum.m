@@ -75,10 +75,10 @@
     
     NSDictionary *dict = @{@"id":@(albumId), @"url":coverUrl};
     
-    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
-    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:dict stamp:stamp];
+//    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+//    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:dict stamp:stamp];
     
-    [manager POST:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         /*NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
         }else{
