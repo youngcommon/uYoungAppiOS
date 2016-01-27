@@ -8,6 +8,7 @@
 
 #import "PhotoDownload.h"
 #import "GlobalConfig.h"
+#import "Des3Encrypt.h"
 
 @implementation PhotoDownload
 
@@ -35,7 +36,10 @@
     
     NSDictionary *param = @{@"id": @(photoId)};
     
-    [manager GET:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
+    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:param stamp:stamp];
+    
+    [manager GET:url parameters:encrypt success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
