@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "UYoungAlertViewUtil.h"
 #import "CreateAlbum.h"
+#import "UILoginFilterViewController.h"
 
-@interface AlbumDetailViewController : UIViewController<UIAlertViewDelegate, CreateAlbumDelegate>
+@interface AlbumDetailViewController : UILoginFilterViewController<UIAlertViewDelegate, CreateAlbumDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *albumName;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeader;
 @property (strong, nonatomic) IBOutlet UILabel *nickName;

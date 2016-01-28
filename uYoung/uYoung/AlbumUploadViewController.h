@@ -29,6 +29,8 @@
 @property (assign, nonatomic) NSInteger counter;
 @property (strong, nonatomic) NSMutableArray *photoDetailModels;
 
+@property (strong, nonatomic) UIView *backcover;
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)showSysPhoto:(id)sender;
 - (IBAction)uploadImages:(id)sender;

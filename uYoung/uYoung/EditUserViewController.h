@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "GlobalConfig.h"
 #import "UserDetailModel.h"
 #import "UpdateUser.h"
 #import "UserDetail.h"
 #import "UploadImageUtil.h"
+#import "UILoginFilterViewController.h"
 
-@interface EditUserViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate, UploadImgDelegate>
+@interface EditUserViewController : UILoginFilterViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UpdateUserDelegate, UploadImgDelegate>
 
 @property (assign, nonatomic) BOOL isNew;//是否是新用户尚未完善信息
 @property (assign, nonatomic) NSInteger gender;

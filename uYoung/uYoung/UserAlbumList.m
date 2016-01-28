@@ -85,6 +85,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }
@@ -116,6 +118,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }

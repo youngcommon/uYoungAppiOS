@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityPublish.h"
+#import "UILoginFilterViewController.h"
 
-@interface CreateActivityController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate, UIWebViewDelegate, UIAlertViewDelegate>
+@interface CreateActivityController : UILoginFilterViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ActivityPublishDelegate, UIWebViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImg;
 @property (weak, nonatomic) IBOutlet UIScrollView *backgroundView;

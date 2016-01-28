@@ -8,6 +8,7 @@
 
 #import "ActivityDetail.h"
 #import "Des3Encrypt.h"
+#import "GlobalConfig.h"
 
 @implementation ActivityDetail
 
@@ -59,6 +60,8 @@
             }else{
                 status(0);
             }
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             status(0);
         }
@@ -84,6 +87,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }
@@ -109,6 +114,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }
@@ -134,6 +141,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }
@@ -159,6 +168,8 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if(result==100){//说明获得正确结果
             success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             success(NO);
         }

@@ -24,6 +24,7 @@
     
     UIButton *exifButton;
     ExifView *exifView;
+    
 }
 
 @end
@@ -97,6 +98,7 @@
     
     exifView = [[[NSBundle mainBundle]loadNibNamed:@"ExifView" owner:self options:nil]lastObject];
     CGRect newFrame = CGRectMake(exifButton.frame.origin.x, exifButton.frame.origin.y-exifView.frame.size.height, self.view.frame.size.width-exifButton.frame.origin.x*2, exifView.frame.size.height);
+//    oriFrame = CGRectMake(exifButton.frame.origin.x, exifButton.frame.origin.y, 0, 0);
     [exifView setFrame:newFrame];
     [exifView setHidden:YES];
     [self.view addSubview:exifView];
@@ -105,6 +107,12 @@
 
 -(void)showExif{
     BOOL state = [exifView isHidden];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.2];
+//    [exifView setFrame:frame];
+    [UIView commitAnimations];
     [exifView setHidden:!state];
 }
 

@@ -46,6 +46,9 @@
 
 #define QINIU_DEFAULT_HOST @"http://7xnzko.com1.z0.glb.clouddn.com"
 
+#define NOT_LOGIN -3
+#define NOT_LOGIN_NOTICE @"notlogin"
+
 #define DOUBAN_API_KEY @"09cfe41f642337ee1d6fac5e2c69a7ca"
 #define DOUBAN_PRIVATE_KEY @"a0065d0702fdafef"
 #define DOUBAN_REDIRECT_URL @"http://182.92.237.31/third/douban/callback"

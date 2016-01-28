@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AlbumDetail.h"
 #import "CreateAlbum.h"
+#import "UILoginFilterViewController.h"
 
-@interface ActivityAlbumViewController : UIViewController<AlbumDetailDelegate, CreateAlbumDelegate>
+@interface ActivityAlbumViewController : UILoginFilterViewController<AlbumDetailDelegate, CreateAlbumDelegate>
 
 @property (strong, nonatomic) NSString *actTitleStr;
 @property (assign, nonatomic) long actId;

@@ -32,6 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"actdetail" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toLogin) name:NOT_LOGIN_NOTICE object:nil];
     
     self.view.backgroundColor = [UIColor clearColor];
     self.headerBackground.image = [self getScaleUIImage:@"uyoung.bundle/backcover" Height:30];

@@ -31,6 +31,8 @@
             [data removeObjectForKey:@"createTime"];
             AlbumModel *detail = [MTLJSONAdapter modelOfClass:[AlbumModel class] fromJSONDictionary:data error:nil];
             [delegate successCreateAlbum:detail];
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
         }else{
             [delegate successCreateAlbum:nil];
         }

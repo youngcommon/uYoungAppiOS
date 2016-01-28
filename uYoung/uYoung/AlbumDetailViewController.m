@@ -9,7 +9,6 @@
 #import "AlbumDetailViewController.h"
 #import "AlbumPicCollectionCell.h"
 #import "AddPicCollectionViewCell.h"
-#import "GlobalConfig.h"
 #import "UIImageView+LazyInit.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "PhotoDetailModel.h"

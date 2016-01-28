@@ -25,6 +25,10 @@
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
             [delegate publishEnd:YES];
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
+        }else{
+            [delegate publishEnd:NO];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

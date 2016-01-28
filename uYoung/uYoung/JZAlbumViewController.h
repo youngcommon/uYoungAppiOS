@@ -36,5 +36,4 @@
  */
 @property(nonatomic, strong) NSMutableDictionary *likeDict;
 
-
 @end

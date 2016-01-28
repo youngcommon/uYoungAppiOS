@@ -7,7 +7,6 @@
 //
 
 #import "CreateActivityController.h"
-#import "GlobalConfig.h"
 #import "CreateActivityStep2Controller.h"
 #import "ActivityDescTextView.h"
 #import "NSString+StringUtil.h"
@@ -357,6 +356,7 @@
     //增加键盘事件监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toLogin) name:NOT_LOGIN_NOTICE object:nil];
     
     //添加遮罩层
     _backview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];

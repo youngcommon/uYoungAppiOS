@@ -36,6 +36,12 @@ static NSString * const reuseIdentifier = @"Cell";
     _oriImage = [[NSMutableArray alloc]initWithCapacity:1];
     _exifArr = [[NSMutableArray alloc]initWithCapacity:1];
     
+    _backcover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [_backcover setBackgroundColor:[UIColor lightGrayColor]];
+    _backcover.alpha = 0.6;
+    [_backcover setHidden:YES];
+    [self.view addSubview:_backcover];
+    
     [self selectPhotos];
 }
 
@@ -58,6 +64,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)uploadImages:(id)sender {
     if(_assets!=nil&&[_assets count]>0&&[_assets count]==[_oriImage count]){
+        [_backcover setHidden:NO];
         [self.view.window showHUDWithText:@"正在上传..." Type:ShowLoading Enabled:YES];
         NSString *format = @"uy_user/%ld/album/%ld/t/%@";
         for (int i=0; i<[_oriImage count]; i++) {
@@ -107,6 +114,8 @@ static NSString * const reuseIdentifier = @"Cell";
         NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
         NSString *url = [qiniuHost stringByAppendingString:result.photoUrl];
         [CreateAlbum updateAlbumCover:url albumId:result.albumId success:nil];
+        
+        [_backcover setHidden:YES];
     }
 }
 

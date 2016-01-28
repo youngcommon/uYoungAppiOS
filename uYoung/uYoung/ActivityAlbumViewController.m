@@ -41,6 +41,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }else{
         [_uploadAlbumView setHidden:YES];
     }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
