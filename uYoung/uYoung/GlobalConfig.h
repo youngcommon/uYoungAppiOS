@@ -28,6 +28,8 @@
 
 #define SinaWeiboAppKey @"1375588776"
 
+#define WXKey @"wx4fb8f182d2edba22"
+
 #define SinaWeiboRedirectURI @"https://api.weibo.com/oauth2/default.html"
 
 #define UserDefaultHeader @"uyoung.bundle/logo_icon"

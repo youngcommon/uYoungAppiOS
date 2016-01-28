@@ -204,6 +204,9 @@ static NSString * const reuseIdentifier = @"Cell";
     _newFrame = CGRectMake(0, mScreenHeight-_share.frame.size.height, mScreenWidth, _share.frame.size.height);
     _oriFrame = CGRectMake(0, mScreenHeight, mScreenWidth, _share.frame.size.height);
     [_share setFrame:_oriFrame];
+    _share.actTitle = self.model.title;
+    _share.shareDesc = self.model.title;
+    _share.shareUrl = @"http://t.cn/RbuFg9j";
     _share.delegate = self;
     [self.view addSubview:_share];
     

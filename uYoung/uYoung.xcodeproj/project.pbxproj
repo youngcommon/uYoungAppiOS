@@ -55,6 +55,7 @@
 		48D432661C4F563E00FB1E93 /* PlistUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D432651C4F563E00FB1E93 /* PlistUtil.m */; };
 		48D4326F1C51CA3600FB1E93 /* ExifView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D4326E1C51CA3600FB1E93 /* ExifView.m */; };
 		48D432711C51CA4800FB1E93 /* ExifView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D432701C51CA4800FB1E93 /* ExifView.xib */; };
+		48D4327C1C59EEEA00FB1E93 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D4327B1C59EEEA00FB1E93 /* libWeChatSDK.a */; };
 		48DC10BD1C44DEDE00D9D89F /* PicExifUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */; };
 		48DC10C11C44DF2000D9D89F /* PicExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DC10C01C44DF2000D9D89F /* PicExif.m */; };
 		48DC10C31C45F40F00D9D89F /* global_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48DC10C21C45F40F00D9D89F /* global_config.plist */; };
@@ -231,6 +232,9 @@
 		48D4326D1C51CA3600FB1E93 /* ExifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExifView.h; sourceTree = "<group>"; };
 		48D4326E1C51CA3600FB1E93 /* ExifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExifView.m; sourceTree = "<group>"; };
 		48D432701C51CA4800FB1E93 /* ExifView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExifView.xib; sourceTree = "<group>"; };
+		48D4327B1C59EEEA00FB1E93 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = libWXSDK/libWeChatSDK.a; sourceTree = "<group>"; };
+		48D4327E1C59EFF200FB1E93 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = libWXSDK/WXApi.h; sourceTree = "<group>"; };
+		48D4327F1C59EFF200FB1E93 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = libWXSDK/WXApiObject.h; sourceTree = "<group>"; };
 		48DC10BB1C44DEDE00D9D89F /* PicExifUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExifUtil.h; sourceTree = "<group>"; };
 		48DC10BC1C44DEDE00D9D89F /* PicExifUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicExifUtil.m; sourceTree = "<group>"; };
 		48DC10BF1C44DF2000D9D89F /* PicExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicExif.h; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D4327C1C59EEEA00FB1E93 /* libWeChatSDK.a in Frameworks */,
 				846F17B81BE108E200EB2DB4 /* Foundation.framework in Frameworks */,
 				84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */,
 				846F17B61BE108CD00EB2DB4 /* UIKit.framework in Frameworks */,
@@ -398,6 +403,7 @@
 		4277B826B647482D792A3320 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48D4327B1C59EEEA00FB1E93 /* libWeChatSDK.a */,
 				48ACA71A1C3A6BFB00DCF2CC /* libDoubanApiEngine.framework */,
 				48ACA7181C3A6BE700DCF2CC /* libDoubanApiEngine */,
 				48ACA7081C3A643600DCF2CC /* MobileCoreServices.framework */,
@@ -564,6 +570,7 @@
 		4820A4DC1BB3D10F006AEC13 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				48D4327D1C59EFCD00FB1E93 /* libWXSDK */,
 				84DAC3711BE26E0D00F17507 /* TencentOpenApi_IOS_Bundle.bundle */,
 				846F17A01BE107D700EB2DB4 /* libWeiboSDK */,
 			);
@@ -640,6 +647,15 @@
 				483E17F11BAC548E00CDDBD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48D4327D1C59EFCD00FB1E93 /* libWXSDK */ = {
+			isa = PBXGroup;
+			children = (
+				48D4327E1C59EFF200FB1E93 /* WXApi.h */,
+				48D4327F1C59EFF200FB1E93 /* WXApiObject.h */,
+			);
+			name = libWXSDK;
 			sourceTree = "<group>";
 		};
 		48DC10BE1C44DF0900D9D89F /* exifutil */ = {
@@ -1183,6 +1199,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
 					"$(PROJECT_DIR)/libDoubanApiEngine.framework/Versions/A",
+					"$(PROJECT_DIR)/libWXSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1250,6 +1267,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
 					"$(PROJECT_DIR)/libDoubanApiEngine.framework/Versions/A",
+					"$(PROJECT_DIR)/libWXSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (

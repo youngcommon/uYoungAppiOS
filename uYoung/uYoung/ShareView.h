@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
 
 @protocol ShareViewDelegate <NSObject>
 
@@ -18,10 +19,11 @@
 
 @property (weak, nonatomic) id<ShareViewDelegate> delegate;
 
-@property (assign, nonatomic) long actId;
+@property (strong, nonatomic) NSString *actTitle;
+@property (strong, nonatomic) NSString *shareUrl;
+@property (strong, nonatomic) NSString *shareDesc;
 
-- (IBAction)shareToWXFriend:(id)sender;
-- (IBAction)shareToWX:(id)sender;
+- (IBAction)shareToWX:(UIButton*)sender;
 - (IBAction)shareToQQ:(id)sender;
 - (IBAction)shareToWeibo:(id)sender;
 - (IBAction)cancel:(id)sender;

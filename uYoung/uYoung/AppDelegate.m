@@ -48,7 +48,8 @@
     
     //注册QQ SSO
     self.tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQAppKey andDelegate:self];
-    
+    //注册微信
+    [WXApi registerApp:WXKey withDescription:@"youngcommon"];
     //注册新浪微博SSO
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SinaWeiboAppKey];
@@ -131,12 +132,12 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [WeiboSDK handleOpenURL:url delegate:self]||[TencentOAuth HandleOpenURL:url];
+    return [WeiboSDK handleOpenURL:url delegate:self]||[TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [WeiboSDK handleOpenURL:url delegate:self] || [TencentOAuth HandleOpenURL:url];
+    return [WeiboSDK handleOpenURL:url delegate:self] || [TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self];
 }
 
 #pragma mark 微博及微信
