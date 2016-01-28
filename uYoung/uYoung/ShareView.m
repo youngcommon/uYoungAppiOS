@@ -21,7 +21,7 @@
     message.title = _actTitle;
     message.description = _shareDesc;
     //[[self.viewModel titleOfHpDetail] stringByAppendingString:[self.viewModel adressEventDetail]];
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:UserDefaultHeader ofType:@"png"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"uyoung.bundle/logo" ofType:@"png"];
     NSData *previewData = [NSData dataWithContentsOfFile:imagePath];
     [message setThumbData:previewData];
     
@@ -34,7 +34,7 @@
     //req.text = @"我发现一个有意思东东，一起来看看吧";
     req.bText = NO;
     req.message = message;
-    req.scene = tag;
+    req.scene = (int)tag;
     
     [WXApi sendReq:req];
     [self cancel:nil];
@@ -43,7 +43,7 @@
 - (IBAction)shareToQQ:(id)sender {
     NSURL *url = [NSURL URLWithString:(self.shareUrl)];
     NSString *title = _actTitle;
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:UserDefaultHeader ofType:@"png"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"uyoung.bundle/logo" ofType:@"png"];
     NSData *previewData = [NSData dataWithContentsOfFile:imagePath];
     NSString *description =_shareDesc;
     QQApiNewsObject *newsobj = [QQApiNewsObject objectWithURL:url title:title description:description previewImageData:previewData];
