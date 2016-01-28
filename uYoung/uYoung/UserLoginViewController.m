@@ -15,6 +15,7 @@
 #import "NSString+StringUtil.h"
 #import "UserDetailModel.h"
 #import "UserDetail.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface UserLoginViewController ()
 
@@ -48,6 +49,12 @@
     //登录成功事件
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if (![NSString isBlankString:self.alert]) {
+        [self.view.window showHUDWithText:self.alert Type:ShowPhotoNo Enabled:YES];
+    }
 }
 
 - (void)loginSuccess:(NSNotification*)noti{

@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "LoginFilterUtil.h"
 #import "GlobalConfig.h"
+#import "UYoungAlertViewUtil.h"
 
 @interface UILoginFilterViewController ()
 
@@ -30,6 +31,7 @@
 - (void)toLogin{
     LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
     ctl.source = @"loginfilter";
+    ctl.alert = @"登陆状态验证失败!";
     BOOL ani = YES;
     if (mScreenWidth==320) {
         ani = NO;

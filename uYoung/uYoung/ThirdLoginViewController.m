@@ -11,6 +11,8 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "DoubanLoginViewController.h"
 #import "GlobalConfig.h"
+#import "NSString+StringUtil.h"
+#import "UIWindow+YoungHUD.h"
 
 @interface ThirdLoginViewController ()
 
@@ -28,6 +30,12 @@
     [_topCons setConstant:mScreenWidth/4];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if (![NSString isBlankString:self.alert]) {
+        [self.view.window showHUDWithText:self.alert Type:ShowPhotoNo Enabled:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

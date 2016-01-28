@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSString *source;
 
+@property (strong, nonatomic) NSString *alert;
+
 @end
