@@ -124,6 +124,8 @@
 		84A2C65E1C18803F0090E173 /* PhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C65D1C18803F0090E173 /* PhotoDetailModel.m */; };
 		84A2C6611C1881C10090E173 /* AlbumDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2C6601C1881C10090E173 /* AlbumDetail.m */; };
 		84A358D11BFB581400DE6DF9 /* GlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */; };
+		84ADBCDE1C5A5EE0001D3E8D /* UserCenterV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ADBCDD1C5A5EE0001D3E8D /* UserCenterV2ViewController.m */; };
+		84ADBCE01C5A5F04001D3E8D /* UserCenterV2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ADBCDF1C5A5F04001D3E8D /* UserCenterV2ViewController.xib */; };
 		84B1CD071C532FF80000189F /* Des3Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1CD061C532FF80000189F /* Des3Encrypt.m */; };
 		84B1CD0B1C533E070000189F /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1CD091C533E070000189F /* GTMBase64.m */; };
 		84DAC3701BE26E0300F17507 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DAC36F1BE26E0300F17507 /* TencentOpenAPI.framework */; };
@@ -353,6 +355,9 @@
 		84A2C6601C1881C10090E173 /* AlbumDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetail.m; sourceTree = "<group>"; };
 		84A358CF1BFB581400DE6DF9 /* GlobalNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalNetwork.h; sourceTree = "<group>"; };
 		84A358D01BFB581400DE6DF9 /* GlobalNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalNetwork.m; sourceTree = "<group>"; };
+		84ADBCDC1C5A5EE0001D3E8D /* UserCenterV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterV2ViewController.h; sourceTree = "<group>"; };
+		84ADBCDD1C5A5EE0001D3E8D /* UserCenterV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterV2ViewController.m; sourceTree = "<group>"; };
+		84ADBCDF1C5A5F04001D3E8D /* UserCenterV2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCenterV2ViewController.xib; sourceTree = "<group>"; };
 		84B1CD051C532FF80000189F /* Des3Encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Des3Encrypt.h; sourceTree = "<group>"; };
 		84B1CD061C532FF80000189F /* Des3Encrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Des3Encrypt.m; sourceTree = "<group>"; };
 		84B1CD081C533E070000189F /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
@@ -783,6 +788,9 @@
 				849B6A8D1C453B0700C91EF1 /* RegisterViewController.xib */,
 				48D432611C478DB100FB1E93 /* LoginViewController.h */,
 				48D432621C478DB100FB1E93 /* LoginViewController.m */,
+				84ADBCDC1C5A5EE0001D3E8D /* UserCenterV2ViewController.h */,
+				84ADBCDD1C5A5EE0001D3E8D /* UserCenterV2ViewController.m */,
+				84ADBCDF1C5A5F04001D3E8D /* UserCenterV2ViewController.xib */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -913,6 +921,7 @@
 				4820A4CD1BB1417E006AEC13 /* RootViewController.xib in Resources */,
 				48039FDE1BD3F3EB00CF147A /* EnrollCollectionCell.xib in Resources */,
 				482E9ACB1C18193400DEF737 /* AddPicCollectionViewCell.xib in Resources */,
+				84ADBCE01C5A5F04001D3E8D /* UserCenterV2ViewController.xib in Resources */,
 				8457EE051BEA47C600C00176 /* EditUserViewController.xib in Resources */,
 				483E17E71BAC548E00CDDBD3 /* LaunchScreen.xib in Resources */,
 				849E277A1C59075C00798CCF /* Default-h568.png in Resources */,
@@ -994,6 +1003,7 @@
 				849E277D1C590BC000798CCF /* ShareView.m in Sources */,
 				48039FDC1BD3F3DA00CF147A /* EnrollCollectionCell.m in Sources */,
 				4887F5F61BB93276009434A9 /* ActivityDetailViewController.m in Sources */,
+				84ADBCDE1C5A5EE0001D3E8D /* UserCenterV2ViewController.m in Sources */,
 				84F6216F1BE7A2C2004C3733 /* UserLogin.m in Sources */,
 				48039FD01BD1457300CF147A /* UserDetail.m in Sources */,
 				849B6A8C1C453AF800C91EF1 /* RegisterViewController.m in Sources */,
