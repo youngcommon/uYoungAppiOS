@@ -24,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tag = 0;
-    
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
         ctl.source = @"usercenter";
@@ -143,8 +141,9 @@
     [self.navigationController pushViewController:editUserViewCtl animated:YES];
 }
 
-- (IBAction)create:(id)sender {
-    if (_tag==0) {
+- (IBAction)create:(UIButton*)sender {
+    NSInteger tag = sender.tag;
+    if (tag==0) {
         [self createAlbum];
     }else{
         [self createActivity];

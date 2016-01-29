@@ -17,7 +17,6 @@
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 @property (assign, nonatomic) BOOL isSelf;
 @property (assign, nonatomic) CGRect oriFrame;
-@property (assign, nonatomic) NSInteger tag;
 
 @property (strong, nonatomic) IBOutlet UIButton *sysconfigButton;
 @property (strong, nonatomic) IBOutlet UIImageView *headerImg;
@@ -42,5 +41,5 @@
 - (IBAction)back:(id)sender;
 - (IBAction)sysconfig:(id)sender;
 - (IBAction)editUser:(id)sender;
-- (IBAction)create:(UIBUtton*)sender;
+- (IBAction)create:(UIButton*)sender;
 @end
