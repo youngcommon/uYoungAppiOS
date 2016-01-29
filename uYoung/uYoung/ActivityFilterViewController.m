@@ -132,8 +132,13 @@
 }
 
 - (IBAction)commit:(id)sender {
+    NSInteger cityId = 382;
+    NSData *current = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentcity"];
+    if (current!=nil) {
+        cityId = [[NSKeyedUnarchiver unarchiveObjectWithData:current]integerValue];
+    }
     NSString *sortColumn = _sortType==0?@"createTimeSort":@"beginTimeSort";
-    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),sortColumn, @"desc",@"sort", @(_isFree),@"feeType", @(_actTypeFilter),@"activityType", @(_actStatusFilter),@"status", nil];
+    NSDictionary *data = [[NSDictionary alloc]initWithObjectsAndKeys:@(1),sortColumn, @"desc",@"sort", @(_isFree),@"feeType", @(_actTypeFilter),@"activityType", @(_actStatusFilter),@"status", @(cityId),@"cityId", nil];
     [_delegate commitWithFilterData:data];
 }
 

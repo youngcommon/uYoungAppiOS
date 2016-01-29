@@ -59,6 +59,13 @@
 
 - (void)loginSuccess:(NSNotification*)noti{
     UserDetailModel *detail = (UserDetailModel*)[noti object];
+    //写默认城市
+    
+    if (detail!=nil&&detail.cityId>0) {//没有默认值，就默认为北京，保存
+        NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:@(detail.cityId)];
+        [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"currentcity"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter]postNotificationName:self.source object:detail];
 }

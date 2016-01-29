@@ -51,7 +51,6 @@
     [self.tableView.infiniteScrollingView stopAnimating];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -125,6 +124,12 @@
     }
     self.noMorePage = NO;
     //根据参数请求网络，获得数据
+    NSInteger cityId = 382;
+    NSData *current = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentcity"];
+    if (current!=nil) {
+        cityId = [[NSKeyedUnarchiver unarchiveObjectWithData:current]integerValue];
+    }
+    [_params setObject:@(cityId) forKey:@"cityId"];
     [_params setObject:@(pageSize) forKey:@"pageSize"];
     [_params setObject:@(1) forKey:@"pageNum"];
     if (_userid>0) {
@@ -158,6 +163,12 @@
     if (_params==nil||[_params isEqual:[NSNull null]]) {
         _params = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(1),@"createTimeSort", @"desc",@"sort", nil];
     }
+    NSInteger cityId = 382;
+    NSData *current = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentcity"];
+    if (current!=nil) {
+        cityId = [[NSKeyedUnarchiver unarchiveObjectWithData:current]integerValue];
+    }
+    [_params setObject:@(cityId) forKey:@"cityId"];
     [_params setObject:@(pageSize) forKey:@"pageSize"];
     if (_userid>0) {
         [_params setObject:@(_userid) forKey:@"creatorUid"];

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
             <connections>
-                <outlet property="cityLabel" destination="9Cy-Gz-Sp3" id="dBW-7E-XdJ"/>
+                <outlet property="cityButton" destination="gC7-3K-c9g" id="ksV-Zc-fno"/>
                 <outlet property="header" destination="jdQ-d4-3D9" id="ZTy-b6-SQg"/>
                 <outlet property="toggle" destination="WPd-9N-UUr" id="gGA-pZ-GEv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,15 +31,6 @@
                                 <segment title="已完成"/>
                             </segments>
                         </segmentedControl>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cy-Gz-Sp3">
-                            <rect key="frame" x="20" y="11" width="34" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="34" id="C9l-Xe-cMG"/>
-                                <constraint firstAttribute="height" constant="21" id="JDe-cE-LMW"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIL-pG-QOs">
                             <rect key="frame" x="280" y="11" width="20" height="22"/>
                             <constraints>
@@ -51,15 +42,22 @@
                                 <action selector="showFilter:" destination="-1" eventType="touchUpInside" id="6Dk-91-MAT"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gC7-3K-c9g">
+                            <rect key="frame" x="20" y="11" width="34" height="21"/>
+                            <state key="normal" title="北京">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="changeCity:" destination="-1" eventType="touchUpInside" id="nB6-7i-UA6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="9Cy-Gz-Sp3" firstAttribute="leading" secondItem="jdQ-d4-3D9" secondAttribute="leading" constant="20" id="37h-Mi-6Nr"/>
                         <constraint firstAttribute="bottom" secondItem="WPd-9N-UUr" secondAttribute="bottom" constant="8" id="8Fp-Dg-1tI"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="centerX" secondItem="jdQ-d4-3D9" secondAttribute="centerX" id="ACN-bN-1vx"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="CdR-qq-v6l"/>
                         <constraint firstAttribute="trailing" secondItem="dIL-pG-QOs" secondAttribute="trailing" constant="20" id="LQr-Ss-sQa"/>
-                        <constraint firstItem="9Cy-Gz-Sp3" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="bk2-4Y-wvl"/>
                         <constraint firstItem="WPd-9N-UUr" firstAttribute="top" secondItem="jdQ-d4-3D9" secondAttribute="top" constant="8" id="fGj-SL-t3G"/>
                         <constraint firstItem="dIL-pG-QOs" firstAttribute="centerY" secondItem="jdQ-d4-3D9" secondAttribute="centerY" id="kZx-5a-qXT"/>
                     </constraints>

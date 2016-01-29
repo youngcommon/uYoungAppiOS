@@ -27,6 +27,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置当前城市
+    NSData *cities = [[NSUserDefaults standardUserDefaults]objectForKey:@"citylist"];
+    if (cities!=nil) {
+        _allCity = [NSKeyedUnarchiver unarchiveObjectWithData:cities];
+    }
+    NSData *current = [[NSUserDefaults standardUserDefaults]objectForKey:@"currentcity"];
+    if (current!=nil) {
+        _cityId = [[NSKeyedUnarchiver unarchiveObjectWithData:current]integerValue];
+    }
+    if (_cityId==0) {//使用默认cityId
+        _cityId = 382;//默认北京
+        _cityName = @"北京";
+        NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:@(382)];
+        [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"currentcity"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else{
+        if (_allCity!=nil&&[_allCity count]>0) {
+            for (int i=0; i<[_allCity count]; i++) {
+                CityModel *model = _allCity[i];
+                if (model.id==_cityId) {
+                    _cityName = model.cnName;
+                    break;
+                }
+            }
+        }
+    }
+    [_cityButton setTitle:_cityName forState:UIControlStateNormal];
+    
     CGFloat y = 20;
     
     y += self.header.frame.size.height;
@@ -74,6 +102,7 @@
     _isFilter = NO;
     
     [self checkUpdate];
+    [self initPicker];
     
 }
 
@@ -110,6 +139,10 @@
     [self initUserAvater];
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [self cancelPressed:nil];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (_forceUpdate||buttonIndex==1) {
         NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1050432865";
@@ -143,6 +176,7 @@
 }
 
 - (IBAction)showFilter:(id)sender {
+    [self cancelPressed:nil];
     if (_isFilter==NO) {
         CGRect filterFrame = CGRectMake(mScreenWidth-_filter.view.frame.size.width, 0, _filter.view.frame.size.width, _filter.view.frame.size.height);
         [UIView beginAnimations:nil context:NULL];
@@ -164,6 +198,13 @@
     }
 }
 
+- (IBAction)changeCity:(id)sender {
+    [_selectedButton setHidden:NO];
+    [_cancelButton setHidden:NO];
+    [_citySelector setHidden:NO];
+//    [_cover setHidden:NO];
+}
+
 -(void)commitWithFilterData:(NSDictionary*)data{
     [self.view.window showHUDWithText:@"加载中..." Type:ShowLoading Enabled:YES];
     [self.activityTabViewController resetActivityList:data];
@@ -172,6 +213,70 @@
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
     [self showFilter:nil];
+}
+
+- (void)initPicker{
+    _citySelector = [[UIPickerView alloc] initWithFrame:CGRectMake(0, mScreenHeight/2, mScreenWidth, mScreenHeight/2-60)];
+    // 显示选中框
+    _citySelector.showsSelectionIndicator=YES;
+    _citySelector.dataSource = self;
+    _citySelector.delegate = self;
+    _citySelector.backgroundColor = UIColorFromRGB(0x85b200);
+    [self.view addSubview:_citySelector];
+    [_citySelector setHidden:YES];
+    
+    //创建选择按钮
+    _selectedButton = [[UIButton alloc]initWithFrame:CGRectMake(0, mScreenHeight-60, mScreenWidth/2, 60)];
+    _selectedButton.backgroundColor = UIColorFromRGB(0x85b200);
+    [_selectedButton setTitle:@"确 定" forState:UIControlStateNormal];
+    [_selectedButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_selectedButton];
+    [_selectedButton setHidden:YES];
+    //创建取消按钮
+    _cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(mScreenWidth/2, mScreenHeight-60, mScreenWidth/2, 60)];
+    _cancelButton.backgroundColor = UIColorFromRGB(0x85b200);
+    [_cancelButton setTitle:@"取 消" forState:UIControlStateNormal];
+    [_cancelButton addTarget:self action:@selector(cancelPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelButton];
+    [_cancelButton setHidden:YES];
+}
+
+-(void) buttonPressed:(id)sender{
+    NSInteger selectedCityIndex = [_citySelector selectedRowInComponent:0];
+    CityModel *city = [_allCity objectAtIndex:selectedCityIndex];
+    _cityName = city.cnName;
+    _cityId = city.id;
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:@(_cityId)];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedData forKey:@"currentcity"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [_cityButton setTitle:_cityName forState:UIControlStateNormal];
+    [self cancelPressed:nil];
+}
+
+-(void) cancelPressed:(id)sender{
+    [_selectedButton setHidden:YES];
+    [_cancelButton setHidden:YES];
+    [_citySelector setHidden:YES];
+//    [_cover setHidden:YES];
+}
+
+#pragma mark UIPickerView回调
+//确定picker的轮子个数
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+//确定picker的每个轮子的item数
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [_allCity count];
+}
+
+//确定每个轮子的每一项显示什么内容
+#pragma mark 实现协议UIPickerViewDelegate方法
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    CityModel *city = [_allCity objectAtIndex:row];
+    return city.cnName;
 }
 
 @end

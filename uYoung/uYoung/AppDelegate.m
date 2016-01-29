@@ -14,6 +14,7 @@
 #import "QQAPIDemoEntry.h"
 #endif
 
+#import "UserDetailModel.h"
 #import "CityModel.h"
 #import "UploadImageUtil.h"
 #import "WeiboUser.h"
