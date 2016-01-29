@@ -212,7 +212,9 @@
 }
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
-    [self showFilter:nil];
+    if (_isFilter) {
+        [self showFilter:nil];
+    }
 }
 
 - (void)initPicker{

@@ -139,24 +139,26 @@
 }
 
 - (void)reloadDataWithArray:(NSArray*)arr{
+    NSArray *data;
     if(arr!=nil&&![arr isEqual:[NSNull null]]&&[arr count]>0){
-        NSArray *data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
+        data = [MTLJSONAdapter modelsOfClass:[ActivityModel class] fromJSONArray:arr error:nil];
         [self.activityListData removeAllObjects];
         self.activityListData = [[NSMutableArray alloc] initWithArray:data];
         [self.tableView reloadData];
         [self.tableView reloadInputViews];
         self.currentPage = self.currentPage + 1;
-        if (self.activityListData==nil||[self.activityListData count]==0) {
-            [_nodata setHidden:YES];
-        }
         [_nodata setHidden:YES];
     }else{
-        if (self.activityListData==nil||[self.activityListData count]==0) {
-            [_nodata setHidden:NO];
-        }else{
-            [_nodata setHidden:YES];
-        }
+        data = [[NSArray alloc]init];
+        [_nodata setHidden:NO];
     }
+    if (self.activityListData!=nil&&[self.activityListData count]>0) {
+        [self.activityListData removeAllObjects];
+    }
+    
+    self.activityListData = [[NSMutableArray alloc] initWithArray:data];
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
 }
 
 - (void)getDataFromNet:(BOOL)isTop{

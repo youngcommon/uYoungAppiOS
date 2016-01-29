@@ -160,7 +160,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_contentView addSubview:_organizer];
     
     //分享按钮
-    UIButton *shareButton = [[UIButton alloc]initWithFrame:CGRectMake(_organizer.frame.origin.x+_organizer.frame.size.width+5, _organizer.frame.origin.y+_organizer.frame.size.height/2-25, 50, 50)];
+    UIButton *shareButton = [[UIButton alloc]initWithFrame:CGRectMake(_organizer.frame.origin.x+_organizer.frame.size.width+5, _organizer.frame.origin.y+_organizer.frame.size.height/2-11, 22, 22)];
     [shareButton setImage:[UIImage imageNamed:@"uyoung.bundle/share"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(shareActivity) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:shareButton];
