@@ -635,8 +635,9 @@
     if(_actType==0){
         _actType = 1;
     }
+    
     NSInteger uid = user.id;
-    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", fromTimeFormat,@"strBeginTime", endTimeFormat,@"strEndTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", @(1),@"realNum", nil];
+    NSDictionary *param = [[NSDictionary alloc]initWithObjectsAndKeys:title,@"title", address,@"address", actDescHtml,@"description", fromTimeFormat,@"strBeginTime", endTimeFormat,@"strEndTime", @(_actNum),@"needNum", @(_actType),@"activityType", @(_priceType),@"feeType", @(uid),@"oriUserId", @(1),@"realNum", @(user.cityId),@"cityId", nil];
     [ActivityPublish publishActWithDict:param delegate:self];
     
     [self.view.window showHUDWithText:@"发布成功" Type:ShowLoading Enabled:YES];

@@ -252,8 +252,12 @@
     
     [_cityButton setTitle:_cityName forState:UIControlStateNormal];
     [self cancelPressed:nil];
+    
+    //刷新列表
+    [self.view.window showHUDWithText:@"加载中..." Type:ShowLoading Enabled:YES];
+    [self.activityTabViewController resetActivityList:[[NSDictionary alloc]init]];
 }
-
+    
 -(void) cancelPressed:(id)sender{
     [_selectedButton setHidden:YES];
     [_cancelButton setHidden:YES];
