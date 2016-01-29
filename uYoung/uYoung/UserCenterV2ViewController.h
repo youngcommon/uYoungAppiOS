@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 @property (assign, nonatomic) BOOL isSelf;
 @property (assign, nonatomic) CGRect oriFrame;
+@property (assign, nonatomic) NSInteger tag;
 
 @property (strong, nonatomic) IBOutlet UIButton *sysconfigButton;
 @property (strong, nonatomic) IBOutlet UIImageView *headerImg;
@@ -26,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *albumLineLabel;
 @property (strong, nonatomic) IBOutlet UILabel *actLineLabel;
+@property (strong, nonatomic) IBOutlet UIButton *createAlbumButton;
+@property (strong, nonatomic) IBOutlet UIButton *createActButton;
 
 @property (strong, nonatomic) UILabel *companyLabel;
 @property (strong, nonatomic) UILabel *currentTitleLabel;
@@ -39,4 +42,5 @@
 - (IBAction)back:(id)sender;
 - (IBAction)sysconfig:(id)sender;
 - (IBAction)editUser:(id)sender;
+- (IBAction)create:(UIBUtton*)sender;
 @end

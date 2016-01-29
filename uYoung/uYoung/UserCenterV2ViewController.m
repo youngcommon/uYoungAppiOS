@@ -12,6 +12,8 @@
 #import "NSString+StringUtil.h"
 #import "EditUserViewController.h"
 #import "UIImageView+WebCache.h"
+#import "AlbumDetailViewController.h"
+#import "CreateActivityController.h"
 
 @interface UserCenterV2ViewController ()
 
@@ -21,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _tag = 0;
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
@@ -58,6 +62,8 @@
     if (loginUser.id!=_userDetailModel.id) {//说明不是自己的详情
         [_editButton setHidden:YES];
         [_sysconfigButton setHidden:YES];
+        [_createAlbumButton setHidden:YES];
+        [_createActButton setHidden:YES];
         _isSelf = NO;
     }else{
         _isSelf = YES;
@@ -136,4 +142,56 @@
     EditUserViewController *editUserViewCtl = [[EditUserViewController alloc] initWithNibName:@"EditUserViewController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:editUserViewCtl animated:YES];
 }
+
+- (IBAction)create:(id)sender {
+    if (_tag==0) {
+        [self createAlbum];
+    }else{
+        [self createActivity];
+    }
+}
+
+- (void)createAlbum{
+    UserDetailModel *user = [UserDetailModel currentUser];
+    AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
+    viewCtl.ownerUid = user.id;
+    viewCtl.nickNameStr = user.nickName;
+    viewCtl.userHeaderUrl = user.avatarUrl;
+    viewCtl.createDateStr = [self getNowDateStr];
+    viewCtl.isNew = YES;
+    [self.navigationController pushViewController:viewCtl animated:YES];
+    
+}
+
+- (void)createActivity{
+    CreateActivityController *ctl = [[CreateActivityController alloc] initWithNibName:@"CreateActivityController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:ctl animated:YES];
+}
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event{
+    if (_cover.hidden==NO) {
+        //当用户点击他处时，收回弹出的选择view
+        [_cover setHidden:YES];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationDuration:0.3];
+        [_sysCtl.view setFrame:_oriFrame];
+        [UIView commitAnimations];
+    }
+}
+
+- (NSString*)getNowDateStr{
+    NSDate *date = [NSDate date];
+    //设置时间输出格式：
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    [df setTimeZone:[NSTimeZone localTimeZone]];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSString * na = [df stringFromDate:date];
+    return na;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
 @end
