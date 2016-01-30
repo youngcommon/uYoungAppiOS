@@ -28,11 +28,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *actLineLabel;
 @property (strong, nonatomic) IBOutlet UIButton *createAlbumButton;
 @property (strong, nonatomic) IBOutlet UIButton *createActButton;
+@property (strong, nonatomic) IBOutlet UIButton *detailButton;
 
 @property (strong, nonatomic) UILabel *companyLabel;
 @property (strong, nonatomic) UILabel *currentTitleLabel;
 @property (strong, nonatomic) UILabel *cameraLabel;
 @property (strong, nonatomic) UIView *cover;
+@property (strong, nonatomic) UIButton *createdActButton;
+@property (strong, nonatomic) UIButton *signedActButton;
 @property (strong, nonatomic) SystemConfigViewController *sysCtl;
 @property (strong, nonatomic) ActivityTableViewController *postActCtl;
 @property (strong, nonatomic) ActivityTableViewController *signedActCtl;
@@ -42,4 +45,5 @@
 - (IBAction)sysconfig:(id)sender;
 - (IBAction)editUser:(id)sender;
 - (IBAction)create:(UIButton*)sender;
+- (IBAction)toggleUserDetail:(UIButton *)sender;
 @end

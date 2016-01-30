@@ -11,6 +11,7 @@
                 <outlet property="albumLineLabel" destination="NXv-kg-atD" id="IXd-Wn-NHw"/>
                 <outlet property="createActButton" destination="vxd-FB-fXs" id="SGV-YI-IIU"/>
                 <outlet property="createAlbumButton" destination="CBu-IH-ei3" id="z2g-wq-gSp"/>
+                <outlet property="detailButton" destination="DqH-p1-3GW" id="tuX-cP-DKq"/>
                 <outlet property="editButton" destination="mm2-pW-A2A" id="dbp-zT-f70"/>
                 <outlet property="genderImg" destination="rh0-YB-vyw" id="XTM-Lq-TVq"/>
                 <outlet property="headerImg" destination="bup-Ek-X3T" id="j1h-2w-WEM"/>
@@ -60,7 +61,7 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="rw8-KM-8ME"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2t-0J-GVq">
+                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2t-0J-GVq">
                     <rect key="frame" x="0.0" y="60" width="320" height="78"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uyoung.bundle/logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bup-Ek-X3T">
@@ -107,20 +108,33 @@
                                 <action selector="editUser:" destination="-1" eventType="touchUpInside" id="ZwQ-UA-YNn"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqH-p1-3GW">
+                            <rect key="frame" x="0.0" y="64" width="320" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="Dzw-9t-W93"/>
+                            </constraints>
+                            <state key="normal" image="uyoung.bundle/showdetail.png"/>
+                            <connections>
+                                <action selector="toggleUserDetail:" destination="-1" eventType="touchUpInside" id="hK9-gs-QHg"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.41568627450980389" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="DqH-p1-3GW" secondAttribute="trailing" id="Da3-Dd-oxi"/>
                         <constraint firstItem="XYZ-aV-bff" firstAttribute="leading" secondItem="xSe-Q4-pcd" secondAttribute="leading" id="DlN-hB-Pue"/>
                         <constraint firstItem="mm2-pW-A2A" firstAttribute="top" secondItem="I2t-0J-GVq" secondAttribute="top" constant="24" id="Gfp-Uf-IrF"/>
                         <constraint firstItem="bup-Ek-X3T" firstAttribute="top" secondItem="I2t-0J-GVq" secondAttribute="top" constant="6" id="NJ4-yy-8g1"/>
                         <constraint firstItem="rh0-YB-vyw" firstAttribute="centerY" secondItem="xSe-Q4-pcd" secondAttribute="centerY" id="TKE-rf-wfg"/>
                         <constraint firstAttribute="trailing" secondItem="mm2-pW-A2A" secondAttribute="trailing" constant="15" id="Uvj-b3-hIX"/>
+                        <constraint firstItem="DqH-p1-3GW" firstAttribute="leading" secondItem="I2t-0J-GVq" secondAttribute="leading" id="d2s-go-lkg"/>
                         <constraint firstItem="bup-Ek-X3T" firstAttribute="leading" secondItem="I2t-0J-GVq" secondAttribute="leading" constant="8" id="gcw-PA-wZN"/>
                         <constraint firstItem="xSe-Q4-pcd" firstAttribute="top" secondItem="I2t-0J-GVq" secondAttribute="top" constant="10" id="gie-pB-20B"/>
                         <constraint firstItem="xSe-Q4-pcd" firstAttribute="leading" secondItem="bup-Ek-X3T" secondAttribute="trailing" constant="13" id="jVN-aM-SBH"/>
                         <constraint firstItem="XYZ-aV-bff" firstAttribute="top" secondItem="rh0-YB-vyw" secondAttribute="bottom" constant="3" id="oGn-UD-8Ml"/>
                         <constraint firstItem="rh0-YB-vyw" firstAttribute="leading" secondItem="xSe-Q4-pcd" secondAttribute="trailing" constant="6" id="sYX-pC-5e9"/>
                         <constraint firstItem="mm2-pW-A2A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rh0-YB-vyw" secondAttribute="trailing" constant="94" id="uss-42-OsW"/>
+                        <constraint firstAttribute="bottom" secondItem="DqH-p1-3GW" secondAttribute="bottom" id="vIf-EV-xwj"/>
                         <constraint firstAttribute="height" constant="78" id="vPN-99-UfL"/>
                     </constraints>
                 </view>
@@ -145,16 +159,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="t0f-MM-BCS">
-                    <rect key="frame" x="0.0" y="164" width="320" height="116"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R9E-EP-B6O">
-                        <size key="itemSize" width="160" height="100"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McO-wQ-NtR">
                     <rect key="frame" x="0.0" y="288" width="84" height="12"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,20 +180,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vWj-R7-JTb">
-                    <rect key="frame" x="45" y="308" width="275" height="260"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJR-Jj-A0E">
-                    <rect key="frame" x="0.0" y="308" width="46" height="126"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="发布"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-9o-NMt">
-                    <rect key="frame" x="0.0" y="435" width="46" height="133"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="参加"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBu-IH-ei3">
                     <rect key="frame" x="287" y="140" width="25" height="25"/>
                     <constraints>
@@ -262,6 +252,7 @@
         <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
         <image name="uyoung.bundle/plusone.png" width="320" height="568"/>
         <image name="uyoung.bundle/settings.png" width="320" height="568"/>
+        <image name="uyoung.bundle/showdetail.png" width="320" height="568"/>
         <image name="uyoung.bundle/woman.png" width="320" height="568"/>
     </resources>
 </document>

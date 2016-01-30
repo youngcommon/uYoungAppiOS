@@ -13,6 +13,7 @@
 #import "UIImageView+LazyInit.h"
 #import "UIWindow+YoungHUD.h"
 #import "UYoungAlertViewUtil.h"
+#import "UserCenterV2ViewController.h"
 
 @interface RootViewController ()
 
@@ -151,7 +152,11 @@
 }
 
 - (void)gotoUserCenter{
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+//    UserCenterController *userCenter = [[UserCenterController all3oc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+//    userCenter.userDetailModel = [UserDetailModel currentUser];
+//    [self.navigationController pushViewController:userCenter animated:YES];
+    
+    UserCenterV2ViewController *userCenter = [[UserCenterV2ViewController alloc] initWithNibName:@"UserCenterV2ViewController" bundle:[NSBundle mainBundle]];
     userCenter.userDetailModel = [UserDetailModel currentUser];
     [self.navigationController pushViewController:userCenter animated:YES];
 }

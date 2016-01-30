@@ -50,6 +50,47 @@
     [_cover setHidden:YES];
     [self.view addSubview:_cover];
     
+    CGFloat x = 0;
+    CGFloat y = 0;
+    //用户相册
+    self.albumCtl = [[AlbumTableViewController alloc]init];
+    self.albumCtl.userId = _userDetailModel.id;
+    self.albumCtl.tableView.showsHorizontalScrollIndicator = NO;
+    self.albumCtl.tableView.showsVerticalScrollIndicator = NO;
+    [self addChildViewController:self.albumCtl];
+    [self.view addSubview:self.albumCtl.view];
+    
+    y = self.createAlbumButton.frame.origin.y + self.createAlbumButton.frame.size.height + 5;
+    CGRect frame = CGRectMake(x, y, mScreenWidth, 100);
+    self.albumCtl.tableView.frame = frame;
+    [self.albumCtl.tableView setBackgroundColor:[UIColor clearColor]];
+    self.albumCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    y = self.createActButton.frame.origin.y + self.createActButton.frame.size.height + 5;
+    //创建的活动按钮
+    CGFloat buttonH = (mScreenHeight-y)/2;
+    self.createdActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, 46, buttonH)];
+    [self.createdActButton setTitle:@"创建" forState:UIControlStateNormal];
+    [self.view addSubview:self.createdActButton];
+    //参与的活动按钮
+    self.signedActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y+buttonH, 46, buttonH)];
+    [self.signedActButton setTitle:@"参与" forState:UIControlStateNormal];
+    [self.view addSubview:self.signedActButton];
+    //用户创建的活动列表
+    self.postActCtl = [[ActivityTableViewController alloc]init];
+    self.postActCtl.userid = _userDetailModel.id;
+    self.postActCtl.showHeader = NO;
+    [self addChildViewController:self.postActCtl];
+    [self.view addSubview:self.postActCtl.view];
+    
+    x = x + self.createdActButton.frame.size.width;
+    frame = CGRectMake(x, y, mScreenWidth-x, mScreenHeight-y);
+    self.postActCtl.tableView.frame = frame;
+    [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
+    self.postActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //用户参与的活动列表
+    
     //添加系统设置页面
     _sysCtl = [[SystemConfigViewController alloc]initWithNibName:@"SystemConfigViewController" bundle:[NSBundle mainBundle]];
     _sysCtl.view.frame = CGRectMake(mScreenWidth, 0, _sysCtl.view.frame.size.width, self.view.frame.size.height);
@@ -148,6 +189,9 @@
     }else{
         [self createActivity];
     }
+}
+
+- (IBAction)toggleUserDetail:(UIButton *)sender {
 }
 
 - (void)createAlbum{
