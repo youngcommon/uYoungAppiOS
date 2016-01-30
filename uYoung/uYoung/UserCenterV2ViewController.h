@@ -17,7 +17,26 @@
 @property (strong, nonatomic) UserDetailModel *userDetailModel;
 @property (assign, nonatomic) BOOL isSelf;
 @property (assign, nonatomic) CGRect oriFrame;
+@property (assign, nonatomic) CGRect headerOriFrame;
+@property (assign, nonatomic) CGRect headerNewFrame;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerViewCons;
 
+//headerView under
+@property (strong, nonatomic) IBOutlet UILabel *companyTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *companyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *positionTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *positionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *equipTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *equipLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mobileTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mobileLabel;
+
+//headerView above
+
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UIView *albumView;
 @property (strong, nonatomic) IBOutlet UIButton *sysconfigButton;
 @property (strong, nonatomic) IBOutlet UIImageView *headerImg;
 @property (strong, nonatomic) IBOutlet UILabel *nickLabel;
@@ -30,9 +49,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *createActButton;
 @property (strong, nonatomic) IBOutlet UIButton *detailButton;
 
-@property (strong, nonatomic) UILabel *companyLabel;
-@property (strong, nonatomic) UILabel *currentTitleLabel;
-@property (strong, nonatomic) UILabel *cameraLabel;
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) UIButton *createdActButton;
 @property (strong, nonatomic) UIButton *signedActButton;

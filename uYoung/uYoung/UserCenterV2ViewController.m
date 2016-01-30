@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self hiddenHeaderViewLables:0];
+    
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
         ctl.source = @"usercenter";
@@ -61,10 +63,11 @@
     [self.view addSubview:self.albumCtl.view];
     
     y = self.createAlbumButton.frame.origin.y + self.createAlbumButton.frame.size.height + 5;
-    CGRect frame = CGRectMake(x, y, mScreenWidth, 100);
+    CGFloat height = self.createActButton.frame.origin.y - 5;
+    CGRect frame = CGRectMake(x, y, self.view.frame.size.width, height - y);
     self.albumCtl.tableView.frame = frame;
     [self.albumCtl.tableView setBackgroundColor:[UIColor clearColor]];
-    self.albumCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.albumCtl.collectionView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     y = self.createActButton.frame.origin.y + self.createActButton.frame.size.height + 5;
     //创建的活动按钮
@@ -84,7 +87,7 @@
     [self.view addSubview:self.postActCtl.view];
     
     x = x + self.createdActButton.frame.size.width;
-    frame = CGRectMake(x, y, mScreenWidth-x, mScreenHeight-y);
+    frame = CGRectMake(x, y, self.view.frame.size.width-x, self.view.frame.size.height-y);
     self.postActCtl.tableView.frame = frame;
     [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
     self.postActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -107,6 +110,46 @@
     }else{
         _isSelf = YES;
     }
+    
+    [self.view bringSubviewToFront:self.headerView];
+}
+
+- (void)hiddenHeaderViewLables:(NSTimeInterval)time{
+    self.companyTitleLabel.alpha = 0;
+    self.companyLabel.alpha = 0;
+    self.positionTitleLabel.alpha = 0;
+    self.positionLabel.alpha = 0;
+    self.equipTitleLabel.alpha = 0;
+    self.equipLabel.alpha = 0;
+    self.emailTitleLabel.alpha = 0 ;
+    self.emailLabel.alpha = 0;
+    self.mobileTitleLabel.alpha = 0;
+    self.mobileLabel.alpha = 0;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:time];
+    [self.headerViewCons setConstant:76];
+    [UIView commitAnimations];
+    [self.detailButton setImage:[UIImage imageNamed:@"uyoung.bundle/showdetail"] forState:UIControlStateNormal];
+}
+
+- (void)showHeaderViewLables:(NSTimeInterval)time{
+    self.companyTitleLabel.alpha = 1;
+    self.companyLabel.alpha = 1;
+    self.positionTitleLabel.alpha = 1;
+    self.positionLabel.alpha = 1;
+    self.equipTitleLabel.alpha = 1;
+    self.equipLabel.alpha = 1;
+    self.emailTitleLabel.alpha = 1;
+    self.emailLabel.alpha = 1;
+    self.mobileTitleLabel.alpha = 1;
+    self.mobileLabel.alpha = 1;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:time];
+    [self.headerViewCons setConstant:190];
+    [UIView commitAnimations];
+    [self.detailButton setImage:[UIImage imageNamed:@"uyoung.bundle/hidedetail"] forState:UIControlStateNormal];
 }
 
 - (void)popLoginView{
@@ -150,9 +193,13 @@
     NSString *comp = self.userDetailModel.company;
     [self.companyLabel setText:[NSString isBlankString:comp]?@"暂无数据":comp];
     NSString *title = self.userDetailModel.position;
-    [self.currentTitleLabel setText:[NSString isBlankString:title]?@"暂无数据":title];
+    [self.positionLabel setText:[NSString isBlankString:title]?@"暂无数据":title];
     NSString *equipment = self.userDetailModel.equipment;
-    [self.cameraLabel setText:[NSString isBlankString:equipment]?@"暂无数据":equipment];
+    [self.equipLabel setText:[NSString isBlankString:equipment]?@"暂无数据":equipment];
+    NSString *email = self.userDetailModel.email;
+    [self.emailLabel setText:[NSString isBlankString:email]?@"暂无数据":email];
+    NSString *mobile = self.userDetailModel.phone;
+    [self.mobileLabel setText:[NSString isBlankString:mobile]?@"暂无数据":mobile];
     [self.genderImg setImage:(self.userDetailModel.gender==1?[UIImage imageNamed:@"uyoung.bundle/man"]:[UIImage imageNamed:@"uyoung.bundle/woman"])];
     
 }
@@ -192,6 +239,12 @@
 }
 
 - (IBAction)toggleUserDetail:(UIButton *)sender {
+    CGFloat cons = self.headerViewCons.constant;
+    if (cons==76) {
+        [self showHeaderViewLables:0.5];
+    }else{
+        [self hiddenHeaderViewLables:0.5];
+    }
 }
 
 - (void)createAlbum{
