@@ -220,6 +220,16 @@ static NSString * const reuseIdentifier = @"Cell";
                     [self.allPics reloadData];
                     [self.allPics reloadInputViews];
                 }
+                NSString *url = @"";
+                if ([self.pics count]>0) {//如果相册内照片全部被删除，则更新封面
+                    //将最后一张照片作为封面更新
+                    PhotoDetailModel *photo = self.pics[[self.pics count]-1];
+                    NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+                    NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
+                    url = [qiniuHost stringByAppendingString:photo.photoUrl];
+                }
+                //更新相册封面
+                [CreateAlbum updateAlbumCover:url albumId:self.albumid success:nil];
                 _delPhotoList = [[NSMutableString alloc]initWithString:@","];
             }];
         }
