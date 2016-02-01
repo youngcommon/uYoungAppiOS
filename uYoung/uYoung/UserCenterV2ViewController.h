@@ -34,9 +34,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *emailLabel;
 @property (strong, nonatomic) IBOutlet UILabel *mobileTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *mobileLabel;
-
 //headerView above
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerViewBack;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *albumView;
 @property (strong, nonatomic) IBOutlet UIButton *sysconfigButton;
@@ -51,6 +51,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *createActButton;
 @property (strong, nonatomic) IBOutlet UIButton *detailButton;
 
+@property (strong, nonatomic) UIImageView *backBlurHeader;
 @property (strong, nonatomic) UIView *cover;
 @property (strong, nonatomic) UIButton *createdActButton;
 @property (strong, nonatomic) UIButton *signedActButton;

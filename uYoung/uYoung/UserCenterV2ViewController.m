@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "AlbumDetailViewController.h"
 #import "CreateActivityController.h"
+#import <UIImageView+LBBlurredImage.h>
 
 @interface UserCenterV2ViewController ()
 
@@ -26,6 +27,8 @@
     
     _tag = 10;
     [self hiddenHeaderViewLables:0];
+    
+    [self.headerViewBack setImage:[UIImage imageNamed:@"uyoung.bundle/usercenterback"]];
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
         LoginViewController *ctl = [[LoginFilterUtil shareInstance]getLoginViewController];
@@ -123,6 +126,13 @@
     
     [self.view bringSubviewToFront:self.createdActButton];
     [self.view bringSubviewToFront:self.signedActButton];
+    
+    //创建背底
+    self.backBlurHeader = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    self.backBlurHeader.contentMode = UIViewContentModeScaleToFill;
+    [self.backBlurHeader setImage:[UIImage imageNamed:@"uyoung.bundle/userback_1920"]];
+    self.backBlurHeader.alpha = 0.5;
+    [self.view insertSubview:self.backBlurHeader atIndex:0];
 }
 
 - (void)hiddenHeaderViewLables:(NSTimeInterval)time{
@@ -304,6 +314,12 @@
 - (UIImage *)getScaleUIImage:(NSString*)name{
     UIImage *bubble = [UIImage imageNamed:name];
     UIEdgeInsets capInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+}
+
+- (UIImage *)getScaleImage:(UIImage*)image{
+    UIImage *bubble = image;
+    UIEdgeInsets capInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
 }
 
