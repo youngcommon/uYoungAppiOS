@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _tag = 10;
     [self hiddenHeaderViewLables:0];
     
     if (_userDetailModel==nil||_userDetailModel.id==0) {
@@ -45,40 +46,32 @@
     //取消登录监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(popLoginView) name:@"popLoginView" object:nil];
     
-    //添加系统设置遮罩
-    _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
-    [_cover setBackgroundColor:[UIColor lightGrayColor]];
-    _cover.alpha = 0.5;
-    [_cover setHidden:YES];
-    [self.view addSubview:_cover];
-    
     CGFloat x = 0;
     CGFloat y = 0;
     //用户相册
-    self.albumCtl = [[AlbumTableViewController alloc]init];
+    self.albumCtl = [[AlbumCollectionViewController alloc]init];
     self.albumCtl.userId = _userDetailModel.id;
-    self.albumCtl.tableView.showsHorizontalScrollIndicator = NO;
-    self.albumCtl.tableView.showsVerticalScrollIndicator = NO;
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
+    self.albumCtl.collectionView.frame = frame;
+    [self.albumCtl.collectionView setBackgroundColor:[UIColor clearColor]];
     [self addChildViewController:self.albumCtl];
-    [self.view addSubview:self.albumCtl.view];
+    [self.albumView addSubview:self.albumCtl.view];
     
-    y = self.createAlbumButton.frame.origin.y + self.createAlbumButton.frame.size.height + 5;
-    CGFloat height = self.createActButton.frame.origin.y - 5;
-    CGRect frame = CGRectMake(x, y, self.view.frame.size.width, height - y);
-    self.albumCtl.tableView.frame = frame;
-    [self.albumCtl.tableView setBackgroundColor:[UIColor clearColor]];
-//    self.albumCtl.collectionView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    y = self.createActButton.frame.origin.y + self.createActButton.frame.size.height + 5;
+    y = self.createActButton.frame.origin.y + self.createActButton.frame.size.height;
     //创建的活动按钮
     CGFloat buttonH = (mScreenHeight-y)/2;
-    self.createdActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, 46, buttonH)];
-    [self.createdActButton setTitle:@"创建" forState:UIControlStateNormal];
+    self.createdActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, 48, buttonH)];
+    [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
+    [self.createdActButton addTarget:self action:@selector(toggleActivityList) forControlEvents:UIControlEventTouchUpInside];
+    [self.createdActButton setTag:10];
     [self.view addSubview:self.createdActButton];
     //参与的活动按钮
-    self.signedActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y+buttonH, 46, buttonH)];
-    [self.signedActButton setTitle:@"参与" forState:UIControlStateNormal];
+    self.signedActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y+buttonH, 48, buttonH)];
+    [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
+    [self.signedActButton addTarget:self action:@selector(toggleActivityList) forControlEvents:UIControlEventTouchUpInside];
+    [self.signedActButton setTag:11];
     [self.view addSubview:self.signedActButton];
+    
     //用户创建的活动列表
     self.postActCtl = [[ActivityTableViewController alloc]init];
     self.postActCtl.userid = _userDetailModel.id;
@@ -86,13 +79,30 @@
     [self addChildViewController:self.postActCtl];
     [self.view addSubview:self.postActCtl.view];
     
-    x = x + self.createdActButton.frame.size.width;
+    x = x + self.createdActButton.frame.size.width - 4;
     frame = CGRectMake(x, y, self.view.frame.size.width-x, self.view.frame.size.height-y);
     self.postActCtl.tableView.frame = frame;
     [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
     self.postActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //用户参与的活动列表
+    self.signedActCtl = [[ActivityTableViewController alloc]init];
+    self.signedActCtl.userid = _userDetailModel.id;
+    self.signedActCtl.showHeader = NO;
+    self.signedActCtl.isSigned = YES;
+    self.signedActCtl.tableView.frame = frame;
+    [self.signedActCtl.tableView setBackgroundColor:[UIColor clearColor]];
+    self.signedActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self addChildViewController:self.signedActCtl];
+    [self.view addSubview:self.signedActCtl.view];
+    [self.signedActCtl.tableView setHidden:YES];
+    
+    //添加系统设置遮罩
+    _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [_cover setBackgroundColor:[UIColor lightGrayColor]];
+    _cover.alpha = 0.5;
+    [_cover setHidden:YES];
+    [self.view addSubview:_cover];
     
     //添加系统设置页面
     _sysCtl = [[SystemConfigViewController alloc]initWithNibName:@"SystemConfigViewController" bundle:[NSBundle mainBundle]];
@@ -111,7 +121,8 @@
         _isSelf = YES;
     }
     
-    [self.view bringSubviewToFront:self.headerView];
+    [self.view bringSubviewToFront:self.createdActButton];
+    [self.view bringSubviewToFront:self.signedActButton];
 }
 
 - (void)hiddenHeaderViewLables:(NSTimeInterval)time{
@@ -288,6 +299,28 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+- (UIImage *)getScaleUIImage:(NSString*)name{
+    UIImage *bubble = [UIImage imageNamed:name];
+    UIEdgeInsets capInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+}
+
+- (void)toggleActivityList{
+    if (_tag==10) {//说明参与的活动按钮被点击
+        _tag = 11;
+        [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt"] forState:UIControlStateNormal];
+        [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h"] forState:UIControlStateNormal];
+        [self.postActCtl.tableView setHidden:YES];
+        [self.signedActCtl.tableView setHidden:NO];
+    }else{//说明创建的活动被点击
+        _tag = 10;
+        [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
+        [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
+        [self.postActCtl.tableView setHidden:NO];
+        [self.signedActCtl.tableView setHidden:YES];
+    }
 }
 
 @end

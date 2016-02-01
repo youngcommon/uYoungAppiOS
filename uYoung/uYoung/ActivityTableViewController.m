@@ -132,6 +132,10 @@
     [_params setObject:@(cityId) forKey:@"cityId"];
     [_params setObject:@(pageSize) forKey:@"pageSize"];
     [_params setObject:@(1) forKey:@"pageNum"];
+    if (_isSigned) {
+        [_params setObject:@(_userid) forKey:@"uid"];
+    }
+    [_params setObject:@(_isSigned) forKey:@"isSigned"];
     if (_userid>0) {
         [_params setObject:@(_userid) forKey:@"creatorUid"];
     }
@@ -172,6 +176,10 @@
     }
     [_params setObject:@(cityId) forKey:@"cityId"];
     [_params setObject:@(pageSize) forKey:@"pageSize"];
+    if (_isSigned) {
+        [_params setObject:@(_userid) forKey:@"uid"];
+    }
+    [_params setObject:@(_isSigned) forKey:@"isSigned"];
     if (_userid>0) {
         [_params setObject:@(_userid) forKey:@"creatorUid"];
     }

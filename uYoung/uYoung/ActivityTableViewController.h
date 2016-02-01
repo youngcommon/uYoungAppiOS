@@ -22,6 +22,7 @@
 @property (nonatomic, assign) BOOL noMorePage;
 @property (nonatomic, assign) long userid;
 @property (nonatomic, assign) BOOL showHeader;
+@property (nonatomic, assign) BOOL isSigned;//NO：自己发布的活动；YES：参加的活动
 
 @property (strong, nonatomic) UIImageView *nodata;
 

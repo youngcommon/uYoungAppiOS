@@ -29,12 +29,27 @@
     long userid = [[params objectForKey:@"creatorUid"]longValue];
     if (userid<=0) {
         [params removeObjectForKey:@"creatorUid"];
+    }else{
+        [params removeObjectForKey:@"cityId"];
     }
     
-//    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
-//    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:params stamp:stamp];
+    BOOL isSigned = NO;
+    if ([[param allKeys]containsObject:@"isSigned"]) {
+        isSigned = [param[@"isSigned"]boolValue];
+    }
     
-    NSString *url = [uyoung_host stringByAppendingString:@"activity/getPageByCondition"];
+    NSString *url;
+    if (isSigned) {
+        url = [uyoung_host stringByAppendingString:@"activity/signUp/my"];
+        [params removeObjectForKey:@"creatorUid"];
+        [params removeObjectForKey:@"cityId"];
+        [params removeObjectForKey:@"createTimeSort"];
+        [params removeObjectForKey:@"isSigned"];
+        [params removeObjectForKey:@"sort"];
+        [params removeObjectForKey:@"beginTimeSort"];
+    }else{
+        url = [uyoung_host stringByAppendingString:@"activity/getPageByCondition"];
+    }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

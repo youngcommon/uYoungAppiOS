@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ActivityTableViewController.h"
-#import "AlbumTableViewController.h"
+//#import "AlbumTableViewController.h"
+#import "AlbumCollectionViewController.h"
 #import "UserDetailModel.h"
 #import "SystemConfigViewController.h"
 
@@ -19,6 +20,7 @@
 @property (assign, nonatomic) CGRect oriFrame;
 @property (assign, nonatomic) CGRect headerOriFrame;
 @property (assign, nonatomic) CGRect headerNewFrame;
+@property (assign, nonatomic) NSInteger tag;//标记当前被选中的活动列表按钮
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerViewCons;
 
 //headerView under
@@ -55,7 +57,7 @@
 @property (strong, nonatomic) SystemConfigViewController *sysCtl;
 @property (strong, nonatomic) ActivityTableViewController *postActCtl;
 @property (strong, nonatomic) ActivityTableViewController *signedActCtl;
-@property (strong, nonatomic) AlbumTableViewController *albumCtl;
+@property (strong, nonatomic) AlbumCollectionViewController *albumCtl;
 
 - (IBAction)back:(id)sender;
 - (IBAction)sysconfig:(id)sender;

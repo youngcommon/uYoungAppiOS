@@ -25,12 +25,13 @@
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSDictionary *dict = [responseObject objectForKey:@"resultData"];
+            /*NSDictionary *dict = [responseObject objectForKey:@"resultData"];
             NSString *sessionid = dict[@"sessionId"];
             NSInteger uid = [dict[@"uid"]integerValue];
             NSData *sessiondata = [NSKeyedArchiver archivedDataWithRootObject:sessionid];
             [[NSUserDefaults standardUserDefaults] setObject:sessiondata forKey:@"sessionid"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSUserDefaults standardUserDefaults] synchronize];*/
+            long uid = [[responseObject objectForKey:@"resultData"]longValue];
             [delegate postThirdData:uid];
         }else{
             [delegate postThirdData:0];
@@ -55,13 +56,17 @@
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
         if (result==100) {
-            NSDictionary *dict = [responseObject objectForKey:@"resultData"];
-            NSString *sessionid = dict[@"sessionId"];
+            long uid = [[responseObject objectForKey:@"resultData"]longValue];
+            /*NSDictionary *dict = [responseObject objectForKey:@"resultData"];
+            NSString *sessionid = @"";
+            if ([[dict allKeys]containsObject:@"sessionId"]) {
+                sessionid = dict[@"sessionId"];
+            }
             NSInteger uid = [dict[@"uid"]integerValue];
             
             NSData *sessiondata = [NSKeyedArchiver archivedDataWithRootObject:sessionid];
             [[NSUserDefaults standardUserDefaults] setObject:sessiondata forKey:@"sessionid"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSUserDefaults standardUserDefaults] synchronize];*/
             success(uid);
         }else{
             success(0);
