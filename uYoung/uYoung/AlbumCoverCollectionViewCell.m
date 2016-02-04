@@ -23,9 +23,9 @@
 - (void)fillDataWithAlbumModel:(AlbumModel*)model{
     [_albumNameLabel setText:model.albumName];
     if (model!=nil&&[NSString isBlankString:model.firstPhotoUrl]==NO) {
-        [_coverImg lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"pic621" placeholdImg:@"uyoung.bundle/no_cover"];
+        [_coverImg lazyInitSmallImageWithUrl:model.firstPhotoUrl suffix:@"albumcover128X90" placeholdImg:@"uyoung.bundle/no_album_cover"];
     }else{
-        [_coverImg setImage:[UIImage imageNamed:@"uyoung.bundle/no_cover"]];
+        [_coverImg setImage:[UIImage imageNamed:@"uyoung.bundle/no_album_cover"]];
     }
     [_coverImg setContentMode:UIViewContentModeScaleToFill];
 }

@@ -44,7 +44,11 @@
 //        BOOL isCached = [manager cachedImageExistsForURL:[NSURL URLWithString:url]];
 //        NSLog(@"##图片:%@-->##%@", url, isCached?@"已缓存":@"未缓存");
         [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:imagenamed] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-            [img setImage:image];
+            if (error!=nil&&image==nil) {
+                [img setImage:[UIImage imageNamed:imagenamed]];
+            }else{
+                [img setImage:image];
+            }
         }];
     }else{
         [self setImage:[UIImage imageNamed:imagenamed]];
