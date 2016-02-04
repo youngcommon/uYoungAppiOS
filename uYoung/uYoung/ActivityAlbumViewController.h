@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSString *actTitleStr;
 @property (assign, nonatomic) long actId;
+@property (assign, nonatomic) long ownerUid;
 @property (strong, nonatomic) UIImageView *nodata;
 @property (strong, nonatomic) IBOutlet UILabel *actTitle;
 @property (weak, nonatomic) IBOutlet UIView *uploadAlbumView;

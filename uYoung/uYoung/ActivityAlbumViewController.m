@@ -36,7 +36,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.albums addSubview:_nodata];
     [_nodata setHidden:YES];
     
-    if(_hadSigned&&!_hadAlbum){
+    //判断用户是否已经签到过
+    
+    UserDetailModel *loginuser = [UserDetailModel currentUser];
+    if(((loginuser!=nil&&loginuser.id>0)||_hadSigned||loginuser.id==_ownerUid)&&!_hadAlbum){
         [_uploadAlbumView setHidden:NO];
     }else{
         [_uploadAlbumView setHidden:YES];

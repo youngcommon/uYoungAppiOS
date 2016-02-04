@@ -105,18 +105,18 @@ static NSString * const reuseIdentifier = @"Cell";
     if (result!=nil) {
         [_photoDetailModels addObject:result];
     }
-    if ([_imgParams count]==_counter) {
-        [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+    if ([_imgParams count]==_counter&&result!=nil) {
         //更新相册封面
         NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
         NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
         NSString *url = [qiniuHost stringByAppendingString:result.photoUrl];
         [CreateAlbum updateAlbumCover:url albumId:result.albumId success:nil];
         
-        [_backcover setHidden:YES];
     }
+    [_backcover setHidden:YES];
+    [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
