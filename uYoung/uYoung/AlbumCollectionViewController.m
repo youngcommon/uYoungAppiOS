@@ -61,7 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidAppear:(BOOL)animated{
     [self refreshData];
     
-    UIImage *img = [UIImage imageNamed:@"uyoung.bundle/nodata"];
+    UIImage *img = [UIImage imageNamed:@"uyoung.bundle/nocreatealbum"];
     [_nodata setImage:img];
     CGRect frame = self.collectionView.frame;
     CGFloat x = (frame.size.width-img.size.width)/2;
