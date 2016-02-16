@@ -13,6 +13,7 @@
 #import "NSString+StringUtil.h"
 #import "UserAlbumList.h"
 #import "ActivityAlbumModel.h"
+#import "EditUserViewController.h"
 
 @interface ActivityDetailViewController ()
 
@@ -447,7 +448,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)getEnrollUserId:(NSInteger)userId{
     [UserDetail getUserDetailWithId:userId success:^(UserDetailModel *userDetailModel) {
-        UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+//        UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+        UserCenterV2ViewController *userCenter = [[UserCenterV2ViewController alloc] initWithNibName:@"UserCenterV2ViewController" bundle:[NSBundle mainBundle]];
         userCenter.userDetailModel = userDetailModel;
         [self.navigationController pushViewController:userCenter animated:YES];
     }];
@@ -519,7 +521,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)toUserCenter:(UIButton *)sender {
     
-    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+//    UserCenterController *userCenter = [[UserCenterController alloc] initWithNibName:@"UserCenterController" bundle:[NSBundle mainBundle]];
+    UserCenterV2ViewController *userCenter = [[UserCenterV2ViewController alloc] initWithNibName:@"UserCenterV2ViewController" bundle:[NSBundle mainBundle]];
     userCenter.userDetailModel = [UserDetailModel currentUser];
     [self.navigationController pushViewController:userCenter animated:YES];
     
