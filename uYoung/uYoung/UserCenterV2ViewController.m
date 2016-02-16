@@ -25,7 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tag = 10;
     [self hiddenHeaderViewLables:0];
     
     [self.headerViewBack setImage:[UIImage imageNamed:@"uyoung.bundle/usercenterback"]];
@@ -65,13 +64,13 @@
     CGFloat buttonH = (mScreenHeight-y)/2;
     self.createdActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, 48, buttonH)];
     [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
-    [self.createdActButton addTarget:self action:@selector(toggleActivityList) forControlEvents:UIControlEventTouchUpInside];
+    [self.createdActButton addTarget:self action:@selector(toggleActivityList:) forControlEvents:UIControlEventTouchUpInside];
     [self.createdActButton setTag:10];
     [self.view addSubview:self.createdActButton];
     //参与的活动按钮
     self.signedActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y+buttonH, 48, buttonH)];
     [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
-    [self.signedActButton addTarget:self action:@selector(toggleActivityList) forControlEvents:UIControlEventTouchUpInside];
+    [self.signedActButton addTarget:self action:@selector(toggleActivityList:) forControlEvents:UIControlEventTouchUpInside];
     [self.signedActButton setTag:11];
     [self.view addSubview:self.signedActButton];
     
@@ -323,15 +322,14 @@
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
 }
 
-- (void)toggleActivityList{
-    if (_tag==10) {//说明参与的活动按钮被点击
-        _tag = 11;
+- (void)toggleActivityList:(UIButton*)sender{
+    NSInteger tag = sender.tag;
+    if (tag==11) {//说明参与的活动按钮被点击
         [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt"] forState:UIControlStateNormal];
         [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h"] forState:UIControlStateNormal];
         [self.postActCtl.tableView setHidden:YES];
         [self.signedActCtl.tableView setHidden:NO];
     }else{//说明创建的活动被点击
-        _tag = 10;
         [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
         [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
         [self.postActCtl.tableView setHidden:NO];

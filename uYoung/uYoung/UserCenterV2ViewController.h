@@ -20,7 +20,6 @@
 @property (assign, nonatomic) CGRect oriFrame;
 @property (assign, nonatomic) CGRect headerOriFrame;
 @property (assign, nonatomic) CGRect headerNewFrame;
-@property (assign, nonatomic) NSInteger tag;//标记当前被选中的活动列表按钮
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerViewCons;
 
 //headerView under
