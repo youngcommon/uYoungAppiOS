@@ -214,6 +214,7 @@ static NSString * const reuseIdentifier = @"Cell";
         }else if(buttonIndex==0){
             _albumNameStr = @"未命名";
             [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+            [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }else if(tag==10&&buttonIndex==1){//删除相册
@@ -221,6 +222,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [UserAlbumList deleteUserAlbum:_albumid uid:user.id success:^(BOOL success) {
             if (success) {
                 //删除成功，处理table数据
+                [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
                 [self.navigationController popViewControllerAnimated:YES];
                 [self.view.window showHUDWithText:@"删除成功" Type:ShowPhotoYes Enabled:YES];
             }else{
