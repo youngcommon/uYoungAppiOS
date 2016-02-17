@@ -20,4 +20,6 @@
 
 + (void)getAlbumDetailByAlbumId:(long)id delegate:(id<AlbumDetailDelegate>)delegate;
 
++ (void)updateAlbumNameByAlbumId:(long)albumId name:(NSString*)name uid:(long)uid success:(void(^)(BOOL success))success;
+
 @end

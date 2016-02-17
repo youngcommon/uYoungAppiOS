@@ -18,5 +18,6 @@
 - (void)createAlertView:(NSString*)title Message:(NSString*)message CancelTxt:(NSString*)cancelTxt OtherTxt:(NSString*)otherTxt Tag:(NSInteger)tag Delegate:(id<UIAlertViewDelegate>)delegate;
 
 - (void)createAlertViewWith:(NSString*)title Delegate:(id<UIAlertViewDelegate>)delegate;
+- (void)createAlertViewWith:(NSString*)title tag:(NSInteger)tag Delegate:(id<UIAlertViewDelegate>)delegate;
 
 @end

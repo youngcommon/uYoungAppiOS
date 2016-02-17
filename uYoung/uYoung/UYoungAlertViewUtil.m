@@ -41,9 +41,29 @@
     [self.alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
     UITextField *nameField = [self.alert textFieldAtIndex:0];
-    nameField.placeholder = @"请输相册名称";
-    
+    nameField.placeholder = @"请输相册名称(20字以内)";
+    [nameField addTarget:self action:@selector(inputCheck:) forControlEvents:UIControlEventEditingChanged];
     [self.alert show];
+}
+
+- (void)createAlertViewWith:(NSString*)title tag:(NSInteger)tag Delegate:(id<UIAlertViewDelegate>)delegate{
+    [self dismissAlertView];
+    self.alert = [[UIAlertView alloc] initWithTitle:nil message:title delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    self.alert.delegate = delegate;
+    self.alert.tag = tag;
+    [self.alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+    UITextField *nameField = [self.alert textFieldAtIndex:0];
+    nameField.placeholder = @"请输相册名称(20字以内)";
+    [nameField addTarget:self action:@selector(inputCheck:) forControlEvents:UIControlEventEditingChanged];
+    [self.alert show];
+}
+
+- (void)inputCheck:(UITextField *)sender{
+    NSInteger textLength = 20;
+    if (sender.text.length > textLength) {
+        sender.text = [sender.text substringToIndex:textLength];
+    }
 }
 
 @end

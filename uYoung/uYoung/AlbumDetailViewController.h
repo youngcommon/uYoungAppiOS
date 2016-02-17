@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) UIView *cover;
+@property (strong, nonatomic) UIButton *deleteAlbumButton;
 
 @property (strong, nonatomic) NSString *albumNameStr;
 @property (strong, nonatomic) NSString *nickNameStr;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSString *userHeaderUrl;
 @property (assign, nonatomic) long ownerUid;
 @property (assign, nonatomic) long albumid;
+@property (assign, nonatomic) long actId;
 
 @property (assign, nonatomic) BOOL isNew;//是否是新创建相册
 @property (assign, nonatomic) BOOL inEdit;//是否是编辑状态

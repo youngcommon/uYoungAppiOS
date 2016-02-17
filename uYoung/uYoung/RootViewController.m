@@ -28,6 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //监听，清除登陆信息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanLoginUser) name:NOT_LOGIN_NOTICE object:nil];
+    
     //设置当前城市
     NSData *cities = [[NSUserDefaults standardUserDefaults]objectForKey:@"citylist"];
     if (cities!=nil) {
@@ -288,6 +291,13 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     CityModel *city = [_allCity objectAtIndex:row];
     return city.cnName;
+}
+
+-(void)cleanLoginUser{
+    UserDetailModel *user = [UserDetailModel currentUser];
+    if(user!=nil&&user!=NULL){
+        [user del];
+    }
 }
 
 @end

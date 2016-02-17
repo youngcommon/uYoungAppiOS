@@ -20,6 +20,7 @@
 #import "NSString+StringUtil.h"
 #import "UYoungAlertViewUtil.h"
 #import "UIWindow+YoungHUD.h"
+#import "AlbumDetail.h"
 
 @interface AlbumDetailViewController ()
 
@@ -64,6 +65,20 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.view addSubview:_cover];
     [_cover setHidden:YES];
     
+    _deleteAlbumButton = [[UIButton alloc]initWithFrame:CGRectMake(22, mScreenHeight-60, 100, 30)];
+    [_deleteAlbumButton setTitle:@"删除相册" forState:UIControlStateNormal];
+    [_deleteAlbumButton addTarget:self action:@selector(deleteAlbum) forControlEvents:UIControlEventTouchUpInside];
+    _deleteAlbumButton.layer.borderColor = [[UIColor whiteColor]CGColor];
+    _deleteAlbumButton.layer.borderWidth = 1;
+    _deleteAlbumButton.layer.cornerRadius = 4;
+    _deleteAlbumButton.layer.masksToBounds = YES;
+    [_deleteAlbumButton setHidden:YES];
+    [self.view addSubview:_deleteAlbumButton];
+    
+    _albumName.userInteractionEnabled = YES;
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(labelTouchUpInside:)];
+    [_albumName addGestureRecognizer:labelTapGestureRecognizer];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -152,6 +167,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)back:(id)sender {
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -167,6 +183,8 @@ static NSString * const reuseIdentifier = @"Cell";
         [_editButton setTitle:@"删除" forState:UIControlStateNormal];
         _inEdit = YES;
         [_cancelButton setHidden:NO];
+        [_uploadPicButton setHidden:YES];
+        [_deleteAlbumButton setHidden:NO];
     }else{
         if (_delPhotoList.length==1) {
             [[UYoungAlertViewUtil shareInstance]createAlertView:@"请选择要删除的照片" Message:@"" CancelTxt:@"好的" OtherTxt:nil Tag:1 Delegate:self];
@@ -179,6 +197,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UserDetailModel *user = [UserDetailModel currentUser];
     NSInteger tag = alertView.tag;
     if (tag==1001) {
         UITextField *nameField = [alertView textFieldAtIndex:0];
@@ -187,7 +206,6 @@ static NSString * const reuseIdentifier = @"Cell";
             _albumNameStr = name;
             [_albumName setText:_albumNameStr];
             [[UYoungAlertViewUtil shareInstance]dismissAlertView];
-            UserDetailModel *user = [UserDetailModel currentUser];
             if (user!=nil&&user!=NULL) {
                 [self.view.window showHUDWithText:@"正在创建相册" Type:ShowLoading Enabled:YES];
                 NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@(user.id),@"createUserId",_albumNameStr,@"albumName",_albumNameStr,@"title",@(0),@"totalLikeCount",@(0),@"totalPhotoCount", nil];
@@ -198,6 +216,34 @@ static NSString * const reuseIdentifier = @"Cell";
             [[UYoungAlertViewUtil shareInstance]dismissAlertView];
             [self.navigationController popViewControllerAnimated:YES];
         }
+    }else if(tag==10&&buttonIndex==1){//删除相册
+        //调用删除相册接口
+        [UserAlbumList deleteUserAlbum:_albumid uid:user.id success:^(BOOL success) {
+            if (success) {
+                //删除成功，处理table数据
+                [self.navigationController popViewControllerAnimated:YES];
+                [self.view.window showHUDWithText:@"删除成功" Type:ShowPhotoYes Enabled:YES];
+            }else{
+                [self.view.window showHUDWithText:@"删除失败" Type:ShowPhotoNo Enabled:YES];
+            }
+        }];
+    }else if(tag==1009){
+        if (buttonIndex==1) {
+            NSString *newName = [alertView textFieldAtIndex:0].text;
+            if ([NSString isBlankString:newName]) {
+                [self.view.window showHUDWithText:@"名称不合法" Type:ShowPhotoNo Enabled:YES];
+            }else{
+                [AlbumDetail updateAlbumNameByAlbumId:_albumid name:newName uid:user.id success:^(BOOL success) {
+                    if (success) {
+                        [_albumName setText:newName];
+                        [self.view.window showHUDWithText:@"更新成功" Type:ShowPhotoYes Enabled:YES];
+                    }else{
+                        [self.view.window showHUDWithText:@"更新失败" Type:ShowPhotoNo Enabled:YES];
+                    }
+                }];
+            }
+        }
+        [_cover setHidden:YES];
     }else{
         if (buttonIndex==0) {
             [[UYoungAlertViewUtil shareInstance]dismissAlertView];
@@ -207,7 +253,7 @@ static NSString * const reuseIdentifier = @"Cell";
                 if ([_delList count]>0&&[_pics count]>0) {
                     NSMutableIndexSet *indexSets = [[NSMutableIndexSet alloc]init];
                     for(int i=0;i<[_pics count];i++){
-                        PhotoDetailModel *model =  _pics[i];
+                        PhotoDetailModel *model = _pics[i];
                         long id = model.id;
                         NSRange range = [_delPhotoList rangeOfString:[NSString stringWithFormat:@"%d,", (int)id]];
                         if (range.length>0) {
@@ -243,8 +289,10 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)cancelEdit:(id)sender {
-    [_editButton setTitle:@"Edit" forState:UIControlStateNormal];
+    [_editButton setTitle:@"编辑" forState:UIControlStateNormal];
     _inEdit = NO;
+    [_uploadPicButton setHidden:NO];
+    [_deleteAlbumButton setHidden:YES];
     [_cancelButton setHidden:YES];
     [self cellSelectButtonSwitch];
     [_delList removeAllObjects];
@@ -265,6 +313,17 @@ static NSString * const reuseIdentifier = @"Cell";
             AlbumPicCollectionCell *cell = (AlbumPicCollectionCell*)cells[i];
             [cell.selImg setHidden:!_inEdit];
         }
+    }
+}
+
+-(void)deleteAlbum{
+    [[UYoungAlertViewUtil shareInstance]createAlertView:@"是否要删除相册?" Message:@"删除相册后，相册中照片一并被删除切不可恢复" CancelTxt:@"再想想" OtherTxt:@"删除" Tag:10 Delegate:self];
+}
+
+-(void)labelTouchUpInside:(UITapGestureRecognizer *)recognizer{
+    if (_inEdit&&_actId<=0) {
+        [_cover setHidden:NO];
+        [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"修改相册名称" tag:1009 Delegate:self];
     }
 }
 

@@ -85,6 +85,7 @@ static NSString * const reuseIdentifier = @"Cell";
         viewCtl.ownerUid = model.oriUserId;
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
+        viewCtl.actId = _actId;
         viewCtl.createDateStr = [self getDateStrByTimeInterval:model.createTime];
         viewCtl.pics = [[NSMutableArray alloc]initWithArray:model.photos];
         [self.navigationController pushViewController:viewCtl animated:YES];

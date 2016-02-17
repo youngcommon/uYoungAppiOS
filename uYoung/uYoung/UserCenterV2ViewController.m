@@ -118,6 +118,10 @@
         [_sysconfigButton setHidden:YES];
         [_createAlbumButton setHidden:YES];
         [_createActButton setHidden:YES];
+        [_emailLabel setHidden:YES];
+        [_emailTitleLabel setHidden:YES];
+        [_mobileLabel setHidden:YES];
+        [_mobileTitleLabel setHidden:YES];
         _isSelf = NO;
     }else{
         _isSelf = YES;
@@ -164,10 +168,11 @@
     self.emailLabel.alpha = 1;
     self.mobileTitleLabel.alpha = 1;
     self.mobileLabel.alpha = 1;
+    CGFloat cons = _isSelf?190:140;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:time];
-    [self.headerViewCons setConstant:190];
+    [self.headerViewCons setConstant:cons];
     [UIView commitAnimations];
     [self.detailButton setImage:[UIImage imageNamed:@"uyoung.bundle/hidedetail"] forState:UIControlStateNormal];
 }

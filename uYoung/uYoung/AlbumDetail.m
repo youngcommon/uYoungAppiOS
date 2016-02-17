@@ -41,4 +41,29 @@
     }];
 }
 
++ (void)updateAlbumNameByAlbumId:(long)albumId name:(NSString*)name uid:(long)uid success:(void(^)(BOOL success))success{
+    NSDictionary *parameters = @{@"id": @(albumId),@"title":name, @"createUserId":@(uid), @"albumName":name};
+    
+    NSString *url = [uyoung_host stringByAppendingString:@"album/updateById"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    
+    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
+        if (result==100) {
+            success(YES);
+        }else if(result==NOT_LOGIN){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOT_LOGIN_NOTICE object:nil];
+            success(NO);
+        }else{
+            success(NO);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        success(NO);
+    }];
+}
+
 @end

@@ -79,12 +79,13 @@
     
     _actNameInput = [[UITextField alloc]initWithFrame:CGRectMake(_actNameImg.frame.origin.x+_actNameImg.frame.size.width, y, _backWidth, _labelHeight)];
     _actNameInput.borderStyle = UITextBorderStyleNone;
-    _actNameInput.placeholder = @"请输入活动名称";
+    _actNameInput.placeholder = @"请输入活动名称(20字以内)";
     _actNameInput.font = _textFont;
     _actNameInput.background = [self getScaleBackUIImage:@"uyoung.bundle/input_end_mid" isFront:NO];
     _actNameInput.returnKeyType = UIReturnKeyDone;
     _actNameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _actNameInput.delegate = self;
+    [_actNameInput addTarget:self action:@selector(inputCheck:) forControlEvents:UIControlEventEditingChanged];
     [_actNameInput setTag:9001];
     [_backgroundView addSubview:_actNameInput];
     
@@ -817,6 +818,13 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
         [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+}
+
+- (void)inputCheck:(UITextField *)sender {
+    NSInteger textLength = 20;
+    if (sender.text.length > textLength) {
+        sender.text = [sender.text substringToIndex:textLength];
+    }
 }
 
 @end
