@@ -60,6 +60,8 @@
                     NSDictionary *p = [[NSDictionary alloc]initWithObjectsAndKeys:@(id),@"id", @"xx",@"photoName", [param objectForKey:@"photoUrl"],@"photoUrl", [param objectForKey:@"createUserId"],@"createUserId", [param objectForKey:@"albumId"],@"albumId", @(0),@"viewCount", @(0),@"likeCount", nil];
                     PhotoDetailModel *model = [[PhotoDetailModel alloc]initWithDictionary:p error:nil];
                     [delegate finishUploadImage:model];
+                }else{
+                    [delegate finishUploadImage:nil];
                 }
             } failure:^(AFHTTPRequestOperation *operation, NSError *error){
                 [delegate finishUploadImage:nil];

@@ -1,5 +1,6 @@
 platform :ios, '8.0'
 pod 'AFNetworking'
+pod 'AFNetworking-Synchronous/2.x'
 pod 'Mantle'
 pod 'SVPullToRefresh'
 pod 'LBBlurredImage'

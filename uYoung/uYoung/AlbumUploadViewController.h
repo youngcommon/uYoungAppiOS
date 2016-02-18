@@ -12,6 +12,7 @@
 #import "ZLPhotoPickerBrowserViewController.h"
 #import "UploadImageUtil.h"
 #import "CreateAlbum.h"
+#import <AFHTTPRequestOperationManager+Synchronous.h>
 
 @interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate, UploadImgDelegate, CreateAlbumDelegate>
 
@@ -30,6 +31,8 @@
 @property (strong, nonatomic) NSMutableArray *photoDetailModels;
 
 @property (strong, nonatomic) UIView *backcover;
+
+@property (strong, nonatomic) NSString *coverUrl;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)showSysPhoto:(id)sender;

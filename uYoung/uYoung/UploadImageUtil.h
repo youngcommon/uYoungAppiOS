@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <QiniuSDK.h>
-#import "GlobalNetwork.h"
+#import <AFNetworking.h>
+#import <AFHTTPRequestOperationManager+Synchronous.h>
 #import "PicExif.h"
 
 @protocol UploadImgDelegate <NSObject>
@@ -19,6 +20,8 @@
 @end
 
 @interface UploadImageUtil : NSObject
+
+- (void)uploadAlbumImage:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate;
 
 - (void)uploadImage:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate;
 

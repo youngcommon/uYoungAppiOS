@@ -6,6 +6,8 @@ PODS:
     - AFNetworking/Security (= 2.6.1)
     - AFNetworking/Serialization (= 2.6.1)
     - AFNetworking/UIKit (= 2.6.1)
+  - AFNetworking-Synchronous/2.x (0.3.1):
+    - AFNetworking (~> 2.0)
   - AFNetworking/NSURLConnection (2.6.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -42,6 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AFNetworking-Synchronous/2.x
   - LBBlurredImage
   - Mantle
   - MBProgressHUD (~> 0.9.1)
@@ -63,6 +66,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  AFNetworking-Synchronous: 29531ad341ec465a4ff9b66dea9cf7272080e12e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43

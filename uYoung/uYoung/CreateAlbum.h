@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import <AFHTTPRequestOperationManager+Synchronous.h>
 #import "AlbumModel.h"
 #import "PhotoDetailModel.h"
 

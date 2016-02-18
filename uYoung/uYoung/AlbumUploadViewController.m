@@ -64,16 +64,29 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)uploadImages:(id)sender {
     if(_assets!=nil&&[_assets count]>0&&[_assets count]==[_oriImage count]){
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
         [_backcover setHidden:NO];
         [self.view.window showHUDWithText:@"正在上传..." Type:ShowLoading Enabled:YES];
         NSString *format = @"uy_user/%ld/album/%ld/t/%@";
         for (int i=0; i<[_oriImage count]; i++) {
-            long timer = [[NSDate date]timeIntervalSince1970];
-            NSString *t = [NSString stringWithFormat:@"%ld%d", timer, i];
-            NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, t];
-            UIImage *image = _oriImage[i];
-            [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key exif:_exifArr[i] delegate:self];
+            dispatch_group_async(group, queue, ^{
+                long timer = [[NSDate date]timeIntervalSince1970];
+                NSString *t = [NSString stringWithFormat:@"%ld%d", timer, i];
+                NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, t];
+                UIImage *image = _oriImage[i];
+//                [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key exif:_exifArr[i] delegate:self];
+                [[UploadImageUtil dispatchOnce]uploadAlbumImage:image withKey:key exif:_exifArr[i] delegate:self];
+            });
         }
+        dispatch_group_notify(group, queue, ^{
+            //更新相册封面
+            [CreateAlbum updateAlbumCover:_coverUrl albumId:_albumid success:nil];
+            [_backcover setHidden:YES];
+            [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+        });
     }
 }
 
@@ -101,11 +114,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - 更新uYoung数据后回调
 - (void)finishUploadImage:(PhotoDetailModel*)result{
-    _counter += 1;
+//    _counter += 1;
     if (result!=nil) {
         [_photoDetailModels addObject:result];
+        NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+        NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
+        _coverUrl = [qiniuHost stringByAppendingString:result.photoUrl];
     }
-    if ([_imgParams count]==_counter&&result!=nil) {
+    /*if ([_imgParams count]==_counter&&result!=nil) {
         //更新相册封面
         NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
         NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
@@ -116,7 +132,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [_backcover setHidden:YES];
     [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];*/
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
