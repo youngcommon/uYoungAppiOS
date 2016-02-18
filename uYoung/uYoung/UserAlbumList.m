@@ -8,6 +8,7 @@
 
 #import "UserAlbumList.h"
 #import "Des3Encrypt.h"
+#import "NSString+StringUtil.h"
 
 @implementation UserAlbumList
 
@@ -59,7 +60,17 @@
         if (result==100) {
             NSArray *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
-                success(resultData);
+                if ([resultData count]>0) {
+                    NSMutableArray *temp = [[NSMutableArray alloc]initWithArray:resultData];
+                    for (int i=0; i<[temp count]; i++) {
+                        NSDictionary *dict = temp[i];
+                        id oriUid = dict[@"oriUid"];
+                        if (oriUid==nil||oriUid==NULL||[oriUid class]==[NSNull class]) {
+                            [temp removeObject:dict];
+                        }
+                    }
+                    success(temp);
+                }
             }
         }else{
             success(nil);

@@ -24,7 +24,6 @@
     
     [manager POST:url parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSInteger result = [[responseObject objectForKey:@"result"] integerValue];
-        result=-3;
         if (result==100) {
             [delegate didUpdateEnd:YES];
         }else if(result==NOT_LOGIN){

@@ -333,6 +333,7 @@ static NSString * const reuseIdentifier = @"Cell";
             actAlbumViewCtl.actId = self.model.activityId;
             actAlbumViewCtl.hadAlbum = hadAlbum;
             actAlbumViewCtl.hadSigned = hadSigned;
+            actAlbumViewCtl.ownerUid = _detailModel.oriUserId;
             [self.navigationController pushViewController:actAlbumViewCtl animated:YES];
         }
     }];
