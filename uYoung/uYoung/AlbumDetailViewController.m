@@ -87,6 +87,13 @@ static NSString * const reuseIdentifier = @"Cell";
         [_cover setHidden:NO];
         [[UYoungAlertViewUtil shareInstance]createAlertViewWith:@"创建相册" Delegate:self];
     }
+    if([_pics count]>=20){//每个相册最多20张照片
+        [_uploadPicButton setHidden:YES];
+    }else{
+        if(_uploadPicButton.hidden){
+            [_uploadPicButton setHidden:NO];
+        }
+    }
 }
 
 - (void)refresh:(NSNotification*)notification{
@@ -176,6 +183,7 @@ static NSString * const reuseIdentifier = @"Cell";
     AlbumUploadViewController *upload = [[AlbumUploadViewController alloc] initWithNibName:@"AlbumUploadViewController" bundle:[NSBundle mainBundle]];
     upload.albumid = _albumid;
     upload.owneruid = _ownerUid;
+    upload.leftCount = 20 - [_pics count];
     [self presentViewController:upload animated:YES completion:nil];
 }
 

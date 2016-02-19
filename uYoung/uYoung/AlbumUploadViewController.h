@@ -35,6 +35,8 @@
 
 @property (strong, nonatomic) NSString *coverUrl;
 
+@property (assign, nonatomic) NSInteger leftCount;//相册剩余可上传数
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)showSysPhoto:(id)sender;
 - (IBAction)uploadImages:(id)sender;

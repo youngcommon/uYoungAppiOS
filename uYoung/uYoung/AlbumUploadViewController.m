@@ -134,10 +134,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     [cell.img setImage:[image scaleToSize:cell.frame.size]];
     cell.oriImg = image;
-    
-    [_exifArr addObject:exif];
     [cell hiddenLabels];
-    [_oriImage addObject:image];
 
     return cell;
     
@@ -168,7 +165,11 @@ static NSString * const reuseIdentifier = @"Cell";
     ZLPhotoPickerViewController *pickerVc = [[ZLPhotoPickerViewController alloc] init];
     // 默认显示相册里面的内容SavePhotos
     // 最多能选6张图片
-    pickerVc.maxCount = 9;
+    if (_leftCount<=6) {
+        pickerVc.maxCount = _leftCount;
+    }else{
+        pickerVc.maxCount = 6;
+    }
     pickerVc.topShowPhotoPicker = YES;
     pickerVc.status = PickerViewShowStatusSavePhotos;
     pickerVc.delegate = self;
@@ -179,6 +180,17 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - 相册回调
 - (void)pickerViewControllerDoneAsstes:(NSArray *)assets{
     self.assets = [NSMutableArray arrayWithArray:assets];
+    if (assets!=nil) {
+        for (int i=0; i<[assets count]; i++) {
+            if ([assets[i] isKindOfClass:[ZLPhotoAssets class]]) {
+                ZLPhotoAssets *asset = (ZLPhotoAssets*)assets[i];
+                UIImage *image = asset.originImage;
+                [_oriImage addObject:image];
+                PicExif *exif = [[PicExifUtil shareInstance]getWithALAsset:asset.asset];
+                [_exifArr addObject:exif];
+            }
+        }
+    }
     [self.imageCollection reloadData];
 }
 
