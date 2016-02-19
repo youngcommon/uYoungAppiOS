@@ -11,6 +11,7 @@
 #import <AFNetworking.h>
 #import <AFHTTPRequestOperationManager+Synchronous.h>
 #import "PicExif.h"
+#import "PhotoDetailModel.h"
 
 @protocol UploadImgDelegate <NSObject>
 
@@ -21,11 +22,13 @@
 
 @interface UploadImageUtil : NSObject
 
-- (void)uploadAlbumImage:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate;
+- (void)uploadAlbumImageSycro:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif albumId:(long)albumId ownerId:(long)ownerId complete:(void(^)(PhotoDetailModel* detail, NSInteger state))complete;
 
 - (void)uploadImage:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif delegate:(id<UploadImgDelegate>)delegate;
 
 + (void)lazyInitAvatarOfButton:(NSString*)url button:(UIButton*)button;
+
++ (void)updateAlbumCover:(NSString*)coverUrl albumId:(long)albumId;
 
 + (instancetype)dispatchOnce;
 

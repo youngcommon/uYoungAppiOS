@@ -16,6 +16,8 @@
 #import "UIWindow+YoungHUD.h"
 #import "PicExifUtil.h"
 #import "PicExif.h"
+#import "LoginViewController.h"
+#import "LoginFilterUtil.h"
 
 @interface AlbumUploadViewController ()
 
@@ -70,69 +72,43 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.view.window showHUDWithText:@"正在上传..." Type:ShowLoading Enabled:YES];
         NSString *format = @"uy_user/%ld/album/%ld/t/%@";
         for (int i=0; i<[_oriImage count]; i++) {
+            dispatch_group_enter(group);
             dispatch_group_async(group, queue, ^{
                 long timer = [[NSDate date]timeIntervalSince1970];
                 NSString *t = [NSString stringWithFormat:@"%ld%d", timer, i];
                 NSString *key = [NSString stringWithFormat:format, _owneruid, _albumid, t];
                 UIImage *image = _oriImage[i];
-//                [[UploadImageUtil dispatchOnce]uploadImage:image withKey:key exif:_exifArr[i] delegate:self];
-                [[UploadImageUtil dispatchOnce]uploadAlbumImage:image withKey:key exif:_exifArr[i] delegate:self];
+                [[UploadImageUtil dispatchOnce]uploadAlbumImageSycro:image withKey:key exif:_exifArr[i] albumId:_albumid ownerId:_owneruid complete:^(PhotoDetailModel *detail, NSInteger state) {
+                    _state = state;
+                    if (detail!=nil) {
+                        [_photoDetailModels addObject:detail];
+                        NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
+                        NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
+                        _coverUrl = [qiniuHost stringByAppendingString:detail.photoUrl];
+                        NSLog(@"upload success-->%@", key);
+                    }
+                    dispatch_group_leave(group);
+                }];
             });
         }
         dispatch_group_notify(group, queue, ^{
-            //更新相册封面
-            [CreateAlbum updateAlbumCover:_coverUrl albumId:_albumid success:nil];
-            [_backcover setHidden:YES];
-            [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"#######更新相册封面##########");
+                //更新相册封面
+                [UploadImageUtil updateAlbumCover:_coverUrl albumId:_albumid];
+                [_backcover setHidden:YES];
+                if (_state==200) {
+                    [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
+                }else if(_state==-3){
+                    [self.view.window showHUDWithText:@"请重新登录" Type:ShowPhotoNo Enabled:YES];
+                }else{
+                    [self.view.window showHUDWithText:@"上传出现错误" Type:ShowPhotoNo Enabled:YES];
+                }
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];
+            });
         });
     }
-}
-
-#pragma mark - 上传成功后回调
-- (void)getImgKey:(NSString*)key host:(NSString *)host exif:(PicExif *)exif{
-    if ([NSString isBlankString:host]) {
-        host = QINIU_HOST;
-    }
-    //写入uYoung数据库
-    if ([NSString isBlankString:key]==NO) {
-        NSMutableDictionary *param;
-        if (exif) {
-            param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", exif.cameraModel,@"exifCamera", exif.f,@"exifAperture", exif.focalLength,@"exifFacus", exif.exposure,@"exifShutter", exif.iso,@"exifIso", exif.lensModel,@"exifOther", nil];
-            
-        }else{
-            param = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@(_owneruid),@"createUserId", @(_albumid),@"albumId", key,@"photoUrl", @"xxx",@"photoName", nil];
-            
-        }
-        [_imgParams addObject:param];
-    }
-    if ([_assets count]==[_imgParams count]) {//说明图片已经全部上传完毕
-        [CreateAlbum uploadAlbumImage:_imgParams delegate:self];
-    }
-}
-
-#pragma mark - 更新uYoung数据后回调
-- (void)finishUploadImage:(PhotoDetailModel*)result{
-//    _counter += 1;
-    if (result!=nil) {
-        [_photoDetailModels addObject:result];
-        NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
-        NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
-        _coverUrl = [qiniuHost stringByAppendingString:result.photoUrl];
-    }
-    /*if ([_imgParams count]==_counter&&result!=nil) {
-        //更新相册封面
-        NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
-        NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
-        NSString *url = [qiniuHost stringByAppendingString:result.photoUrl];
-        [CreateAlbum updateAlbumCover:url albumId:result.albumId success:nil];
-        
-    }
-    [_backcover setHidden:YES];
-    [self.view.window showHUDWithText:@"上传完成" Type:ShowPhotoYes Enabled:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAlbum" object:_photoDetailModels];*/
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

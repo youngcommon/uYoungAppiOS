@@ -179,4 +179,24 @@
     }];
 }
 
++ (BOOL)isSignedActivity:(long)uid actId:(long)actId{
+    
+    NSDictionary *param = @{@"uid":@(uid), @"activityId":@(actId)};
+    NSString *url = [uyoung_host stringByAppendingString:@"activity/getSignUp"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer.timeoutInterval = 5;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    NSError *error = nil;
+    NSDictionary *dict = [manager syncGET:url parameters:param operation:NULL error:&error];
+    NSInteger result = [[dict objectForKey:@"result"]integerValue];
+    if (result==100) {
+        NSDictionary *resultData = dict[@"resultData"];
+        if (resultData!=nil) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

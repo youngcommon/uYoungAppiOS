@@ -21,6 +21,7 @@
 #import "UYoungAlertViewUtil.h"
 #import "UIWindow+YoungHUD.h"
 #import "AlbumDetail.h"
+#import "UploadImageUtil.h"
 
 @interface AlbumDetailViewController ()
 
@@ -277,7 +278,7 @@ static NSString * const reuseIdentifier = @"Cell";
                     url = [qiniuHost stringByAppendingString:photo.photoUrl];
                 }
                 //更新相册封面
-                [CreateAlbum updateAlbumCover:url albumId:self.albumid success:nil];
+                [UploadImageUtil updateAlbumCover:url albumId:self.albumid];
                 _delPhotoList = [[NSMutableString alloc]initWithString:@","];
             }];
         }

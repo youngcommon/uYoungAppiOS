@@ -4,70 +4,101 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking-Synchronous.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>DACircularProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>HappyDNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>SwipeBack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>ZLPhotoLib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>ZSSRichTextEditor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -87,12 +118,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>20BD1AECA27907A0C4F411C8E1D996E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2C1716F1BADCA80DF546D47380D4076C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>33C4358793A5BF91C8E1CE5530F7BE2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3548D931078A450D97EDAEFA1CEA09B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40A479F10D8CC677C0AB3E7A40E5FF3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,6 +168,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>62DBBB995666952B7EEA3DAE646CC89B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62DF0846974994DE999DAC68AB4A2B6F</key>
 		<dict>
 			<key>primary</key>
@@ -132,7 +183,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6D5FA243B23E44703DD4452D0CBEE2D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>785E456A4B5EC8A508CE868E04789C03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89D4FB23854D26791B0378BBBC7C2AC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8CC798D20E2B75FA77C3A375A5F2F47D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -153,6 +219,11 @@
 			<true/>
 		</dict>
 		<key>A18D0234C4DE87D1207473B3B88C13A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0D5B90D62F43F7052A9F433C36B107B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

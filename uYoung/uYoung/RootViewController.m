@@ -14,6 +14,7 @@
 #import "UIWindow+YoungHUD.h"
 #import "UYoungAlertViewUtil.h"
 #import "UserCenterV2ViewController.h"
+#import "GlobalNetwork.h"
 
 @interface RootViewController ()
 

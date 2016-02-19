@@ -12,6 +12,7 @@
 #import "AlbumDetailViewController.h"
 #import "UserDetailModel.h"
 #import "UIWindow+YoungHUD.h"
+#import "ActivityDetail.h"
 
 @interface ActivityAlbumViewController ()
 
@@ -37,12 +38,16 @@ static NSString * const reuseIdentifier = @"Cell";
     [_nodata setHidden:YES];
     
     //判断用户是否已经签到过
-    
     UserDetailModel *loginuser = [UserDetailModel currentUser];
-    if(((loginuser!=nil&&loginuser.id>0)||_hadSigned||(loginuser.id==_ownerUid&&loginuser.id>0))&&!_hadAlbum){
-        [_uploadAlbumView setHidden:NO];
-    }else{
+    if (loginuser==nil||loginuser.id<=0||(loginuser.id==_ownerUid&&loginuser.id>0)) {
         [_uploadAlbumView setHidden:YES];
+    }else{
+        _hadSigned = [ActivityDetail isSignedActivity:loginuser.id actId:_actId];
+        if(_hadSigned&&!_hadAlbum){
+            [_uploadAlbumView setHidden:NO];
+        }else{
+            [_uploadAlbumView setHidden:YES];
+        }
     }
     
 }

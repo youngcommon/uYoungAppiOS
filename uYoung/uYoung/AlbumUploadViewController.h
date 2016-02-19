@@ -11,10 +11,9 @@
 #import "AlbumPicCollectionCell.h"
 #import "ZLPhotoPickerBrowserViewController.h"
 #import "UploadImageUtil.h"
-#import "CreateAlbum.h"
 #import <AFHTTPRequestOperationManager+Synchronous.h>
 
-@interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate, UploadImgDelegate, CreateAlbumDelegate>
+@interface AlbumUploadViewController : UIViewController<ZLPhotoPickerBrowserViewControllerDataSource,ZLPhotoPickerBrowserViewControllerDelegate,ZLPhotoPickerViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *imageCollection;
 
@@ -25,6 +24,8 @@
 
 @property (assign, nonatomic) long albumid;
 @property (assign, nonatomic) long owneruid;
+
+@property (assign, nonatomic) NSInteger state;
 
 @property (strong, nonatomic) NSMutableArray *imgParams;
 @property (assign, nonatomic) NSInteger counter;

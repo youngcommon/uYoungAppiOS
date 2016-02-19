@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import <AFHTTPRequestOperationManager+Synchronous.h>
 #import "GlobalConfig.h"
 
 @interface ActivityDetail : NSObject
@@ -23,5 +24,7 @@
 + (void)cancelActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
 
 + (void)signActivity:(long)userId actId:(long)actId opts:(void(^)(BOOL success))success;
+
++ (BOOL)isSignedActivity:(long)uid actId:(long)actId;
 
 @end

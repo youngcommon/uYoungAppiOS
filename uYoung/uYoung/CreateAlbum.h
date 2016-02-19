@@ -16,13 +16,10 @@
 
 @optional
 - (void)successCreateAlbum:(AlbumModel*)detail;
-- (void)finishUploadImage:(PhotoDetailModel*)result;
 @end
 
 @interface CreateAlbum : NSObject
 
 + (void)createAlbum:(NSDictionary*)dict delegate:(id<CreateAlbumDelegate>)delegate;
-+ (void)uploadAlbumImage:(NSArray*)arr delegate:(id<CreateAlbumDelegate>)delegate;
-+ (void)updateAlbumCover:(NSString*)coverUrl albumId:(long)albumId success:(void(^)(BOOL success))success;
 
 @end
