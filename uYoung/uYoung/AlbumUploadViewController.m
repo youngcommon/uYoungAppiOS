@@ -85,7 +85,6 @@ static NSString * const reuseIdentifier = @"Cell";
                         NSData *qiniuHostData = [[NSUserDefaults standardUserDefaults]objectForKey:@"qiniu_host"];
                         NSString *qiniuHost = [NSKeyedUnarchiver unarchiveObjectWithData:qiniuHostData];
                         _coverUrl = [qiniuHost stringByAppendingString:detail.photoUrl];
-                        NSLog(@"upload success-->%@", key);
                     }
                     dispatch_group_leave(group);
                 }];
@@ -93,7 +92,6 @@ static NSString * const reuseIdentifier = @"Cell";
         }
         dispatch_group_notify(group, queue, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"#######更新相册封面##########");
                 //更新相册封面
                 [UploadImageUtil updateAlbumCover:_coverUrl albumId:_albumid];
                 [_backcover setHidden:YES];
