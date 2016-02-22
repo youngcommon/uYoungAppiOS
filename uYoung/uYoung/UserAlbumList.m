@@ -60,7 +60,6 @@
         if (result==100) {
             NSArray *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
-                if ([resultData count]>0) {
                     NSMutableArray *temp = [[NSMutableArray alloc]initWithArray:resultData];
                     for (int i=0; i<[temp count]; i++) {
                         NSDictionary *dict = temp[i];
@@ -70,7 +69,6 @@
                         }
                     }
                     success(temp);
-                }
             }
         }else{
             success(nil);

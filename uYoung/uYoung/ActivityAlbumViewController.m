@@ -86,7 +86,7 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)successGetAlbumDetail:(AlbumDetailModel*)model{
     if (model!=nil) {
         AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
-        viewCtl.albumNameStr = [NSString stringWithFormat:@"%@相册", model.oriNickName];
+        viewCtl.albumNameStr = [NSString stringWithFormat:@"%@相册", _actTitleStr];
         viewCtl.ownerUid = model.oriUserId;
         viewCtl.nickNameStr = model.oriNickName;
         viewCtl.userHeaderUrl = model.oriUrl;
