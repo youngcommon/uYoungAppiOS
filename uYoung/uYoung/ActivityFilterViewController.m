@@ -9,6 +9,7 @@
 #import "ActivityFilterViewController.h"
 #import "GlobalConfig.h"
 #import "UIWindow+YoungHUD.h"
+#import <MobClick.h>
 
 @interface ActivityFilterViewController ()
 
@@ -265,6 +266,16 @@
     if (_actStatusTable.frame.size.height>0) {
         [self selectActType:3];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"ActivityFilterViewController"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"ActivityFilterViewController"];
 }
 
 @end

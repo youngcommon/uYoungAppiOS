@@ -22,7 +22,7 @@
 
 #define pageSize 15
 
-#define UMengAppKey @"562d94ad67e58ef66e000973"
+#define UMengAppKey @"55fbc4f167e58ee571003eef"
 
 #define QQAppKey @"1104920700"
 

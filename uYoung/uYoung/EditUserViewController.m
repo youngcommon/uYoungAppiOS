@@ -12,6 +12,7 @@
 #import "UIWindow+YoungHUD.h"
 #import "CityModel.h"
 #import "UIImageView+LazyInit.h"
+#import <MobClick.h>
 
 @interface EditUserViewController ()
 
@@ -628,8 +629,15 @@
     [UploadImageUtil lazyInitAvatarOfButton:_loginUser.avatarUrl button:_userHeaderButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"EditUserViewController"];
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+    [MobClick endLogPageView:@"EditUserViewController"];
 }
 
 @end

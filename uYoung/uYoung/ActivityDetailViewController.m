@@ -14,6 +14,7 @@
 #import "UserAlbumList.h"
 #import "ActivityAlbumModel.h"
 #import "EditUserViewController.h"
+#import <MobClick.h>
 
 @interface ActivityDetailViewController ()
 
@@ -212,9 +213,16 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initUserAvater];
     [self initSignupButton];
+    [MobClick beginLogPageView:@"ActivityDetailViewController"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"ActivityDetailViewController"];
 }
 
 - (void)initUserAvater{

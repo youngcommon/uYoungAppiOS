@@ -15,6 +15,7 @@
 #import "AlbumDetailViewController.h"
 #import "CreateActivityController.h"
 #import <UIImageView+LBBlurredImage.h>
+#import <MobClick.h>
 
 @interface UserCenterV2ViewController ()
 
@@ -340,6 +341,16 @@
         [self.postActCtl.tableView setHidden:NO];
         [self.signedActCtl.tableView setHidden:YES];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"EditUserViewController"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"EditUserViewController"];
 }
 
 @end

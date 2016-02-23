@@ -22,6 +22,7 @@
 #import "UIWindow+YoungHUD.h"
 #import "AlbumDetail.h"
 #import "UploadImageUtil.h"
+#import <MobClick.h>
 
 @interface AlbumDetailViewController ()
 
@@ -338,9 +339,16 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"AlbumDetailViewController"];//("PageOne"为页面名称，可自定义)
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+    [MobClick endLogPageView:@"AlbumDetailViewController"];
 }
 
 @end

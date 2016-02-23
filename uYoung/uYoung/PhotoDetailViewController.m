@@ -13,6 +13,7 @@
 #import "UIImage+scales.h"
 #import "UIWindow+YoungHUD.h"
 #import "UserDetailModel.h"
+#import <MobClick.h>
 
 @interface PhotoDetailViewController ()<UIScrollViewDelegate>{
     UIScrollView *_scrollview;
@@ -156,8 +157,15 @@
     return rect;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"PhotoDetailViewController"];//("PageOne"为页面名称，可自定义)
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+    [MobClick endLogPageView:@"PhotoDetailViewController"];
 }
 
 @end

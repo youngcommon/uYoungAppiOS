@@ -15,6 +15,7 @@
 #import "NSString+StringUtil.h"
 #import "UserDetailModel.h"
 #import "ExifView.h"
+#import <MobClick.h>
 
 @interface JZAlbumViewController ()<UIScrollViewDelegate,PhotoViewDelegate>
 {
@@ -244,5 +245,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"JZAlbumViewController"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"JZAlbumViewController"];
+}
 
 @end

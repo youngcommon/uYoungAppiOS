@@ -11,6 +11,7 @@
 #import "UserDetailModel.h"
 #import "UIWindow+YoungHUD.h"
 #import "NSString+StringUtil.h"
+#import <MobClick.h>
 
 @interface CreateActivityStep2Controller ()
 
@@ -138,8 +139,15 @@
     return newimage;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"CreateActivityStep2Controller"];//("PageOne"为页面名称，可自定义)
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+    [MobClick endLogPageView:@"CreateActivityStep2Controller"];
 }
 
 @end

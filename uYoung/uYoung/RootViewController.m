@@ -15,6 +15,7 @@
 #import "UYoungAlertViewUtil.h"
 #import "UserCenterV2ViewController.h"
 #import "GlobalNetwork.h"
+#import <MobClick.h>
 
 @interface RootViewController ()
 
@@ -140,11 +141,15 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initUserAvater];
+    [MobClick beginLogPageView:@"RootViewController"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"RootViewController"];
     [self cancelPressed:nil];
 }
 

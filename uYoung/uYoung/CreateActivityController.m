@@ -13,6 +13,7 @@
 #import "UIWindow+YoungHUD.h"
 #import "UserDetailModel.h"
 #import "UYoungAlertViewUtil.h"
+#import <MobClick.h>
 
 @interface CreateActivityController ()
 
@@ -815,9 +816,16 @@
     [[UYoungAlertViewUtil shareInstance]dismissAlertView];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"CreateActivityController"];//("PageOne"为页面名称，可自定义)
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
-        [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+    [[UYoungAlertViewUtil shareInstance]dismissAlertView];
+    [MobClick endLogPageView:@"CreateActivityController"];
 }
 
 - (void)inputCheck:(UITextField *)sender {

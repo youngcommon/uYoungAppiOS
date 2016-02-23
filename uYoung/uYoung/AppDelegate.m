@@ -18,6 +18,7 @@
 #import "CityModel.h"
 #import "UploadImageUtil.h"
 #import "WeiboUser.h"
+#import <MobClick.h>
 
 @interface AppDelegate () <TencentSessionDelegate>
 
@@ -78,6 +79,11 @@
             [reviewData writeToFile:filename atomically:YES];
         }];
     }
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    [MobClick setCrashReportEnabled:NO];
+    [MobClick startWithAppkey:UMengAppKey reportPolicy:BATCH   channelId:@"AppStore"];
     
     return YES;
 }
@@ -212,6 +218,7 @@
     NSString *avaterUrl;
     NSString *expireIn;
     NSDictionary *dict;
+    NSString *loginType;
     if(self.userLoginInfoDic&&self.userLoginInfoDic[@"uid"]>0){
         //说明是QQ登陆
         thirdUid = self.userLoginInfoDic[@"uid"];
@@ -226,6 +233,7 @@
         userType = 2;
         avaterUrl = self.userLoginInfoDic[@"figureurl_qq_2"];
         dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", @(genderVal), @"gender", city, @"city", nil];
+        loginType = @"QQ";
     }else if(self.doubanDic&&self.doubanDic[@"id"]>0){
         thirdUid = self.doubanDic[@"id"];
         nickName = self.doubanDic[@"name"];
@@ -234,6 +242,7 @@
         city = self.doubanDic[@"loc_name"];
         accessToken = self.doubanToken;
         dict = [[NSDictionary alloc]initWithObjectsAndKeys:accessToken, @"accessToken", thirdUid, @"thirdUid", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", city, @"city", nil];
+        loginType = @"DOUBAN";
     }else{
         //说明是微博登陆
         thirdUid = self.sinaInfoDic[@"uid"];
@@ -245,7 +254,10 @@
         expireIn = self.sinaInfoDic[@"expires_in"];
         NSInteger genderVal = [self.sinaInfoDic[@"gender"]integerValue];
         dict = [[NSDictionary alloc]initWithObjectsAndKeys: thirdUid, @"thirdUid", accessToken, @"accessToken", refreshToken, @"refreshToken", nickName, @"nickName", @(userType), @"userType", avaterUrl, @"avatarUrl", expireIn, @"expireIn", @(genderVal), @"gender", nil];
+        loginType = @"SINA_WEIBO";
     }
+    
+    [MobClick profileSignInWithPUID:thirdUid provider:loginType];
     
     //保存登陆成功数据
     [UserLogin postThirdTypeLoginData:dict delegate:self];

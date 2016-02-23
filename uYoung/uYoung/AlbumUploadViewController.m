@@ -18,6 +18,7 @@
 #import "PicExif.h"
 #import "LoginViewController.h"
 #import "LoginFilterUtil.h"
+#import <MobClick.h>
 
 @interface AlbumUploadViewController ()
 
@@ -47,9 +48,16 @@ static NSString * const reuseIdentifier = @"Cell";
     [self selectPhotos];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     _counter = 0;
     _photoDetailModels = [[NSMutableArray alloc]initWithCapacity:1];
+    [MobClick beginLogPageView:@"AlbumUploadViewController"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"AlbumUploadViewController"];
 }
 
 - (void)didReceiveMemoryWarning {
