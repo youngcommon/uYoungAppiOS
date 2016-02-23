@@ -64,8 +64,12 @@
     
     CGFloat topHeight = 70;
     
+    UIImageView *backImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"uyoung.bundle/background"]];
+    [backImage setFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
+    [self.view addSubview:backImage];
+    
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, topHeight)];
-    topView.backgroundColor = UIColorFromRGB(0x85b200);
+    topView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:topView];
     
     UIButton *close = [[UIButton alloc]initWithFrame:CGRectMake(10, (topView.frame.size.height-30)/2, 46, 30)];
@@ -111,7 +115,8 @@
     NSString *errorUrl = [NSString stringWithFormat:@"%@?error=", DOUBAN_REDIRECT_URL];
     range = [url rangeOfString:errorUrl];//授权失败
     if (range.length) {
-        [self.navigationController popViewControllerAnimated:YES];
+//        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
     }
     range = [url rangeOfString:DOUBAN_REGISTER_URL];//注册
