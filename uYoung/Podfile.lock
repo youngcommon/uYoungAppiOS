@@ -37,6 +37,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - SVPullToRefresh (0.4.1)
   - SwipeBack (1.1.0)
+  - UMengAnalytics-NO-IDFA (3.6.5)
   - ZLPhotoLib (1.0.0):
     - DACircularProgress (~> 2.3)
     - SDWebImage (!= 3.7.2, ~> 3.7)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - SDWebImage
   - SVPullToRefresh
   - SwipeBack (~> 1.1)
+  - UMengAnalytics-NO-IDFA
   - ZLPhotoLib (from `https://github.com/MakeZL/ZLPhotoLib`)
   - ZSSRichTextEditor
 
@@ -76,7 +78,8 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwipeBack: 45a42c333b7b9657b9f02cf19673339b3a006195
+  UMengAnalytics-NO-IDFA: 279e28990a08efb56cff1821d2954bb00aa6975a
   ZLPhotoLib: 733844bac76aed461783c8332b556be3c1e0324f
   ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.38.2
