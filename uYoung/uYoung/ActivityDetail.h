@@ -13,7 +13,7 @@
 
 @interface ActivityDetail : NSObject
 
-+ (void)getActivityDetailWithId:(NSInteger)activityId;
++ (void)getActivityDetailWithId:(NSInteger)activityId onFinished:(void(^)(NSDictionary *resultData))finished;
 
 + (void)getSignStatusWithUser:(long)userId actId:(long)actId opts:(void(^)(NSInteger status))status;
 

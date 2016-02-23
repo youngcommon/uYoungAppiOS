@@ -12,7 +12,7 @@
 
 @implementation ActivityDetail
 
-+ (void)getActivityDetailWithId:(NSInteger)activityId{
++ (void)getActivityDetailWithId:(NSInteger)activityId onFinished:(void(^)(NSDictionary *resultData))finished{
     NSString *url = [uyoung_host stringByAppendingString:@"activity/getById"];
     
     NSDictionary *parameters = @{@"id": [NSString stringWithFormat:@"%d", (int)activityId]};
@@ -29,12 +29,16 @@
         if(result==100){//说明获得正确结果
             NSDictionary *resultData = [responseObject objectForKey:@"resultData"];
             if(resultData){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"fillActivityDetail" object:resultData];
+                finished(resultData);
+            }else{
+                finished(nil);
             }
+        }else{
+            finished(nil);
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        finished(nil);
     }];
 }
 

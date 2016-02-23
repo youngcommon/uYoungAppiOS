@@ -188,12 +188,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [_contentView addSubview:_addr];
     [_sepLineCons setConstant:(y+_addr.frame.size.height+15)];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fillActivityDetail:) name:@"fillActivityDetail" object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoEnrollDetail:) name:@"gotoEnrollDetail" object:nil];
-    
     //获取数据
-    [ActivityDetail getActivityDetailWithId:self.model.activityId];
+    [ActivityDetail getActivityDetailWithId:self.model.activityId onFinished:^(NSDictionary *resultData) {
+        [self fillActivityDetail:resultData];
+    }];
     
     //添加分享组件
     _backcover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
@@ -410,8 +408,10 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
 }
 
-- (void)fillActivityDetail:(NSNotification*)notification{
-    NSDictionary *dic = (NSDictionary*)[notification object];
+- (void)fillActivityDetail:(NSDictionary*)dic{
+    if (dic==nil) {
+        return;
+    }
     self.detailModel = [MTLJSONAdapter modelOfClass:[ActivityDetailModel class] fromJSONDictionary:dic error:nil];
     
     self.enrollPersons.text = [NSString stringWithFormat:@"%d / %d", (int)self.detailModel.realNum, (int)self.detailModel.needNum];
