@@ -384,6 +384,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [ActivityDetail unsignedActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
             [self initSignupButtonWithStatus:0 actStatus:0];
+            //更新报名用户
         }
     }];
 }
@@ -402,6 +403,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [ActivityDetail signupActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
             [self initSignupButtonWithStatus:1 actStatus:0];
+            //更新报名用户
         }
     }];
 }
