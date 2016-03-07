@@ -346,7 +346,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+//    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     [[UYoungAlertViewUtil shareInstance]dismissAlertView];
     [MobClick endLogPageView:@"AlbumDetailViewController"];
 }

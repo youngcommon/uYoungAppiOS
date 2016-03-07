@@ -146,7 +146,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
+//    [self.view.window showHUDWithText:@"" Type:ShowDismiss Enabled:YES];
     [MobClick endLogPageView:@"CreateActivityStep2Controller"];
 }
 
