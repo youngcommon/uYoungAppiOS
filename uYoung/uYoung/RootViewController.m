@@ -278,7 +278,6 @@
     [_selectedButton setHidden:YES];
     [_cancelButton setHidden:YES];
     [_citySelector setHidden:YES];
-//    [_cover setHidden:YES];
 }
 
 #pragma mark UIPickerView回调
