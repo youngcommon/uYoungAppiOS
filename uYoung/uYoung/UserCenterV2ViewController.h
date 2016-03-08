@@ -45,15 +45,14 @@
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *albumLineLabel;
-@property (strong, nonatomic) IBOutlet UILabel *actLineLabel;
 @property (strong, nonatomic) IBOutlet UIButton *createAlbumButton;
 @property (strong, nonatomic) IBOutlet UIButton *createActButton;
 @property (strong, nonatomic) IBOutlet UIButton *detailButton;
+@property (strong, nonatomic) IBOutlet UIButton *createdActBtn;
+@property (strong, nonatomic) IBOutlet UIButton *signedActBtn;
 
 @property (strong, nonatomic) UIImageView *backBlurHeader;
 @property (strong, nonatomic) UIView *cover;
-@property (strong, nonatomic) UIButton *createdActButton;
-@property (strong, nonatomic) UIButton *signedActButton;
 @property (strong, nonatomic) SystemConfigViewController *sysCtl;
 @property (strong, nonatomic) ActivityTableViewController *postActCtl;
 @property (strong, nonatomic) ActivityTableViewController *signedActCtl;
@@ -64,4 +63,6 @@
 - (IBAction)editUser:(id)sender;
 - (IBAction)create:(UIButton*)sender;
 - (IBAction)toggleUserDetail:(UIButton *)sender;
+- (IBAction)changeActList:(UIButton *)sender;
+
 @end

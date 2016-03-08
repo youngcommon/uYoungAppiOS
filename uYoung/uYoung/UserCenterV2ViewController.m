@@ -60,21 +60,11 @@
     [self addChildViewController:self.albumCtl];
     [self.albumView addSubview:self.albumCtl.view];
     
-    y = self.createActButton.frame.origin.y + self.createActButton.frame.size.height;
-    //创建的活动按钮
-    CGFloat buttonH = (mScreenHeight-y)/2;
-    self.createdActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y, 48, buttonH)];
-    [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
-    [self.createdActButton addTarget:self action:@selector(toggleActivityList:) forControlEvents:UIControlEventTouchUpInside];
-    [self.createdActButton setTag:10];
-    [self.view addSubview:self.createdActButton];
-    //参与的活动按钮
-    self.signedActButton = [[UIButton alloc]initWithFrame:CGRectMake(x, y+buttonH, 48, buttonH)];
-    [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
-    [self.signedActButton addTarget:self action:@selector(toggleActivityList:) forControlEvents:UIControlEventTouchUpInside];
-    [self.signedActButton setTag:11];
-    [self.view addSubview:self.signedActButton];
+    y = self.createdActBtn.frame.origin.y + self.createdActBtn.frame.size.height - 1;
     
+    [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+    [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
+
     //用户创建的活动列表
     self.postActCtl = [[ActivityTableViewController alloc]init];
     self.postActCtl.userid = _userDetailModel.id;
@@ -82,8 +72,7 @@
     [self addChildViewController:self.postActCtl];
     [self.view addSubview:self.postActCtl.view];
     
-    x = x + self.createdActButton.frame.size.width - 4;
-    frame = CGRectMake(x, y, self.view.frame.size.width-x, self.view.frame.size.height-y);
+    frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height-y);
     self.postActCtl.tableView.frame = frame;
     [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
     self.postActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -128,8 +117,8 @@
         _isSelf = YES;
     }
     
-    [self.view bringSubviewToFront:self.createdActButton];
-    [self.view bringSubviewToFront:self.signedActButton];
+    [self.view bringSubviewToFront:self.createdActBtn];
+    [self.view bringSubviewToFront:self.signedActBtn];
     
     //创建背底
     self.backBlurHeader = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
@@ -273,6 +262,23 @@
     }
 }
 
+- (IBAction)changeActList:(UIButton *)sender {
+    NSInteger tag = sender.tag;
+    if (tag==9002) {//说明参与的活动按钮被点击
+        [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_v2"] forState:UIControlStateNormal];
+        [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateNormal];
+        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.postActCtl.tableView setHidden:YES];
+        [self.signedActCtl.tableView setHidden:NO];
+    }else{//说明创建的活动被点击
+        [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateNormal];
+        [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_v2"] forState:UIControlStateNormal];
+        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.postActCtl.tableView setHidden:NO];
+        [self.signedActCtl.tableView setHidden:YES];
+    }
+}
+
 - (void)createAlbum{
     UserDetailModel *user = [UserDetailModel currentUser];
     AlbumDetailViewController *viewCtl = [[AlbumDetailViewController alloc]initWithNibName:@"AlbumDetailViewController" bundle:[NSBundle mainBundle]];
@@ -326,21 +332,6 @@
     UIImage *bubble = image;
     UIEdgeInsets capInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     return [bubble resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
-}
-
-- (void)toggleActivityList:(UIButton*)sender{
-    NSInteger tag = sender.tag;
-    if (tag==11) {//说明参与的活动按钮被点击
-        [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt"] forState:UIControlStateNormal];
-        [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h"] forState:UIControlStateNormal];
-        [self.postActCtl.tableView setHidden:YES];
-        [self.signedActCtl.tableView setHidden:NO];
-    }else{//说明创建的活动被点击
-        [self.createdActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h"] forState:UIControlStateNormal];
-        [self.signedActButton setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt"] forState:UIControlStateNormal];
-        [self.postActCtl.tableView setHidden:NO];
-        [self.signedActCtl.tableView setHidden:YES];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

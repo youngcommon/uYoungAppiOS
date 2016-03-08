@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterV2ViewController">
             <connections>
-                <outlet property="actLineLabel" destination="McO-wQ-NtR" id="F22-tm-wjV"/>
                 <outlet property="albumLineLabel" destination="NXv-kg-atD" id="IXd-Wn-NHw"/>
                 <outlet property="albumView" destination="3hM-d4-WtG" id="ARK-R6-REQ"/>
                 <outlet property="companyLabel" destination="0uY-yG-O9A" id="4fJ-9a-7ZT"/>
                 <outlet property="companyTitleLabel" destination="kIh-q3-Wd1" id="Vd4-bF-Ujs"/>
                 <outlet property="createActButton" destination="vxd-FB-fXs" id="SGV-YI-IIU"/>
                 <outlet property="createAlbumButton" destination="CBu-IH-ei3" id="z2g-wq-gSp"/>
+                <outlet property="createdActBtn" destination="o2Q-Kb-zbw" id="a92-lv-NzA"/>
                 <outlet property="detailButton" destination="DqH-p1-3GW" id="tuX-cP-DKq"/>
                 <outlet property="editButton" destination="mm2-pW-A2A" id="dbp-zT-f70"/>
                 <outlet property="emailLabel" destination="Lr0-rE-2VL" id="fh2-ux-PoZ"/>
@@ -31,6 +31,7 @@
                 <outlet property="nickLabel" destination="xSe-Q4-pcd" id="56w-5l-nYd"/>
                 <outlet property="positionLabel" destination="G03-6y-AOF" id="8WI-Ud-zgh"/>
                 <outlet property="positionTitleLabel" destination="0sZ-ra-cxh" id="oQ0-Fj-Rhn"/>
+                <outlet property="signedActBtn" destination="RUg-Jy-dKz" id="Xyg-eg-uFm"/>
                 <outlet property="sysconfigButton" destination="oQ7-4o-51T" id="my3-Hq-O1q"/>
                 <outlet property="view" destination="iN0-l3-epB" id="pB8-h4-54p"/>
             </connections>
@@ -103,27 +104,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McO-wQ-NtR">
-                    <rect key="frame" x="0.0" y="288" width="84" height="12"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="84" id="obk-5u-wu4"/>
-                        <constraint firstAttribute="height" constant="12" id="tPz-ST-xfH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeV-p2-tMS">
-                    <rect key="frame" x="8" y="277" width="60" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="60" id="Hau-Ha-sNk"/>
-                        <constraint firstAttribute="height" constant="21" id="bgI-Us-HdZ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBu-IH-ei3">
                     <rect key="frame" x="287" y="140" width="25" height="25"/>
                     <constraints>
@@ -136,7 +116,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxd-FB-fXs">
-                    <rect key="frame" x="287" y="277" width="25" height="25"/>
+                    <rect key="frame" x="287" y="283" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="8QR-no-Z5q"/>
                         <constraint firstAttribute="height" constant="25" id="hcW-3B-zzO"/>
@@ -377,23 +357,57 @@
                         </mask>
                     </variation>
                 </view>
+                <button opaque="NO" tag="9001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-Kb-zbw">
+                    <rect key="frame" x="0.0" y="276" width="100" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="AIj-tm-kgx"/>
+                        <constraint firstAttribute="width" constant="100" id="XKy-Tb-xxp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="创建的活动" backgroundImage="uyoung.bundle/created_act_bt_h_v2.png">
+                        <color key="titleColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeActList:" destination="-1" eventType="touchUpInside" id="8yV-Ob-xOb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="9002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-Jy-dKz">
+                    <rect key="frame" x="100" y="276" width="112" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="PNP-Zp-jD0"/>
+                        <constraint firstAttribute="width" constant="112" id="sn3-wD-8wD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                    <state key="normal" title="参加的活动" backgroundImage="uyoung.bundle/signed_act_bt_v2.png">
+                        <color key="titleColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeActList:" destination="-1" eventType="touchUpInside" id="BcB-PU-kEo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="o2Q-Kb-zbw" firstAttribute="top" secondItem="NXv-kg-atD" secondAttribute="bottom" constant="112" id="0O9-ei-dFG"/>
                 <constraint firstItem="Exo-i2-ZRg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="7Pe-dO-wS5"/>
                 <constraint firstAttribute="bottom" secondItem="j4H-Ty-AEN" secondAttribute="bottom" id="9ZI-el-l8x"/>
                 <constraint firstAttribute="trailing" secondItem="I2t-0J-GVq" secondAttribute="trailing" id="DEe-vn-aKW"/>
+                <constraint firstItem="RUg-Jy-dKz" firstAttribute="centerY" secondItem="o2Q-Kb-zbw" secondAttribute="centerY" id="DOb-r6-Ybd"/>
                 <constraint firstItem="CBu-IH-ei3" firstAttribute="top" secondItem="Exo-i2-ZRg" secondAttribute="top" id="GCH-Yf-SmH"/>
                 <constraint firstItem="3hM-d4-WtG" firstAttribute="top" secondItem="CBu-IH-ei3" secondAttribute="bottom" constant="7" id="HN0-Ip-AkI"/>
                 <constraint firstItem="3hM-d4-WtG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Llb-ic-40A"/>
                 <constraint firstAttribute="trailing" secondItem="CBu-IH-ei3" secondAttribute="trailing" constant="8" id="NBS-cO-Cl3"/>
                 <constraint firstAttribute="trailing" secondItem="j4H-Ty-AEN" secondAttribute="trailing" id="PQ2-ez-dLU"/>
                 <constraint firstItem="I2t-0J-GVq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Pw1-bk-wQx"/>
+                <constraint firstItem="o2Q-Kb-zbw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="R4R-Cw-yea"/>
                 <constraint firstAttribute="trailing" secondItem="3hM-d4-WtG" secondAttribute="trailing" id="S17-l4-kSy"/>
+                <constraint firstItem="RUg-Jy-dKz" firstAttribute="leading" secondItem="o2Q-Kb-zbw" secondAttribute="trailing" id="UK6-UT-Xme"/>
+                <constraint firstItem="vxd-FB-fXs" firstAttribute="centerY" secondItem="o2Q-Kb-zbw" secondAttribute="centerY" id="UdV-Z7-AVp"/>
                 <constraint firstItem="vxd-FB-fXs" firstAttribute="trailing" secondItem="CBu-IH-ei3" secondAttribute="trailing" id="Y3v-GU-7qc"/>
                 <constraint firstItem="b55-EM-rAl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="boV-oh-EhB"/>
                 <constraint firstItem="NXv-kg-atD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="152" id="e5Z-Dq-Uog"/>
-                <constraint firstItem="vxd-FB-fXs" firstAttribute="top" secondItem="OeV-p2-tMS" secondAttribute="top" id="ezs-gl-xWW"/>
                 <constraint firstItem="pi2-lY-kvf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="lT4-OL-g65"/>
                 <constraint firstAttribute="trailing" secondItem="oQ7-4o-51T" secondAttribute="trailing" constant="16" id="lTF-VF-5kU"/>
                 <constraint firstItem="I2t-0J-GVq" firstAttribute="top" secondItem="b55-EM-rAl" secondAttribute="bottom" constant="14" id="mKh-YO-7Ju"/>
@@ -402,11 +416,7 @@
                 <constraint firstItem="j4H-Ty-AEN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mrQ-ye-llB"/>
                 <constraint firstItem="j4H-Ty-AEN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nJe-f4-UVk"/>
                 <constraint firstItem="oQ7-4o-51T" firstAttribute="centerY" secondItem="pi2-lY-kvf" secondAttribute="centerY" id="nNn-H1-Pzt"/>
-                <constraint firstItem="OeV-p2-tMS" firstAttribute="leading" secondItem="Exo-i2-ZRg" secondAttribute="leading" id="nXp-f1-283"/>
-                <constraint firstItem="OeV-p2-tMS" firstAttribute="top" secondItem="Exo-i2-ZRg" secondAttribute="bottom" constant="116" id="qns-an-mTp"/>
-                <constraint firstItem="McO-wQ-NtR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qqH-DA-fvf"/>
                 <constraint firstItem="pi2-lY-kvf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="r3B-fP-wBe"/>
-                <constraint firstItem="McO-wQ-NtR" firstAttribute="top" secondItem="NXv-kg-atD" secondAttribute="bottom" constant="124" id="r54-VK-sHM"/>
                 <constraint firstItem="NXv-kg-atD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ri8-L5-RXZ"/>
                 <constraint firstItem="CBu-IH-ei3" firstAttribute="centerY" secondItem="Exo-i2-ZRg" secondAttribute="centerY" id="yhA-ZW-B1H"/>
                 <constraint firstItem="vxd-FB-fXs" firstAttribute="leading" secondItem="CBu-IH-ei3" secondAttribute="leading" id="zT9-cZ-LYz"/>
@@ -424,11 +434,13 @@
     <resources>
         <image name="uyoung.bundle/back_btn.png" width="320" height="568"/>
         <image name="uyoung.bundle/background.png" width="320" height="568"/>
+        <image name="uyoung.bundle/created_act_bt_h_v2.png" width="320" height="568"/>
         <image name="uyoung.bundle/edit_button.png" width="320" height="568"/>
         <image name="uyoung.bundle/hidedetail.png" width="320" height="568"/>
         <image name="uyoung.bundle/logo_icon.png" width="320" height="568"/>
         <image name="uyoung.bundle/plusone.png" width="320" height="568"/>
         <image name="uyoung.bundle/settings.png" width="320" height="568"/>
+        <image name="uyoung.bundle/signed_act_bt_v2.png" width="320" height="568"/>
         <image name="uyoung.bundle/woman.png" width="320" height="568"/>
     </resources>
 </document>
