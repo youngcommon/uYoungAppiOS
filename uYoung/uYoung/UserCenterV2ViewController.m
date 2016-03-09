@@ -74,7 +74,7 @@
     
     frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height-y);
     self.postActCtl.tableView.frame = frame;
-    [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
+//    [self.postActCtl.tableView setBackgroundColor:[UIColor clearColor]];
     self.postActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //用户参与的活动列表
@@ -83,11 +83,16 @@
     self.signedActCtl.showHeader = NO;
     self.signedActCtl.isSigned = YES;
     self.signedActCtl.tableView.frame = frame;
-    [self.signedActCtl.tableView setBackgroundColor:[UIColor clearColor]];
+//    [self.signedActCtl.tableView setBackgroundColor:[UIColor clearColor]];
     self.signedActCtl.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addChildViewController:self.signedActCtl];
     [self.view addSubview:self.signedActCtl.view];
     [self.signedActCtl.tableView setHidden:YES];
+    
+    self.createActButton.adjustsImageWhenHighlighted = NO;
+    self.signedActBtn.adjustsImageWhenHighlighted = NO;
+    [self.createActButton setShowsTouchWhenHighlighted:NO];
+    [self.signedActBtn setShowsTouchWhenHighlighted:NO];
     
     //添加系统设置遮罩
     _cover = [[UIView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];
@@ -267,13 +272,13 @@
     if (tag==9002) {//说明参与的活动按钮被点击
         [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_v2"] forState:UIControlStateNormal];
         [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateNormal];
-        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.signedActBtn setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
         [self.postActCtl.tableView setHidden:YES];
         [self.signedActCtl.tableView setHidden:NO];
     }else{//说明创建的活动被点击
         [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateNormal];
         [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_v2"] forState:UIControlStateNormal];
-        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.createdActBtn setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
         [self.postActCtl.tableView setHidden:NO];
         [self.signedActCtl.tableView setHidden:YES];
     }

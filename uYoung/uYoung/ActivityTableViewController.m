@@ -26,6 +26,11 @@
     
     _nodata = [[UIImageView alloc]init];
     [_nodata setHidden:YES];
+    if(!_showHeader){
+        [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    }else{
+        [self.tableView setBackgroundColor:[UIColor clearColor]];
+    }
     [self.view addSubview:_nodata];
     
 }
@@ -152,9 +157,15 @@
         [self.tableView reloadInputViews];
         self.currentPage = self.currentPage + 1;
         [_nodata setHidden:YES];
+        if(!_showHeader){
+            [self.tableView setBackgroundColor:[UIColor clearColor]];
+        }
     }else{
         data = [[NSArray alloc]init];
         [_nodata setHidden:NO];
+        if(!_showHeader){
+            [self.tableView setBackgroundColor:[UIColor whiteColor]];
+        }
     }
     if (self.activityListData!=nil&&[self.activityListData count]>0) {
         [self.activityListData removeAllObjects];
