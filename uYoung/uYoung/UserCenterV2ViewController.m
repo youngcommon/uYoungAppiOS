@@ -49,7 +49,6 @@
     //取消登录监听
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(popLoginView) name:@"popLoginView" object:nil];
     
-    CGFloat x = 0;
     CGFloat y = 0;
     //用户相册
     self.albumCtl = [[AlbumCollectionViewController alloc]init];
@@ -62,8 +61,8 @@
     
     y = self.createdActBtn.frame.origin.y + self.createdActBtn.frame.size.height - 1;
     
-    [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
-    [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
+//    [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+//    [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
 
     //用户创建的活动列表
     self.postActCtl = [[ActivityTableViewController alloc]init];
@@ -270,15 +269,17 @@
 - (IBAction)changeActList:(UIButton *)sender {
     NSInteger tag = sender.tag;
     if (tag==9002) {//说明参与的活动按钮被点击
-        [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_v2"] forState:UIControlStateNormal];
-        [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateNormal];
-        [self.signedActBtn setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_v2"] forState:UIControlStateNormal];
+        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateNormal];
+        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_v2"] forState:UIControlStateHighlighted];
+        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_h_v2"] forState:UIControlStateHighlighted];
         [self.postActCtl.tableView setHidden:YES];
         [self.signedActCtl.tableView setHidden:NO];
     }else{//说明创建的活动被点击
-        [self.createdActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateNormal];
-        [self.signedActBtn setBackgroundImage:[self getScaleUIImage:@"uyoung.bundle/signed_act_bt_v2"] forState:UIControlStateNormal];
-        [self.createdActBtn setBackgroundImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateNormal];
+        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_v2"] forState:UIControlStateNormal];
+        [self.createdActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/created_act_bt_h_v2"] forState:UIControlStateHighlighted];
+        [self.signedActBtn setImage:[UIImage imageNamed:@"uyoung.bundle/signed_act_bt_v2"] forState:UIControlStateHighlighted];
         [self.postActCtl.tableView setHidden:NO];
         [self.signedActCtl.tableView setHidden:YES];
     }

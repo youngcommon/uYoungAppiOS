@@ -357,30 +357,28 @@
                         </mask>
                     </variation>
                 </view>
-                <button opaque="NO" tag="9001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-Kb-zbw">
+                <button opaque="NO" tag="9001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-Kb-zbw">
                     <rect key="frame" x="0.0" y="276" width="100" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="AIj-tm-kgx"/>
                         <constraint firstAttribute="width" constant="100" id="XKy-Tb-xxp"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                     <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="创建的活动" backgroundImage="uyoung.bundle/created_act_bt_h_v2.png">
+                    <state key="normal" title="创建的活动" image="uyoung.bundle/created_act_bt_h_v2.png">
                         <color key="titleColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="changeActList:" destination="-1" eventType="touchUpInside" id="8yV-Ob-xOb"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="9002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-Jy-dKz">
-                    <rect key="frame" x="100" y="276" width="112" height="40"/>
+                <button opaque="NO" tag="9002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-Jy-dKz">
+                    <rect key="frame" x="99" y="276" width="112" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="PNP-Zp-jD0"/>
                         <constraint firstAttribute="width" constant="112" id="sn3-wD-8wD"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
-                    <state key="normal" title="参加的活动" backgroundImage="uyoung.bundle/signed_act_bt_v2.png">
+                    <state key="normal" title="参加的活动" image="uyoung.bundle/signed_act_bt_v2.png">
                         <color key="titleColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -412,6 +410,7 @@
                 <constraint firstAttribute="trailing" secondItem="oQ7-4o-51T" secondAttribute="trailing" constant="16" id="lTF-VF-5kU"/>
                 <constraint firstItem="I2t-0J-GVq" firstAttribute="top" secondItem="b55-EM-rAl" secondAttribute="bottom" constant="14" id="mKh-YO-7Ju"/>
                 <constraint firstItem="Exo-i2-ZRg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="mT6-UL-Ie8"/>
+                <constraint firstItem="RUg-Jy-dKz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="99" id="mXx-Cc-Ohj"/>
                 <constraint firstItem="b55-EM-rAl" firstAttribute="centerY" secondItem="pi2-lY-kvf" secondAttribute="centerY" id="mZN-4Y-RJt"/>
                 <constraint firstItem="j4H-Ty-AEN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mrQ-ye-llB"/>
                 <constraint firstItem="j4H-Ty-AEN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nJe-f4-UVk"/>
@@ -425,6 +424,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="UK6-UT-Xme"/>
                     <exclude reference="yhA-ZW-B1H"/>
                     <exclude reference="zT9-cZ-LYz"/>
                 </mask>
