@@ -15,6 +15,7 @@
 #import "ActivityAlbumModel.h"
 #import "EditUserViewController.h"
 #import <MobClick.h>
+#import "ActivityDetailEnrollsModel.h"
 
 @interface ActivityDetailViewController ()
 
@@ -216,7 +217,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self initUserAvater];
-    [self initSignupButton];
+//    [self initSignupButton];
     [MobClick beginLogPageView:@"ActivityDetailViewController"];//("PageOne"为页面名称，可自定义)
 }
 
@@ -384,7 +385,23 @@ static NSString * const reuseIdentifier = @"Cell";
     [ActivityDetail unsignedActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
             [self initSignupButtonWithStatus:0 actStatus:0];
-            //更新报名用户
+            //更新报名用户，删除自己数据
+            NSMutableArray *enrollsUser = self.enrollView.enrolls;
+            if (enrollsUser!=nil&&[enrollsUser count]>0) {
+                int index = -1;
+                for (int i=0; i<[enrollsUser count]; i++) {
+                    ActivityDetailEnrollsModel *enrollUserModel = enrollsUser[i];
+                    if (enrollUserModel.uid == self.loginUser.id) {
+                        index = i;
+                        break;
+                    }
+                }
+                if (index>=0) {
+                    [self.enrollView.enrolls removeObjectAtIndex:index];
+                    [self.enrollView reloadData];
+                    [self.enrollView reloadInputViews];
+                }
+            }
         }
     }];
 }
@@ -403,7 +420,12 @@ static NSString * const reuseIdentifier = @"Cell";
     [ActivityDetail signupActivity:self.loginUser.id actId:self.model.activityId opts:^(BOOL success) {
         if (success) {
             [self initSignupButtonWithStatus:1 actStatus:0];
-            //更新报名用户
+            //更新报名用户插入自己数据
+            NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:@(self.loginUser.id),@"uid", self.loginUser.nickName,@"nickName", self.loginUser.avatarUrl,@"avatar", @(0),@"confirm", nil];
+            ActivityDetailEnrollsModel *emodel = [MTLJSONAdapter modelOfClass:[ActivityDetailEnrollsModel class] fromJSONDictionary:json error:nil];
+            [self.enrollView.enrolls addObject:emodel];
+            [self.enrollView reloadData];
+            [self.enrollView reloadInputViews];
         }
     }];
 }
@@ -423,6 +445,8 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     self.detailModel = [MTLJSONAdapter modelOfClass:[ActivityDetailModel class] fromJSONDictionary:dic error:nil];
+    
+    [self initSignupButton];
     
     self.enrollPersons.text = [NSString stringWithFormat:@"%d / %d", (int)self.detailModel.realNum, (int)self.detailModel.needNum];
     self.organizer.text = self.detailModel.nickName;
@@ -446,7 +470,8 @@ static NSString * const reuseIdentifier = @"Cell";
     _enrollView.delegate = _enrollView;
     _enrollView.dataSource = _enrollView;
     _enrollView.enrollDelegate = self;
-    _enrollView.enrolls = [self.detailModel.enrolls copy];
+    NSMutableArray *enrollsUser = [[NSMutableArray alloc]initWithArray:self.detailModel.enrolls];
+    _enrollView.enrolls = enrollsUser;
     _enrollView.actId = self.model.activityId;
     [_enrollView setBackgroundColor:[UIColor clearColor]];
     [self.descScrollView addSubview:_enrollView];
