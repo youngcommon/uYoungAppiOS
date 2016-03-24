@@ -18,7 +18,8 @@
 
 #define contentTextColor ([UIColorFromRGB(0x85B200) CGColor])
 
-#define uyoung_host @"http://182.92.237.31/"
+//#define uyoung_host @"http://182.92.237.31/"
+#define uyoung_host @"http://mobile.youngcommon.com/"
 
 #define pageSize 15
 
@@ -44,7 +45,8 @@
 
 #define QINIU_SK @"1GPL8ts0TUNS1EUM3_AHpAnyws5VKtKhxL8zYTLo"
 
-#define QINIU_DEFAULT_HOST @"http://7xnzko.com1.z0.glb.clouddn.com"
+#define QINIU_DEFAULT_HOST @"http://mobile-img.youngcommon.com"
+//#define QINIU_DEFAULT_HOST @"http://7xnzko.com1.z0.glb.clouddn.com"
 
 #define NOT_LOGIN -3
 #define NOT_LOGIN_NOTICE @"notlogin"
