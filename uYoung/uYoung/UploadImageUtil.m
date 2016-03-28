@@ -24,7 +24,7 @@
 }
 
 - (void)uploadAlbumImageSycro:(UIImage*)img withKey:(NSString*)key exif:(PicExif*)exif albumId:(long)albumId ownerId:(long)ownerId complete:(void(^)(PhotoDetailModel* detail, NSInteger state))complete{
-        NSString *url = [uyoung_host stringByAppendingString:@"/qn/qnUpToken"];
+        NSString *url = [uyoung_host stringByAppendingString:@"qn/qnUpToken"];
         
         //imei
         NSString *imei = [[[UIDevice currentDevice]identifierForVendor]UUIDString];
