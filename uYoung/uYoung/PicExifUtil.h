@@ -14,6 +14,8 @@
 
 +(PicExifUtil *)shareInstance;
 
+-(PicExif*)getNilALAsset;
+
 -(PicExif*)getWithALAsset:(ALAsset*)asset;
 
 @end

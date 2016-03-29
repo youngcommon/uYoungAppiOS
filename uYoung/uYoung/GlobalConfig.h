@@ -58,4 +58,6 @@
 #define DOUBAN_REGISTER_URL @"https://www.douban.com/accounts/register"
 #define DOUBAN_TERMS_URL @"https://developers.douban.com/wiki/?title=terms"
 
+#define USER_HEADER_RANDOM @"user_header_random"
+
 #endif /* GlobalConfig_h */

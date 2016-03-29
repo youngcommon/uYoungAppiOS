@@ -196,6 +196,10 @@ static NSString * const reuseIdentifier = @"Cell";
                 [_oriImage addObject:image];
                 PicExif *exif = [[PicExifUtil shareInstance]getWithALAsset:asset.asset];
                 [_exifArr addObject:exif];
+            }else if([assets[i] isKindOfClass:[UIImage class]]){
+                [_oriImage addObject:assets[i]];
+                PicExif *exif = [[PicExifUtil shareInstance]getNilALAsset];
+                [_exifArr addObject:exif];
             }
         }
     }

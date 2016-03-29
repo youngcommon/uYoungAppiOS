@@ -19,6 +19,12 @@
     return shared;
 }
 
+-(PicExif*)getNilALAsset{
+    NSDictionary *info = [[NSDictionary alloc]initWithObjectsAndKeys:@"",@"iso", @"",@"exposure", @"",@"f", @"",@"focalLength", @"",@"lensModel", @"",@"cameraModel", @"",@"exposureBiasValue", nil];
+    PicExif *exif = [MTLJSONAdapter modelOfClass:[PicExif class] fromJSONDictionary:info error:nil];
+    return exif;
+}
+
 -(PicExif*)getWithALAsset:(ALAsset*)asset{
     NSDictionary *imageData = [[NSMutableDictionary alloc]initWithDictionary:asset.defaultRepresentation.metadata];
     NSDictionary *exifData = [imageData objectForKey:(NSString *)kCGImagePropertyExifDictionary];

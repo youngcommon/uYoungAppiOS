@@ -596,6 +596,11 @@
     }
     NSString *url = [[host stringByAppendingString:@"/"]stringByAppendingString:key];
     _avater = url;
+    //更新头像随机缓存
+    long timer = [[NSDate date]timeIntervalSince1970];
+    NSString *t = [NSString stringWithFormat:@"%ld", timer];
+    [[NSUserDefaults standardUserDefaults] setObject:t forKey:USER_HEADER_RANDOM];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //计算键盘的高度

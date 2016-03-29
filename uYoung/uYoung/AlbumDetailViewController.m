@@ -98,10 +98,8 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)refresh:(NSNotification*)notification{
-    NSArray *photoDetailModels = (NSArray*)[notification object];
-    NSMutableArray *temp = [[NSMutableArray alloc]initWithArray:_pics];
-    [temp addObjectsFromArray:photoDetailModels];
-    _pics = [temp copy];
+    NSMutableArray *photoDetailModels = (NSMutableArray*)[notification object];
+    [_pics addObjectsFromArray:photoDetailModels];
     [_totalPics setText:[NSString stringWithFormat:@"%d张照片", (int)[_pics count]]];
     [_allPics reloadData];
     [_allPics reloadInputViews];

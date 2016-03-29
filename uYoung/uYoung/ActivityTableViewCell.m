@@ -51,9 +51,13 @@
     self.personNumLabel.text = [NSString stringWithFormat:@"%d人", (int)model.personNum];
     self.addrLabel.text = model.addr;
     
-    long timer = [[NSDate date]timeIntervalSince1970];
-//    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:[NSString stringWithFormat:@"%@?%ld", @"actdesc200", timer]];
-    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:@"actdesc200"];
+    NSString *timer = @"";
+    NSString *t = [[NSUserDefaults standardUserDefaults]objectForKey:USER_HEADER_RANDOM];
+    if (t) {
+        timer = [NSString stringWithFormat:@"?%@", t];
+    }
+    NSString *suffix = [NSString stringWithFormat:@"actdesc200%@", timer];
+    [self.headerImg lazyInitSmallImageWithUrl:model.headerUrl suffix:suffix];
     if(model.price==1){
         self.priceLabel.image = [UIImage imageNamed:@"uyoung.bundle/aa"];
     }else{
