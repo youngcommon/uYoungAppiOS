@@ -29,5 +29,6 @@
 @property (nonatomic, strong) NSMutableDictionary *params;
 
 - (void)resetActivityList:(NSDictionary*)param;
+- (void)getDataFromNet:(BOOL)isTop;
 
 @end

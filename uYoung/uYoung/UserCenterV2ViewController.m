@@ -173,6 +173,12 @@
 
 - (void)popLoginView{
     [self.navigationController popViewControllerAnimated:YES];
+    self.postActCtl.activityListData = nil;
+    self.signedActCtl.activityListData = nil;
+    [self.postActCtl.tableView reloadData];
+    [self.postActCtl.tableView reloadInputViews];
+    [self.signedActCtl.tableView reloadData];
+    [self.signedActCtl.tableView reloadInputViews];
 }
 
 - (void)refreshViews:(NSNotification*)no{
@@ -181,6 +187,10 @@
         [self initViewWithUser];
         self.albumCtl.userId = _userDetailModel.id;
         [self.albumCtl refreshData];
+        self.postActCtl.userid = _userDetailModel.id;
+        [self.postActCtl getDataFromNet:YES];
+        self.signedActCtl.userid = _userDetailModel.id;
+        [self.signedActCtl getDataFromNet:YES];
     }
 }
 

@@ -80,7 +80,7 @@
 + (void)userRegisterWithEmailAndPwd:(NSString*)email pwd:(NSString*)pwd nickname:(NSString*)nickname success:(void(^)(BOOL isSuccess, NSString *msg))success{
     NSString *url = [uyoung_host stringByAppendingString:@"reg/reg"];
     
-    NSDictionary *parameters = @{@"email":email, @"password":pwd, @"nickName":nickname};
+    NSDictionary *parameters = @{@"email":email, @"passwd":pwd, @"nickName":nickname};
     
 //    NSString *stamp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date]timeIntervalSince1970]];
 //    NSDictionary *encrypt = [Des3Encrypt getEncryptParams:parameters stamp:stamp];
