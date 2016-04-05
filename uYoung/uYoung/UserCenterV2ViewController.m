@@ -121,8 +121,8 @@
         _isSelf = YES;
     }
     
-    [self.view bringSubviewToFront:self.createdActBtn];
-    [self.view bringSubviewToFront:self.signedActBtn];
+//    [self.view bringSubviewToFront:self.createdActBtn];
+//    [self.view bringSubviewToFront:self.signedActBtn];
     
     //创建背底
     self.backBlurHeader = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, mScreenHeight)];

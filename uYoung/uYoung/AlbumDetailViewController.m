@@ -40,6 +40,12 @@ static NSString * const reuseIdentifier = @"Cell";
     _userHeader.layer.cornerRadius = _userHeader.frame.size.height/2;
     _userHeader.layer.masksToBounds = YES;
     
+    if (_pics==nil||_pics==NULL) {
+        _pics = [[NSMutableArray alloc]init];
+    }
+    _delList = [[NSMutableArray alloc]initWithCapacity:0];
+    _delPhotoList = [[NSMutableString alloc]initWithString:@","];
+    
     [_userHeader lazyInitSmallImageWithUrl:_userHeaderUrl suffix:@"actdesc200"];
     [_nickName setText:_nickNameStr];
     [_albumName setText:_albumNameStr==nil?@"未命名":_albumNameStr];
@@ -48,12 +54,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UINib *nib = [UINib nibWithNibName:@"AlbumPicCollectionCell" bundle:nil];
     [_allPics registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
-    
-    /*if (_pics==nil||_pics==NULL) {
-        _pics = [[NSMutableArray alloc]init];
-    }*/
-    _delList = [[NSMutableArray alloc]initWithCapacity:0];
-    _delPhotoList = [[NSMutableString alloc]initWithString:@","];
     
     UserDetailModel *loginUser = [UserDetailModel currentUser];
     [_uploadPicButton setHidden:(loginUser.id!=_ownerUid)];
