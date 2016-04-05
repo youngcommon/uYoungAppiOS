@@ -173,15 +173,15 @@
 
 - (void)popLoginView{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)refreshViews:(NSNotification*)no{
     self.postActCtl.activityListData = nil;
     self.signedActCtl.activityListData = nil;
     [self.postActCtl.tableView reloadData];
     [self.postActCtl.tableView reloadInputViews];
     [self.signedActCtl.tableView reloadData];
     [self.signedActCtl.tableView reloadInputViews];
-}
-
-- (void)refreshViews:(NSNotification*)no{
     _userDetailModel = (UserDetailModel*)[no object];
     if (_userDetailModel&&[_userDetailModel isEqual:[NSNull null]]==NO&&_userDetailModel.id>0) {
         [self initViewWithUser];

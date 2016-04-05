@@ -13,6 +13,7 @@
 #import "UIWindow+YoungHUD.h"
 #import "UserDetailModel.h"
 #import "UYoungAlertViewUtil.h"
+#import "RootViewController.h"
 #import <MobClick.h>
 
 @interface CreateActivityController ()
